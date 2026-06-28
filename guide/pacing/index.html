@@ -1,192 +1,233 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-<title>하이록스 페이싱 가이드 — 목표 기록별 1km 런 페이스 완전 정리 | 레이스 플래너</title>
-<meta name="description" content="하이록스(HYROX) 런 페이스를 목표 완주 기록별로 정리한 가이드. 평소 5K보다 왜 느린지(컴프로마이즈드 러닝), 록스존이 더하는 6.5%, 8개 런 페이싱 전략까지 실측 데이터로 설명합니다." />
-<meta name="keywords" content="하이록스 페이싱, 하이록스 페이스, 하이록스 런 페이스, HYROX 페이싱, 하이록스 목표 기록, 컴프로마이즈드 러닝, 록스존, 하이록스 전략" />
+<title data-i18n="title">HYROX Pacing Guide — Run Pace by Goal Finish Time | Race Planner</title>
+<meta name="description" data-i18n="desc" content="A data-backed HYROX pacing guide: why in-race running is slower than your 5K, target run pace by goal finish time, the hidden 6.5% roxzone, and how to split the 8 runs." />
+<meta name="keywords" content="hyrox pacing, hyrox pace, hyrox run pace, hyrox strategy, roxzone, compromised running, 하이록스 페이싱, 하이록스 페이스, 하이록스 전략" />
 <link rel="canonical" href="https://raceplanner.online/guide/pacing/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/pacing/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/pacing/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/pacing/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="하이록스 페이싱 가이드 — 목표 기록별 1km 런 페이스" />
-<meta property="og:description" content="평소 5K보다 왜 느린지, 목표 기록별 런 페이스, 8개 런 페이싱 전략까지 실측 데이터로." />
-<meta property="og:locale" content="ko_KR" />
 <meta name="theme-color" content="#0f1115" />
 <meta name="robots" content="index, follow" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"하이록스 페이싱 가이드 — 목표 기록별 1km 런 페이스 완전 정리","inLanguage":"ko","author":{"@type":"Organization","name":"레이스 플래너"},"publisher":{"@type":"Organization","name":"레이스 플래너"},"mainEntityOfPage":"https://raceplanner.online/guide/pacing/","description":"하이록스 런 페이스를 목표 기록별로 정리한 가이드"}
-</script>
 <style>
-  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4;--warn:#ffb35c}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4}
+  *{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
   body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
   a{color:var(--accent2)}
   .shell{max-width:1180px;margin:0 auto;padding:16px 18px calc(48px + env(safe-area-inset-bottom))}
-  header{display:flex;align-items:center;gap:12px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px}
-  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}
-  .logo b{color:var(--accent)}
+  header{display:flex;align-items:center;gap:12px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}.logo b{color:var(--accent)}
   .spacer{flex:1}
-  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:14px}
-  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center;line-height:1.4}
-  .ad-leader{height:90px}
-  .ad-sky{height:600px}
-  .ad-rect{height:250px}
-  .ad-inline{height:100px;margin:18px 0;display:none}
-  @media(max-width:800px){.ad-inline{display:flex}}
+  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:13px}
+  .langtoggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:13px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+  .langtoggle button.on{background:var(--accent);color:#10130a}
+  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center}
+  .ad-leader{height:90px}.ad-sky{height:600px}.ad-rect{height:250px}
+  .ad-inline{height:100px;margin:18px 0;display:none}@media(max-width:800px){.ad-inline{display:flex}}
   .leader{margin:0 auto 18px;max-width:970px}
   .layout{display:grid;gap:22px;grid-template-columns:160px minmax(0,1fr) 300px;align-items:start}
   .rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
   @media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 300px}.rail-left{display:none}}
   @media(max-width:800px){.layout{grid-template-columns:1fr}.rail-right{display:none}}
   article{min-width:0}
-  .crumb{font-size:12px;color:var(--sub);margin-bottom:10px}
-  .crumb a{color:var(--sub)}
+  .crumb{font-size:12px;color:var(--sub);margin-bottom:10px}.crumb a{color:var(--sub)}
   h1{font-size:27px;line-height:1.3;letter-spacing:-.6px;margin:4px 0 10px}
   .meta{font-size:12.5px;color:#6b7682;margin-bottom:18px}
   h2{font-size:20px;margin:30px 0 10px;letter-spacing:-.4px;border-left:3px solid var(--accent);padding-left:11px}
-  h3{font-size:16px;margin:20px 0 7px;color:var(--accent2)}
-  p{font-size:15px;color:#d7dde3;margin:10px 0}
-  ul,ol{margin:10px 0;padding-left:20px}
-  li{font-size:15px;color:#d7dde3;margin:6px 0}
-  b,strong{color:var(--ink)}
-  .lead{font-size:16px;color:var(--sub);line-height:1.7}
+  p{font-size:15px;color:#d7dde3;margin:10px 0}ul,ol{margin:10px 0;padding-left:20px}li{font-size:15px;color:#d7dde3;margin:6px 0}
+  b,strong{color:var(--ink)}.lead{font-size:16px;color:var(--sub);line-height:1.7}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-variant-numeric:tabular-nums}
   th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);font-size:14px}
-  th{font-size:11.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px}
-  td b{color:var(--accent)}
+  th{font-size:11.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px}td b{color:var(--accent)}
   .callout{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0}
   .callout.tip{border-color:#2f3d2a;background:#1a2018}
   .cta-box{background:linear-gradient(160deg,#1f242e,#161922);border:1px solid var(--line);border-radius:16px;padding:22px;margin:24px 0;text-align:center}
-  .cta-box h3{color:var(--ink);margin:0 0 6px;font-size:18px}
-  .cta-box p{color:var(--sub);font-size:14px;margin:0 0 14px}
-  .btn{display:inline-block;background:var(--accent);color:#10130a;font-weight:800;text-decoration:none;padding:14px 22px;border-radius:11px;font-size:15px}
-  .btn.alt{background:var(--accent2);color:#0c1410;margin-top:0}
-  .faq dt{font-weight:750;margin-top:14px;font-size:15px}
-  .faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
-  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}
-  footer a{color:var(--accent2);text-decoration:none}
+  .cta-box h3{color:var(--ink);margin:0 0 6px;font-size:18px}.cta-box p{color:var(--sub);font-size:14px;margin:0 0 14px}
+  .btn{display:inline-block;background:var(--accent);color:#10130a;font-weight:800;text-decoration:none;padding:14px 22px;border-radius:11px;font-size:15px}.btn.alt{background:var(--accent2);color:#0c1410}
+  .faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}footer a{color:var(--accent2);text-decoration:none}
   .src{font-size:11px;color:#454e59;margin-top:8px}
   .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+  [data-lng]{display:none}
   @media(max-width:380px){h1{font-size:23px}}
 </style>
 </head>
 <body>
 <div class="shell">
   <header>
-    <a class="logo" href="/">레이스 <b>플래너</b></a>
+    <a class="logo" href="/">Race <b>Planner</b></a>
     <span class="spacer"></span>
-    <a class="navlink" href="/">계산기</a>
-    <a class="navlink" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 →</a>
+    <a class="navlink" href="/" data-i18n="nav_calc">Calculator</a>
+    <a class="navlink" href="/pace/" data-i18n="nav_pace">Pace</a>
+    <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
   </header>
 
-  <div class="ad ad-leader leader" data-ad="leaderboard">광고 (리더보드 728×90)</div>
+  <div class="ad ad-leader leader">Ad (728×90)</div>
 
   <div class="layout">
-    <aside class="rail rail-left"><div class="ad ad-sky" data-ad="sky-left">광고<br/>160×600</div></aside>
+    <aside class="rail rail-left"><div class="ad ad-sky">Ad<br/>160×600</div></aside>
 
     <article>
-      <div class="crumb"><a href="/">홈</a> › 가이드 › 페이싱</div>
-      <h1>하이록스 페이싱 가이드<br/>목표 기록별 1km 런 페이스 완전 정리</h1>
-      <div class="meta">러닝·하이록스 보급 데이터 기반 · 최종 정리 2026</div>
+      <!-- ===== EN ===== -->
+      <div data-lng="en">
+        <div class="crumb"><a href="/">Home</a> › Guides › Pacing</div>
+        <h1>HYROX Pacing Guide:<br/>Run Pace by Goal Finish Time</h1>
+        <div class="meta">Data-backed · 2026</div>
+        <p class="lead">The most common HYROX mistake is assuming you can run your 5K pace. With a high-intensity station between every kilometer, you run on tired legs the whole way. This guide lays out, from public results data, what run pace to target for your goal time and how to split the 8 runs.</p>
 
-      <p class="lead">하이록스에서 가장 흔한 실수는 "내 5K 페이스대로 달릴 수 있다"는 착각입니다. 매 1km 사이에 고강도 스테이션이 끼면서 다리는 계속 지친 상태로 달리게 됩니다. 이 글은 공개 결과 데이터를 바탕으로, 목표 완주 기록별로 어떤 런 페이스를 잡아야 하는지, 그리고 8개 런을 어떻게 배분해야 하는지 정리했습니다.</p>
+        <h2>1. Why HYROX runs are slower — compromised running</h2>
+        <p>"Compromised running" means running with legs already fatigued by strength work. Sled push/pull and sandbag lunges drain your quads, glutes and adductors, so even with the same engine your stride shortens and cadence drops. Heart rate barely recovers between stations, so fatigue accumulates.</p>
+        <p>The coaching consensus is clear: <b>in-race run pace is roughly 25–60 s/km slower than a fresh 5K</b>. Put differently, HYROX running feels like <b>half-marathon effort</b>, not 5K/10K race pace. Assume you can repeat your standalone 5K pace eight times and you will blow up late.</p>
+        <div class="callout tip"><b>Rules of thumb</b><br/>① 10K race pace + 20–30 s/km, or<br/>② comfortable 1km pace + ~30 s → use that as your race run pace.</div>
 
-      <h2>1. 하이록스 런은 왜 평소보다 느린가 — 컴프로마이즈드 러닝</h2>
-      <p>"컴프로마이즈드 러닝(compromised running)"은 근력 운동으로 다리가 피로해진 상태에서 달리는 것을 말합니다. 썰매 밀기·끌기, 샌드백 런지가 대퇴사두·둔근·내전근을 고갈시키면, 같은 심폐 능력이라도 보폭이 줄고 케이던스가 떨어집니다. 스테이션 사이에 심박이 거의 안 내려가기 때문에 피로는 누적됩니다.</p>
-      <p>코치들의 공통된 기준은 명확합니다. <b>인레이스 런 페이스는 평소 전력 5K보다 약 25~60초/km 느립니다.</b> 표현을 바꾸면, 하이록스 런은 "5K·10K 레이스 페이스"가 아니라 <b>"하프마라톤 효ort"</b>에 가깝습니다. 즉 본인의 단독 5K 페이스를 그대로 8번 반복할 수 있다고 가정하면 거의 무조건 후반에 무너집니다.</p>
+        <h2>2. Target run pace by goal finish</h2>
+        <p>Approximate average per-km run pace for each goal time. It shifts with station strength, but it's a solid starting point.</p>
+        <table><thead><tr><th>Goal finish</th><th>Avg run pace</th><th>Feels like</th></tr></thead><tbody>
+          <tr><td><b>~1:00 (elite)</b></td><td>~3:58/km</td><td>10K race pace</td></tr>
+          <tr><td><b>~1:20</b></td><td>~4:58/km</td><td>comfortable 10K</td></tr>
+          <tr><td><b>~1:30</b></td><td>~5:30/km</td><td>half-marathon pace</td></tr>
+          <tr><td><b>~1:45</b></td><td>~6:20/km</td><td>between half & full</td></tr>
+          <tr><td><b>~2:00</b></td><td>~6:56/km</td><td>marathon pace</td></tr>
+        </tbody></table>
+        <p>Key point: this is the pace you must hold <b>while tired</b>, not when fresh. Go a touch faster than this average on the early runs and you lose more later.</p>
 
-      <div class="callout tip">
-        <b>실전 룰</b><br/>
-        ① 10K 레이스 페이스 + 20~30초/km, 또는<br/>
-        ② 평소 편한 1km 페이스 + 약 30초 → 이 값을 레이스 런 기준으로 잡으세요.
+        <div class="ad ad-inline">Ad</div>
+
+        <h2>3. The hidden 6.5% — the Roxzone</h2>
+        <p>A finish is run + stations + <b>roxzone</b>. The roxzone is the transition corridor between the run track and stations — about 700m and roughly <b>6.5% of total time</b> on top of the nominal 8km. Across 8 transitions that's about 6 minutes.</p>
+        <table><thead><tr><th>Level</th><th>Per transition</th><th>Total roxzone</th><th>Share</th></tr></thead><tbody>
+          <tr><td>Elite (&lt;1:10)</td><td>~28s</td><td>~3:41</td><td>5.5%</td></tr>
+          <tr><td>Advanced (1:10–1:20)</td><td>~34s</td><td>~4:33</td><td>6.0%</td></tr>
+          <tr><td>Intermediate (1:20–1:30)</td><td>~40s</td><td>~5:19</td><td>6.3%</td></tr>
+          <tr><td>Beginner (1:30+)</td><td>~52s</td><td>~6:58</td><td>6.8%</td></tr>
+        </tbody></table>
+        <p>Insight: the roxzone is time you can cut <b>without any added fitness</b>. The gap between beginner and elite is ~24s per transition, 3+ minutes total. Just move straight into the next task.</p>
+
+        <h2>4. How to split the 8 runs</h2>
+        <p>A well-paced race has the most-controlled Run 1, and a drift to Run 8 of <b>10–20 s/km</b>. Slow by 30+ s/km and you started too fast. Elites hold within 15 s/km.</p>
+        <ul>
+          <li><b>Run 1:</b> "embarrassingly controlled." Start 15–20 s/km slower than easy 5K.</li>
+          <li><b>Runs 2–3:</b> around the sleds. Push here and the sled costs 30s+. Give back 5–10 s/km.</li>
+          <li><b>Runs 4–6:</b> burpees/row mid-race. Your <b>worst run should be Run 5–6</b>.</li>
+          <li><b>Runs 7–8:</b> right after lunges torch the quads. If this is your worst, you went out too fast. Empty the tank in the last 200m.</li>
+        </ul>
+        <div class="callout"><b>Diagnostic:</b> worst split at Run 7–8 → started too fast. Worst at Run 5–6 → well distributed.</div>
+
+        <div class="cta-box"><h3>Calculate your finish from your pace</h3><p>Enter your easy 5K pace and this logic computes your predicted finish, per-station targets and an 8-run plan.</p><a class="btn" href="/">Open the Race Planner calculator →</a></div>
+
+        <h2>5. Fueling matters as much as pacing</h2>
+        <p>HYROX is usually 60–110 minutes of high intensity. Over 90 minutes, carbohydrate intake decides your finish. Start with a gel + electrolytes 30–45 min before, then split intake around burpees/lunges. Above all, <b>don't try anything new on race day</b> — test gut-friendly products in training.</p>
+        <div class="cta-box"><h3>Test single servings first</h3><p>Gels, electrolytes and hydrogels suit everyone differently. Try them one at a time before buying boxes.</p><a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">Shop single-serve at Athlete's Pick →</a></div>
+
+        <h2>FAQ</h2>
+        <dl class="faq">
+          <dt>Q. My 5K is 22 min — can I run that in HYROX?</dt>
+          <dd>No. A 22-min 5K (~4:24/km) realistically means ~4:50–5:10/km in race, due to station fatigue.</dd>
+          <dt>Q. Does the roxzone count toward my time?</dt>
+          <dd>Yes. The clock never stops in transitions — about 6.5% of the race.</dd>
+          <dt>Q. Can't I bank time with a fast first run?</dt>
+          <dd>Almost always a net loss. Even/negative split is the standard.</dd>
+        </dl>
+        <div class="related"><a href="/">→ HYROX finish-time calculator</a><a href="/guide/nutrition/?lang=en">→ Nutrition guide</a><a href="/guide/stations/?lang=en">→ Station breakdown</a></div>
       </div>
 
-      <h2>2. 목표 완주 기록별 런 페이스 기준표</h2>
-      <p>아래는 목표 완주 기록에 대응하는 대략적인 평균 1km 런 페이스입니다. 같은 완주 기록이라도 스테이션 강점에 따라 달라지지만, 페이싱 출발점으로 쓰기에 충분합니다.</p>
-      <table>
-        <thead><tr><th>목표 완주</th><th>평균 런 페이스</th><th>체감 강도</th></tr></thead>
-        <tbody>
-          <tr><td><b>~1:00 (엘리트)</b></td><td>약 3:58/km</td><td>10K 레이스 페이스급</td></tr>
-          <tr><td><b>~1:20</b></td><td>약 4:58/km</td><td>편안한 10K 효ort</td></tr>
+      <!-- ===== KO ===== -->
+      <div data-lng="ko">
+        <div class="crumb"><a href="/">홈</a> › 가이드 › 페이싱</div>
+        <h1>하이록스 페이싱 가이드<br/>목표 기록별 1km 런 페이스 완전 정리</h1>
+        <div class="meta">실데이터 기반 · 2026</div>
+        <p class="lead">하이록스에서 가장 흔한 실수는 "내 5K 페이스대로 달릴 수 있다"는 착각입니다. 매 1km 사이에 고강도 스테이션이 끼면서 다리는 계속 지친 상태로 달리게 됩니다. 이 글은 공개 결과 데이터를 바탕으로, 목표 완주 기록별로 어떤 런 페이스를 잡아야 하는지, 8개 런을 어떻게 배분해야 하는지 정리했습니다.</p>
+
+        <h2>1. 하이록스 런은 왜 평소보다 느린가 — 컴프로마이즈드 러닝</h2>
+        <p>"컴프로마이즈드 러닝"은 근력 운동으로 다리가 피로해진 상태에서 달리는 것입니다. 썰매 밀기·끌기, 샌드백 런지가 대퇴사두·둔근·내전근을 고갈시키면, 같은 심폐 능력이라도 보폭이 줄고 케이던스가 떨어집니다. 스테이션 사이에 심박이 거의 안 내려가 피로가 누적됩니다.</p>
+        <p>코치들의 공통 기준은 명확합니다. <b>인레이스 런 페이스는 평소 전력 5K보다 약 25~60초/km 느립니다.</b> 즉 하이록스 런은 "5K·10K 레이스 페이스"가 아니라 <b>하프마라톤 효ort</b>에 가깝습니다.</p>
+        <div class="callout tip"><b>실전 룰</b><br/>① 10K 레이스 페이스 + 20~30초/km, 또는<br/>② 편한 1km 페이스 + 약 30초 → 레이스 런 기준으로.</div>
+
+        <h2>2. 목표 완주 기록별 런 페이스</h2>
+        <table><thead><tr><th>목표 완주</th><th>평균 런 페이스</th><th>체감 강도</th></tr></thead><tbody>
+          <tr><td><b>~1:00 (엘리트)</b></td><td>약 3:58/km</td><td>10K 레이스 페이스</td></tr>
+          <tr><td><b>~1:20</b></td><td>약 4:58/km</td><td>편안한 10K</td></tr>
           <tr><td><b>~1:30</b></td><td>약 5:30/km</td><td>하프마라톤 페이스</td></tr>
           <tr><td><b>~1:45</b></td><td>약 6:20/km</td><td>하프~풀 사이</td></tr>
           <tr><td><b>~2:00</b></td><td>약 6:56/km</td><td>풀마라톤 페이스</td></tr>
-        </tbody>
-      </table>
-      <p>핵심은 위 페이스가 "신선할 때"가 아니라 "지친 상태에서 유지해야 하는" 페이스라는 점입니다. 그래서 출발 런을 이 평균보다 살짝 빠르게 던지면 후반에 그 이상으로 잃습니다.</p>
+        </tbody></table>
+        <p>핵심은 이 페이스가 "신선할 때"가 아니라 "지친 상태에서 유지해야 하는" 페이스라는 점입니다.</p>
 
-      <div class="ad ad-inline" data-ad="inline-1">광고 (반응형)</div>
+        <div class="ad ad-inline">광고</div>
 
-      <h2>3. 숨은 6.5% — 록스존(Roxzone)</h2>
-      <p>완주 기록은 런 + 스테이션 + <b>록스존</b>의 합입니다. 록스존은 런 트랙과 스테이션을 잇는 전환 구간으로, 명목 8km 위에 별도로 약 700m·시간으로는 <b>전체의 약 6.5%</b>가 더해집니다. 8번의 전환을 합치면 평균 6분 안팎입니다.</p>
-      <table>
-        <thead><tr><th>수준</th><th>전환당</th><th>총 록스존</th><th>비중</th></tr></thead>
-        <tbody>
+        <h2>3. 숨은 6.5% — 록스존</h2>
+        <p>완주 기록은 런 + 스테이션 + <b>록스존</b>의 합입니다. 록스존은 런 트랙과 스테이션을 잇는 전환 구간으로, 명목 8km 위에 별도로 약 700m·시간으로는 <b>전체의 약 6.5%</b>가 더해집니다.</p>
+        <table><thead><tr><th>수준</th><th>전환당</th><th>총 록스존</th><th>비중</th></tr></thead><tbody>
           <tr><td>엘리트(&lt;1:10)</td><td>약 28초</td><td>약 3:41</td><td>5.5%</td></tr>
           <tr><td>상급(1:10~1:20)</td><td>약 34초</td><td>약 4:33</td><td>6.0%</td></tr>
           <tr><td>중급(1:20~1:30)</td><td>약 40초</td><td>약 5:19</td><td>6.3%</td></tr>
           <tr><td>입문(1:30+)</td><td>약 52초</td><td>약 6:58</td><td>6.8%</td></tr>
-        </tbody>
-      </table>
-      <p>여기서 중요한 인사이트: 록스존은 <b>추가 체력 없이도 줄일 수 있는 구간</b>입니다. 입문과 엘리트의 차이가 전환당 약 24초, 합치면 3분 이상입니다. 스테이션을 나오자마자 곧장 다음 동작으로 이어지는 습관만으로 기록을 깎을 수 있습니다.</p>
+        </tbody></table>
+        <p>인사이트: 록스존은 <b>추가 체력 없이 줄일 수 있는 구간</b>입니다. 입문과 엘리트 차이가 전환당 약 24초, 합치면 3분 이상입니다.</p>
 
-      <h2>4. 8개 런 페이싱 전략</h2>
-      <p>잘 짠 레이스는 런1이 가장 통제되고, 런8까지의 저하가 <b>10~20초/km 이내</b>로 유지됩니다. 30초/km 이상 느려졌다면 초반 과속 신호입니다. 엘리트는 런1~런8 편차를 15초/km 안쪽으로 유지합니다.</p>
-      <ul>
-        <li><b>런1:</b> "민망할 만큼" 통제. 평소 편한 5K보다 15~20초/km 느리게 출발.</li>
-        <li><b>런2~3:</b> 썰매 밀기·끌기 전후 구간. 여기서 욕심내면 썰매가 30초+ 느려집니다. 5~10초/km 양보가 정답.</li>
-        <li><b>런4~6:</b> 버피 브로드 점프·로잉이 끼는 중반. 보통 <b>최악 구간은 런5~6이어야 정상</b>입니다.</li>
-        <li><b>런7~8:</b> 샌드백 런지가 대퇴사두를 태운 직후. 여기가 최악이면 초반을 너무 빠르게 간 것. 마지막 200m만 짜냅니다.</li>
-      </ul>
-      <div class="callout">
-        <b>진단 룰:</b> 내 최악의 런 스플릿이 런7~8이면 → 초반 과속. 런5~6이면 → 잘 분배한 레이스.
-      </div>
+        <h2>4. 8개 런 페이싱 전략</h2>
+        <p>잘 짠 레이스는 런1이 가장 통제되고, 런8까지 저하가 <b>10~20초/km 이내</b>입니다. 30초/km 넘으면 초반 과속. 엘리트는 15초/km 안쪽.</p>
+        <ul>
+          <li><b>런1:</b> "민망할 만큼" 통제. 편한 5K보다 15~20초/km 느리게.</li>
+          <li><b>런2~3:</b> 썰매 전후. 욕심내면 썰매가 30초+ 느려짐. 5~10초/km 양보.</li>
+          <li><b>런4~6:</b> 버피·로잉 중반. <b>최악 구간은 런5~6이어야 정상</b>.</li>
+          <li><b>런7~8:</b> 런지가 대퇴사두를 태운 직후. 여기가 최악이면 초반 과속. 마지막 200m만 짜냄.</li>
+        </ul>
+        <div class="callout"><b>진단 룰:</b> 최악이 런7~8 → 초반 과속. 런5~6 → 잘 분배.</div>
 
-      <div class="cta-box">
-        <h3>내 페이스로 완주 기록 계산하기</h3>
-        <p>평소 5K 페이스만 넣으면 위 로직을 적용해 예상 완주 기록·스테이션별 목표·8개 런 페이싱을 자동 계산합니다.</p>
-        <a class="btn" href="/">레이스 플래너 계산기 열기 →</a>
-      </div>
+        <div class="cta-box"><h3>내 페이스로 완주 기록 계산</h3><p>평소 5K 페이스만 넣으면 이 로직으로 예상 완주·스테이션별 목표·8개 런 페이싱을 계산합니다.</p><a class="btn" href="/">레이스 플래너 계산기 열기 →</a></div>
 
-      <h2>5. 페이싱만큼 중요한 보급</h2>
-      <p>하이록스는 보통 60~110분 고강도입니다. 90분을 넘기는 레이스라면 탄수화물 보급이 기록을 가릅니다. 출발 30~45분 전 에너지젤 1개와 전해질을 기본으로, 경기 중엔 버피·런지 전후를 기준으로 분할 섭취합니다. 중요한 건 <b>대회 당일 처음 먹지 말 것</b> — 위장 부담이 적은 제품을 미리 훈련에서 테스트해야 합니다.</p>
-      <div class="cta-box">
-        <h3>낱개로 먼저 테스트하세요</h3>
-        <p>박스로 사기 전에, 여러 브랜드 뉴트리션을 한 개씩 골라 내 위장에 맞는지 확인할 수 있습니다.</p>
-        <a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽에서 낱개 구매 →</a>
-      </div>
+        <h2>5. 페이싱만큼 중요한 보급</h2>
+        <p>하이록스는 보통 60~110분 고강도입니다. 90분 넘기면 탄수 보급이 기록을 가릅니다. 출발 30~45분 전 젤 1개 + 전해질, 경기 중 버피·런지 전후 분할 섭취. <b>대회 당일 처음 먹지 말 것</b>.</p>
+        <div class="cta-box"><h3>낱개로 먼저 테스트</h3><p>젤·전해질·하이드로겔은 사람마다 맞고 안 맞고가 갈립니다. 박스 전에 한 개씩.</p><a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽에서 낱개 구매 →</a></div>
 
-      <h2>자주 묻는 질문</h2>
-      <dl class="faq">
-        <dt>Q. 내 5K가 22분인데 하이록스 런도 그 페이스로 되나요?</dt>
-        <dd>아니요. 22분 5K(약 4:24/km)라면 인레이스 런은 대략 4:50~5:10/km로 보는 게 현실적입니다. 스테이션 피로 때문입니다.</dd>
-        <dt>Q. 록스존도 기록에 포함되나요?</dt>
-        <dd>네. 전환 시간은 멈추지 않고 계속 흐릅니다. 전체의 약 6.5%라 무시할 수 없습니다.</dd>
-        <dt>Q. 첫 런을 빠르게 가서 시간을 벌면 안 되나요?</dt>
-        <dd>거의 항상 손해입니다. 초반에 번 시간보다 후반에 잃는 시간이 큽니다. 이븐~네거티브 스플릿이 정석입니다.</dd>
-      </dl>
-
-      <div class="related">
-        <a href="/">→ 하이록스 완주 기록 계산기</a>
-        <a href="https://athletespick.com" target="_blank" rel="noopener">→ 레이스 보급 준비</a>
+        <h2>자주 묻는 질문</h2>
+        <dl class="faq">
+          <dt>Q. 5K가 22분인데 하이록스 런도 그 페이스로?</dt>
+          <dd>아니요. 22분 5K(약 4:24/km)면 인레이스는 대략 4:50~5:10/km가 현실적입니다.</dd>
+          <dt>Q. 록스존도 기록에 포함되나요?</dt>
+          <dd>네. 전환 시간은 멈추지 않고 흐릅니다. 전체의 약 6.5%.</dd>
+          <dt>Q. 첫 런을 빠르게 가서 시간을 벌면?</dt>
+          <dd>거의 항상 손해입니다. 이븐~네거티브 스플릿이 정석.</dd>
+        </dl>
+        <div class="related"><a href="/">→ 하이록스 완주 기록 계산기</a><a href="/guide/nutrition/?lang=ko">→ 보급 가이드</a><a href="/guide/stations/?lang=ko">→ 스테이션 공략</a></div>
       </div>
     </article>
 
     <aside class="rail rail-right">
-      <div class="ad ad-rect" data-ad="rect-1">광고<br/>300×250</div>
-      <div class="ad ad-rect" data-ad="rect-2" style="height:280px">광고<br/>300×280</div>
+      <div class="ad ad-rect">Ad<br/>300×250</div>
+      <div class="ad ad-rect" style="height:280px">Ad<br/>300×280</div>
     </aside>
   </div>
 
-  <div class="ad ad-leader leader" data-ad="footer-leaderboard" style="margin-top:20px">광고 (리더보드 728×90)</div>
+  <div class="ad ad-leader leader" style="margin-top:20px">Ad (728×90)</div>
 
   <footer>
-    레이스 플래너 · 러너와 하이록스 선수를 위한 무료 도구 — <a href="/">계산기 바로가기</a><br/>
-    스포츠 뉴트리션 낱개 구매 — <a href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 (Athlete's Pick)</a>
-    <div class="src">데이터 출처: hyroxdatalab.com · roxlyfe.com · findyouredge.app · 본문 수치는 공개 결과 데이터 기반 추정치이며 경기장·날씨·개인 강점에 따라 달라집니다.</div>
+    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">Calculator</a><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
+    <div class="src">Data: hyroxdatalab.com · roxlyfe.com · findyouredge.app — estimates from public results; vary by venue/weather/strength.</div>
   </footer>
 </div>
+
+<script>
+var I18N={
+ en:{title:"HYROX Pacing Guide — Run Pace by Goal Finish Time | Race Planner",desc:"A data-backed HYROX pacing guide.",nav_calc:"Calculator",nav_pace:"Pace",foot1:"Race Planner · free tools for runners and HYROX athletes",foot_calc:"Calculator",foot2:"Single-serve sports nutrition"},
+ ko:{title:"하이록스 페이싱 가이드 — 목표 기록별 런 페이스 | 레이스 플래너",desc:"실데이터 기반 하이록스 페이싱 가이드.",nav_calc:"계산기",nav_pace:"페이스",foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_calc:"계산기",foot2:"스포츠 뉴트리션 낱개 구매"}
+};
+var LANG="en";
+function detectLang(){var u=new URLSearchParams(location.search).get("lang");if(u==="ko"||u==="en")return u;var s=localStorage.getItem("rp_lang");if(s==="ko"||s==="en")return s;var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var nav=(navigator.language||"").toLowerCase();if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";return "en";}
+function applyLang(){var d=I18N[LANG];document.documentElement.lang=LANG;
+ document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(d[k]==null)return;if(el.tagName==="TITLE")document.title=d[k];else if(el.tagName==="META")el.setAttribute("content",d[k]);else el.textContent=d[k];});
+ document.querySelectorAll("[data-lng]").forEach(function(el){el.style.display=el.getAttribute("data-lng")===LANG?"block":"none";});
+ document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");document.getElementById("lang-en").classList.toggle("on",LANG==="en");}
+function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
+LANG=detectLang();applyLang();
+</script>
 </body>
 </html>

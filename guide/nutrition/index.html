@@ -1,169 +1,157 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-<title>하이록스 보급 가이드 — 레이스 시간별 에너지젤·전해질 전략 | 레이스 플래너</title>
-<meta name="description" content="하이록스(HYROX) 보급 전략 완전 정리. 레이스 시간별 탄수화물 섭취량, 에너지젤 개수, 전해질·경련 대응, 하이드로겔 원리, 리커버리까지 실전 기준으로 설명합니다." />
-<meta name="keywords" content="하이록스 보급, 하이록스 뉴트리션, 하이록스 에너지젤, 하이록스 전해질, 하이록스 경련, 하이드로겔, HYROX 보급 전략, 레이스 보급" />
+<title data-i18n="title">HYROX Nutrition Guide — Gels & Electrolytes by Race Time | Race Planner</title>
+<meta name="description" data-i18n="desc" content="HYROX fueling strategy: carbohydrate intake and gel count by race time, electrolytes and cramp prevention, how hydrogels work, and recovery — explained simply." />
+<meta name="keywords" content="hyrox nutrition, hyrox fueling, hyrox gels, hyrox electrolytes, hydrogel, cramp, 하이록스 보급, 하이록스 뉴트리션, 에너지젤, 전해질" />
 <link rel="canonical" href="https://raceplanner.online/guide/nutrition/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/nutrition/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/nutrition/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/nutrition/" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="하이록스 보급 가이드 — 레이스 시간별 에너지젤·전해질 전략" />
-<meta property="og:description" content="레이스 시간별 탄수화물·젤 개수, 경련 대응, 하이드로겔, 리커버리까지." />
-<meta property="og:locale" content="ko_KR" />
 <meta name="theme-color" content="#0f1115" />
 <meta name="robots" content="index, follow" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"하이록스 보급 가이드 — 레이스 시간별 에너지젤·전해질 전략","inLanguage":"ko","author":{"@type":"Organization","name":"레이스 플래너"},"publisher":{"@type":"Organization","name":"레이스 플래너"},"mainEntityOfPage":"https://raceplanner.online/guide/nutrition/"}
-</script>
 <style>
-  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4;--warn:#ffb35c}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4}
+  *{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}
   body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
   a{color:var(--accent2)}
   .shell{max-width:1180px;margin:0 auto;padding:16px 18px calc(48px + env(safe-area-inset-bottom))}
-  header{display:flex;align-items:center;gap:12px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px}
-  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}
-  .logo b{color:var(--accent)}
-  .spacer{flex:1}
-  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:14px}
-  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center;line-height:1.4}
-  .ad-leader{height:90px}.ad-sky{height:600px}.ad-rect{height:250px}
-  .ad-inline{height:100px;margin:18px 0;display:none}@media(max-width:800px){.ad-inline{display:flex}}
+  header{display:flex;align-items:center;gap:12px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}.logo b{color:var(--accent)}
+  .spacer{flex:1}.navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:13px}
+  .langtoggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:13px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}.langtoggle button.on{background:var(--accent);color:#10130a}
+  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center}
+  .ad-leader{height:90px}.ad-sky{height:600px}.ad-rect{height:250px}.ad-inline{height:100px;margin:18px 0;display:none}@media(max-width:800px){.ad-inline{display:flex}}
   .leader{margin:0 auto 18px;max-width:970px}
   .layout{display:grid;gap:22px;grid-template-columns:160px minmax(0,1fr) 300px;align-items:start}
   .rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
-  @media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 300px}.rail-left{display:none}}
-  @media(max-width:800px){.layout{grid-template-columns:1fr}.rail-right{display:none}}
-  article{min-width:0}
-  .crumb{font-size:12px;color:var(--sub);margin-bottom:10px}.crumb a{color:var(--sub)}
-  h1{font-size:27px;line-height:1.3;letter-spacing:-.6px;margin:4px 0 10px}
-  .meta{font-size:12.5px;color:#6b7682;margin-bottom:18px}
+  @media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 300px}.rail-left{display:none}}@media(max-width:800px){.layout{grid-template-columns:1fr}.rail-right{display:none}}
+  article{min-width:0}.crumb{font-size:12px;color:var(--sub);margin-bottom:10px}.crumb a{color:var(--sub)}
+  h1{font-size:27px;line-height:1.3;letter-spacing:-.6px;margin:4px 0 10px}.meta{font-size:12.5px;color:#6b7682;margin-bottom:18px}
   h2{font-size:20px;margin:30px 0 10px;letter-spacing:-.4px;border-left:3px solid var(--accent);padding-left:11px}
-  h3{font-size:16px;margin:20px 0 7px;color:var(--accent2)}
-  p{font-size:15px;color:#d7dde3;margin:10px 0}
-  ul,ol{margin:10px 0;padding-left:20px}li{font-size:15px;color:#d7dde3;margin:6px 0}
-  b,strong{color:var(--ink)}
-  .lead{font-size:16px;color:var(--sub);line-height:1.7}
+  p{font-size:15px;color:#d7dde3;margin:10px 0}ul{margin:10px 0;padding-left:20px}li{font-size:15px;color:#d7dde3;margin:6px 0}
+  b,strong{color:var(--ink)}.lead{font-size:16px;color:var(--sub);line-height:1.7}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-variant-numeric:tabular-nums}
-  th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);font-size:14px}
-  th{font-size:11.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px}
-  td b{color:var(--accent)}
-  .callout{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0}
-  .callout.tip{border-color:#2f3d2a;background:#1a2018}
+  th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);font-size:14px}th{font-size:11.5px;color:var(--sub);text-transform:uppercase}td b{color:var(--accent)}
+  .callout{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0}.callout.tip{border-color:#2f3d2a;background:#1a2018}
   .cta-box{background:linear-gradient(160deg,#1f242e,#161922);border:1px solid var(--line);border-radius:16px;padding:22px;margin:24px 0;text-align:center}
-  .cta-box h3{color:var(--ink);margin:0 0 6px;font-size:18px}
-  .cta-box p{color:var(--sub);font-size:14px;margin:0 0 14px}
-  .btn{display:inline-block;background:var(--accent);color:#10130a;font-weight:800;text-decoration:none;padding:14px 22px;border-radius:11px;font-size:15px}
-  .btn.alt{background:var(--accent2);color:#0c1410}
+  .cta-box h3{color:var(--ink);margin:0 0 6px;font-size:18px}.cta-box p{color:var(--sub);font-size:14px;margin:0 0 14px}
+  .btn{display:inline-block;background:var(--accent);color:#10130a;font-weight:800;text-decoration:none;padding:14px 22px;border-radius:11px;font-size:15px}.btn.alt{background:var(--accent2);color:#0c1410}
   .faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
-  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}
-  footer a{color:var(--accent2);text-decoration:none}
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}footer a{color:var(--accent2);text-decoration:none}
   .src{font-size:11px;color:#454e59;margin-top:8px}
-  .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-  .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
-  @media(max-width:380px){h1{font-size:23px}}
+  .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+  [data-lng]{display:none}@media(max-width:380px){h1{font-size:23px}}
 </style>
 </head>
 <body>
 <div class="shell">
   <header>
-    <a class="logo" href="/">레이스 <b>플래너</b></a>
+    <a class="logo" href="/">Race <b>Planner</b></a>
     <span class="spacer"></span>
-    <a class="navlink" href="/">계산기</a>
-    <a class="navlink" href="/guide/pacing/">페이싱</a>
-    <a class="navlink" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 →</a>
+    <a class="navlink" href="/" data-i18n="nav_calc">Calculator</a>
+    <a class="navlink" href="/pace/" data-i18n="nav_pace">Pace</a>
+    <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
   </header>
-
-  <div class="ad ad-leader leader" data-ad="leaderboard">광고 (리더보드 728×90)</div>
-
+  <div class="ad ad-leader leader">Ad (728×90)</div>
   <div class="layout">
-    <aside class="rail rail-left"><div class="ad ad-sky" data-ad="sky-left">광고<br/>160×600</div></aside>
-
+    <aside class="rail rail-left"><div class="ad ad-sky">Ad<br/>160×600</div></aside>
     <article>
-      <div class="crumb"><a href="/">홈</a> › 가이드 › 보급</div>
-      <h1>하이록스 보급 가이드<br/>레이스 시간별 에너지젤·전해질 전략</h1>
-      <div class="meta">스포츠 뉴트리션 기준 정리 · 2026</div>
-
-      <p class="lead">하이록스는 60~110분 고강도 하이브리드 레이스입니다. 페이싱만큼이나 보급이 후반 기록을 가릅니다. 이 글은 레이스 시간별로 탄수화물을 얼마나, 언제, 어떤 형태로 넣어야 하는지, 그리고 경련·위장 문제를 어떻게 피하는지 정리했습니다.</p>
-
-      <h2>1. 왜 보급이 기록을 가르는가</h2>
-      <p>고강도가 이어지면 근육·간의 글리코겐이 빠르게 소모됩니다. 90분을 넘기는 레이스에서 외부 탄수화물 보급이 없으면, 후반 런과 월볼 구간에서 출력이 급격히 떨어집니다. 스포츠과학의 일반 기준(ACSM)은 <b>60~150분 운동에서 시간당 탄수화물 30~60g</b>입니다. 하이록스는 대부분 이 범위에 들어갑니다.</p>
-
-      <h2>2. 레이스 시간별 보급량 기준</h2>
-      <p>아래는 완주 목표 시간에 따른 대략적인 섭취 기준입니다. 에너지젤 1개는 보통 탄수화물 약 22~30g입니다.</p>
-      <table>
-        <thead><tr><th>목표 완주</th><th>권장 탄수</th><th>젤 환산(대략)</th></tr></thead>
-        <tbody>
+      <!-- EN -->
+      <div data-lng="en">
+        <div class="crumb"><a href="/">Home</a> › Guides › Nutrition</div>
+        <h1>HYROX Nutrition Guide:<br/>Gels & Electrolytes by Race Time</h1>
+        <div class="meta">Sports-nutrition basics · 2026</div>
+        <p class="lead">HYROX is 60–110 minutes of high intensity. Fueling decides the back half as much as pacing. This guide covers how much carbohydrate to take, when, and in what form — plus how to avoid cramps and gut trouble.</p>
+        <h2>1. Why fueling decides your finish</h2>
+        <p>Sustained high intensity burns through muscle and liver glycogen fast. Past 90 minutes without external carbs, output drops sharply in the late runs and wall balls. The general sports-science guideline (ACSM) is <b>30–60 g of carbohydrate per hour for 60–150 minute efforts</b> — HYROX sits right in that band.</p>
+        <h2>2. Intake by race time</h2>
+        <p>Rough targets by goal finish. One gel is typically ~22–30 g of carbohydrate.</p>
+        <table><thead><tr><th>Goal finish</th><th>Carbs</th><th>Gels (approx)</th></tr></thead><tbody>
+          <tr><td><b>~60 min</b></td><td>1 before + 0–1</td><td>1–2</td></tr>
+          <tr><td><b>60–90 min</b></td><td>30–45 g/h</td><td>2–3</td></tr>
+          <tr><td><b>90–120 min</b></td><td>45–60 g/h</td><td>3–4</td></tr>
+        </tbody></table>
+        <p>Not sure of your time? Estimate it first with the <a href="/">finish-time calculator</a> — it also suggests a gel count.</p>
+        <div class="callout tip"><b>Timing</b><br/>· 30–45 min before: 1 gel + electrolytes<br/>· During: split intake in the calmer stretches, not mid-burpee<br/>· With water: concentrated gels without water upset the gut</div>
+        <div class="ad ad-inline">Ad</div>
+        <h2>3. Electrolytes & cramps — when it still happens</h2>
+        <p>You lose a lot of sodium in sweat, so electrolytes are baseline. But <b>if you cramp despite electrolytes, it's likely neural fatigue, not a sodium deficit</b>. Under prolonged intensity, the nerve–muscle signal misfires even when electrolytes are adequate.</p>
+        <p>A useful tactic is <b>a strong sour hit to reset the nerves</b> — the principle behind "cramp shot" products. If you cramp often, pair electrolytes with an acid/sour stimulus.</p>
+        <h2>4. Hydrogels — it's not that your gut is weak</h2>
+        <p>If gels upset your stomach, it may be concentration, not a weak gut. Standard gels are far more concentrated than body fluid, so osmosis pulls water into the stomach and causes nausea. <b>Hydrogels</b> wrap the carbohydrate to pass the stomach and release in the small intestine, easing the gut and letting you take in more — handy for high-carb races. Reactions vary, so test in training.</p>
+        <div class="cta-box"><h3>Don't try it for the first time on race day</h3><p>Gels, electrolytes and hydrogels suit everyone differently. Test single servings before buying boxes.</p><a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">Shop single-serve at Athlete's Pick →</a></div>
+        <h2>5. Recovery — the next session starts now</h2>
+        <ul><li><b>0–30 min:</b> fast carbs + protein to start glycogen/muscle repair</li><li><b>Before bed:</b> protein for overnight recovery</li><li><b>3–5 days:</b> DOMS window — hydration, nutrition, light active recovery</li></ul>
+        <h2>FAQ</h2>
+        <dl class="faq">
+          <dt>Q. Under 60 min — do I even need fuel?</dt><dd>Often one gel before the start is enough; one extra is a safe buffer in heat.</dd>
+          <dt>Q. How many gels should I carry?</dt><dd>Depends on your finish time — the <a href="/">calculator</a> gives a count.</dd>
+          <dt>Q. Caffeine gels?</dt><dd>Helpful for late focus, but gut/arousal response varies — test first.</dd>
+        </dl>
+        <div class="related"><a href="/">→ Finish-time calculator</a><a href="/guide/pacing/?lang=en">→ Pacing guide</a><a href="/guide/stations/?lang=en">→ Station breakdown</a></div>
+      </div>
+      <!-- KO -->
+      <div data-lng="ko">
+        <div class="crumb"><a href="/">홈</a> › 가이드 › 보급</div>
+        <h1>하이록스 보급 가이드<br/>레이스 시간별 에너지젤·전해질 전략</h1>
+        <div class="meta">스포츠 뉴트리션 기준 · 2026</div>
+        <p class="lead">하이록스는 60~110분 고강도 레이스입니다. 페이싱만큼 보급이 후반 기록을 가릅니다. 탄수화물을 얼마나, 언제, 어떤 형태로 넣을지, 경련·위장 문제를 어떻게 피할지 정리했습니다.</p>
+        <h2>1. 왜 보급이 기록을 가르는가</h2>
+        <p>고강도가 이어지면 근육·간 글리코겐이 빠르게 소모됩니다. 90분을 넘기면 외부 탄수 보급 없이 후반 런·월볼에서 출력이 급락합니다. 일반 기준(ACSM)은 <b>60~150분 운동에서 시간당 탄수 30~60g</b>이며, 하이록스가 이 범위입니다.</p>
+        <h2>2. 레이스 시간별 보급량</h2>
+        <p>목표 완주 시간별 대략 기준. 에너지젤 1개는 보통 탄수 ~22~30g.</p>
+        <table><thead><tr><th>목표 완주</th><th>권장 탄수</th><th>젤 환산</th></tr></thead><tbody>
           <tr><td><b>~60분</b></td><td>출발 전 1개 + 0~1개</td><td>1~2개</td></tr>
           <tr><td><b>60~90분</b></td><td>시간당 30~45g</td><td>2~3개</td></tr>
           <tr><td><b>90~120분</b></td><td>시간당 45~60g</td><td>3~4개</td></tr>
-        </tbody>
-      </table>
-      <p>본인 정확한 예상 시간을 모른다면 <a href="/">완주 기록 계산기</a>로 먼저 추정한 뒤 위 표에 대입하세요. 계산기는 예상 완주 시간 기준 권장 젤 개수도 함께 알려줍니다.</p>
-
-      <div class="callout tip">
-        <b>섭취 타이밍</b><br/>
-        · 출발 30~45분 전: 에너지젤 1개 + 전해질<br/>
-        · 경기 중: 버피·런지처럼 호흡이 거칠어지기 직전이 아니라, 그 전 비교적 여유 있는 구간에서 분할 섭취<br/>
-        · 물과 함께: 고농도 젤은 물 없이 먹으면 위장 부담이 커집니다
-      </div>
-
-      <div class="ad ad-inline" data-ad="inline-1">광고 (반응형)</div>
-
-      <h2>3. 전해질과 경련 — 챙겼는데도 쥐가 난다면</h2>
-      <p>하이록스는 땀으로 많은 나트륨을 잃습니다. 전해질 보충은 기본입니다. 다만 <b>전해질을 챙겼는데도 경련이 온다면 그건 전해질 부족이 아니라 신경 피로</b>일 가능성이 큽니다. 고강도가 지속되면 전해질이 충분해도 신경-근 신호가 한계를 넘어 근육이 오작동합니다.</p>
-      <p>이때 쓰는 전략이 <b>강한 산미로 신경을 즉시 리셋</b>하는 것입니다. 이른바 "크램프 샷" 류 제품이 이 원리를 씁니다. 평소 경련이 잦다면 전해질 + 산미 자극을 병행해 두는 것이 안전합니다.</p>
-
-      <h2>4. 하이드로겔 — 위장이 약한 게 아니다</h2>
-      <p>에너지젤을 먹고 배가 아팠던 경험이 있다면, 위장이 약해서가 아니라 젤 농도 때문일 수 있습니다. 일반 젤은 체액보다 농도가 훨씬 진해서, 위에 들어오면 삼투압으로 위장벽이 물을 끌어당겨 복통·메스꺼움이 생깁니다.</p>
-      <p><b>하이드로겔</b>은 탄수화물을 겔로 감싼 채 위를 통과시키고 소장에서 풀려 흡수되게 합니다. 위장 부담을 줄이면서 시간당 섭취량을 끌어올릴 수 있어, 보급량이 많이 필요한 레이스에서 유리합니다. 단, 사람마다 반응이 다르므로 반드시 훈련에서 먼저 테스트하세요.</p>
-
-      <div class="cta-box">
-        <h3>대회 당일 처음 먹지 마세요</h3>
-        <p>젤·전해질·하이드로겔은 성분도 농도도 질감도 사람마다 맞고 안 맞고가 갈립니다. 박스로 사기 전에 낱개로 먼저 테스트하세요.</p>
-        <a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽에서 낱개 구매 →</a>
-      </div>
-
-      <h2>5. 리커버리 — 끝난 뒤가 다음 훈련을 만든다</h2>
-      <p>회복은 한 번에 끝나지 않습니다. 크게 세 구간으로 나눠 챙기면 회복 속도가 달라집니다.</p>
-      <ul>
-        <li><b>직후(0~30분):</b> 빠른 탄수 + 단백질로 글리코겐·근단백 합성 시작</li>
-        <li><b>취침 전:</b> 충분한 단백질로 야간 회복 지원</li>
-        <li><b>3~5일:</b> 지연성 근육통 구간 — 수분·영양·가벼운 액티브 리커버리</li>
-      </ul>
-
-      <h2>자주 묻는 질문</h2>
-      <dl class="faq">
-        <dt>Q. 60분 안에 끝나는데 보급이 꼭 필요한가요?</dt>
-        <dd>출발 전 1개로 충분한 경우가 많습니다. 다만 컨디션·기온에 따라 1개 추가는 안전판이 됩니다.</dd>
-        <dt>Q. 젤을 몇 개 가져가야 하나요?</dt>
-        <dd>예상 완주 시간에 따라 다릅니다. <a href="/">계산기</a>가 예상 시간 기준 권장 개수를 바로 알려줍니다.</dd>
-        <dt>Q. 카페인 젤은 어떤가요?</dt>
-        <dd>후반 집중력에 도움이 되지만 위장 반응·각성 정도가 사람마다 달라 훈련에서 미리 확인해야 합니다.</dd>
-      </dl>
-
-      <div class="related">
-        <a href="/">→ 완주 기록 계산기</a>
-        <a href="/guide/pacing/">→ 페이싱 가이드</a>
-        <a href="/guide/stations/">→ 스테이션 공략</a>
+        </tbody></table>
+        <p>예상 시간을 모르면 <a href="/">완주 기록 계산기</a>로 먼저 추정하세요 — 권장 젤 개수도 함께 나옵니다.</p>
+        <div class="callout tip"><b>섭취 타이밍</b><br/>· 출발 30~45분 전: 젤 1개 + 전해질<br/>· 경기 중: 호흡 여유 있는 구간에서 분할<br/>· 물과 함께: 고농도 젤은 물 없이 먹으면 위장 부담</div>
+        <div class="ad ad-inline">광고</div>
+        <h2>3. 전해질과 경련 — 챙겼는데도 쥐가 난다면</h2>
+        <p>땀으로 나트륨을 많이 잃어 전해질은 기본입니다. 다만 <b>전해질을 챙겼는데도 경련이 온다면 전해질 부족이 아니라 신경 피로</b>일 가능성이 큽니다. 고강도가 지속되면 전해질이 충분해도 신경-근 신호가 오작동합니다.</p>
+        <p>이때는 <b>강한 산미로 신경을 즉시 리셋</b>하는 전략을 씁니다("크램프 샷" 원리). 경련이 잦다면 전해질 + 산미 자극을 병행하세요.</p>
+        <h2>4. 하이드로겔 — 위장이 약한 게 아니다</h2>
+        <p>젤을 먹고 배가 아팠다면 위장이 약해서가 아니라 농도 때문일 수 있습니다. 일반 젤은 체액보다 훨씬 진해 삼투압으로 위가 물을 끌어당겨 메스꺼움이 생깁니다. <b>하이드로겔</b>은 탄수를 감싸 위를 통과시키고 소장에서 풀려 흡수돼, 위장 부담을 줄이며 섭취량을 늘릴 수 있습니다. 반응은 개인차가 있으니 훈련에서 먼저 테스트하세요.</p>
+        <div class="cta-box"><h3>대회 당일 처음 먹지 마세요</h3><p>젤·전해질·하이드로겔은 사람마다 맞고 안 맞고가 갈립니다. 박스 전에 낱개로.</p><a class="btn alt" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽에서 낱개 구매 →</a></div>
+        <h2>5. 리커버리 — 끝난 뒤가 다음 훈련을 만든다</h2>
+        <ul><li><b>0~30분:</b> 빠른 탄수 + 단백질로 회복 시작</li><li><b>취침 전:</b> 단백질로 야간 회복</li><li><b>3~5일:</b> 지연성 근육통 구간 — 수분·영양·가벼운 회복운동</li></ul>
+        <h2>자주 묻는 질문</h2>
+        <dl class="faq">
+          <dt>Q. 60분 안에 끝나는데 보급이 필요한가요?</dt><dd>출발 전 1개로 충분한 경우가 많습니다. 더운 날엔 1개 추가가 안전판.</dd>
+          <dt>Q. 젤 몇 개 가져가야 하나요?</dt><dd>예상 완주 시간에 따라 다릅니다 — <a href="/">계산기</a>가 개수를 알려줍니다.</dd>
+          <dt>Q. 카페인 젤은?</dt><dd>후반 집중에 도움되나 반응이 개인차라 미리 확인하세요.</dd>
+        </dl>
+        <div class="related"><a href="/">→ 완주 기록 계산기</a><a href="/guide/pacing/?lang=ko">→ 페이싱 가이드</a><a href="/guide/stations/?lang=ko">→ 스테이션 공략</a></div>
       </div>
     </article>
-
-    <aside class="rail rail-right">
-      <div class="ad ad-rect" data-ad="rect-1">광고<br/>300×250</div>
-      <div class="ad ad-rect" data-ad="rect-2" style="height:280px">광고<br/>300×280</div>
-    </aside>
+    <aside class="rail rail-right"><div class="ad ad-rect">Ad<br/>300×250</div><div class="ad ad-rect" style="height:280px">Ad<br/>300×280</div></aside>
   </div>
-
-  <div class="ad ad-leader leader" data-ad="footer-leaderboard" style="margin-top:20px">광고 (리더보드 728×90)</div>
-
+  <div class="ad ad-leader leader" style="margin-top:20px">Ad (728×90)</div>
   <footer>
-    레이스 플래너 · 러너와 하이록스 선수를 위한 무료 도구 — <a href="/">계산기 바로가기</a><br/>
-    스포츠 뉴트리션 낱개 구매 — <a href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 (Athlete's Pick)</a>
-    <div class="src">※ 본 글은 일반적인 스포츠 뉴트리션 기준(ACSM 등)을 토대로 한 참고 정보이며, 개인의 건강 상태·반응에 따라 달라집니다. 의학적 조언이 아닙니다.</div>
+    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">Calculator</a><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
+    <div class="src" data-i18n="src">※ General sports-nutrition reference (ACSM etc.), not medical advice. Varies by individual.</div>
   </footer>
 </div>
+<script>
+var I18N={
+ en:{title:"HYROX Nutrition Guide — Gels & Electrolytes by Race Time | Race Planner",desc:"HYROX fueling strategy by race time.",nav_calc:"Calculator",nav_pace:"Pace",foot1:"Race Planner · free tools for runners and HYROX athletes",foot_calc:"Calculator",foot2:"Single-serve sports nutrition",src:"※ General sports-nutrition reference (ACSM etc.), not medical advice. Varies by individual."},
+ ko:{title:"하이록스 보급 가이드 — 시간별 젤·전해질 | 레이스 플래너",desc:"레이스 시간별 하이록스 보급 전략.",nav_calc:"계산기",nav_pace:"페이스",foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_calc:"계산기",foot2:"스포츠 뉴트리션 낱개 구매",src:"※ 일반 스포츠 뉴트리션 기준(ACSM 등) 참고 정보이며 의학적 조언이 아닙니다. 개인차가 있습니다."}
+};
+var LANG="en";
+function detectLang(){var u=new URLSearchParams(location.search).get("lang");if(u==="ko"||u==="en")return u;var s=localStorage.getItem("rp_lang");if(s==="ko"||s==="en")return s;var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var nav=(navigator.language||"").toLowerCase();if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";return "en";}
+function applyLang(){var d=I18N[LANG];document.documentElement.lang=LANG;
+ document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(d[k]==null)return;if(el.tagName==="TITLE")document.title=d[k];else if(el.tagName==="META")el.setAttribute("content",d[k]);else el.textContent=d[k];});
+ document.querySelectorAll("[data-lng]").forEach(function(el){el.style.display=el.getAttribute("data-lng")===LANG?"block":"none";});
+ document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");document.getElementById("lang-en").classList.toggle("on",LANG==="en");}
+function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
+LANG=detectLang();applyLang();
+</script>
 </body>
 </html>
