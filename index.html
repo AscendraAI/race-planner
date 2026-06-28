@@ -94,6 +94,7 @@
   <header>
     <a class="logo" href="/">Race <b>Planner</b></a>
     <span class="spacer"></span>
+    <a class="navlink" href="/gpx/" data-i18n="nav_gpx">GPX</a>
     <a class="navlink" href="/pace/" data-i18n="nav_pace">Pace</a>
     <a class="navlink" href="/guide/pacing/" data-i18n="nav_guides">Guides</a>
     <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
@@ -215,7 +216,7 @@ var LV={beg:{off:45,sta:1.18,rox:50},int:{off:35,sta:1.00,rox:42},adv:{off:25,st
 var I18N={
  en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
   desc:"Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
-  nav_pace:"Pace",nav_guides:"Guides",h1:"HYROX finish-time calculator",
+  nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",h1:"HYROX finish-time calculator",
   lead:"Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.",
   in_pace:"Your easy 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
   in_hint:"Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.",btn:"Predict finish time",
@@ -234,7 +235,7 @@ var I18N={
   fuel_long:function(f,lo,hi){return "For a ~"+f+" finish — <b>1 gel + electrolytes 30–45 min before start</b>. "+(toSec(f)>3300?("Take "+lo+"–"+hi+" gels during the race (around burpees/lunges)"):("1 gel mid-race or electrolytes only"))+". Test gut-friendly products in training first.";}},
  ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
   desc:"평소 5K 페이스만 넣으면 하이록스 예상 완주 기록·인레이스 런 페이스·스테이션별 목표·8개 런 페이싱을 계산합니다.",
-  nav_pace:"페이스",nav_guides:"가이드",h1:"하이록스 완주 기록 계산기",
+  nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",h1:"하이록스 완주 기록 계산기",
   lead:"평소 5K 페이스를 넣으면 실데이터 보정(컴프로마이즈드 러닝+록스존+스테이션)으로 예상 완주 기록을 계산합니다.",
   in_pace:"평소 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
   in_hint:"전력 5K를 뛸 때의 1km 페이스를 넣으세요. 레이스 페이스는 자동 보정됩니다.",btn:"완주 기록 예측",
