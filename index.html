@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title>하이록스 계산기 | 레이스 플래너 — 내 러닝 페이스로 완주 기록 예측</title>
+<meta name="description" content="평소 5K 러닝 페이스만 입력하면 하이록스(HYROX) 예상 완주 기록을 계산합니다. 컴프로마이즈드 러닝·록스존·스테이션 실측 데이터 기반. 1km 런 페이스, 스테이션별 목표, 8개 런 페이싱 곡선까지." />
+<meta name="keywords" content="하이록스 계산기, HYROX 계산기, 하이록스 페이스, 하이록스 완주 기록, 하이록스 목표, 록스존, 컴프로마이즈드 러닝, 레이스 플래너" />
+<link rel="canonical" href="https://race-planner.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="하이록스 계산기 | 레이스 플래너" />
+<meta property="og:description" content="평소 러닝 페이스로 하이록스 완주 기록을 예측하세요. 실측 데이터 기반 무료 계산기." />
+<meta property="og:locale" content="ko_KR" />
+<meta name="theme-color" content="#0f1115" />
+<meta name="robots" content="index, follow" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"레이스 플래너 — 하이록스 계산기","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"description":"러닝 페이스 기반 하이록스 완주 기록 예측 계산기"}
+</script>
+<style>
+  :root{
+    --bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;
+    --ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4;--warn:#ffb35c;
+    --run:#7be0a4;--sta:#c5ff3d;--rox:#ffb35c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .shell{max-width:1240px;margin:0 auto;padding:16px 18px calc(40px + env(safe-area-inset-bottom))}
+  header{display:flex;align-items:center;gap:10px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .logo{font-weight:800;font-size:21px;letter-spacing:-.5px}
+  .logo b{color:var(--accent)}
+  .tag{font-size:11px;color:var(--sub);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+  .spacer{flex:1}
+  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600}
+
+  /* ===== Layout grid ===== */
+  .leader{margin:0 auto 18px;max-width:970px}
+  .layout{display:grid;gap:20px;grid-template-columns:160px minmax(0,1fr) 300px;align-items:start}
+  .rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
+  .center{min-width:0}
+  @media(max-width:1080px){ .layout{grid-template-columns:minmax(0,1fr) 300px} .rail-left{display:none} }
+  @media(max-width:800px){ .layout{grid-template-columns:1fr} .rail-right{display:none} }
+
+  /* ===== Ads ===== */
+  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;
+    color:#566;font-size:11px;background:var(--panel);text-align:center;line-height:1.4}
+  .ad-leader{height:90px}
+  .ad-sky{height:600px}
+  .ad-rect{height:250px}
+  .ad-rect-l{height:280px}
+  .ad-inline{height:100px;margin:16px 0;display:none}
+  @media(max-width:800px){ .ad-inline{display:flex} }
+
+  h1{font-size:24px;line-height:1.3;letter-spacing:-.6px;margin:2px 0 8px}
+  .lead{color:var(--sub);font-size:14.5px;line-height:1.65;margin-bottom:18px;max-width:60ch}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:var(--sub);margin:0 0 7px;font-weight:600}
+  .hint{font-size:11.5px;color:#6b7682;font-weight:400;margin-top:5px}
+  .pace{display:flex;align-items:center;gap:8px}
+  .pace input{flex:1}
+  .pace .sep{font-size:22px;font-weight:800;color:var(--sub)}
+  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap}
+  input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);
+    font-size:17px;padding:14px 12px;border-radius:12px;outline:none;text-align:center;
+    font-variant-numeric:tabular-nums;-webkit-appearance:none;appearance:none}
+  select{text-align:left;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%239aa6b2' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
+  input:focus,select:focus{border-color:var(--accent)}
+  .field{margin-bottom:14px}
+  .inputgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;align-items:end}
+  @media(max-width:560px){ .inputgrid{grid-template-columns:1fr} }
+  button.calc{width:100%;background:var(--accent);color:#10130a;font-weight:800;font-size:17px;
+    border:none;border-radius:13px;padding:16px;cursor:pointer;margin-top:6px;letter-spacing:-.3px;
+    min-height:54px;-webkit-tap-highlight-color:transparent}
+  button.calc:active{transform:translateY(1px);opacity:.92}
+
+  .result{display:none}
+  .result.show{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  /* result two-column on wide center */
+  .rgrid{display:grid;gap:16px;grid-template-columns:1fr 1fr;align-items:start}
+  @media(max-width:620px){ .rgrid{grid-template-columns:1fr} }
+  .span2{grid-column:1 / -1}
+
+  .hero{background:linear-gradient(160deg,#1f242e,#161922);border:1px solid var(--line);
+    border-radius:16px;padding:22px 18px;text-align:center}
+  .hero .k{font-size:12px;color:var(--sub);letter-spacing:.3px}
+  .hero .v{font-size:50px;font-weight:850;letter-spacing:-1.5px;color:var(--accent);
+    font-variant-numeric:tabular-nums;line-height:1.05;margin:5px 0}
+  .hero .s{font-size:12.5px;color:var(--sub)}
+  .hero .s b{color:var(--accent2)}
+  .bar{display:flex;height:11px;border-radius:6px;overflow:hidden;margin:16px 0 8px}
+  .bar i{display:block;height:100%}
+  .barleg{display:flex;justify-content:center;gap:14px;font-size:11.5px;color:var(--sub);flex-wrap:wrap}
+  .barleg span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 6px;text-align:center}
+  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:5px}
+  .mini .mv{font-size:18px;font-weight:750;font-variant-numeric:tabular-nums}
+  .sect{font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.4px;margin:2px 0 10px;text-transform:uppercase}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:11px 4px;border-bottom:1px solid var(--line);font-size:14px}
+  th{font-size:10.5px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+  td.t{text-align:right;font-weight:750;color:var(--accent2)}
+  td .d{font-size:11px;color:var(--sub);display:block;margin-top:2px}
+  .num{display:inline-flex;width:21px;height:21px;align-items:center;justify-content:center;
+    background:var(--panel2);border-radius:6px;font-size:11px;color:var(--sub);margin-right:8px}
+  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 4px;text-align:center}
+  .runs .rk{font-size:10px;color:var(--sub)}
+  .runs .rv{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+  .fuel{background:#1a2018;border:1px solid #2f3d2a;border-radius:14px;padding:18px}
+  .fuel h3{font-size:15px;margin-bottom:8px}
+  .fuel p{font-size:13px;color:var(--sub);line-height:1.6}
+  .fuel .cta{display:block;text-align:center;margin-top:13px;background:var(--accent2);color:#0c1410;
+    font-weight:800;text-decoration:none;padding:14px;border-radius:11px;font-size:14.5px;min-height:48px}
+  .info h2{font-size:17px;margin:20px 0 8px}
+  .info p,.info li{font-size:13.5px;color:var(--sub);line-height:1.75}
+  .info ul{padding-left:18px;margin:6px 0}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}
+  footer a{color:var(--accent2);text-decoration:none}
+  .disc{font-size:11px;color:#4d5662;margin-top:10px}
+  .src{font-size:10.5px;color:#454e59;margin-top:6px}
+  @media(max-width:380px){.hero .v{font-size:42px}.mini .mv{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div class="logo">레이스 <b>플래너</b></div>
+    <span class="tag">HYROX</span>
+    <span class="spacer"></span>
+    <a class="navlink" href="/guide/pacing/">페이싱</a>
+    <a class="navlink" href="/guide/nutrition/">보급</a>
+    <a class="navlink" href="/guide/stations/">스테이션</a>
+    <a class="navlink" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 →</a>
+  </header>
+
+  <!-- 상단 리더보드 광고 -->
+  <div class="ad ad-leader leader" data-ad="leaderboard">광고 (리더보드 728×90)</div>
+
+  <div class="layout">
+    <!-- 좌측 스카이스크래퍼 -->
+    <aside class="rail rail-left">
+      <div class="ad ad-sky" data-ad="sky-left">광고<br/>160×600</div>
+    </aside>
+
+    <!-- 중앙 콘텐츠 -->
+    <main class="center">
+      <h1>내 러닝 페이스로 하이록스 완주 기록 예측</h1>
+      <p class="lead">평소 5K 러닝 페이스만 넣으면, 레이스 중 실제로 나올 런 페이스(컴프로마이즈드 러닝)와 스테이션·록스존을 더해 예상 완주 기록을 계산합니다. 공개 실측 데이터 기반.</p>
+
+      <div class="card">
+        <div class="inputgrid">
+          <div class="field" style="margin:0">
+            <label>평소 5K 페이스 <span style="font-weight:400">(1km당)</span></label>
+            <div class="pace">
+              <input id="pmin" type="number" inputmode="numeric" min="2" max="9" placeholder="분" value="5" aria-label="분" />
+              <span class="sep">:</span>
+              <input id="psec" type="number" inputmode="numeric" min="0" max="59" placeholder="초" value="00" aria-label="초" />
+              <span class="unit">/km</span>
+            </div>
+          </div>
+          <div class="field" style="margin:0">
+            <label>성별</label>
+            <select id="sex"><option value="men">남자</option><option value="women">여자</option></select>
+          </div>
+          <div class="field" style="margin:0">
+            <label>수준</label>
+            <select id="lvl"><option value="beg">입문</option><option value="int" selected>중급</option><option value="adv">상급</option></select>
+          </div>
+        </div>
+        <div class="hint">전력 5K를 뛸 때의 1km 페이스를 넣으세요. 레이스 페이스는 자동으로 보정됩니다.</div>
+        <button class="calc" id="go">완주 기록 예측</button>
+      </div>
+
+      <div class="result" id="result">
+        <div class="rgrid">
+          <div class="hero span2">
+            <div class="k">예상 완주 기록</div>
+            <div class="v" id="finish">—</div>
+            <div class="s">인레이스 런 페이스 <b id="inpace">—</b> /km · 입력값 +<span id="off">—</span>초 보정</div>
+            <div class="bar" id="bar"></div>
+            <div class="barleg">
+              <span><i class="dot" style="background:var(--run)"></i>런 <b id="pRun" style="color:var(--ink)">—</b></span>
+              <span><i class="dot" style="background:var(--sta)"></i>스테이션 <b id="pSta" style="color:var(--ink)">—</b></span>
+              <span><i class="dot" style="background:var(--rox)"></i>록스존 <b id="pRox" style="color:var(--ink)">—</b></span>
+            </div>
+          </div>
+
+          <div class="mini span2">
+            <div><div class="mk">총 런 (8km)</div><div class="mv" id="mRun">—</div></div>
+            <div><div class="mk">총 스테이션</div><div class="mv" id="mSta">—</div></div>
+            <div><div class="mk">록스존</div><div class="mv" id="mRox">—</div></div>
+          </div>
+
+          <div class="card" style="margin:0">
+            <div class="sect">스테이션별 목표 시간</div>
+            <table><thead><tr><th>스테이션 (순서)</th><th style="text-align:right">목표</th></tr></thead>
+              <tbody id="tbody"></tbody></table>
+          </div>
+
+          <div class="card" style="margin:0">
+            <div class="sect">8개 런 페이싱 (이븐 스플릿)</div>
+            <div class="runs" id="runs"></div>
+            <div class="hint" style="margin-top:11px">Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하는 게 정석입니다. 최악 구간이 Run7~8이면 초반 과속입니다.</div>
+          </div>
+
+          <div class="fuel span2">
+            <h3>⚡ 이 레이스에 필요한 보급</h3>
+            <p id="fuelText">—</p>
+            <a class="cta" href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽에서 낱개로 준비하기 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모바일 인라인 광고 -->
+      <div class="ad ad-inline" data-ad="inline-1">광고 (반응형)</div>
+
+      <div class="info">
+        <h2>이 계산기는 어떻게 예측하나요?</h2>
+        <p>하이록스 완주 기록은 <b>러닝 + 스테이션 + 록스존(전환)</b>의 합입니다. 명목 8km(8×1km)는 순수 러닝 거리이고, 록스존은 그 위에 별도로 약 6.5%가 더해집니다.</p>
+        <ul>
+          <li><b>컴프로마이즈드 러닝:</b> 레이스 중 런은 신선한 5K보다 25~45초/km 느립니다(썰매·런지 누적 피로). 입력 페이스에 수준별 보정을 더합니다.</li>
+          <li><b>록스존:</b> 전환당 32~50초(수준별) × 8회. 피트니스 없이도 단축 가능한 구간.</li>
+          <li><b>스테이션:</b> 수준·성별 평균 실측 기준으로 8종을 배분합니다.</li>
+        </ul>
+        <h2>8개 스테이션 순서</h2>
+        <ul><li>스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개</li></ul>
+        <h2>더 읽어보기</h2>
+        <ul>
+          <li><a href="/guide/pacing/" style="color:var(--accent2);text-decoration:none;font-weight:600">하이록스 페이싱 가이드</a> — 목표 기록별 1km 런 페이스, 록스존 6.5%, 8개 런 배분.</li>
+          <li><a href="/guide/nutrition/" style="color:var(--accent2);text-decoration:none;font-weight:600">하이록스 보급 가이드</a> — 시간별 젤 개수, 경련 대응, 하이드로겔, 리커버리.</li>
+          <li><a href="/guide/stations/" style="color:var(--accent2);text-decoration:none;font-weight:600">8개 스테이션 공략</a> — 종목별 평균 시간과 구간 팁.</li>
+        </ul>
+        <h2>자주 묻는 질문</h2>
+        <p><b>Q. 왜 내 5K 페이스보다 느리게 나오나요?</b> 하이록스는 매 1km 사이에 고강도 스테이션이 끼어 다리가 계속 피로한 상태로 달립니다. 코치들은 인레이스 런을 "하프마라톤 효ort"로 봅니다.</p>
+        <p><b>Q. 정확한가요?</b> 공개 결과 데이터 기반 추정입니다. 절대 분 단위는 경기장 레이아웃·날씨·개인 강점에 따라 달라지니 훈련 목표 가이드로 쓰세요.</p>
+      </div>
+    </main>
+
+    <!-- 우측 사이드바 -->
+    <aside class="rail rail-right">
+      <div class="ad ad-rect" data-ad="rect-1">광고<br/>300×250</div>
+      <div class="ad ad-rect-l" data-ad="rect-2">광고<br/>300×280</div>
+    </aside>
+  </div>
+
+  <!-- 하단 광고 -->
+  <div class="ad ad-leader leader" data-ad="footer-leaderboard" style="margin-top:20px">광고 (리더보드 728×90)</div>
+
+  <footer>
+    레이스 플래너 · 러너와 하이록스 선수를 위한 무료 계산기<br/>
+    스포츠 뉴트리션 낱개 구매 — <a href="https://athletespick.com" target="_blank" rel="noopener">애슬리츠픽 (Athlete's Pick)</a>
+    <div class="disc">※ 시간 배분은 공개 결과 데이터(HYROX Utrecht 825명, hyroxdatalab·roxlyfe 등) 기반 추정치입니다. 실제 기록은 개인 강점·날씨·경기장 레이아웃에 따라 달라집니다.</div>
+    <div class="src">데이터 출처: hyroxdatalab.com · roxlyfe.com · findyouredge.app</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var NAMES=[["스키에르그","1000m"],["썰매 밀기","50m"],["썰매 끌기","50m"],["버피 브로드 점프","80m"],
+             ["로잉","1000m"],["파머스 캐리","200m"],["샌드백 런지","100m"],["월볼","100개"]];
+  var STA={men:[255,195,250,300,270,140,270,360],women:[295,205,255,320,300,150,290,400]};
+  var LV={beg:{off:45,sta:1.18,rox:50},int:{off:35,sta:1.00,rox:42},adv:{off:25,sta:0.82,rox:32}};
+
+  function fmt(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),s=sec%60;
+    if(m>=60){var h=Math.floor(m/60);m=m%60;return h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}
+    return m+":"+String(s).padStart(2,"0");}
+  function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+":"+String(s).padStart(2,"0");}
+  function v(id){return parseInt(document.getElementById(id).value,10);}
+
+  function calc(){
+    var pm=v("pmin"),ps=v("psec");
+    if(isNaN(pm)||isNaN(ps)){alert("페이스를 입력해 주세요.");return;}
+    var fresh=pm*60+ps;
+    if(fresh<150||fresh>720){alert("페이스를 다시 확인해 주세요 (2:30 ~ 12:00/km 범위).");return;}
+    var sex=document.getElementById("sex").value, lvl=LV[document.getElementById("lvl").value];
+    var inPace=fresh+lvl.off, runTotal=inPace*8;
+    var staArr=STA[sex].map(function(x){return x*lvl.sta;});
+    var staTotal=staArr.reduce(function(a,b){return a+b;},0), roxTotal=lvl.rox*8;
+    var finish=runTotal+staTotal+roxTotal;
+
+    document.getElementById("finish").textContent=fmt(finish);
+    document.getElementById("inpace").textContent=pace(inPace);
+    document.getElementById("off").textContent=lvl.off;
+    document.getElementById("mRun").textContent=fmt(runTotal);
+    document.getElementById("mSta").textContent=fmt(staTotal);
+    document.getElementById("mRox").textContent=fmt(roxTotal);
+
+    var pr=Math.round(runTotal/finish*100),pst=Math.round(staTotal/finish*100),prx=100-pr-pst;
+    document.getElementById("bar").innerHTML='<i style="width:'+pr+'%;background:var(--run)"></i><i style="width:'+pst+'%;background:var(--sta)"></i><i style="width:'+prx+'%;background:var(--rox)"></i>';
+    document.getElementById("pRun").textContent=pr+"%";
+    document.getElementById("pSta").textContent=pst+"%";
+    document.getElementById("pRox").textContent=prx+"%";
+
+    var tb=document.getElementById("tbody");tb.innerHTML="";
+    NAMES.forEach(function(st,i){var tr=document.createElement("tr");
+      tr.innerHTML='<td><span class="num">'+(i+1)+'</span>'+st[0]+'<span class="d">'+st[1]+'</span></td><td class="t">'+fmt(staArr[i])+'</td>';
+      tb.appendChild(tr);});
+
+    var runsEl=document.getElementById("runs");runsEl.innerHTML="";
+    for(var i=0;i<8;i++){var p=inPace-10+(20*i/7);var d=document.createElement("div");
+      d.innerHTML='<div class="rk">Run '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(d);}
+
+    var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
+    var during=finish>3300?("경기 중 "+lo+"~"+hi+"개 분할 섭취(버피·런지 전후 기준)"):("경기 중 1개 또는 전해질 위주");
+    document.getElementById("fuelText").innerHTML="예상 "+fmt(finish)+" 기준 — <b>출발 30~45분 전 에너지젤 1개 + 전해질</b>. "+during+". 고강도라 위장 부담 적은 제품을 미리 훈련에서 테스트하세요.";
+
+    var r=document.getElementById("result");r.classList.add("show");
+    r.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+  document.getElementById("go").addEventListener("click",calc);
+  document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();calc();}});});
+})();
+</script>
+</body>
+</html>
