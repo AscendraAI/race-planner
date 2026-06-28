@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title data-i18n="title">Running Pace Calculator & Race Time Predictor | Race Planner</title>
+<meta name="description" data-i18n="desc" content="Free running pace calculator and race time predictor. Enter distance and time to get pace, speed and split times, or predict your 5K, 10K, half and full marathon times." />
+<meta name="keywords" content="pace calculator, running pace calculator, race time predictor, marathon predictor, 페이스 계산기, 러닝 페이스, 마라톤 기록 예측, 완주 기록 계산기" />
+<link rel="canonical" href="https://raceplanner.online/pace/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/pace/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/pace/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/pace/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Running Pace Calculator & Race Time Predictor" />
+<meta name="theme-color" content="#0f1115" />
+<meta name="robots" content="index, follow" />
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .shell{max-width:1180px;margin:0 auto;padding:16px 18px calc(44px + env(safe-area-inset-bottom))}
+  header{display:flex;align-items:center;gap:10px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}
+  .logo b{color:var(--accent)}
+  .spacer{flex:1}
+  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:13px}
+  .langtoggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:13px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+  .langtoggle button.on{background:var(--accent);color:#10130a}
+  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center}
+  .ad-leader{height:90px}.ad-sky{height:600px}.ad-rect{height:250px}
+  .ad-inline{height:100px;margin:16px 0;display:none}@media(max-width:800px){.ad-inline{display:flex}}
+  .leader{margin:0 auto 18px;max-width:970px}
+  .layout{display:grid;gap:20px;grid-template-columns:160px minmax(0,1fr) 300px;align-items:start}
+  .rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
+  @media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 300px}.rail-left{display:none}}
+  @media(max-width:800px){.layout{grid-template-columns:1fr}.rail-right{display:none}}
+  .center{min-width:0}
+  h1{font-size:24px;line-height:1.3;letter-spacing:-.6px;margin:2px 0 8px}
+  .lead{color:var(--sub);font-size:14.5px;line-height:1.6;margin-bottom:18px;max-width:62ch}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+  .ctitle{font-size:15px;font-weight:750;margin-bottom:14px;letter-spacing:-.3px}
+  label{display:block;font-size:13px;color:var(--sub);margin:0 0 7px;font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  @media(max-width:520px){.grid2{grid-template-columns:1fr}}
+  .field{margin-bottom:14px}
+  .pace{display:flex;align-items:center;gap:8px}.pace input{flex:1}.pace .sep{font-size:20px;font-weight:800;color:var(--sub)}.pace .unit{font-size:13px;color:var(--sub);white-space:nowrap}
+  input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);font-size:17px;padding:13px 12px;border-radius:11px;outline:none;text-align:center;font-variant-numeric:tabular-nums;-webkit-appearance:none;appearance:none}
+  select{text-align:left;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%239aa6b2' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 13px center;padding-right:32px}
+  input:focus,select:focus{border-color:var(--accent)}
+  button.calc{width:100%;background:var(--accent);color:#10130a;font-weight:800;font-size:16px;border:none;border-radius:12px;padding:15px;cursor:pointer;margin-top:4px;min-height:52px;-webkit-tap-highlight-color:transparent}
+  button.calc:active{transform:translateY(1px);opacity:.92}
+  .out{display:none;margin-top:14px}.out.show{display:block}
+  .big{display:flex;gap:10px;flex-wrap:wrap}
+  .big div{flex:1;min-width:120px;background:linear-gradient(160deg,#1f242e,#161922);border:1px solid var(--line);border-radius:13px;padding:15px;text-align:center}
+  .big .k{font-size:11px;color:var(--sub)}.big .v{font-size:27px;font-weight:850;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-1px;margin-top:3px}.big .u{font-size:11px;color:var(--sub)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:6px}
+  th,td{text-align:left;padding:10px 6px;border-bottom:1px solid var(--line);font-size:14px}
+  th{font-size:10.5px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px}
+  td.t{text-align:right;font-weight:750;color:var(--accent2)}
+  .info h2{font-size:16px;margin:18px 0 7px}.info p{font-size:13.5px;color:var(--sub);line-height:1.7}
+  footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}
+  footer a{color:var(--accent2);text-decoration:none}
+  .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <a class="logo" href="/">Race <b>Planner</b></a>
+    <span class="spacer"></span>
+    <a class="navlink" href="/" data-i18n="nav_hyrox">HYROX</a>
+    <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
+  </header>
+
+  <div class="ad ad-leader leader">Ad (728×90)</div>
+
+  <div class="layout">
+    <aside class="rail rail-left"><div class="ad ad-sky">Ad<br/>160×600</div></aside>
+
+    <main class="center">
+      <h1 data-i18n="h1">Running Pace Calculator &amp; Race Time Predictor</h1>
+      <p class="lead" data-i18n="lead">Calculate your running pace, speed and split times, or predict your race times across 5K, 10K, half and full marathon — all free.</p>
+
+      <div class="ad ad-inline">Ad</div>
+
+      <!-- Pace Calculator -->
+      <div class="card">
+        <div class="ctitle" data-i18n="pc_title">⏱️ Pace Calculator</div>
+        <div class="grid2">
+          <div class="field" style="margin:0">
+            <label data-i18n="pc_dist">Distance</label>
+            <select id="pc_preset" onchange="presetChange()">
+              <option value="5">5K</option>
+              <option value="10">10K</option>
+              <option value="21.0975">Half Marathon</option>
+              <option value="42.195">Marathon</option>
+              <option value="custom" data-i18n="pc_custom">Custom (km)</option>
+            </select>
+          </div>
+          <div class="field" id="pc_customwrap" style="margin:0;display:none">
+            <label data-i18n="pc_distkm">Distance (km)</label>
+            <input id="pc_km" type="number" inputmode="decimal" step="0.01" placeholder="km" value="10" />
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="pc_time">Finish time</label>
+            <div class="pace">
+              <input id="pc_h" type="number" inputmode="numeric" min="0" max="9" placeholder="h" value="0" />
+              <span class="sep">:</span>
+              <input id="pc_m" type="number" inputmode="numeric" min="0" max="59" placeholder="m" value="50" />
+              <span class="sep">:</span>
+              <input id="pc_s" type="number" inputmode="numeric" min="0" max="59" placeholder="s" value="0" />
+            </div>
+          </div>
+        </div>
+        <button class="calc" onclick="calcPace()" data-i18n="pc_btn">Calculate pace</button>
+        <div class="out" id="pc_out">
+          <div class="big">
+            <div><div class="k" data-i18n="pc_pacekm">Pace /km</div><div class="v" id="pc_pk">—</div><div class="u">min/km</div></div>
+            <div><div class="k" data-i18n="pc_pacemi">Pace /mile</div><div class="v" id="pc_pm">—</div><div class="u">min/mile</div></div>
+            <div><div class="k" data-i18n="pc_speed">Speed</div><div class="v" id="pc_sp">—</div><div class="u">km/h</div></div>
+          </div>
+          <table><thead><tr><th data-i18n="pc_split">Split</th><th style="text-align:right" data-i18n="pc_cumul">Cumulative</th></tr></thead><tbody id="pc_tb"></tbody></table>
+        </div>
+      </div>
+
+      <!-- Race Time Predictor -->
+      <div class="card">
+        <div class="ctitle" data-i18n="rp_title">🔮 Race Time Predictor</div>
+        <p style="font-size:13px;color:var(--sub);margin:-6px 0 14px" data-i18n="rp_sub">Enter a recent race result. We project your other distances (Riegel formula).</p>
+        <div class="grid2">
+          <div class="field" style="margin:0">
+            <label data-i18n="rp_dist">Recent race distance</label>
+            <select id="rp_preset" onchange="rpPreset()">
+              <option value="5">5K</option>
+              <option value="10" selected>10K</option>
+              <option value="21.0975">Half Marathon</option>
+              <option value="42.195">Marathon</option>
+              <option value="custom" data-i18n="pc_custom">Custom (km)</option>
+            </select>
+          </div>
+          <div class="field" id="rp_customwrap" style="margin:0;display:none">
+            <label data-i18n="pc_distkm">Distance (km)</label>
+            <input id="rp_km" type="number" inputmode="decimal" step="0.01" placeholder="km" value="10" />
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="rp_time">Your time</label>
+            <div class="pace">
+              <input id="rp_h" type="number" inputmode="numeric" min="0" max="9" placeholder="h" value="0" />
+              <span class="sep">:</span>
+              <input id="rp_m" type="number" inputmode="numeric" min="0" max="59" placeholder="m" value="45" />
+              <span class="sep">:</span>
+              <input id="rp_s" type="number" inputmode="numeric" min="0" max="59" placeholder="s" value="0" />
+            </div>
+          </div>
+        </div>
+        <button class="calc" onclick="predict()" data-i18n="rp_btn">Predict my times</button>
+        <div class="out" id="rp_out">
+          <table><thead><tr><th data-i18n="rp_race">Race</th><th style="text-align:right" data-i18n="rp_pred">Predicted</th><th style="text-align:right" data-i18n="rp_pace">Pace/km</th></tr></thead><tbody id="rp_tb"></tbody></table>
+          <p style="font-size:11px;color:#566;margin-top:10px" data-i18n="rp_note">Estimates assume comparable training and conditions. Real results vary with course, weather and endurance.</p>
+        </div>
+      </div>
+
+      <div class="ad ad-inline">Ad</div>
+
+      <div class="info">
+        <h2 data-i18n="info1_h">How is pace calculated?</h2>
+        <p data-i18n="info1_p">Pace is your time divided by distance. This tool also converts to min/mile and km/h, and breaks your run into per-kilometer splits so you can plan an even effort.</p>
+        <h2 data-i18n="info2_h">How does the predictor work?</h2>
+        <p data-i18n="info2_p">It uses Riegel's formula: T2 = T1 × (D2 / D1)^1.06. It's a well-known endurance model — accurate for similar effort levels, less so when jumping from very short to very long distances without specific training.</p>
+        <div class="related">
+          <a href="/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
+          <a href="https://athletespick.com" target="_blank" rel="noopener" data-i18n="rel_fuel">→ Race nutrition</a>
+        </div>
+      </div>
+    </main>
+
+    <aside class="rail rail-right">
+      <div class="ad ad-rect">Ad<br/>300×250</div>
+      <div class="ad ad-rect" style="height:280px">Ad<br/>300×280</div>
+    </aside>
+  </div>
+
+  <div class="ad ad-leader leader" style="margin-top:20px">Ad (728×90)</div>
+
+  <footer>
+    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">HYROX calculator</a><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
+  </footer>
+</div>
+
+<script>
+/* ---------- i18n ---------- */
+var I18N={
+ en:{title:"Running Pace Calculator & Race Time Predictor | Race Planner",
+   desc:"Free running pace calculator and race time predictor.",
+   nav_hyrox:"HYROX", h1:"Running Pace Calculator & Race Time Predictor",
+   lead:"Calculate your running pace, speed and split times, or predict your race times across 5K, 10K, half and full marathon — all free.",
+   pc_title:"⏱️ Pace Calculator", pc_dist:"Distance", pc_custom:"Custom (km)", pc_distkm:"Distance (km)",
+   pc_time:"Finish time", pc_btn:"Calculate pace", pc_pacekm:"Pace /km", pc_pacemi:"Pace /mile", pc_speed:"Speed",
+   pc_split:"Split", pc_cumul:"Cumulative",
+   rp_title:"🔮 Race Time Predictor", rp_sub:"Enter a recent race result. We project your other distances (Riegel formula).",
+   rp_dist:"Recent race distance", rp_time:"Your time", rp_btn:"Predict my times", rp_race:"Race", rp_pred:"Predicted", rp_pace:"Pace/km",
+   rp_note:"Estimates assume comparable training and conditions. Real results vary with course, weather and endurance.",
+   info1_h:"How is pace calculated?", info1_p:"Pace is your time divided by distance. This tool also converts to min/mile and km/h, and breaks your run into per-kilometer splits so you can plan an even effort.",
+   info2_h:"How does the predictor work?", info2_p:"It uses Riegel's formula: T2 = T1 × (D2 / D1)^1.06. It's a well-known endurance model — accurate for similar effort levels, less so when jumping from very short to very long distances without specific training.",
+   rel_hyrox:"→ HYROX finish-time calculator", rel_fuel:"→ Race nutrition",
+   foot1:"Race Planner · free tools for runners and HYROX athletes", foot_calc:"HYROX calculator", foot2:"Single-serve sports nutrition",
+   km:"km", err_time:"Please enter a valid time.", err_dist:"Please enter a valid distance.",
+   r5:"5K", r10:"10K", rhalf:"Half Marathon", rfull:"Marathon"},
+ ko:{title:"러닝 페이스 계산기 & 기록 예측 | 레이스 플래너",
+   desc:"무료 러닝 페이스 계산기와 마라톤 기록 예측기.",
+   nav_hyrox:"하이록스", h1:"러닝 페이스 계산기 & 기록 예측",
+   lead:"러닝 페이스·속도·구간 기록을 계산하거나, 5K·10K·하프·풀 마라톤 기록을 예측하세요. 모두 무료입니다.",
+   pc_title:"⏱️ 페이스 계산기", pc_dist:"거리", pc_custom:"직접 입력 (km)", pc_distkm:"거리 (km)",
+   pc_time:"완주 시간", pc_btn:"페이스 계산", pc_pacekm:"페이스 /km", pc_pacemi:"페이스 /mile", pc_speed:"속도",
+   pc_split:"구간", pc_cumul:"누적",
+   rp_title:"🔮 기록 예측", rp_sub:"최근 기록 하나를 입력하면 다른 거리 기록을 예측합니다 (Riegel 공식).",
+   rp_dist:"최근 레이스 거리", rp_time:"내 기록", rp_btn:"내 기록 예측", rp_race:"종목", rp_pred:"예측", rp_pace:"페이스/km",
+   rp_note:"비슷한 훈련·컨디션을 가정한 추정치입니다. 실제 기록은 코스·날씨·지구력에 따라 달라집니다.",
+   info1_h:"페이스는 어떻게 계산하나요?", info1_p:"페이스는 시간을 거리로 나눈 값입니다. min/mile·km/h로도 변환하고, km별 구간으로 나눠 이븐 페이스를 계획할 수 있게 보여줍니다.",
+   info2_h:"예측은 어떤 원리인가요?", info2_p:"Riegel 공식(T2 = T1 × (D2/D1)^1.06)을 씁니다. 널리 쓰이는 지구력 모델로, 비슷한 강도에서 정확하며 아주 짧은 거리에서 아주 긴 거리로 건너뛸 때는 오차가 커집니다.",
+   rel_hyrox:"→ 하이록스 완주 기록 계산기", rel_fuel:"→ 레이스 보급",
+   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구", foot_calc:"하이록스 계산기", foot2:"스포츠 뉴트리션 낱개 구매",
+   km:"km", err_time:"시간을 올바르게 입력해 주세요.", err_dist:"거리를 올바르게 입력해 주세요.",
+   r5:"5K", r10:"10K", rhalf:"하프 마라톤", rfull:"풀 마라톤"}
+};
+var LANG="en";
+function detectLang(){
+  var u=new URLSearchParams(location.search).get("lang");
+  if(u==="ko"||u==="en")return u;
+  var s=localStorage.getItem("rp_lang");
+  if(s==="ko"||s==="en")return s;
+  var tz=""; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
+  var nav=(navigator.language||navigator.userLanguage||"").toLowerCase();
+  if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";
+  return "en";
+}
+function applyLang(){
+  var d=I18N[LANG];
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k=el.getAttribute("data-i18n");
+    if(d[k]==null)return;
+    if(el.tagName==="TITLE")document.title=d[k];
+    else if(el.tagName==="META")el.setAttribute("content",d[k]);
+    else el.textContent=d[k];
+  });
+  // preset option labels
+  syncPresets();
+  document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");
+  document.getElementById("lang-en").classList.toggle("on",LANG==="en");
+}
+function syncPresets(){
+  var d=I18N[LANG];
+  [["pc_preset"],["rp_preset"]].forEach(function(x){
+    var sel=document.getElementById(x[0]);
+    sel.options[2].text=d.rhalf; sel.options[3].text=d.rfull; sel.options[4].text=d.pc_custom;
+  });
+}
+function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
+
+/* ---------- helpers ---------- */
+function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);if(s===60){m++;s=0;}return m+":"+String(s).padStart(2,"0");}
+function fmt(sec){sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h>0?h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"):m+":"+String(s).padStart(2,"0");}
+function n(id){return parseFloat(document.getElementById(id).value);}
+function ni(id){return parseInt(document.getElementById(id).value,10)||0;}
+
+function presetChange(){var c=document.getElementById("pc_preset").value==="custom";document.getElementById("pc_customwrap").style.display=c?"":"none";}
+function rpPreset(){var c=document.getElementById("rp_preset").value==="custom";document.getElementById("rp_customwrap").style.display=c?"":"none";}
+
+function calcPace(){
+  var d=I18N[LANG];
+  var pv=document.getElementById("pc_preset").value;
+  var km=pv==="custom"?n("pc_km"):parseFloat(pv);
+  if(!(km>0)){alert(d.err_dist);return;}
+  var t=ni("pc_h")*3600+ni("pc_m")*60+ni("pc_s");
+  if(t<=0){alert(d.err_time);return;}
+  var pk=t/km, pm=t/(km/1.609344), sp=km/(t/3600);
+  document.getElementById("pc_pk").textContent=pace(pk);
+  document.getElementById("pc_pm").textContent=pace(pm);
+  document.getElementById("pc_sp").textContent=sp.toFixed(1);
+  var tb=document.getElementById("pc_tb");tb.innerHTML="";
+  var marks=[];for(var i=1;i<=Math.floor(km);i++)marks.push(i);if(km>Math.floor(km))marks.push(+km.toFixed(2));
+  marks.forEach(function(m){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td>'+m+' '+d.km+'</td><td class="t">'+fmt(pk*m)+'</td>';tb.appendChild(tr);
+  });
+  document.getElementById("pc_out").classList.add("show");
+}
+
+function predict(){
+  var d=I18N[LANG];
+  var pv=document.getElementById("rp_preset").value;
+  var d1=pv==="custom"?n("rp_km"):parseFloat(pv);
+  if(!(d1>0)){alert(d.err_dist);return;}
+  var t1=ni("rp_h")*3600+ni("rp_m")*60+ni("rp_s");
+  if(t1<=0){alert(d.err_time);return;}
+  var races=[[5,d.r5],[10,d.r10],[21.0975,d.rhalf],[42.195,d.rfull]];
+  var tb=document.getElementById("rp_tb");tb.innerHTML="";
+  races.forEach(function(r){
+    var t2=t1*Math.pow(r[0]/d1,1.06);
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td>'+r[1]+'</td><td class="t">'+fmt(t2)+'</td><td class="t">'+pace(t2/r[0])+'</td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById("rp_out").classList.add("show");
+}
+
+LANG=detectLang();applyLang();
+</script>
+</body>
+</html>
