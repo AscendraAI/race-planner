@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title data-i18n="title">Guides — HYROX, Trail & Marathon Race Strategy | Race Planner</title>
+<meta name="description" data-i18n="desc" content="Race strategy guides for HYROX, trail and marathon — pacing, fueling and station tactics, grouped by sport. Free." />
+<meta name="keywords" content="hyrox guide, hyrox pacing, hyrox nutrition, trail running guide, marathon pacing guide, 하이록스 가이드, 페이싱, 보급" />
+<link rel="canonical" href="https://raceplanner.online/guide/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Guides — Race Planner" />
+<meta name="theme-color" content="#0a0c10" />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;--line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;--accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;--radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);background-attachment:fixed;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+  header{position:sticky;top:0;z-index:50;padding:13px 0;margin-bottom:14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
+  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink);display:inline-flex;align-items:center;gap:9px}
+  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+  .logo b{color:var(--accent);font-weight:800}
+  .spacer{flex:1}
+  .nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 10px;border-radius:9px;transition:.15s;white-space:nowrap}
+  .navlink:hover{background:var(--panel2);color:var(--ink)}
+  .navlink.active{color:var(--accent);background:var(--panel2)}
+  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
+  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
+  @media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+  @media(max-width:520px){.logo .full{display:none}}
+  .hero-top{padding:30px 0 6px;text-align:left}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:16px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
+  h1{font-size:34px;line-height:1.14;letter-spacing:-1px;font-weight:800;margin:0 0 12px}
+  .lead{color:var(--sub);font-size:15.5px;line-height:1.65;max-width:60ch}
+  .gsec{margin-top:34px}
+  .gsec-h{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .gsec-h .sport{font-size:13px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--accent);font-family:var(--mono)}
+  .gsec-h .ln{flex:1;height:1px;background:var(--line)}
+  .gsec-h .soon{font-size:10.5px;font-weight:700;color:var(--faint);border:1px solid var(--line2);border-radius:999px;padding:3px 9px;text-transform:uppercase;letter-spacing:.3px}
+  .gcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:620px){.gcards{grid-template-columns:1fr}}
+  .gcard{display:flex;flex-direction:column;gap:6px;background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;transition:.15s}
+  .gcard:hover{border-color:var(--line2);transform:translateY(-2px)}
+  .gcard .t{font-size:16px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:9px}
+  .gcard .t .ic{font-size:18px}
+  .gcard .d{font-size:13px;color:var(--sub);line-height:1.55}
+  .gcard .go{font-size:12.5px;font-weight:700;color:var(--mint);margin-top:4px}
+  .gsoon{background:var(--panel);border:1px dashed var(--line2);border-radius:var(--radius);padding:18px 20px;font-size:13.5px;color:var(--sub);line-height:1.6}
+  .gsoon a{color:var(--mint);font-weight:700}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
+  footer a{color:var(--mint)}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+</head>
+<body>
+<header><div class="wrap-h">
+  <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
+  <span class="spacer"></span>
+  <nav class="nav">
+    <a class="navlink" href="/gpx/" data-nav="0">Trail GPX Plan</a>
+    <a class="navlink" href="/" data-nav="1">HYROX Calculator</a>
+    <a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>
+    <a class="navlink" href="/guide/" data-nav="3">Guides</a>
+  </nav>
+  <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
+</div></header>
+
+<div class="wrap">
+  <section class="hero-top">
+    <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Race strategy guides</span></span>
+    <h1 data-i18n="h1">Guides</h1>
+    <p class="lead" data-i18n="lead">Pacing, fueling and tactics — grouped by sport. Start with the calculator for your sport, then read the matching guide.</p>
+  </section>
+
+  <div class="gsec">
+    <div class="gsec-h"><span class="sport">HYROX</span><span class="ln"></span></div>
+    <div class="gcards">
+      <a class="gcard" href="/guide/pacing/">
+        <span class="t"><span class="ic">📋</span><span data-i18n="hx1">HYROX pacing guide</span></span>
+        <span class="d" data-i18n="hx1d">Run pace by goal finish, 8-run split strategy and how to avoid going out too fast.</span>
+        <span class="go" data-i18n="read">Read →</span>
+      </a>
+      <a class="gcard" href="/guide/nutrition/">
+        <span class="t"><span class="ic">🥤</span><span data-i18n="hx2">HYROX nutrition guide</span></span>
+        <span class="d" data-i18n="hx2d">What and when to fuel for a 60–90 min hybrid race, plus hydration and sodium.</span>
+        <span class="go" data-i18n="read">Read →</span>
+      </a>
+      <a class="gcard" href="/guide/stations/">
+        <span class="t"><span class="ic">🎯</span><span data-i18n="hx3">8-station breakdown</span></span>
+        <span class="d" data-i18n="hx3d">Station-by-station tactics and target times for all eight HYROX stations.</span>
+        <span class="go" data-i18n="read">Read →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="gsec">
+    <div class="gsec-h"><span class="sport" data-i18n="s_trail">Trail</span><span class="ln"></span><span class="soon" data-i18n="soon">Coming soon</span></div>
+    <div class="gsoon" data-i18n="tr_d">Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">Trail GPX Plan</a> tool.</div>
+  </div>
+
+  <div class="gsec">
+    <div class="gsec-h"><span class="sport" data-i18n="s_mara">Marathon</span><span class="ln"></span><span class="soon" data-i18n="soon">Coming soon</span></div>
+    <div class="gsoon" data-i18n="mr_d">Marathon guides are on the way. Meanwhile, predict your splits with the <a href="/pace/">Marathon Pace &amp; Predictor</a> tool.</div>
+  </div>
+
+  <footer>
+    <span data-i18n="foot1">Race Planner · free tools & guides for runners and HYROX athletes</span><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
+  </footer>
+</div>
+
+<script>
+var I18N={
+ en:{title:"Guides — HYROX, Trail & Marathon Race Strategy | Race Planner",desc:"Race strategy guides for HYROX, trail and marathon — pacing, fueling and station tactics, grouped by sport. Free.",
+  eyebrow:"Race strategy guides",h1:"Guides",lead:"Pacing, fueling and tactics — grouped by sport. Start with the calculator for your sport, then read the matching guide.",
+  read:"Read →",s_trail:"Trail",s_mara:"Marathon",soon:"Coming soon",
+  hx1:"HYROX pacing guide",hx1d:"Run pace by goal finish, 8-run split strategy and how to avoid going out too fast.",
+  hx2:"HYROX nutrition guide",hx2d:"What and when to fuel for a 60–90 min hybrid race, plus hydration and sodium.",
+  hx3:"8-station breakdown",hx3d:"Station-by-station tactics and target times for all eight HYROX stations.",
+  tr_d:'Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">Trail GPX Plan</a> tool.',
+  mr_d:'Marathon guides are on the way. Meanwhile, predict your splits with the <a href="/pace/">Marathon Pace &amp; Predictor</a> tool.',
+  foot1:"Race Planner · free tools & guides for runners and HYROX athletes",foot2:"Single-serve sports nutrition"},
+ ko:{title:"가이드 — 하이록스·트레일·마라톤 레이스 전략 | 레이스 플래너",desc:"하이록스·트레일·마라톤 레이스 전략 가이드 — 페이싱·보급·스테이션 공략을 종목별로 정리. 무료.",
+  eyebrow:"레이스 전략 가이드",h1:"가이드",lead:"페이싱·보급·전략을 종목별로 정리했습니다. 내 종목 계산기로 먼저 계획을 뽑고, 해당 가이드를 읽으세요.",
+  read:"읽기 →",s_trail:"트레일",s_mara:"마라톤",soon:"준비중",
+  hx1:"하이록스 페이싱 가이드",hx1d:"목표 완주별 런 페이스, 8개 런 스플릿 전략, 초반 과속을 피하는 법.",
+  hx2:"하이록스 보급 가이드",hx2d:"60~90분 하이브리드 레이스의 보급 타이밍, 수분·나트륨까지.",
+  hx3:"8개 스테이션 공략",hx3d:"8개 스테이션별 공략과 목표 시간.",
+  tr_d:'트레일 가이드는 준비 중입니다. 그동안 <a href="/gpx/">트레일 GPX 레이스플랜</a> 도구로 고도 보정 계획을 만들어 보세요.',
+  mr_d:'마라톤 가이드는 준비 중입니다. 그동안 <a href="/pace/">마라톤 페이스·기록예측</a> 도구로 구간 기록을 예측해 보세요.',
+  foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구·가이드",foot2:"스포츠 뉴트리션 낱개 구매"}
+};
+var LANG="en";
+function detectLang(){var u=new URLSearchParams(location.search).get("lang");if(u==="ko"||u==="en")return u;var s=localStorage.getItem("rp_lang");if(s==="ko"||s==="en")return s;var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}var nav=(navigator.language||navigator.userLanguage||"").toLowerCase();if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";return "en";}
+function applyLang(){var d=I18N[LANG];document.documentElement.lang=LANG;document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(d[k]==null)return;if(el.tagName==="TITLE")document.title=d[k];else if(el.tagName==="META")el.setAttribute("content",d[k]);else if(d[k].indexOf("<a ")>=0)el.innerHTML=d[k];else el.textContent=d[k];});document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");document.getElementById("lang-en").classList.toggle("on",LANG==="en");}
+function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
+LANG=detectLang();applyLang();
+</script>
+<script>(function(){
+var NAV=[["/gpx/","Trail GPX Plan","트레일 GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
+function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
+ document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;
+  el.textContent=(L==="ko")?it[2]:it[1];
+  var href=it[0],active;if(href==="/")active=(path==="/");else if(href==="/guide/")active=path.indexOf("/guide/")===0;else active=path.indexOf(href)===0;
+  el.classList.toggle("active",active);});}
+var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l);paint();};}
+if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
+setTimeout(paint,0);
+})();</script>
+</body>
+</html>
