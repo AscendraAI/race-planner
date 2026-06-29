@@ -362,6 +362,17 @@ header{display:block}
 .fueltl li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
 .fueltl li b{color:var(--ink);font-weight:700}
 .fueltl li.warn{color:var(--rox)}.fueltl li.warn::before{background:var(--rox)}
+.kithead{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.4px;font-weight:700;margin:18px 0 9px}
+.kitlist{display:flex;flex-direction:column;gap:8px}
+.kititem{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 13px;transition:.15s}
+.kititem:hover{border-color:var(--mint);background:var(--panel2)}
+.kititem .ke{font-size:20px}
+.kititem .kt{flex:1;display:flex;flex-direction:column;line-height:1.32;min-width:0}
+.kititem .kt b{font-size:13.5px;color:var(--ink);font-weight:700}
+.kititem .ks{font-size:11.5px;color:var(--sub)}
+.kititem .kb{font-size:12.5px;font-weight:700;color:var(--mint);white-space:nowrap}
+.kitnote{font-size:12px;color:var(--sub);margin-top:9px}
+.kitnote a{color:var(--mint);font-weight:600}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
@@ -447,6 +458,7 @@ header{display:block}
       <div class="fuel">
         <h3 data-i18n="fuel_h">⚡ Fueling for this race</h3>
         <div id="fuelBody"></div>
+        <div id="fuelKit"></div>
         <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get the exact single-serve fuel — Athlete's Pick →</a>
       </div>
     </div>
@@ -558,6 +570,23 @@ function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+":"+St
 function toSec(str){var p=str.split(":").map(Number);return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
 function v(id){return parseInt(document.getElementById(id).value,10);}
 
+var AP_KIT={
+ gel:{no:103,en:"GU Liquid Energy",ko:"GU 리퀴드 에너지젤"},
+ elec:{no:106,en:"Yohemite electrolyte tab",ko:"요헤미티 전해질 발포정"},
+ cramp:{no:52,en:"Crampfix Quickshot",ko:"크램픽스 퀵샷"}
+};
+function apUrl(no){return "https://athletespick.com/product/detail.html?product_no="+no+"&utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=hyrox";}
+function buildKit(secs){
+ var ko=LANG==="ko",m=Math.round(secs/60),gels=m<60?1:(m<=90?2:3);
+ function row(emoji,label,prod,qty,spec){
+  return '<a class="kititem" href="'+apUrl(prod.no)+'" target="_blank" rel="noopener"><span class="ke">'+emoji+'</span><span class="kt"><b>'+label+' ×'+qty+'</b><span class="ks">'+(ko?prod.ko:prod.en)+' · '+spec+'</span></span><span class="kb">'+(ko?"담기":"Add")+' →</span></a>';
+ }
+ var head='<div class="kithead">'+(ko?"추천 낱개 키트 · 애슬리츠픽":"Single-serve kit · Athlete's Pick")+'</div>';
+ var g=row("🥤",(ko?"에너지젤":"Energy gel"),AP_KIT.gel,gels,(ko?"탄수 ~20g":"~20g carb"));
+ var e=row("💧",(ko?"전해질":"Electrolyte"),AP_KIT.elec,1,"Na 220mg");
+ var cr='<div class="kitnote">'+(ko?"쥐가 잘 나면 ":"Prone to cramps? ")+'<a href="'+apUrl(AP_KIT.cramp.no)+'" target="_blank" rel="noopener">'+(ko?"크램픽스 퀵샷 →":"Crampfix Quickshot →")+'</a></div>';
+ return head+'<div class="kitlist">'+g+e+'</div>'+cr;
+}
 function calc(){
   var d=I18N[LANG],pm=v("pmin"),ps=v("psec");
   if(isNaN(pm)||isNaN(ps)){alert(d.err);return;}
@@ -584,6 +613,7 @@ function calc(){
     el.innerHTML='<div class="rk">'+d.run+' '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(el);}
   var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
   document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
+  document.getElementById("fuelKit").innerHTML=buildKit(finish);
   document.getElementById("result").classList.add("show");
 }
 document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
