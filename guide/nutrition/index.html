@@ -67,7 +67,7 @@
     background-attachment:fixed;min-height:100vh;
   }
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
 
   /* header */
   header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
@@ -75,7 +75,7 @@
     backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
     background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
     border-bottom:1px solid var(--line)}
-  .wrap-h{max-width:760px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
+  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
   .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
   .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
     display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
@@ -210,7 +210,7 @@
 
 /* === bridges: subpage wrappers + nav UX === */
 header{display:block}
-.shell{max-width:760px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+.shell{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
 .layout{display:block!important}.center{min-width:0}
 .ad,.leader,.rail{display:none!important}
 .wrap-h{flex-wrap:wrap}
@@ -218,7 +218,8 @@ header{display:block}
 .nav::-webkit-scrollbar{display:none}
 .navlink{white-space:nowrap}
 .navlink.active{color:var(--accent);background:var(--panel2)}
-@media(max-width:600px){.nav{order:3;flex-basis:100%;margin-top:6px}.logo .full{display:none}}
+@media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+@media(max-width:520px){.logo .full{display:none}}
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
