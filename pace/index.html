@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="x-default" href="https://raceplanner.online/pace/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Running Pace Calculator & Race Time Predictor" />
-<meta name="theme-color" content="#0f1115" />
+<meta name="theme-color" content="#0a0c10" />
 <meta name="robots" content="index, follow" />
 <style>
   :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4}
@@ -66,7 +66,36 @@
   footer a{color:var(--accent2);text-decoration:none}
   .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+
+/* ===== RP v2 design system (append-only override) ===== */
+:root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;--line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;--accent:#c8ff43;--accent2:#6ee7a8;--warn:#ffb35c}
+body{background:#0a0c10;background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);background-attachment:fixed;min-height:100vh}
+.shell{max-width:780px}
+header{position:sticky;top:0;z-index:50;padding:13px 0;margin-bottom:14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
+.logo{display:inline-flex;align-items:center;gap:9px;font-size:18px}
+.logo::before{content:"R";width:24px;height:24px;border-radius:7px;background:var(--accent);color:#0b0f06;display:grid;place-items:center;font-weight:800;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+.logo b{color:var(--accent)}
+.navlink{color:var(--ink2);padding:7px 10px;border-radius:9px;transition:.15s}
+.navlink:hover{background:var(--panel2);color:var(--ink)}
+.langtoggle{border-color:var(--line2)}
+.langtoggle button.on{background:var(--accent);color:#0b0f06}
+.layout{display:block!important}
+.ad,.leader,.rail{display:none!important}
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:18px}
+button.calc{background:var(--accent);color:#0b0f06;border-radius:14px;box-shadow:0 10px 30px -10px rgba(200,255,67,.5);transition:.15s}
+button.calc:hover{filter:brightness(1.05)}
+button.calc:active{transform:translateY(1px) scale(.995)}
+input,select{background:var(--panel2);border:1.5px solid var(--line2);border-radius:13px}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+.big div{background:linear-gradient(180deg,var(--panelhi),var(--bg2));border:1px solid var(--line2);border-radius:14px}
+.big .v{font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;color:var(--accent)}
+footer{border-top:1px solid var(--line);color:var(--faint)}
+footer a{color:var(--accent2)}
+.related a{background:var(--panel2);border:1px solid var(--line);border-radius:10px;color:var(--ink2);transition:.15s}
+.related a:hover{border-color:var(--line2);color:var(--ink)}
+.callout{border-radius:13px}
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -79,16 +108,11 @@
     <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
   </header>
 
-  <div class="ad ad-leader leader">Ad (728×90)</div>
-
   <div class="layout">
-    <aside class="rail rail-left"><div class="ad ad-sky">Ad<br/>160×600</div></aside>
 
     <main class="center">
       <h1 data-i18n="h1">Running Pace Calculator &amp; Race Time Predictor</h1>
       <p class="lead" data-i18n="lead">Calculate your running pace, speed and split times, or predict your race times across 5K, 10K, half and full marathon — all free.</p>
-
-      <div class="ad ad-inline">Ad</div>
 
       <!-- Pace Calculator -->
       <div class="card">
@@ -167,8 +191,6 @@
         </div>
       </div>
 
-      <div class="ad ad-inline">Ad</div>
-
       <div class="info">
         <h2 data-i18n="info1_h">How is pace calculated?</h2>
         <p data-i18n="info1_p">Pace is your time divided by distance. This tool also converts to min/mile and km/h, and breaks your run into per-kilometer splits so you can plan an even effort.</p>
@@ -180,14 +202,7 @@
         </div>
       </div>
     </main>
-
-    <aside class="rail rail-right">
-      <div class="ad ad-rect">Ad<br/>300×250</div>
-      <div class="ad ad-rect" style="height:280px">Ad<br/>300×280</div>
-    </aside>
   </div>
-
-  <div class="ad ad-leader leader" style="margin-top:20px">Ad (728×90)</div>
 
   <footer>
     <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">HYROX calculator</a><br/>
