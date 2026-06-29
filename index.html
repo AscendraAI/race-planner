@@ -373,6 +373,9 @@ header{display:block}
 .kititem .kb{font-size:12.5px;font-weight:700;color:var(--mint);white-space:nowrap}
 .kitnote{font-size:12px;color:var(--sub);margin-top:9px}
 .kitnote a{color:var(--mint);font-weight:600}
+.pctl{margin-top:9px;font-size:14px;color:var(--mint);font-family:var(--mono);font-weight:600}
+.pctl b{color:var(--accent)}
+.pctl .pctsub{display:block;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;letter-spacing:0}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
@@ -394,7 +397,7 @@ header{display:block}
     <h1 data-i18n="h1">HYROX finish-time calculator</h1>
     <p class="lead" data-i18n="lead">Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.</p>
     <div class="trust">
-      <span><b>825</b> <span data-i18n="t_athletes">athletes of real data</span></span>
+      <span><b>400K+</b> <span data-i18n="t_athletes">real HYROX results</span></span>
       <span data-i18n="t_free">⚡ Free · no signup</span>
       <span data-i18n="t_time">⏱ 1-second result</span>
     </div>
@@ -419,6 +422,14 @@ header{display:block}
         <label data-i18n="in_lvl">Level</label>
         <select id="lvl"><option value="beg" data-i18n="lv_b">Beginner</option><option value="int" selected data-i18n="lv_i">Intermediate</option><option value="adv" data-i18n="lv_a">Advanced</option></select>
       </div>
+      <div class="field">
+        <label data-i18n="in_div">Division</label>
+        <select id="div"><option value="open" data-i18n="div_open">Open</option><option value="pro" data-i18n="div_pro">Pro</option></select>
+      </div>
+      <div class="field">
+        <label data-i18n="in_age">Age</label>
+        <select id="age"><option value="a3034" data-i18n="age_any">All ages</option><option value="a1624" data-i18n="age1">16–24</option><option value="a2529" data-i18n="age2">25–29</option><option value="a3034" data-i18n="age3">30–34</option><option value="a3539" data-i18n="age4">35–39</option><option value="a4044" data-i18n="age5">40–44</option><option value="a4549" data-i18n="age6">45–49</option><option value="a5054" data-i18n="age7">50–54</option><option value="a5559" data-i18n="age8">55–59</option><option value="a60" data-i18n="age9">60+</option></select>
+      </div>
     </div>
     <div class="hint" data-i18n="in_hint">Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.</div>
     <button class="calc" id="go"><span data-i18n="btn">Predict finish time</span><span class="arr">→</span></button>
@@ -430,6 +441,7 @@ header{display:block}
         <div class="k" data-i18n="r_finish">Predicted finish</div>
         <div class="v" id="finish">—</div>
         <div class="s"><span data-i18n="r_inpace">In-race run pace</span> <b id="inpace">—</b> /km · +<span id="off">—</span>s <span data-i18n="r_adj">adjustment</span></div>
+        <div class="pctl" id="pctl"></div>
         <div class="bar" id="bar"></div>
         <div class="barleg">
           <span><i class="dot" style="background:var(--run)"></i><span data-i18n="r_run">Run</span> <b id="pRun">—</b></span>
@@ -496,16 +508,36 @@ var STA_NAMES={
  en:[["SkiErg","1000m"],["Sled Push","50m"],["Sled Pull","50m"],["Burpee Broad Jump","80m"],["Row","1000m"],["Farmers Carry","200m"],["Sandbag Lunges","100m"],["Wall Balls","×100"]],
  ko:[["스키에르그","1000m"],["썰매 밀기","50m"],["썰매 끌기","50m"],["버피 브로드 점프","80m"],["로잉","1000m"],["파머스 캐리","200m"],["샌드백 런지","100m"],["월볼","100개"]]
 };
-var STA={men:[255,195,250,300,270,140,270,360],women:[295,205,255,320,300,150,290,400]};
-var LV={beg:{off:45,sta:1.18,rox:50},int:{off:35,sta:1.00,rox:42},adv:{off:25,sta:0.82,rox:32}};
+/* Station times (sec) by gender x tier, from HyroxDataLab percentiles (N=395,452, S7-8).
+   adv=top25% / int=median / beg=bottom25%. Order: Ski,SledPush,SledPull,Burpee,Row,Farmers,Lunges,WallBalls */
+var STA={
+ men:{adv:[256,155,255,262,273,110,263,335],int:[269,184,303,322,289,129,313,412],beg:[285,223,370,401,309,156,379,523]},
+ women:{adv:[294,148,294,313,307,120,260,320],int:[311,175,346,384,325,137,307,390],beg:[331,212,416,479,348,164,372,494]}
+};
+var LV={beg:{off:45,rox:50},int:{off:35,rox:42},adv:{off:25,rox:32}};
+/* Percentile readout: cohort median (sec) = gender + division + age deltas. Overall S8 anchors p90/p50/p10. */
+var GMED={men:4920,women:5510};
+var DIVD={open:0,pro:-280};
+var AGED={a1624:-17,a2529:-83,a3034:0,a3539:77,a4044:167,a4549:332,a5054:475,a5559:731,a60:805};
+function pctileTop(fin,cmed){
+ var sh=cmed-4964,fast=4041+sh,med=cmed,slow=6374+sh,beats;
+ if(fin<=fast)beats=90+Math.min(8,(fast-fin)/45);
+ else if(fin<=med)beats=50+(med-fin)/(med-fast)*40;
+ else if(fin<=slow)beats=10+(slow-fin)/(slow-med)*40;
+ else beats=Math.max(1,10-(fin-slow)/60);
+ beats=Math.max(1,Math.min(99,beats));
+ return Math.round(100-beats);
+}
 
 var I18N={
  en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
   desc:"Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
   nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",eyebrow:"Real-data HYROX predictor",h1:"HYROX finish-time calculator",
   lead:"Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.",
-  t_athletes:"athletes of real data",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
+  t_athletes:"real HYROX results",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
   in_pace:"Your easy 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
+  in_div:"Division",div_open:"Open",div_pro:"Pro",in_age:"Age",age_any:"All ages",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
+  pctl_txt:function(t){return '≈ <b>Top '+t+'%</b> <span class="pctsub">vs same gender · division · age (approx.)</span>';},
   in_hint:"Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.",btn:"Predict finish time",
   r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
   m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
@@ -513,19 +545,21 @@ var I18N={
   fuel_h:"⚡ Fuel schedule for this race",fuel_cta:"Get the exact single-serve fuel — Athlete's Pick →",
   i1_h:"How does this calculator predict?",i1_p:"A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.",
   i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
-  i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: distributed by level & gender from real averages.",
+  i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
   i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
   more_h:"More tools & guides",more_pace:"Running pace calculator & race time predictor",more_gpx:"GPX race plan with elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
   foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
-  disc:"※ Time splits are estimates from public results data (HYROX Utrecht 825 athletes, hyroxdatalab · roxlyfe). Real results vary with strength, weather and venue.",
+  disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
   err:"Please check your pace (2:30–12:00 /km).",run:"Run",
   fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
  ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
   desc:"평소 5K 페이스만 넣으면 하이록스 예상 완주 기록·인레이스 런 페이스·스테이션별 목표·8개 런 페이싱을 계산합니다.",
   nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
   lead:"평소 5K 페이스를 넣으면 실데이터 보정(컴프로마이즈드 러닝+록스존+스테이션)으로 예상 완주 기록을 계산합니다.",
-  t_athletes:"명 실제 대회 데이터",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
+  t_athletes:"건 공개 HYROX 결과",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
   in_pace:"평소 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
+  in_div:"부문",div_open:"오픈",div_pro:"프로",in_age:"연령",age_any:"전체",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
+  pctl_txt:function(t){return '≈ <b>상위 '+t+'%</b> <span class="pctsub">동일 성별·부문·연령 기준 (근사)</span>';},
   in_hint:"전력 5K를 뛸 때의 1km 페이스를 넣으세요. 레이스 페이스는 자동 보정됩니다.",btn:"완주 기록 예측",
   r_finish:"예상 완주 기록",r_inpace:"인레이스 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
   m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
@@ -533,11 +567,11 @@ var I18N={
   fuel_h:"⚡ 이 레이스 보급 스케줄",fuel_cta:"필요량만큼 낱개로 — 애슬리츠픽 →",
   i1_h:"이 계산기는 어떻게 예측하나요?",i1_p:"하이록스 완주는 런 + 스테이션 + 록스존의 합입니다. 명목 8km(8×1km)는 순수 러닝이고, 록스존이 그 위에 약 6.5% 더해집니다.",
   i1_l1:"컴프로마이즈드 러닝: 레이스 중 런은 신선한 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
-  i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 수준·성별 평균 실측 기준으로 배분합니다.",
+  i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
   i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
   more_h:"더 많은 도구·가이드",more_pace:"러닝 페이스 계산기 & 기록 예측",more_gpx:"GPX 레이스 플랜 (고도·날씨 보정)",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
-  disc:"※ 시간 배분은 공개 결과 데이터(HYROX Utrecht 825명, hyroxdatalab·roxlyfe) 기반 추정치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
+  disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
   err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
   fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>경기 중</b> — 물·전해질 위주 (추가 탄수 불필요)":(m<=90?"<b>경기 중(테스트했다면)</b> — Run 4~5 전후 빠른 젤 1개":"<b>경기 중</b> — Run 3~4, Run 6 전후 젤 2개 분할");return '<div class="fuelneed"><div><span class="k">탄수</span><span class="v">~'+c+'g</span></div><div><span class="k">나트륨</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">수분</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>출발 30~45분 전</b> — 에너지젤 1개(~25g) + 전해질 음료</li><li>'+mid+'</li><li class="warn">⚠ 레이스 당일 새 제품 금지 — 2~3주 전부터 훈련에서 테스트</li></ul>';}}
 };
@@ -592,10 +626,13 @@ function calc(){
   if(isNaN(pm)||isNaN(ps)){alert(d.err);return;}
   var fresh=pm*60+ps; if(fresh<150||fresh>720){alert(d.err);return;}
   var sex=document.getElementById("sex").value,lvl=LV[document.getElementById("lvl").value];
+  var tier=document.getElementById("lvl").value;
   var inPace=fresh+lvl.off,runTotal=inPace*8;
-  var staArr=STA[sex].map(function(x){return x*lvl.sta;});
+  var staArr=STA[sex][tier];
   var staTotal=staArr.reduce(function(a,b){return a+b;},0),roxTotal=lvl.rox*8;
   var finish=runTotal+staTotal+roxTotal;
+  var cmed=GMED[sex]+DIVD[document.getElementById("div").value]+AGED[document.getElementById("age").value];
+  document.getElementById("pctl").innerHTML=d.pctl_txt(pctileTop(finish,cmed));
   document.getElementById("finish").textContent=fmt(finish);
   document.getElementById("inpace").textContent=pace(inPace);
   document.getElementById("off").textContent=lvl.off;
