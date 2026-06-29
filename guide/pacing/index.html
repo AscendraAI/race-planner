@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/pacing/?lang=ko" />
 <link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/pacing/" />
 <meta property="og:type" content="article" />
-<meta name="theme-color" content="#0f1115" />
+<meta name="theme-color" content="#0a0c10" />
 <meta name="robots" content="index, follow" />
 <style>
   :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4}
@@ -56,7 +56,36 @@
   .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
   [data-lng]{display:none}
   @media(max-width:380px){h1{font-size:23px}}
+
+/* ===== RP v2 design system (append-only override) ===== */
+:root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;--line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;--accent:#c8ff43;--accent2:#6ee7a8;--warn:#ffb35c}
+body{background:#0a0c10;background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);background-attachment:fixed;min-height:100vh}
+.shell{max-width:780px}
+header{position:sticky;top:0;z-index:50;padding:13px 0;margin-bottom:14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
+.logo{display:inline-flex;align-items:center;gap:9px;font-size:18px}
+.logo::before{content:"R";width:24px;height:24px;border-radius:7px;background:var(--accent);color:#0b0f06;display:grid;place-items:center;font-weight:800;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+.logo b{color:var(--accent)}
+.navlink{color:var(--ink2);padding:7px 10px;border-radius:9px;transition:.15s}
+.navlink:hover{background:var(--panel2);color:var(--ink)}
+.langtoggle{border-color:var(--line2)}
+.langtoggle button.on{background:var(--accent);color:#0b0f06}
+.layout{display:block!important}
+.ad,.leader,.rail{display:none!important}
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:18px}
+button.calc{background:var(--accent);color:#0b0f06;border-radius:14px;box-shadow:0 10px 30px -10px rgba(200,255,67,.5);transition:.15s}
+button.calc:hover{filter:brightness(1.05)}
+button.calc:active{transform:translateY(1px) scale(.995)}
+input,select{background:var(--panel2);border:1.5px solid var(--line2);border-radius:13px}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+.big div{background:linear-gradient(180deg,var(--panelhi),var(--bg2));border:1px solid var(--line2);border-radius:14px}
+.big .v{font-family:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;color:var(--accent)}
+footer{border-top:1px solid var(--line);color:var(--faint)}
+footer a{color:var(--accent2)}
+.related a{background:var(--panel2);border:1px solid var(--line);border-radius:10px;color:var(--ink2);transition:.15s}
+.related a:hover{border-color:var(--line2);color:var(--ink)}
+.callout{border-radius:13px}
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -69,10 +98,7 @@
     <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
   </header>
 
-  <div class="ad ad-leader leader">Ad (728×90)</div>
-
   <div class="layout">
-    <aside class="rail rail-left"><div class="ad ad-sky">Ad<br/>160×600</div></aside>
 
     <article>
       <!-- ===== EN ===== -->
@@ -97,8 +123,6 @@
           <tr><td><b>~2:00</b></td><td>~6:56/km</td><td>marathon pace</td></tr>
         </tbody></table>
         <p>Key point: this is the pace you must hold <b>while tired</b>, not when fresh. Go a touch faster than this average on the early runs and you lose more later.</p>
-
-        <div class="ad ad-inline">Ad</div>
 
         <h2>3. The hidden 6.5% — the Roxzone</h2>
         <p>A finish is run + stations + <b>roxzone</b>. The roxzone is the transition corridor between the run track and stations — about 700m and roughly <b>6.5% of total time</b> on top of the nominal 8km. Across 8 transitions that's about 6 minutes.</p>
@@ -160,8 +184,6 @@
         </tbody></table>
         <p>핵심은 이 페이스가 "신선할 때"가 아니라 "지친 상태에서 유지해야 하는" 페이스라는 점입니다.</p>
 
-        <div class="ad ad-inline">광고</div>
-
         <h2>3. 숨은 6.5% — 록스존</h2>
         <p>완주 기록은 런 + 스테이션 + <b>록스존</b>의 합입니다. 록스존은 런 트랙과 스테이션을 잇는 전환 구간으로, 명목 8km 위에 별도로 약 700m·시간으로는 <b>전체의 약 6.5%</b>가 더해집니다.</p>
         <table><thead><tr><th>수준</th><th>전환당</th><th>총 록스존</th><th>비중</th></tr></thead><tbody>
@@ -200,14 +222,7 @@
         <div class="related"><a href="/">→ 하이록스 완주 기록 계산기</a><a href="/guide/nutrition/?lang=ko">→ 보급 가이드</a><a href="/guide/stations/?lang=ko">→ 스테이션 공략</a></div>
       </div>
     </article>
-
-    <aside class="rail rail-right">
-      <div class="ad ad-rect">Ad<br/>300×250</div>
-      <div class="ad ad-rect" style="height:280px">Ad<br/>300×280</div>
-    </aside>
   </div>
-
-  <div class="ad ad-leader leader" style="margin-top:20px">Ad (728×90)</div>
 
   <footer>
     <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">Calculator</a><br/>
