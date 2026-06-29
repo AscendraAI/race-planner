@@ -8,6 +8,13 @@
     <changefreq>weekly</changefreq><priority>1.0</priority>
   </url>
   <url>
+    <loc>https://raceplanner.online/gpx/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/gpx/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/gpx/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/gpx/"/>
+    <changefreq>weekly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://raceplanner.online/pace/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/pace/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/pace/?lang=ko"/>
@@ -15,13 +22,31 @@
     <changefreq>weekly</changefreq><priority>0.9</priority>
   </url>
   <url>
-    <loc>https://raceplanner.online/gpx/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/gpx/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/gpx/?lang=ko"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/gpx/"/>
-    <changefreq>weekly</changefreq><priority>0.9</priority>
+    <loc>https://raceplanner.online/guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/"/>
+    <changefreq>weekly</changefreq><priority>0.8</priority>
   </url>
-  <url><loc>https://raceplanner.online/guide/pacing/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://raceplanner.online/guide/nutrition/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://raceplanner.online/guide/stations/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://raceplanner.online/guide/pacing/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/pacing/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/pacing/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/pacing/"/>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raceplanner.online/guide/nutrition/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/nutrition/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/nutrition/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/nutrition/"/>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raceplanner.online/guide/stations/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/stations/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/stations/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/guide/stations/"/>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
 </urlset>
