@@ -351,6 +351,17 @@ header{display:block}
 .navlink.active{color:var(--accent);background:var(--panel2)}
 @media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
 @media(max-width:520px){.logo .full{display:none}}
+/* fuel schedule (MVP-0) */
+.fuelneed{display:flex;gap:10px;margin:2px 0 14px}
+.fuelneed>div{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center}
+.fuelneed .k{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px;font-weight:600;margin-bottom:5px}
+.fuelneed .v{font-size:19px;font-weight:700;color:var(--mint);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.fuelneed .u{font-size:11px;color:var(--sub);font-weight:600;margin-left:1px}
+.fueltl{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 2px;padding:0}
+.fueltl li{font-size:13px;color:var(--ink2);line-height:1.5;padding-left:15px;position:relative}
+.fueltl li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
+.fueltl li b{color:var(--ink);font-weight:700}
+.fueltl li.warn{color:var(--rox)}.fueltl li.warn::before{background:var(--rox)}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
@@ -435,8 +446,8 @@ header{display:block}
 
       <div class="fuel">
         <h3 data-i18n="fuel_h">⚡ Fueling for this race</h3>
-        <p id="fuelText">—</p>
-        <a class="cta" id="fuelcta" href="https://athletespick.com" target="_blank" rel="noopener" data-i18n="fuel_cta">Get single-serve nutrition at Athlete's Pick →</a>
+        <div id="fuelBody"></div>
+        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get the exact single-serve fuel — Athlete's Pick →</a>
       </div>
     </div>
   </div>
@@ -487,7 +498,7 @@ var I18N={
   r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
   m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
   s_pacing:"8-run pacing (even split)",pacing_hint:"Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.",
-  fuel_h:"⚡ Fueling for this race",fuel_cta:"Get single-serve nutrition at Athlete's Pick →",
+  fuel_h:"⚡ Fuel schedule for this race",fuel_cta:"Get the exact single-serve fuel — Athlete's Pick →",
   i1_h:"How does this calculator predict?",i1_p:"A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.",
   i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
   i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: distributed by level & gender from real averages.",
@@ -496,7 +507,7 @@ var I18N={
   foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
   disc:"※ Time splits are estimates from public results data (HYROX Utrecht 825 athletes, hyroxdatalab · roxlyfe). Real results vary with strength, weather and venue.",
   err:"Please check your pace (2:30–12:00 /km).",run:"Run",
-  fuel_long:function(f,lo,hi){return "For a ~"+f+" finish — <b>1 gel + electrolytes 30–45 min before start</b>. "+(toSec(f)>3300?("Take "+lo+"–"+hi+" gels during the race (around burpees/lunges)"):("1 gel mid-race or electrolytes only"))+". Test gut-friendly products in training first.";}},
+  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
  ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
   desc:"평소 5K 페이스만 넣으면 하이록스 예상 완주 기록·인레이스 런 페이스·스테이션별 목표·8개 런 페이싱을 계산합니다.",
   nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
@@ -507,7 +518,7 @@ var I18N={
   r_finish:"예상 완주 기록",r_inpace:"인레이스 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
   m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
   s_pacing:"8개 런 페이싱 (이븐 스플릿)",pacing_hint:"Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하세요. 최악 구간이 Run7~8이면 초반 과속입니다.",
-  fuel_h:"⚡ 이 레이스에 필요한 보급",fuel_cta:"애슬리츠픽에서 낱개로 준비하기 →",
+  fuel_h:"⚡ 이 레이스 보급 스케줄",fuel_cta:"필요량만큼 낱개로 — 애슬리츠픽 →",
   i1_h:"이 계산기는 어떻게 예측하나요?",i1_p:"하이록스 완주는 런 + 스테이션 + 록스존의 합입니다. 명목 8km(8×1km)는 순수 러닝이고, 록스존이 그 위에 약 6.5% 더해집니다.",
   i1_l1:"컴프로마이즈드 러닝: 레이스 중 런은 신선한 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
   i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 수준·성별 평균 실측 기준으로 배분합니다.",
@@ -516,7 +527,7 @@ var I18N={
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
   disc:"※ 시간 배분은 공개 결과 데이터(HYROX Utrecht 825명, hyroxdatalab·roxlyfe) 기반 추정치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
   err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
-  fuel_long:function(f,lo,hi){return "예상 "+f+" 기준 — <b>출발 30~45분 전 에너지젤 1개 + 전해질</b>. "+(toSec(f)>3300?("경기 중 "+lo+"~"+hi+"개 분할 섭취(버피·런지 전후)"):("경기 중 1개 또는 전해질 위주"))+". 위장 부담 적은 제품을 미리 훈련에서 테스트하세요.";}}
+  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>경기 중</b> — 물·전해질 위주 (추가 탄수 불필요)":(m<=90?"<b>경기 중(테스트했다면)</b> — Run 4~5 전후 빠른 젤 1개":"<b>경기 중</b> — Run 3~4, Run 6 전후 젤 2개 분할");return '<div class="fuelneed"><div><span class="k">탄수</span><span class="v">~'+c+'g</span></div><div><span class="k">나트륨</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">수분</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>출발 30~45분 전</b> — 에너지젤 1개(~25g) + 전해질 음료</li><li>'+mid+'</li><li class="warn">⚠ 레이스 당일 새 제품 금지 — 2~3주 전부터 훈련에서 테스트</li></ul>';}}
 };
 var LANG="en";
 function detectLang(){
@@ -572,7 +583,7 @@ function calc(){
   for(var i=0;i<8;i++){var p=inPace-10+(20*i/7);var el=document.createElement("div");
     el.innerHTML='<div class="rk">'+d.run+' '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(el);}
   var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
-  document.getElementById("fuelText").innerHTML=d.fuel_long(fmt(finish),lo,hi);
+  document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
   document.getElementById("result").classList.add("show");
 }
 document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
