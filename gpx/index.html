@@ -234,6 +234,10 @@
   .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
     color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
   .fuel .cta:hover{filter:brightness(1.05)}
+  .packbox{margin-top:16px;padding:13px 15px;border:1px solid var(--line2);border-radius:12px;background:rgba(110,231,168,.06)}
+  .packbox .pk_match{font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
+  .packbox .pk_name{font-weight:800;font-size:15px;color:var(--mint);margin-bottom:5px}
+  .packbox .pk_desc{font-size:12.5px;color:var(--ink2);line-height:1.55}
 
   /* explainer */
   .info{margin-top:34px}
@@ -423,6 +427,11 @@ header{display:block}
         <table style="margin-top:6px"><thead><tr>
           <th data-i18n="fu_at">At</th><th data-i18n="fu_pt">Point</th><th data-i18n="fu_take">Take</th>
         </tr></thead><tbody id="fu_tb"></tbody></table>
+        <div class="packbox" id="fu_pack">
+          <div class="pk_match" id="fu_pack_m"></div>
+          <div class="pk_name" id="fu_pack_t"></div>
+          <div class="pk_desc" id="fu_pack_d"></div>
+        </div>
         <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener">
           <b data-i18n="fu_cta_t">→ Get race-day fuel at Athlete's Pick</b>
           <span data-i18n="fu_cta_s">Single-serve gels &amp; electrolytes — buy exactly what your plan calls for.</span>
@@ -482,6 +491,11 @@ var I18N={
   fu_title:"🥤 Fueling & hydration plan", fu_carb:"Carbs/h", fu_water:"Water/h", fu_na:"Sodium/h", fu_int:"Fuel every",
   fu_at:"At", fu_pt:"Point", fu_take:"Take", fu_cta_t:"→ Get race-day fuel at Athlete's Pick",
   fu_cta_s:"Trail race-day fuel pack — everything your plan needs, timed.",
+  pk_match:"Matched to your plan",
+  pk_e_t:"Essential 6 · ₩11,300",
+  pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
+  pk_p_t:"Pro 8 · ₩21,500",
+  pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
   info1_h:"How the hill adjustment works",
   info1_p:"Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.",
   info2_h:"How weather changes your plan",
@@ -524,6 +538,11 @@ var I18N={
   fu_title:"🥤 보급 & 수분 플랜", fu_carb:"탄수/h", fu_water:"수분/h", fu_na:"나트륨/h", fu_int:"보급 간격",
   fu_at:"시점", fu_pt:"지점", fu_take:"섭취", fu_cta_t:"→ 애슬리츠픽에서 레이스 보급 준비",
   fu_cta_s:"트레일 레이스 보급 팩 — 플랜이 요구하는 보급을 시점까지 한 번에.",
+  pk_match:"내 플랜에 맞춘 팩",
+  pk_e_t:"에센셜 6 · 11,300원",
+  pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
+  pk_p_t:"프로 8 · 21,500원",
+  pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
   info1_h:"경사 보정은 어떻게 동작하나요",
   info1_p:"코스를 100m 단위로 나눠 GPX 고도에서 경사를 계산합니다. 각 구간을 Minetti 에너지비용 모델로 가중하여, 오르막은 자동으로 감속·내리막은 가속됩니다. 목표 시간을 이 가중 구간들에 배분해 현실적인 km별 목표 페이스를 만듭니다.",
   info2_h:"날씨가 플랜을 어떻게 바꾸나요",
@@ -809,7 +828,11 @@ function renderAll(P){
     tr.innerHTML='<td>'+fmt(m.t)+'</td><td>'+m.km.toFixed(1)+' km'+(P.course.hasEle?' · '+Math.round(m.ele)+'m':'')+'</td><td>'+m.gel+' '+d.gel+' + '+m.water+'ml '+d.water+'</td>';
     ft.appendChild(tr);
   });
-  document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(P.carbH>=60?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
+  var pkPro=P.carbH>=60;
+  document.getElementById("fu_pack_m").textContent=d.pk_match;
+  document.getElementById("fu_pack_t").textContent=pkPro?d.pk_p_t:d.pk_e_t;
+  document.getElementById("fu_pack_d").textContent=pkPro?d.pk_p_d:d.pk_e_d;
+  document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(pkPro?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
   document.getElementById("fu_card").classList.add("show");
   drawChart(P);
 }
