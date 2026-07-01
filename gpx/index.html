@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
 <title data-i18n="title">Trail GPX Race Plan — Hill-Adjusted Pacing & Fueling | Race Planner</title>
 <meta name="description" data-i18n="desc" content="Upload a GPX file to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser." />
 <meta name="keywords" content="gpx pacing, gpx race plan, elevation pacing, trail running pace, marathon pacing plan, gpx 페이스, 트레일 페이싱, 고도 페이싱, 마라톤 페이스 플랜" />
@@ -437,7 +440,7 @@ header{display:block}
           <div class="pk_name" id="fu_pack_t"></div>
           <div class="pk_desc" id="fu_pack_d"></div>
         </div>
-        <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener">
+        <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener" onclick="rpFuelClick()">
           <b data-i18n="fu_cta_t">→ Get race-day fuel at Athlete's Pick</b>
           <span data-i18n="fu_cta_s">Trail race-day fuel pack — everything your plan needs, timed.</span>
         </a>
@@ -910,6 +913,7 @@ function generate(){
     document.getElementById("gen_load").classList.remove("show");btn.disabled=false;
     window.PLAN=buildPlan(window.COURSE,goal,type,level,weather);
     renderAll(window.PLAN);
+    try{if(window.gtag)gtag('event','plan_generated',{sport:'trail',level:level,dist_km:+(window.COURSE.total/1000).toFixed(1)});}catch(e){}
     document.getElementById("res_card").scrollIntoView({behavior:"smooth",block:"nearest"});
   }
   if(useW&&dateStr&&isFinite(lat)&&isFinite(lon)){
@@ -945,6 +949,7 @@ setTimeout(paint,0);
 <canvas id="rp_canvas" width="1080" height="1350" style="display:none"></canvas>
 <script>
 /* ===== share result card (a) — image download + summary URL loop ===== */
+function rpFuelClick(){try{if(window.gtag){var P=window.PLAN;gtag('event','fuel_click',{sport:'trail',pack:(P&&P.carbH>=60)?'pro8':'essential6',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
 function _rpPack(P){return P.carbH>=60?{n:"Pro 8",p:"₩21,500"}:{n:"Essential 6",p:"₩11,300"};}
 function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
   return "https://raceplanner.online/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
@@ -980,6 +985,7 @@ function shareResult(){
   var P=window.PLAN;if(!P)return;
   var btn=document.getElementById("share_btn");var d=(window.I18N&&I18N[window.LANG])?I18N[window.LANG]:{};
   function done(){if(!btn)return;var s=btn.querySelector("span");if(!s)return;var o=s.getAttribute("data-i18n")?I18N[window.LANG].share_t:s.textContent;s.textContent=d.share_done||"Saved";setTimeout(function(){s.textContent=o;},2500);}
+  try{if(window.gtag)gtag('event','share_result',{sport:'trail',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
   var url=buildShareURL();var c=buildShareCard(P);
   if(c.toBlob){c.toBlob(function(blob){
     var file=blob?new File([blob],"raceplanner-trail-plan.png",{type:"image/png"}):null;
