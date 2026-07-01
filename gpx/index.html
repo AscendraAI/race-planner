@@ -238,6 +238,10 @@
   .packbox .pk_match{font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
   .packbox .pk_name{font-weight:800;font-size:15px;color:var(--mint);margin-bottom:5px}
   .packbox .pk_desc{font-size:12.5px;color:var(--ink2);line-height:1.55}
+  .sharebtn{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;width:100%;background:transparent;border:1px solid var(--line2);color:var(--ink2);font-weight:700;padding:13px;border-radius:12px;font-size:13.5px;cursor:pointer;transition:.15s}
+  .sharebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .teaser{margin:14px 0 4px;padding:12px 15px;border:1px solid var(--accent);border-radius:12px;background:rgba(200,255,67,.08);font-size:13px;color:var(--ink)}
+  .teaser b{color:var(--accent);display:block;margin-bottom:3px;font-size:13.5px}
 
   /* explainer */
   .info{margin-top:34px}
@@ -291,6 +295,7 @@ header{display:block}
       <section class="hero-top" style="text-align:center"><span class="eyebrow"><span class="pulse"></span>TRAIL GPX RACE PLAN</span>
 <h1 data-i18n="h1">Trail GPX Race Plan — Hill-Adjusted Pacing &amp; Fueling</h1>
 <p class="lead" data-i18n="lead">Drop in a GPX file and get a hill-adjusted pacing plan: elevation profile, per-kilometer target splits, heat correction from real weather, and fueling timing. Everything runs in your browser — your file never leaves your device.</p></section>
+    <div class="teaser" id="teaser" style="display:none"><b id="teaser_t"></b><span id="teaser_s"></span></div>
 
       <div class="card">
         <div class="ctitle" data-i18n="up_title">📂 1. Upload your course (GPX)</div>
@@ -434,8 +439,9 @@ header{display:block}
         </div>
         <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener">
           <b data-i18n="fu_cta_t">→ Get race-day fuel at Athlete's Pick</b>
-          <span data-i18n="fu_cta_s">Single-serve gels &amp; electrolytes — buy exactly what your plan calls for.</span>
+          <span data-i18n="fu_cta_s">Trail race-day fuel pack — everything your plan needs, timed.</span>
         </a>
+        <button class="sharebtn" id="share_btn" type="button" onclick="shareResult()"><span data-i18n="share_t">Save / share result card</span></button>
       </div>
 
       <div class="info">
@@ -496,6 +502,8 @@ var I18N={
   pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
   pk_p_t:"Pro 8 · ₩21,500",
   pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
+  share_t:"Save / share result card", share_done:"Saved ✓ link copied",
+  teaser_t:"Someone shared their trail race plan", teaser_cta:"Upload your GPX below to build your own →",
   info1_h:"How the hill adjustment works",
   info1_p:"Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.",
   info2_h:"How weather changes your plan",
@@ -543,6 +551,8 @@ var I18N={
   pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
   pk_p_t:"프로 8 · 21,500원",
   pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
+  share_t:"결과 카드 저장·공유", share_done:"저장됨 ✓ 링크 복사됨",
+  teaser_t:"누군가 트레일 레이스 플랜을 공유했어요", teaser_cta:"아래에서 내 GPX를 올려 나만의 플랜 만들기 →",
   info1_h:"경사 보정은 어떻게 동작하나요",
   info1_p:"코스를 100m 단위로 나눠 GPX 고도에서 경사를 계산합니다. 각 구간을 Minetti 에너지비용 모델로 가중하여, 오르막은 자동으로 감속·내리막은 가속됩니다. 목표 시간을 이 가중 구간들에 배분해 현실적인 km별 목표 페이스를 만듭니다.",
   info2_h:"날씨가 플랜을 어떻게 바꾸나요",
@@ -932,5 +942,70 @@ var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l
 if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
 setTimeout(paint,0);
 })();</script>
+<canvas id="rp_canvas" width="1080" height="1350" style="display:none"></canvas>
+<script>
+/* ===== share result card (a) — image download + summary URL loop ===== */
+function _rpPack(P){return P.carbH>=60?{n:"Pro 8",p:"₩21,500"}:{n:"Essential 6",p:"₩11,300"};}
+function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
+  return "https://raceplanner.online/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
+function buildShareCard(P){
+  var c=document.getElementById("rp_canvas"),x=c.getContext("2d"),W=1080;
+  x.fillStyle="#0a0c10";x.fillRect(0,0,W,1350);x.textBaseline="alphabetic";
+  x.fillStyle="#c8ff43";x.font="700 30px system-ui,sans-serif";x.textAlign="left";x.fillText("TRAIL RACE PLAN",80,120);
+  x.fillStyle="#8b97a6";x.font="600 26px system-ui,sans-serif";x.textAlign="right";x.fillText("raceplanner.online",W-80,120);
+  x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(80,152);x.lineTo(W-80,152);x.stroke();
+  x.textAlign="left";
+  x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.fillText("GOAL TIME",80,245);
+  x.fillStyle="#f3f6fa";x.font="800 150px 'Space Grotesk',system-ui,sans-serif";x.fillText(fmt(P.goalSec),80,385);
+  function stat(cx,l,v,u){x.fillStyle="#8b97a6";x.font="600 26px system-ui,sans-serif";x.fillText(l,cx,510);
+    x.fillStyle="#c8ff43";x.font="800 62px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,580);
+    x.fillStyle="#5a6573";x.font="600 24px system-ui,sans-serif";x.fillText(u,cx,615);}
+  stat(80,"DISTANCE",(P.course.total/1000).toFixed(1),"km");
+  stat(410,"ASCENT D+",Math.round(P.course.dPlus)+"","m");
+  stat(740,"AVG PACE",pace(P.avgPace),"/km");
+  x.fillStyle="#11150c";x.fillRect(80,690,W-160,235);x.strokeStyle="#2c3a30";x.strokeRect(80,690,W-160,235);
+  x.fillStyle="#6ee7a8";x.font="700 30px system-ui,sans-serif";x.fillText("FUELING PLAN",112,752);
+  function f3(cx,l,v,u){x.fillStyle="#8b97a6";x.font="600 24px system-ui,sans-serif";x.fillText(l,cx,812);
+    x.fillStyle="#f3f6fa";x.font="800 54px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,876);
+    x.fillStyle="#5a6573";x.font="600 22px system-ui,sans-serif";x.fillText(u,cx,906);}
+  f3(112,"CARBS / H",P.carbH+"","g");f3(432,"SODIUM / H",P.naH+"","mg");f3(760,"FUEL EVERY",P.interval+"","min");
+  var pk=_rpPack(P);
+  x.fillStyle="#8b97a6";x.font="600 26px system-ui,sans-serif";x.fillText("MATCHED PACK",80,1030);
+  x.fillStyle="#c8ff43";x.font="800 50px 'Space Grotesk',system-ui,sans-serif";x.fillText(pk.n+"   ·   "+pk.p,80,1092);
+  x.strokeStyle="#262d39";x.beginPath();x.moveTo(80,1200);x.lineTo(W-80,1200);x.stroke();
+  x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText("Free hill-adjusted trail race planner",80,1258);
+  x.fillStyle="#c8ff43";x.font="700 30px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",80,1304);
+  return c;}
+function shareResult(){
+  var P=window.PLAN;if(!P)return;
+  var btn=document.getElementById("share_btn");var d=(window.I18N&&I18N[window.LANG])?I18N[window.LANG]:{};
+  function done(){if(!btn)return;var s=btn.querySelector("span");if(!s)return;var o=s.getAttribute("data-i18n")?I18N[window.LANG].share_t:s.textContent;s.textContent=d.share_done||"Saved";setTimeout(function(){s.textContent=o;},2500);}
+  var url=buildShareURL();var c=buildShareCard(P);
+  if(c.toBlob){c.toBlob(function(blob){
+    var file=blob?new File([blob],"raceplanner-trail-plan.png",{type:"image/png"}):null;
+    if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:"My Trail Race Plan",text:"My trail race plan — pace + fueling",url:url}).then(done).catch(function(){});
+    }else{
+      var a=document.createElement("a");a.href=c.toDataURL("image/png");a.download="raceplanner-trail-plan.png";document.body.appendChild(a);a.click();a.remove();
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).catch(function(){});
+      done();}
+  },"image/png");}else{
+    var a2=document.createElement("a");a2.href=c.toDataURL("image/png");a2.download="raceplanner-trail-plan.png";document.body.appendChild(a2);a2.click();a2.remove();done();}
+}
+(function(){try{
+  var p=new URLSearchParams(location.search);if(p.get("s")!=="1")return;
+  function sv(id,v){var e=document.getElementById(id);if(e&&v!=null&&v!=="")e.value=v;}
+  var goal=parseInt(p.get("goal"),10);
+  if(goal>0){sv("g_h",Math.floor(goal/3600));sv("g_m",Math.floor((goal%3600)/60));sv("g_s",goal%60);}
+  sv("in_level",p.get("lvl"));
+  var d=(window.I18N&&I18N[window.LANG])?I18N[window.LANG]:{};
+  var t=document.getElementById("teaser");if(!t)return;
+  var dist=p.get("d"),up=p.get("up");
+  var sum=(dist?dist+"km":"")+(up?" · D+"+up+"m":"")+(goal>0?" · "+fmt(goal):"");
+  document.getElementById("teaser_t").textContent=d.teaser_t||"Someone shared their trail race plan";
+  document.getElementById("teaser_s").textContent=(sum?sum+"  —  ":"")+(d.teaser_cta||"Upload your GPX below to build your own →");
+  t.style.display="";
+}catch(e){}})();
+</script>
 </body>
 </html>
