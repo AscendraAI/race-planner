@@ -245,6 +245,9 @@
   .sharebtn:hover{border-color:var(--accent);color:var(--accent)}
   .teaser{margin:14px 0 4px;padding:12px 15px;border:1px solid var(--accent);border-radius:12px;background:rgba(200,255,67,.08);font-size:13px;color:var(--ink)}
   .teaser b{color:var(--accent);display:block;margin-bottom:3px;font-size:13.5px}
+  .cardprev{margin:18px 0 4px;text-align:center}
+  .cardprev canvas{width:100%;max-width:300px;height:auto;border-radius:16px;border:1px solid var(--line2);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+  .cardprev .cardprev_h{font-size:11.5px;color:var(--sub);margin-top:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
 
   /* explainer */
   .info{margin-top:34px}
@@ -444,6 +447,7 @@ header{display:block}
           <b data-i18n="fu_cta_t">→ Get race-day fuel at Athlete's Pick</b>
           <span data-i18n="fu_cta_s">Trail race-day fuel pack — everything your plan needs, timed.</span>
         </a>
+        <div class="cardprev" id="cardprev" style="display:none"><canvas id="rp_canvas" width="1080" height="1920"></canvas><div class="cardprev_h" data-i18n="prev_h">↓ Your shareable story card</div></div>
         <button class="sharebtn" id="share_btn" type="button" onclick="shareResult()"><span data-i18n="share_t">Save / share result card</span></button>
       </div>
 
@@ -505,7 +509,7 @@ var I18N={
   pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
   pk_p_t:"Pro 8 · ₩21,500",
   pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
-  share_t:"Save / share result card", share_done:"Saved ✓ link copied",
+  share_t:"Save / share result card", share_done:"Saved ✓ link copied", prev_h:"↓ Your shareable story card",
   teaser_t:"Someone shared their trail race plan", teaser_cta:"Upload your GPX below to build your own →",
   info1_h:"How the hill adjustment works",
   info1_p:"Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.",
@@ -554,7 +558,7 @@ var I18N={
   pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
   pk_p_t:"프로 8 · 21,500원",
   pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
-  share_t:"결과 카드 저장·공유", share_done:"저장됨 ✓ 링크 복사됨",
+  share_t:"결과 카드 저장·공유", share_done:"저장됨 ✓ 링크 복사됨", prev_h:"↓ 공유용 스토리 카드",
   teaser_t:"누군가 트레일 레이스 플랜을 공유했어요", teaser_cta:"아래에서 내 GPX를 올려 나만의 플랜 만들기 →",
   info1_h:"경사 보정은 어떻게 동작하나요",
   info1_p:"코스를 100m 단위로 나눠 GPX 고도에서 경사를 계산합니다. 각 구간을 Minetti 에너지비용 모델로 가중하여, 오르막은 자동으로 감속·내리막은 가속됩니다. 목표 시간을 이 가중 구간들에 배분해 현실적인 km별 목표 페이스를 만듭니다.",
@@ -846,6 +850,7 @@ function renderAll(P){
   document.getElementById("fu_pack_t").textContent=pkPro?d.pk_p_t:d.pk_e_t;
   document.getElementById("fu_pack_d").textContent=pkPro?d.pk_p_d:d.pk_e_d;
   document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(pkPro?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
+  try{if(window.buildShareCard){buildShareCard(P);var _cp=document.getElementById("cardprev");if(_cp)_cp.style.display="block";}}catch(e){}
   document.getElementById("fu_card").classList.add("show");
   drawChart(P);
 }
@@ -946,7 +951,6 @@ var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l
 if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
 setTimeout(paint,0);
 })();</script>
-<canvas id="rp_canvas" width="1080" height="1920" style="display:none"></canvas>
 <script>
 /* ===== share result card (a) — image download + summary URL loop ===== */
 function rpFuelClick(){try{if(window.gtag){var P=window.PLAN;gtag('event','fuel_click',{sport:'trail',pack:(P&&P.carbH>=60)?'pro8':'essential6',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
