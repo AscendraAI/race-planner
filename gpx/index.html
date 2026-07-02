@@ -243,6 +243,11 @@
   .packbox .pk_desc{font-size:12.5px;color:var(--ink2);line-height:1.55}
   .sharebtn{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;width:100%;background:transparent;border:1px solid var(--line2);color:var(--ink2);font-weight:700;padding:13px;border-radius:12px;font-size:13.5px;cursor:pointer;transition:.15s}
   .sharebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .sharerow{display:flex;gap:9px}
+  .sharerow .sharebtn{margin-top:12px;flex:1}
+  .sharebtn.primary{background:var(--accent);color:var(--accentink);border-color:var(--accent)}
+  .sharebtn.primary:hover{filter:brightness(1.06);color:var(--accentink)}
+  .sharehint{font-size:11.5px;color:var(--sub);text-align:center;margin-top:10px;line-height:1.5}
   .teaser{margin:14px 0 4px;padding:12px 15px;border:1px solid var(--accent);border-radius:12px;background:rgba(200,255,67,.08);font-size:13px;color:var(--ink)}
   .teaser b{color:var(--accent);display:block;margin-bottom:3px;font-size:13.5px}
   .cardprev{margin:18px 0 4px;text-align:center}
@@ -448,7 +453,12 @@ header{display:block}
           <span data-i18n="fu_cta_s">Trail race-day fuel pack — everything your plan needs, timed.</span>
         </a>
         <div class="cardprev" id="cardprev" style="display:none"><canvas id="rp_canvas" width="1080" height="1920"></canvas><div class="cardprev_h" data-i18n="prev_h">↓ Your shareable story card</div></div>
-        <button class="sharebtn" id="share_btn" type="button" onclick="shareResult()"><span data-i18n="share_t">Save / share result card</span></button>
+        <div class="sharerow">
+          <button class="sharebtn primary" id="save_btn" type="button" onclick="rpSaveCard()"><span data-i18n="save_t">⬇ Save card image</span></button>
+          <button class="sharebtn" id="cap_btn" type="button" onclick="rpCopyCaption()"><span data-i18n="cap_t">Copy caption</span></button>
+        </div>
+        <button class="sharebtn" id="share_btn" type="button" onclick="rpShareCard()" style="display:none"><span data-i18n="share_t">Share</span></button>
+        <div class="sharehint" data-i18n="share_hint">Save the image and post it to your story or feed — your caption is copied too.</div>
       </div>
 
       <div class="info">
@@ -509,7 +519,7 @@ var I18N={
   pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
   pk_p_t:"Pro 8 · ₩21,500",
   pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
-  share_t:"Save / share result card", share_done:"Saved ✓ link copied", prev_h:"↓ Your shareable story card",
+  save_t:"⬇ Save card image", save_done:"Saved ✓ caption copied", cap_t:"Copy caption", cap_done:"Copied ✓", share_t:"Share", share_hint:"Save the image and post it to your story or feed — your caption is copied too.", prev_h:"↓ Your shareable story card",
   teaser_t:"Someone shared their trail race plan", teaser_cta:"Upload your GPX below to build your own →",
   info1_h:"How the hill adjustment works",
   info1_p:"Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.",
@@ -558,7 +568,7 @@ var I18N={
   pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
   pk_p_t:"프로 8 · 21,500원",
   pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
-  share_t:"결과 카드 저장·공유", share_done:"저장됨 ✓ 링크 복사됨", prev_h:"↓ 공유용 스토리 카드",
+  save_t:"⬇ 카드 이미지 저장", save_done:"저장됨 ✓ 캡션 복사", cap_t:"캡션 복사", cap_done:"복사됨 ✓", share_t:"공유하기", share_hint:"이미지를 저장해 스토리·피드에 올리세요. 캡션도 자동 복사됩니다.", prev_h:"↓ 공유용 스토리 카드",
   teaser_t:"누군가 트레일 레이스 플랜을 공유했어요", teaser_cta:"아래에서 내 GPX를 올려 나만의 플랜 만들기 →",
   info1_h:"경사 보정은 어떻게 동작하나요",
   info1_p:"코스를 100m 단위로 나눠 GPX 고도에서 경사를 계산합니다. 각 구간을 Minetti 에너지비용 모델로 가중하여, 오르막은 자동으로 감속·내리막은 가속됩니다. 목표 시간을 이 가중 구간들에 배분해 현실적인 km별 목표 페이스를 만듭니다.",
@@ -850,7 +860,7 @@ function renderAll(P){
   document.getElementById("fu_pack_t").textContent=pkPro?d.pk_p_t:d.pk_e_t;
   document.getElementById("fu_pack_d").textContent=pkPro?d.pk_p_d:d.pk_e_d;
   document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(pkPro?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
-  try{if(window.buildShareCard){buildShareCard(P);var _cp=document.getElementById("cardprev");if(_cp)_cp.style.display="block";}}catch(e){}
+  try{if(window.buildShareCard){buildShareCard(P);if(window.rpAfterRender)rpAfterRender();}}catch(e){}
   document.getElementById("fu_card").classList.add("show");
   drawChart(P);
 }
@@ -955,65 +965,72 @@ setTimeout(paint,0);
 /* ===== share result card (a) — image download + summary URL loop ===== */
 function rpFuelClick(){try{if(window.gtag){var P=window.PLAN;gtag('event','fuel_click',{sport:'trail',pack:(P&&P.carbH>=60)?'pro8':'essential6',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
 function _rpPack(P){return P.carbH>=60?{n:"Pro 8",p:"₩21,500"}:{n:"Essential 6",p:"₩11,300"};}
-function _rpTier(P){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var t=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";return t+" TRAIL · "+Math.round(P.course.total/1000)+"K";}
+function _rpTier(P,ko){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var e=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";var k=pk<10?"쉬움":pk<25?"보통":pk<45?"하드":"브루탈";return (ko?k:e)+(ko?" 트레일 · ":" TRAIL · ")+Math.round(P.course.total/1000)+"K";}
 function _rpRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
   return "https://raceplanner.online/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
 function buildShareCard(P){
   var c=document.getElementById("rp_canvas"),x=c.getContext("2d"),W=1080,H=1920,M=90;
+  var ko=window.LANG==="ko";
+  var L=ko?{plan:"트레일 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",pack:"매칭 보급 팩",f1:"무료 경사보정 트레일 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
+        :{plan:"TRAIL RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",pack:"MATCHED FUEL PACK",f1:"Free hill-adjusted trail race planner",f2:"Upload your GPX · get your plan free"};
   x.fillStyle="#0a0c10";x.fillRect(0,0,W,H);x.textBaseline="alphabetic";
-  x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText("TRAIL RACE PLAN",M,150);
+  x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(L.plan,M,150);
   x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.textAlign="right";x.fillText("@athletespick",W-M,150);
   x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,192);x.lineTo(W-M,192);x.stroke();
-  var tier=_rpTier(P);
+  var tier=_rpTier(P,ko);
   x.font="800 42px system-ui,sans-serif";var tw=x.measureText(tier).width,pw=tw+90,ph=94,px=(W-pw)/2,py=290;
   x.fillStyle="rgba(200,255,67,.12)";_rpRR(x,px,py,pw,ph,47);x.fill();
   x.strokeStyle="#c8ff43";x.lineWidth=3;_rpRR(x,px,py,pw,ph,47);x.stroke();
   x.fillStyle="#c8ff43";x.textAlign="center";x.fillText(tier,W/2,py+61);
-  x.fillStyle="#8b97a6";x.font="600 36px system-ui,sans-serif";x.fillText("GOAL TIME",W/2,540);
+  x.fillStyle="#8b97a6";x.font="600 36px system-ui,sans-serif";x.fillText(L.goal,W/2,540);
   x.fillStyle="#f3f6fa";x.font="800 200px 'Space Grotesk',system-ui,sans-serif";x.fillText(fmt(P.goalSec),W/2,720);
   function stat(cx,l,v,u){x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText(l,cx,850);
     x.fillStyle="#c8ff43";x.font="800 76px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,935);
     x.fillStyle="#5a6573";x.font="600 26px system-ui,sans-serif";x.fillText(u,cx,975);}
-  stat(M+150,"DISTANCE",(P.course.total/1000).toFixed(1),"km");
-  stat(W/2,"ASCENT D+",Math.round(P.course.dPlus)+"","m");
-  stat(W-M-150,"AVG PACE",pace(P.avgPace),"/km");
+  stat(M+150,L.dist,(P.course.total/1000).toFixed(1),"km");
+  stat(W/2,L.asc,Math.round(P.course.dPlus)+"","m");
+  stat(W-M-150,L.pace,pace(P.avgPace),"/km");
   var by=1050,bh=290;
   x.fillStyle="#11150c";_rpRR(x,M,by,W-2*M,bh,20);x.fill();x.strokeStyle="#2c3a30";x.lineWidth=2;_rpRR(x,M,by,W-2*M,bh,20);x.stroke();
-  x.textAlign="left";x.fillStyle="#6ee7a8";x.font="700 32px system-ui,sans-serif";x.fillText("FUELING PLAN",M+35,by+68);
+  x.textAlign="left";x.fillStyle="#6ee7a8";x.font="700 32px system-ui,sans-serif";x.fillText(L.fuel,M+35,by+68);
   function f3(cx,l,v,u){x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 26px system-ui,sans-serif";x.fillText(l,cx,by+138);
     x.fillStyle="#f3f6fa";x.font="800 66px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,by+218);
     x.fillStyle="#5a6573";x.font="600 24px system-ui,sans-serif";x.fillText(u,cx,by+256);}
-  f3(M+150,"CARBS/H",P.carbH+"","g");f3(W/2,"SODIUM/H",P.naH+"","mg");f3(W-M-150,"EVERY",P.interval+"","min");
+  f3(M+150,L.carb,P.carbH+"","g");f3(W/2,L.na,P.naH+"","mg");f3(W-M-150,L.every,P.interval+"",L.umin);
   var pk=_rpPack(P);
-  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText("MATCHED FUEL PACK",W/2,1460);
+  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText(L.pack,W/2,1460);
   x.fillStyle="#c8ff43";x.font="800 58px 'Space Grotesk',system-ui,sans-serif";x.fillText(pk.n+"  ·  "+pk.p,W/2,1532);
   x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,1660);x.lineTo(W-M,1660);x.stroke();
-  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText("Free hill-adjusted trail race planner",W/2,1740);
+  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText(L.f1,W/2,1740);
   x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",W/2,1812);
-  x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText("Upload your GPX · get your plan free",W/2,1864);
+  x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1864);
   return c;}
-function shareResult(){
-  var P=window.PLAN;if(!P)return;
-  var btn=document.getElementById("share_btn");var d=(window.I18N&&I18N[window.LANG])?I18N[window.LANG]:{};
-  function done(){if(!btn)return;var s=btn.querySelector("span");if(!s)return;var o=s.getAttribute("data-i18n")?I18N[window.LANG].share_t:s.textContent;s.textContent=d.share_done||"Saved";setTimeout(function(){s.textContent=o;},2500);}
-  try{if(window.gtag)gtag('event','share_result',{sport:'trail',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
-  var url=buildShareURL();var c=buildShareCard(P);
-  var dist=(P.course.total/1000).toFixed(1);
-  var cap=(window.LANG==="ko")
-    ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" — 너도 재봐 👉 #레이스플래너챌린지 @athletespick"
-    :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" — build yours 👉 #raceplanner @athletespick";
-  if(c.toBlob){c.toBlob(function(blob){
-    var file=blob?new File([blob],"raceplanner-trail-plan.png",{type:"image/png"}):null;
-    if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
-      navigator.share({files:[file],title:"My Trail Race Plan",text:cap,url:url}).then(done).catch(function(){});
-    }else{
-      var a=document.createElement("a");a.href=c.toDataURL("image/png");a.download="raceplanner-trail-plan.png";document.body.appendChild(a);a.click();a.remove();
-      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(cap+" "+url).catch(function(){});
-      done();}
-  },"image/png");}else{
-    var a2=document.createElement("a");a2.href=c.toDataURL("image/png");a2.download="raceplanner-trail-plan.png";document.body.appendChild(a2);a2.click();a2.remove();done();}
-}
+function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
+  return (window.LANG==="ko")
+    ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.online/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
+    :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.online/gpx #raceplanner #trailrunning @athletespick";}
+function rpToast(id,key){var b=document.getElementById(id);if(!b)return;var s=b.querySelector("span");if(!s)return;var d=(window.I18N&&I18N[window.LANG])||{};var k=s.getAttribute("data-i18n");var orig=(k&&d[k])?d[k]:s.textContent;s.textContent=d[key]||"✓";setTimeout(function(){s.textContent=orig;},2200);}
+function _rpDownload(cb){var c=document.getElementById("rp_canvas");
+  if(c.toBlob){c.toBlob(function(b){if(!b){if(cb)cb();return;}var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="raceplanner-trail-plan.png";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);if(cb)cb();},"image/png");}
+  else{var a2=document.createElement("a");a2.href=c.toDataURL("image/png");a2.download="raceplanner-trail-plan.png";document.body.appendChild(a2);a2.click();a2.remove();if(cb)cb();}}
+function rpSaveCard(){var P=window.PLAN;if(!P)return;
+  try{if(window.gtag)gtag('event','share_result',{sport:'trail',method:'save',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(rpCaption(P)).catch(function(){});
+  _rpDownload(function(){rpToast('save_btn','save_done');});}
+function rpCopyCaption(){var P=window.PLAN;if(!P)return;
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(rpCaption(P)).then(function(){rpToast('cap_btn','cap_done');}).catch(function(){rpToast('cap_btn','cap_done');});
+  else rpToast('cap_btn','cap_done');}
+function rpShareCard(){var P=window.PLAN;if(!P)return;var c=document.getElementById("rp_canvas");if(!c.toBlob){rpSaveCard();return;}
+  c.toBlob(function(b){var f=b?new File([b],"raceplanner-trail-plan.png",{type:"image/png"}):null;
+    if(f&&navigator.canShare&&navigator.canShare({files:[f]})){
+      try{if(window.gtag)gtag('event','share_result',{sport:'trail',method:'native',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
+      navigator.share({files:[f],text:rpCaption(P)}).catch(function(){});
+    }else{rpSaveCard();}},"image/png");}
+function rpAfterRender(){var cp=document.getElementById("cardprev");if(cp)cp.style.display="block";
+  var sb=document.getElementById("share_btn");if(!sb)return;var ok=false;
+  try{ok=!!(navigator.canShare&&navigator.canShare({files:[new File([new Blob(["x"],{type:"image/png"})],"x.png",{type:"image/png"})]}));}catch(e){ok=false;}
+  sb.style.display=ok?"":"none";}
 (function(){try{
   var p=new URLSearchParams(location.search);if(p.get("s")!=="1")return;
   function sv(id,v){var e=document.getElementById(id);if(e&&v!=null&&v!=="")e.value=v;}
