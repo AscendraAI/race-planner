@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
-<meta name="google-site-verification" content="qf1B9F239atE39TMm2w7QMfl8fSz_xDC546FEqJa-uc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <title data-i18n="title">HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner</title>
 <meta name="description" data-i18n="desc" content="Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
@@ -660,12 +656,9 @@ function calc(){
   document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
   document.getElementById("fuelKit").innerHTML=buildKit(finish);
   document.getElementById("result").classList.add("show");
-  try{if(window.gtag)gtag('event','plan_generated',{sport:'hyrox',sex:sex,tier:tier,division:document.getElementById("div").value,finish_sec:Math.round(finish)});}catch(e){}
 }
 document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
 document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();document.getElementById("go").click();}});});
-(function(){var fk=document.getElementById("fuelKit");if(fk)fk.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="athletespick"]');if(a&&window.gtag){var m=a.href.match(/product_no=(\d+)/);gtag('event','fuel_click',{sport:'hyrox',medium:'fuelkit',product_no:m?m[1]:''});}});
-var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",function(){if(window.gtag)gtag('event','fuel_click',{sport:'hyrox',medium:'fuelplan'});});})();
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
