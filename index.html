@@ -2,186 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
-<meta name="google-site-verification" content="qf1B9F239atE39TMm2w7QMfl8fSz_xDC546FEqJa-uc" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-<title data-i18n="title">HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner</title>
-<meta name="description" data-i18n="desc" content="Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
-<meta name="keywords" content="hyrox calculator, hyrox time calculator, hyrox pace, hyrox finish time, roxzone, compromised running, 하이록스 계산기, 하이록스 페이스, 하이록스 완주 기록" />
-<link rel="canonical" href="https://raceplanner.online/" />
-<link rel="alternate" hreflang="en" href="https://raceplanner.online/?lang=en" />
-<link rel="alternate" hreflang="ko" href="https://raceplanner.online/?lang=ko" />
-<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/" />
+<title data-i18n="title">Trail GPX Race Plan — Hill-Adjusted Pacing & Fueling | Race Planner</title>
+<meta name="description" data-i18n="desc" content="Upload a GPX file to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser." />
+<meta name="keywords" content="gpx pacing, gpx race plan, elevation pacing, trail running pace, marathon pacing plan, gpx 페이스, 트레일 페이싱, 고도 페이싱, 마라톤 페이스 플랜" />
+<link rel="canonical" href="https://raceplanner.online/gpx/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/gpx/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/gpx/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/gpx/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="HYROX Time Calculator | Race Planner" />
+<meta property="og:title" content="Trail GPX Race Plan — Hill-Adjusted Pacing & Fueling" />
 <meta name="theme-color" content="#0a0c10" />
 <meta name="robots" content="index, follow" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Race Planner — HYROX Calculator","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
-</script>
 <style>
-  :root{
-    --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
-    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
-    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;
-    --run:#6ee7a8;--sta:#c8ff43;--roxc:#ffb35c;
-    --radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
-  }
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1f242e;--line:#2a313d;--ink:#f4f6f8;--sub:#9aa6b2;--accent:#c5ff3d;--accent2:#7be0a4;--warn:#ffb454;--up:#ff7a7a;--down:#7be0a4}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased;line-height:1.55;
-    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);
-    background-attachment:fixed;min-height:100vh;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
-
-  /* header */
-  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
-    padding:14px 0;margin-bottom:8px;
-    backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
-    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
-    border-bottom:1px solid var(--line)}
-  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
-  .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
-  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
-    display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
-  .logo b{color:var(--accent);font-weight:800}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .shell{max-width:1180px;margin:0 auto;padding:16px 18px calc(44px + env(safe-area-inset-bottom))}
+  header{display:flex;align-items:center;gap:10px;padding:6px 0 14px;border-bottom:1px solid var(--line);margin-bottom:18px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--ink)}
+  .logo b{color:var(--accent)}
   .spacer{flex:1}
-  .nav{display:flex;gap:4px}
-  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 11px;border-radius:9px;transition:.15s}
-  .navlink:hover{background:var(--panel2);color:var(--ink)}
-  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
-  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
-  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
-  @media(max-width:560px){.nav .navlink{padding:7px 8px;font-size:12px}.logo span.full{display:none}}
+  .navlink{font-size:13px;color:var(--accent2);text-decoration:none;font-weight:600;margin-left:13px}
+  .langtoggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:13px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+  .langtoggle button.on{background:var(--accent);color:#10130a}
+  .ad{border:1px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#566;font-size:11px;background:var(--panel);text-align:center}
+  .ad-leader{height:90px}.ad-sky{height:600px}.ad-rect{height:250px}
+  .ad-inline{height:100px;margin:16px 0;display:none}@media(max-width:800px){.ad-inline{display:flex}}
+  .leader{margin:0 auto 18px;max-width:970px}
+  .layout{display:grid;gap:20px;grid-template-columns:160px minmax(0,1fr) 300px;align-items:start}
+  .rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
+  @media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 300px}.rail-left{display:none}}
+  @media(max-width:800px){.layout{grid-template-columns:1fr}.rail-right{display:none}}
+  .center{min-width:0}
+  h1{font-size:24px;line-height:1.3;letter-spacing:-.6px;margin:2px 0 8px}
+  .lead{color:var(--sub);font-size:14.5px;line-height:1.6;margin-bottom:18px;max-width:62ch}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+  .ctitle{font-size:15px;font-weight:750;margin-bottom:14px;letter-spacing:-.3px}
+  label{display:block;font-size:13px;color:var(--sub);margin:0 0 7px;font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  @media(max-width:520px){.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}}
+  .field{margin-bottom:14px}
+  .pace{display:flex;align-items:center;gap:8px}.pace input{flex:1}.pace .sep{font-size:20px;font-weight:800;color:var(--sub)}
+  input,select{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);font-size:17px;padding:13px 12px;border-radius:11px;outline:none;text-align:center;font-variant-numeric:tabular-nums;-webkit-appearance:none;appearance:none}
+  select{text-align:left;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%239aa6b2' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 13px center;padding-right:32px}
+  input[type=date]{text-align:left}
+  input:focus,select:focus{border-color:var(--accent)}
+  button.calc{width:100%;background:var(--accent);color:#10130a;font-weight:800;font-size:16px;border:none;border-radius:12px;padding:15px;cursor:pointer;margin-top:4px;min-height:52px;-webkit-tap-highlight-color:transparent}
+  button.calc:active{transform:translateY(1px);opacity:.92}
+  button.calc:disabled{opacity:.45;cursor:default}
+  .drop{border:2px dashed var(--line);border-radius:14px;padding:30px 18px;text-align:center;background:var(--panel2);cursor:pointer;transition:border-color .15s,background .15s}
+  .drop.over{border-color:var(--accent);background:#1a2412}
+  .drop .big{font-size:15px;font-weight:700;margin-bottom:5px}
+  .drop .small{font-size:12.5px;color:var(--sub)}
+  .presets{margin-top:14px}
+  .presets-or{display:flex;align-items:center;gap:10px;color:var(--sub);font-size:12px;margin:2px 0 10px}
+  .presets-or::before,.presets-or::after{content:"";flex:1;height:1px;background:var(--line)}
+  .preset-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:520px){.preset-row{grid-template-columns:1fr}}
+  .preset-chip{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:var(--panel2);border:1.5px solid var(--line2);border-radius:12px;padding:12px 14px;cursor:pointer;color:inherit;transition:border-color .15s,transform .05s}
+  .preset-chip:hover{border-color:var(--accent)}
+  .preset-chip:active{transform:translateY(1px)}
+  .preset-chip .pc-t{font-weight:700;font-size:14px}
+  .preset-chip .pc-s{font-size:12px;color:var(--sub)}
+  .priv{font-size:11.5px;color:#566;margin-top:9px}
+  .out{display:none;margin-top:0}.out.show{display:block}
+  .bigrow{display:flex;gap:10px;flex-wrap:wrap}
+  .bigrow div.stat{flex:1;min-width:90px;background:linear-gradient(160deg,#1f242e,#161922);border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center}
+  .bigrow .k{font-size:10.5px;color:var(--sub)}.bigrow .v{font-size:22px;font-weight:850;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-1px;margin-top:3px}.bigrow .u{font-size:10.5px;color:var(--sub)}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--sub)}
+  .badge.fc{background:#13261a;color:var(--accent2);border-color:#244}
+  .badge.norm{background:#241f13;color:var(--warn);border-color:#443}
+  .badge.diff{background:#2a1414;color:var(--up);border-color:#522}
+  .wgrid{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .wgrid div{flex:1;min-width:80px;text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:11px 8px}
+  .wgrid .k{font-size:10.5px;color:var(--sub)}.wgrid .v{font-size:18px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:6px}
+  th,td{text-align:left;padding:9px 5px;border-bottom:1px solid var(--line);font-size:13.5px}
+  th{font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px}
+  td.r{text-align:right}
+  td.t{text-align:right;font-weight:750;color:var(--accent2)}
+  .g-up{color:var(--up)}.g-dn{color:var(--down)}
+  .fuelnote{font-size:11.5px;color:var(--warn)}
+  .canwrap{position:relative;width:100%;height:230px}
+  .info h2{font-size:16px;margin:18px 0 7px}.info p{font-size:13.5px;color:var(--sub);line-height:1.7}
+  .info ul{color:var(--sub);font-size:13px;line-height:1.7;margin:6px 0 0 18px}
+  footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:#566;line-height:1.7}
+  footer a{color:var(--accent2);text-decoration:none}
+  .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+  .muted{font-size:11px;color:#566;margin-top:8px}
+  .err{color:var(--up);font-size:13px;margin-top:10px;display:none}.err.show{display:block}
+  .loading{font-size:13px;color:var(--sub);margin-top:10px;display:none}.loading.show{display:block}
+  .cta{display:block;background:linear-gradient(160deg,#1f2a14,#171a21);border:1px solid #3a4a22;border-radius:13px;padding:14px 16px;text-decoration:none;margin-top:4px}
+  .cta b{color:var(--accent)}.cta span{display:block;font-size:12.5px;color:var(--sub);margin-top:3px}
 
-  /* hero */
-  .hero-top{padding:30px 0 10px;text-align:center}
-  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;
-    text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);
-    border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:18px}
-  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
-  h1{font-size:38px;line-height:1.12;letter-spacing:-1.2px;font-weight:800;margin:0 auto 14px;max-width:18ch}
-  h1 .g{color:var(--accent)}
-  .lead{color:var(--sub);font-size:16px;line-height:1.65;margin:0 auto;max-width:54ch}
-  .trust{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
-  .trust span{font-size:12px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
-    padding:7px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-  .trust b{color:var(--accent);font-weight:700;font-family:var(--mono)}
-  @media(max-width:560px){h1{font-size:30px}.lead{font-size:15px}}
-
-  /* card base */
-  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
-    border-radius:var(--radius);padding:22px}
-  .console{margin-top:26px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);position:relative;overflow:hidden}
-  .console::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(200,255,67,.5),transparent)}
-
-  label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 8px;font-weight:600;letter-spacing:.2px}
-  .inputgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;align-items:end}
-  @media(max-width:560px){.inputgrid{grid-template-columns:1fr 1fr}.field-pace{grid-column:1 / -1}}
-  .field{margin:0}
-  .pace{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1.5px solid var(--line2);
-    border-radius:13px;padding:6px 12px;transition:.15s}
-  .pace:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .pace input{flex:1;width:100%;background:transparent;border:none;color:var(--ink);font-size:24px;font-weight:700;
-    padding:10px 0;outline:none;text-align:center;font-variant-numeric:tabular-nums;font-family:var(--mono);
-    -webkit-appearance:none;appearance:none}
-  .pace .sep{font-size:24px;font-weight:700;color:var(--faint);font-family:var(--mono)}
-  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap;font-weight:600}
-  select{width:100%;background:var(--panel2);border:1.5px solid var(--line2);color:var(--ink);font-size:15px;
-    font-weight:600;padding:15px 34px 15px 14px;border-radius:13px;outline:none;cursor:pointer;
-    -webkit-appearance:none;appearance:none;transition:.15s;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238b97a6' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
-    background-repeat:no-repeat;background-position:right 14px center}
-  select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .hint{font-size:12px;color:var(--faint);font-weight:400;margin-top:12px;line-height:1.5}
-  button.calc{width:100%;background:var(--accent);color:var(--accentink);font-weight:800;font-size:16.5px;
-    border:none;border-radius:14px;padding:17px;cursor:pointer;margin-top:16px;letter-spacing:-.2px;min-height:56px;
-    -webkit-tap-highlight-color:transparent;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
-    box-shadow:0 10px 30px -10px rgba(200,255,67,.5)}
-  button.calc:hover{filter:brightness(1.05)}
-  button.calc:active{transform:translateY(1px) scale(.995)}
-  button.calc .arr{transition:.2s}button.calc:hover .arr{transform:translateX(3px)}
-
-  /* result */
-  .result{display:none;margin-top:18px}
-  .result.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .stack{display:flex;flex-direction:column;gap:14px}
-
-  .hero-card{position:relative;text-align:center;padding:30px 22px;overflow:hidden;
-    background:radial-gradient(120% 130% at 50% 0%,rgba(200,255,67,.13),transparent 60%),linear-gradient(180deg,var(--panelhi),var(--bg2));
-    border:1px solid var(--line2);border-radius:var(--radius)}
-  .hero-card .k{font-size:12px;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
-  .hero-card .v{font-size:68px;font-weight:700;letter-spacing:-2px;color:var(--accent);
-    font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 10px;
-    text-shadow:0 0 40px rgba(200,255,67,.3)}
-  .hero-card .s{font-size:13px;color:var(--sub)}.hero-card .s b{color:var(--mint);font-family:var(--mono);font-weight:600}
-  @media(max-width:560px){.hero-card .v{font-size:54px}}
-  .bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin:20px 0 10px;background:var(--panel2)}
-  .bar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .barleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--sub);flex-wrap:wrap}
-  .barleg span{display:inline-flex;align-items:center;gap:6px}
-  .barleg b{color:var(--ink);font-family:var(--mono);font-weight:600}
-  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
-
-  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
-  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .mini .mv{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--mono);color:var(--ink)}
-
-  .sect{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin:0 0 14px;text-transform:uppercase;
-    display:flex;align-items:center;gap:8px}
-  .sect::after{content:"";flex:1;height:1px;background:var(--line)}
-  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-  th,td{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
-  tr:last-child td{border-bottom:none}
-  th{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-  td.t{text-align:right;font-weight:600;color:var(--mint);font-family:var(--mono)}
-  td .d{font-size:11.5px;color:var(--sub);display:block;margin-top:3px;font-weight:400}
-  .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
-    background:var(--panel2);border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--accent);
-    margin-right:10px;font-family:var(--mono);font-weight:600}
-  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 4px;text-align:center}
-  .runs .rk{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .runs .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px;font-family:var(--mono);color:var(--ink)}
-  @media(max-width:560px){.runs{grid-template-columns:repeat(4,1fr)}.runs .rv{font-size:13px}}
-
-  .fuel{background:linear-gradient(150deg,rgba(110,231,168,.1),var(--bg2));border:1px solid #2c3a30;border-radius:var(--radius);padding:22px}
-  .fuel h3{font-size:16px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
-  .fuel p{font-size:13.5px;color:var(--ink2);line-height:1.65}
-  .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
-    color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
-  .fuel .cta:hover{filter:brightness(1.05)}
-
-  /* explainer */
-  .info{margin-top:34px}
-  .info h2{font-size:18px;margin:26px 0 10px;letter-spacing:-.3px}
-  .info p,.info li{font-size:14px;color:var(--sub);line-height:1.8}
-  .info ul{padding-left:20px;margin:8px 0}
-  .info li{margin-bottom:4px}
-  .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-  @media(max-width:560px){.moregrid{grid-template-columns:1fr}}
-  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
-    border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
-  .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
-  .morelink .ic{color:var(--accent);font-size:16px}
-
-  footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
-  footer a{color:var(--mint)}
-  .disc{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.65}
 
 /* ===== RP CANON design system (unified) ===== */
 
@@ -325,6 +247,22 @@
   .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
     color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
   .fuel .cta:hover{filter:brightness(1.05)}
+  .packbox{margin-top:16px;padding:13px 15px;border:1px solid var(--line2);border-radius:12px;background:rgba(110,231,168,.06)}
+  .packbox .pk_match{font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
+  .packbox .pk_name{font-weight:800;font-size:15px;color:var(--mint);margin-bottom:5px}
+  .packbox .pk_desc{font-size:12.5px;color:var(--ink2);line-height:1.55}
+  .sharebtn{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;width:100%;background:transparent;border:1px solid var(--line2);color:var(--ink2);font-weight:700;padding:13px;border-radius:12px;font-size:13.5px;cursor:pointer;transition:.15s}
+  .sharebtn:hover{border-color:var(--accent);color:var(--accent)}
+  .sharerow{display:flex;gap:9px}
+  .sharerow .sharebtn{margin-top:12px;flex:1}
+  .sharebtn.primary{background:var(--accent);color:var(--accentink);border-color:var(--accent)}
+  .sharebtn.primary:hover{filter:brightness(1.06);color:var(--accentink)}
+  .sharehint{font-size:11.5px;color:var(--sub);text-align:center;margin-top:10px;line-height:1.5}
+  .teaser{margin:14px 0 4px;padding:12px 15px;border:1px solid var(--accent);border-radius:12px;background:rgba(200,255,67,.08);font-size:13px;color:var(--ink)}
+  .teaser b{color:var(--accent);display:block;margin-bottom:3px;font-size:13.5px}
+  .cardprev{margin:18px 0 4px;text-align:center}
+  .cardprev canvas{width:100%;max-width:300px;height:auto;border-radius:16px;border:1px solid var(--line2);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+  .cardprev .cardprev_h{font-size:11.5px;color:var(--sub);margin-top:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
 
   /* explainer */
   .info{margin-top:34px}
@@ -355,33 +293,9 @@ header{display:block}
 .navlink.active{color:var(--accent);background:var(--panel2)}
 @media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
 @media(max-width:520px){.logo .full{display:none}}
-/* fuel schedule (MVP-0) */
-.fuelneed{display:flex;gap:10px;margin:2px 0 14px}
-.fuelneed>div{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center}
-.fuelneed .k{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px;font-weight:600;margin-bottom:5px}
-.fuelneed .v{font-size:19px;font-weight:700;color:var(--mint);font-family:var(--mono);font-variant-numeric:tabular-nums}
-.fuelneed .u{font-size:11px;color:var(--sub);font-weight:600;margin-left:1px}
-.fueltl{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 2px;padding:0}
-.fueltl li{font-size:13px;color:var(--ink2);line-height:1.5;padding-left:15px;position:relative}
-.fueltl li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
-.fueltl li b{color:var(--ink);font-weight:700}
-.fueltl li.warn{color:var(--rox)}.fueltl li.warn::before{background:var(--rox)}
-.kithead{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.4px;font-weight:700;margin:18px 0 9px}
-.kitlist{display:flex;flex-direction:column;gap:8px}
-.kititem{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 13px;transition:.15s}
-.kititem:hover{border-color:var(--mint);background:var(--panel2)}
-.kititem .ke{font-size:20px}
-.kititem .kt{flex:1;display:flex;flex-direction:column;line-height:1.32;min-width:0}
-.kititem .kt b{font-size:13.5px;color:var(--ink);font-weight:700}
-.kititem .ks{font-size:11.5px;color:var(--sub)}
-.kititem .kb{font-size:12.5px;font-weight:700;color:var(--mint);white-space:nowrap}
-.kitnote{font-size:12px;color:var(--sub);margin-top:9px}
-.kitnote a{color:var(--mint);font-weight:600}
-.pctl{margin-top:9px;font-size:14px;color:var(--mint);font-family:var(--mono);font-weight:600}
-.pctl b{color:var(--accent)}
-.pctl .pctsub{display:block;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;letter-spacing:0}
 </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
 <body>
 <header><div class="wrap-h">
@@ -395,206 +309,320 @@ header{display:block}
   </nav>
   <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
 </div></header>
-<div class="wrap">
-  <section class="hero-top">
-    <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Real-data HYROX predictor</span></span>
-    <h1 data-i18n="h1">HYROX finish-time calculator</h1>
-    <p class="lead" data-i18n="lead">Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.</p>
-    <div class="trust">
-      <span><b>400K+</b> <span data-i18n="t_athletes">real HYROX results</span></span>
-      <span data-i18n="t_free">⚡ Free · no signup</span>
-      <span data-i18n="t_time">⏱ 1-second result</span>
-    </div>
-  </section>
+<div class="shell">
+  <div class="layout">
 
-  <div class="card console">
-    <div class="inputgrid">
-      <div class="field field-pace">
-        <label><span data-i18n="in_pace">Your easy 5K pace</span> <span style="font-weight:400;color:var(--faint)">(/km)</span></label>
-        <div class="pace">
-          <input id="pmin" type="number" inputmode="numeric" min="2" max="9" value="5" aria-label="minutes" />
-          <span class="sep">:</span>
-          <input id="psec" type="number" inputmode="numeric" min="0" max="59" value="00" aria-label="seconds" />
-          <span class="unit">/km</span>
-        </div>
-      </div>
-      <div class="field">
-        <label data-i18n="in_sex">Gender</label>
-        <select id="sex"><option value="men" data-i18n="sex_m">Men</option><option value="women" data-i18n="sex_w">Women</option></select>
-      </div>
-      <div class="field">
-        <label data-i18n="in_lvl">Level</label>
-        <select id="lvl"><option value="beg" data-i18n="lv_b">Beginner</option><option value="int" selected data-i18n="lv_i">Intermediate</option><option value="adv" data-i18n="lv_a">Advanced</option></select>
-      </div>
-      <div class="field">
-        <label data-i18n="in_div">Division</label>
-        <select id="div"><option value="open" data-i18n="div_open">Open</option><option value="pro" data-i18n="div_pro">Pro</option></select>
-      </div>
-      <div class="field">
-        <label data-i18n="in_age">Age</label>
-        <select id="age"><option value="a3034" data-i18n="age_any">All ages</option><option value="a1624" data-i18n="age1">16–24</option><option value="a2529" data-i18n="age2">25–29</option><option value="a3034" data-i18n="age3">30–34</option><option value="a3539" data-i18n="age4">35–39</option><option value="a4044" data-i18n="age5">40–44</option><option value="a4549" data-i18n="age6">45–49</option><option value="a5054" data-i18n="age7">50–54</option><option value="a5559" data-i18n="age8">55–59</option><option value="a60" data-i18n="age9">60+</option></select>
-      </div>
-    </div>
-    <div class="hint" data-i18n="in_hint">Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.</div>
-    <button class="calc" id="go"><span data-i18n="btn">Predict finish time</span><span class="arr">→</span></button>
-  </div>
-
-  <div class="result" id="result">
-    <div class="stack">
-      <div class="hero-card">
-        <div class="k" data-i18n="r_finish">Predicted finish</div>
-        <div class="v" id="finish">—</div>
-        <div class="s"><span data-i18n="r_inpace">In-race run pace</span> <b id="inpace">—</b> /km · +<span id="off">—</span>s <span data-i18n="r_adj">adjustment</span></div>
-        <div class="pctl" id="pctl"></div>
-        <div class="bar" id="bar"></div>
-        <div class="barleg">
-          <span><i class="dot" style="background:var(--run)"></i><span data-i18n="r_run">Run</span> <b id="pRun">—</b></span>
-          <span><i class="dot" style="background:var(--sta)"></i><span data-i18n="r_sta">Stations</span> <b id="pSta">—</b></span>
-          <span><i class="dot" style="background:var(--roxc)"></i><span data-i18n="r_rox">Roxzone</span> <b id="pRox">—</b></span>
-        </div>
-      </div>
-
-      <div class="mini">
-        <div><div class="mk" data-i18n="m_run">Total run (8km)</div><div class="mv" id="mRun">—</div></div>
-        <div><div class="mk" data-i18n="m_sta">Total stations</div><div class="mv" id="mSta">—</div></div>
-        <div><div class="mk" data-i18n="m_rox">Roxzone</div><div class="mv" id="mRox">—</div></div>
-      </div>
+    <main class="center">
+      <section class="hero-top" style="text-align:center"><span class="eyebrow"><span class="pulse"></span>TRAIL GPX RACE PLAN</span>
+<h1 data-i18n="h1">Trail GPX Race Plan — Hill-Adjusted Pacing &amp; Fueling</h1>
+<p class="lead" data-i18n="lead">Drop in a GPX file and get a hill-adjusted pacing plan: elevation profile, per-kilometer target splits, heat correction from real weather, and fueling timing. Everything runs in your browser — your file never leaves your device.</p></section>
+    <div class="teaser" id="teaser" style="display:none"><b id="teaser_t"></b><span id="teaser_s"></span></div>
 
       <div class="card">
-        <div class="sect" data-i18n="s_station">Per-station target</div>
-        <table><thead><tr><th data-i18n="th_station">Station (order)</th><th style="text-align:right" data-i18n="th_target">Target</th></tr></thead><tbody id="tbody"></tbody></table>
+        <div class="ctitle" data-i18n="up_title">📂 1. Upload your course (GPX)</div>
+        <div class="drop" id="drop">
+          <div class="big" data-i18n="up_drop">Drag &amp; drop a GPX file here</div>
+          <div class="small" data-i18n="up_or">or tap to choose a file</div>
+          <div class="priv" data-i18n="up_priv">🔒 Parsed locally in your browser. Nothing is uploaded.</div>
+        </div>
+        <input id="file" type="file" accept=".gpx,application/gpx+xml,text/xml" style="display:none" />
+        <div class="presets">
+          <div class="presets-or"><span data-i18n="pz_or">or try instantly — no file needed</span></div>
+          <div class="preset-row">
+            <button class="preset-chip" type="button" onclick="loadPreset('uiit')"><span class="pc-t" data-i18n="pz_uiit">Ulleungdo Intl Trail 40K</span><span class="pc-s">40.2 km · D+2,700 m</span></button>
+            <button class="preset-chip" type="button" onclick="loadPreset('coolvalley')"><span class="pc-t" data-i18n="pz_cool">Cool Valley Trail Race 17K</span><span class="pc-s">18.8 km · D+720 m</span></button>
+          </div>
+        </div>
+        <div class="err" id="up_err"></div>
       </div>
 
-      <div class="card">
-        <div class="sect" data-i18n="s_pacing">8-run pacing (even split)</div>
-        <div class="runs" id="runs"></div>
-        <div class="hint" data-i18n="pacing_hint">Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.</div>
+      <div class="card out" id="sum_card">
+        <div class="ctitle" data-i18n="sum_title">🗻 Course summary</div>
+        <div class="bigrow">
+          <div class="stat"><div class="k" data-i18n="s_dist">Distance</div><div class="v" id="s_dist">—</div><div class="u">km</div></div>
+          <div class="stat"><div class="k" data-i18n="s_up">Ascent D+</div><div class="v" id="s_up">—</div><div class="u">m</div></div>
+          <div class="stat"><div class="k" data-i18n="s_down">Descent D−</div><div class="v" id="s_down">—</div><div class="u">m</div></div>
+          <div class="stat"><div class="k" data-i18n="s_hi">High / Low</div><div class="v" id="s_hi" style="font-size:16px">—</div><div class="u">m</div></div>
+        </div>
+        <div style="margin-top:10px"><span class="badge" id="s_diff">—</span></div>
       </div>
 
-      <div class="fuel">
-        <h3 data-i18n="fuel_h">⚡ Fueling for this race</h3>
-        <div id="fuelBody"></div>
-        <div id="fuelKit"></div>
-        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get the exact single-serve fuel — Athlete's Pick →</a>
+      <div class="card out" id="in_card">
+        <div class="ctitle" data-i18n="in_title">🎯 2. Your plan</div>
+        <div class="grid2">
+          <div class="field" style="margin:0">
+            <label data-i18n="in_goal">Goal finish time</label>
+            <div class="pace">
+              <input id="g_h" type="number" inputmode="numeric" min="0" max="30" placeholder="h" value="4" />
+              <span class="sep">:</span>
+              <input id="g_m" type="number" inputmode="numeric" min="0" max="59" placeholder="m" value="00" />
+              <span class="sep">:</span>
+              <input id="g_s" type="number" inputmode="numeric" min="0" max="59" placeholder="s" value="00" />
+            </div>
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="in_type">Terrain type</label>
+            <select id="in_type">
+              <option value="road" data-i18n="in_road">Road</option>
+              <option value="trail" selected data-i18n="in_trail">Trail (allow power-hiking)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:14px">
+          <div class="field" style="margin:0">
+            <label data-i18n="in_date">Race date</label>
+            <input id="in_date" type="date" />
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="in_start">Start time</label>
+            <input id="in_starth" type="time" value="08:00" style="text-align:left" />
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:14px">
+          <div class="field" style="margin:0">
+            <label data-i18n="in_lat">Start latitude</label>
+            <input id="in_lat" type="number" step="0.0001" placeholder="auto" />
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="in_lon">Start longitude</label>
+            <input id="in_lon" type="number" step="0.0001" placeholder="auto" />
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:14px">
+          <div class="field" style="margin:0">
+            <label data-i18n="in_level">Fueling level (carbs)</label>
+            <select id="in_level">
+              <option value="30" data-i18n="in_lvl1">Conservative · 30 g/h</option>
+              <option value="45" selected data-i18n="in_lvl2">Standard · 45 g/h</option>
+              <option value="60" data-i18n="in_lvl3">Aggressive · 60 g/h</option>
+            </select>
+          </div>
+          <div class="field" style="margin:0">
+            <label data-i18n="in_weather">Weather correction</label>
+            <select id="in_weather">
+              <option value="1" selected data-i18n="in_won">On (Open-Meteo)</option>
+              <option value="0" data-i18n="in_woff">Off</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc" id="genbtn" onclick="generate()" data-i18n="in_btn">Generate race plan</button>
+        <div class="loading" id="gen_load" data-i18n="gen_load">Fetching weather &amp; building plan…</div>
+        <div class="err" id="gen_err"></div>
       </div>
-    </div>
-  </div>
 
-  <div class="info">
-    <h2 data-i18n="i1_h">How does this calculator predict?</h2>
-    <p data-i18n="i1_p">A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.</p>
-    <ul>
-      <li data-i18n="i1_l1">Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.</li>
-      <li data-i18n="i1_l2">Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.</li>
-      <li data-i18n="i1_l3">Stations: distributed by level & gender from real averages.</li>
-    </ul>
-    <h2 data-i18n="i2_h">The 8 stations in order</h2>
-    <p data-i18n="i2_p">SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100</p>
-    <h2 data-i18n="more_tools">Other tools</h2>
-    <div class="moregrid">
-      <a class="morelink" href="/gpx/"><span class="ic">⛰</span><span data-i18n="more_gpx">Trail GPX race plan — elevation &amp; weather</span></a>
-      <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="more_pace">Marathon pace &amp; race-time predictor</span></a>
-    </div>
-    <h2 data-i18n="more_hxg">HYROX guides</h2>
-    <div class="moregrid">
-      <a class="morelink" href="/guide/pacing/"><span class="ic">📋</span><span data-i18n="more_g1">HYROX pacing guide</span></a>
-      <a class="morelink" href="/guide/nutrition/"><span class="ic">🥤</span><span data-i18n="more_g2">HYROX nutrition guide</span></a>
-      <a class="morelink" href="/guide/stations/"><span class="ic">🎯</span><span data-i18n="more_g3">8-station breakdown</span></a>
-      <a class="morelink" href="/guide/"><span class="ic">📚</span><span data-i18n="more_all">All guides →</span></a>
-    </div>
+      <div class="card out" id="w_card">
+        <div class="ctitle" data-i18n="w_title">🌡️ Race-day weather</div>
+        <div style="margin-bottom:10px"><span class="badge" id="w_badge">—</span> <span class="badge diff" id="w_pen" style="display:none">—</span></div>
+        <div class="wgrid">
+          <div><div class="k" data-i18n="w_feel">Feels like</div><div class="v" id="w_feel">—</div></div>
+          <div><div class="k" data-i18n="w_temp">Air temp</div><div class="v" id="w_temp">—</div></div>
+          <div><div class="k" data-i18n="w_hum">Humidity</div><div class="v" id="w_hum">—</div></div>
+          <div><div class="k" data-i18n="w_wind">Wind</div><div class="v" id="w_wind">—</div></div>
+        </div>
+        <div class="muted" id="w_loc">—</div>
+      </div>
+
+      <div class="card out" id="res_card">
+        <div class="ctitle" data-i18n="res_title">📊 Your plan</div>
+        <div class="bigrow">
+          <div class="stat"><div class="k" data-i18n="res_finish">Adj. finish</div><div class="v" id="res_finish">—</div><div class="u" data-i18n="res_finishu">weather-adjusted</div></div>
+          <div class="stat"><div class="k" data-i18n="res_avg">Avg pace</div><div class="v" id="res_avg">—</div><div class="u">min/km</div></div>
+          <div class="stat"><div class="k" data-i18n="res_gels">Gels</div><div class="v" id="res_gels">—</div><div class="u" data-i18n="res_gelsu">~25g each</div></div>
+          <div class="stat"><div class="k" data-i18n="res_fluid">Fluid</div><div class="v" id="res_fluid">—</div><div class="u" data-i18n="res_fluidu">total ml</div></div>
+        </div>
+        <div class="canwrap" style="margin-top:16px"><canvas id="chart"></canvas></div>
+      </div>
+
+      <div class="card out" id="sp_card">
+        <div class="ctitle" data-i18n="sp_title">⏱️ Kilometer splits</div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr>
+              <th data-i18n="sp_km">Km</th>
+              <th class="r" data-i18n="sp_grade">Grade</th>
+              <th class="r" data-i18n="sp_pace">Target pace</th>
+              <th class="r" data-i18n="sp_cum">Cumulative</th>
+              <th data-i18n="sp_fuel">Fuel / water</th>
+            </tr></thead>
+            <tbody id="sp_tb"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card out" id="fu_card">
+        <div class="ctitle" data-i18n="fu_title">🥤 Fueling &amp; hydration plan</div>
+        <div class="bigrow">
+          <div class="stat"><div class="k" data-i18n="fu_carb">Carbs/h</div><div class="v" id="fu_carb">—</div><div class="u">g</div></div>
+          <div class="stat"><div class="k" data-i18n="fu_water">Water/h</div><div class="v" id="fu_water">—</div><div class="u">ml</div></div>
+          <div class="stat"><div class="k" data-i18n="fu_na">Sodium/h</div><div class="v" id="fu_na">—</div><div class="u">mg</div></div>
+          <div class="stat"><div class="k" data-i18n="fu_int">Fuel every</div><div class="v" id="fu_int">—</div><div class="u">min</div></div>
+        </div>
+        <table style="margin-top:6px"><thead><tr>
+          <th data-i18n="fu_at">At</th><th data-i18n="fu_pt">Point</th><th data-i18n="fu_take">Take</th>
+        </tr></thead><tbody id="fu_tb"></tbody></table>
+        <div class="packbox" id="fu_pack">
+          <div class="pk_match" id="fu_pack_m"></div>
+          <div class="pk_name" id="fu_pack_t"></div>
+          <div class="pk_desc" id="fu_pack_d"></div>
+        </div>
+        <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener" onclick="rpFuelClick()">
+          <b data-i18n="fu_cta_t">→ Get race-day fuel at Athlete's Pick</b>
+          <span data-i18n="fu_cta_s">Trail race-day fuel pack — everything your plan needs, timed.</span>
+        </a>
+        <div class="cardprev" id="cardprev" style="display:none"><canvas id="rp_canvas" width="1080" height="1920"></canvas><div class="cardprev_h" data-i18n="prev_h">↓ Your shareable story card</div></div>
+        <div class="sharerow">
+          <button class="sharebtn primary" id="save_btn" type="button" onclick="rpSaveCard()"><span data-i18n="save_t">⬇ Save card image</span></button>
+          <button class="sharebtn" id="cap_btn" type="button" onclick="rpCopyCaption()"><span data-i18n="cap_t">Copy caption</span></button>
+        </div>
+        <button class="sharebtn" id="share_btn" type="button" onclick="rpShareCard()" style="display:none"><span data-i18n="share_t">Share</span></button>
+        <div class="sharehint" data-i18n="share_hint">Save the image and post it to your story or feed — your caption is copied too.</div>
+      </div>
+
+      <div class="info">
+        <h2 data-i18n="info1_h">How the hill adjustment works</h2>
+        <p data-i18n="info1_p">Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.</p>
+        <h2 data-i18n="info2_h">How weather changes your plan</h2>
+        <p data-i18n="info2_p">Using the start coordinates and date, we pull the apparent ("feels-like") temperature from Open-Meteo. Within ~16 days that's a real forecast; further out we fall back to a multi-year seasonal normal. Heat above ~15 °C adds a progressive pacing penalty and raises your fluid and sodium needs.</p>
+        <h2 data-i18n="info3_h">Limitations</h2>
+        <ul>
+          <li data-i18n="lim1">GPS elevation is noisy — D+ is smoothed but still device-dependent.</li>
+          <li data-i18n="lim2">Trail surface (rocks, mud, stairs) isn't in a GPX, so technical courses may be underestimated.</li>
+          <li data-i18n="lim3">Heat tolerance is personal; the penalty is an average trend, not a guarantee.</li>
+          <li data-i18n="lim4">Forecasts are reliable within ~16 days only — beyond that it's a seasonal normal, not a prediction.</li>
+        </ul>
+        <div class="related">
+          <a href="/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
+          <a href="/pace/" data-i18n="rel_pace">→ Pace calculator</a>
+          <a href="/guide/pacing/" data-i18n="rel_guide">→ Pacing guide</a>
+        </div>
+      </div>
+    </main>
   </div>
 
   <footer>
-    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span><br/>
-    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
-    <div class="disc" data-i18n="disc">※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.</div>
+    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/" data-i18n="foot_calc">HYROX calculator</a><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com?utm_source=raceplanner&utm_medium=footer&utm_campaign=trail" target="_blank" rel="noopener">Athlete's Pick</a><br/>
+    <span class="muted" data-i18n="foot3">Weather data by Open-Meteo (CC-BY 4.0). Hill model after Minetti et al. (2002).</span>
   </footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-var STA_NAMES={
- en:[["SkiErg","1000m"],["Sled Push","50m"],["Sled Pull","50m"],["Burpee Broad Jump","80m"],["Row","1000m"],["Farmers Carry","200m"],["Sandbag Lunges","100m"],["Wall Balls","×100"]],
- ko:[["스키에르그","1000m"],["썰매 밀기","50m"],["썰매 끌기","50m"],["버피 브로드 점프","80m"],["로잉","1000m"],["파머스 캐리","200m"],["샌드백 런지","100m"],["월볼","100개"]]
-};
-/* Station times (sec) by gender x tier, from HyroxDataLab percentiles (N=395,452, S7-8).
-   adv=top25% / int=median / beg=bottom25%. Order: Ski,SledPush,SledPull,Burpee,Row,Farmers,Lunges,WallBalls */
-var STA={
- men:{adv:[256,155,255,262,273,110,263,335],int:[269,184,303,322,289,129,313,412],beg:[285,223,370,401,309,156,379,523]},
- women:{adv:[294,148,294,313,307,120,260,320],int:[311,175,346,384,325,137,307,390],beg:[331,212,416,479,348,164,372,494]}
-};
-var LV={beg:{off:45,rox:50},int:{off:35,rox:42},adv:{off:25,rox:32}};
-/* Percentile readout: cohort median (sec) = gender + division + age deltas. Overall S8 anchors p90/p50/p10. */
-var GMED={men:4920,women:5510};
-var DIVD={open:0,pro:-280};
-var AGED={a1624:-17,a2529:-83,a3034:0,a3539:77,a4044:167,a4549:332,a5054:475,a5559:731,a60:805};
-function pctileTop(fin,cmed){
- var sh=cmed-4964,fast=4041+sh,med=cmed,slow=6374+sh,beats;
- if(fin<=fast)beats=90+Math.min(8,(fast-fin)/45);
- else if(fin<=med)beats=50+(med-fin)/(med-fast)*40;
- else if(fin<=slow)beats=10+(slow-fin)/(slow-med)*40;
- else beats=Math.max(1,10-(fin-slow)/60);
- beats=Math.max(1,Math.min(99,beats));
- return Math.round(100-beats);
-}
-
+/* ================= i18n ================= */
 var I18N={
- en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
-  desc:"Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
-  nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",eyebrow:"Real-data HYROX predictor",h1:"HYROX finish-time calculator",
-  lead:"Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.",
-  t_athletes:"real HYROX results",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
-  in_pace:"Your easy 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
-  in_div:"Division",div_open:"Open",div_pro:"Pro",in_age:"Age",age_any:"All ages",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
-  pctl_txt:function(t){return '≈ <b>Top '+t+'%</b> <span class="pctsub">vs same gender · division · age (approx.)</span>';},
-  in_hint:"Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.",btn:"Predict finish time",
-  r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
-  m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
-  s_pacing:"8-run pacing (even split)",pacing_hint:"Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.",
-  fuel_h:"⚡ Fuel schedule for this race",fuel_cta:"Get the exact single-serve fuel — Athlete's Pick →",
-  i1_h:"How does this calculator predict?",i1_p:"A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.",
-  i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
-  i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
-  i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
-  more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"Trail GPX race plan — elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
-  foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
-  disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
-  err:"Please check your pace (2:30–12:00 /km).",run:"Run",
-  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
- ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
-  desc:"평소 5K 페이스만 넣으면 하이록스 예상 완주 기록·인레이스 런 페이스·스테이션별 목표·8개 런 페이싱을 계산합니다.",
-  nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
-  lead:"평소 5K 페이스를 넣으면 실데이터 보정(컴프로마이즈드 러닝+록스존+스테이션)으로 예상 완주 기록을 계산합니다.",
-  t_athletes:"건 공개 HYROX 결과",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
-  in_pace:"평소 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
-  in_div:"부문",div_open:"오픈",div_pro:"프로",in_age:"연령",age_any:"전체",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
-  pctl_txt:function(t){return '≈ <b>상위 '+t+'%</b> <span class="pctsub">동일 성별·부문·연령 기준 (근사)</span>';},
-  in_hint:"전력 5K를 뛸 때의 1km 페이스를 넣으세요. 레이스 페이스는 자동 보정됩니다.",btn:"완주 기록 예측",
-  r_finish:"예상 완주 기록",r_inpace:"인레이스 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
-  m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
-  s_pacing:"8개 런 페이싱 (이븐 스플릿)",pacing_hint:"Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하세요. 최악 구간이 Run7~8이면 초반 과속입니다.",
-  fuel_h:"⚡ 이 레이스 보급 스케줄",fuel_cta:"필요량만큼 낱개로 — 애슬리츠픽 →",
-  i1_h:"이 계산기는 어떻게 예측하나요?",i1_p:"하이록스 완주는 런 + 스테이션 + 록스존의 합입니다. 명목 8km(8×1km)는 순수 러닝이고, 록스존이 그 위에 약 6.5% 더해집니다.",
-  i1_l1:"컴프로마이즈드 러닝: 레이스 중 런은 신선한 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
-  i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
-  i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
-  more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"트레일 GPX 레이스플랜 — 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
-  foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
-  disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
-  err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
-  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>경기 중</b> — 물·전해질 위주 (추가 탄수 불필요)":(m<=90?"<b>경기 중(테스트했다면)</b> — Run 4~5 전후 빠른 젤 1개":"<b>경기 중</b> — Run 3~4, Run 6 전후 젤 2개 분할");return '<div class="fuelneed"><div><span class="k">탄수</span><span class="v">~'+c+'g</span></div><div><span class="k">나트륨</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">수분</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>출발 30~45분 전</b> — 에너지젤 1개(~25g) + 전해질 음료</li><li>'+mid+'</li><li class="warn">⚠ 레이스 당일 새 제품 금지 — 2~3주 전부터 훈련에서 테스트</li></ul>';}}
+ en:{
+  title:"Trail GPX Race Plan — Hill-Adjusted Pacing & Fueling | Race Planner",
+  desc:"Upload a GPX file from any trail or road race to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.",
+  nav_hyrox:"HYROX", nav_pace:"Pace",
+  h1:"Trail GPX Race Plan — Hill-Adjusted Pacing & Fueling",
+  lead:"Drop in a GPX file from any trail or road race and get a hill-adjusted pacing plan: elevation profile, per-kilometer target splits, heat correction from real weather, and fueling timing. Everything runs in your browser — your file never leaves your device.",
+  up_title:"📂 1. Upload your course (GPX)", pz_or:"or try instantly — no file needed",pz_uiit:"Ulleungdo Intl Trail 40K",pz_cool:"Cool Valley Trail Race 17K", up_drop:"Drag & drop a GPX file here", up_or:"or tap to choose a file",
+  up_priv:"🔒 Parsed locally in your browser. Nothing is uploaded.",
+  sum_title:"🗻 Course summary", s_dist:"Distance", s_up:"Ascent D+", s_down:"Descent D−", s_hi:"High / Low",
+  in_title:"🎯 2. Your plan", in_goal:"Goal finish time", in_type:"Terrain type", in_road:"Road", in_trail:"Trail (allow power-hiking)",
+  in_date:"Race date", in_start:"Start time", in_lat:"Start latitude", in_lon:"Start longitude",
+  in_level:"Fueling level (carbs)", in_lvl1:"Conservative · 30 g/h", in_lvl2:"Standard · 45 g/h", in_lvl3:"Aggressive · 60 g/h",
+  in_weather:"Weather correction", in_won:"On (Open-Meteo)", in_woff:"Off",
+  in_btn:"Generate race plan", gen_load:"Fetching weather & building plan…",
+  w_title:"🌡️ Race-day weather", w_feel:"Feels like", w_temp:"Air temp", w_hum:"Humidity", w_wind:"Wind",
+  res_title:"📊 Your plan", res_finish:"Adj. finish", res_finishu:"weather-adjusted", res_avg:"Avg pace",
+  res_gels:"Gels", res_gelsu:"~25g each", res_fluid:"Fluid", res_fluidu:"total ml",
+  sp_title:"⏱️ Kilometer splits", sp_km:"Km", sp_grade:"Grade", sp_pace:"Target pace", sp_cum:"Cumulative", sp_fuel:"Fuel / water",
+  fu_title:"🥤 Fueling & hydration plan", fu_carb:"Carbs/h", fu_water:"Water/h", fu_na:"Sodium/h", fu_int:"Fuel every",
+  fu_at:"At", fu_pt:"Point", fu_take:"Take", fu_cta_t:"→ Get race-day fuel at Athlete's Pick",
+  fu_cta_s:"Trail race-day fuel pack — everything your plan needs, timed.",
+  pk_match:"Matched to your plan",
+  pk_e_t:"Essential 6 · ₩11,300",
+  pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
+  pk_p_t:"Pro 8 · ₩21,500",
+  pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
+  save_t:"⬇ Save card image", save_done:"Saved ✓ caption copied", cap_t:"Copy caption", cap_done:"Copied ✓", share_t:"Share", share_hint:"Save the image and post it to your story or feed — your caption is copied too.", prev_h:"↓ Your shareable story card",
+  teaser_t:"Someone shared their trail race plan", teaser_cta:"Upload your GPX below to build your own →",
+  info1_h:"How the hill adjustment works",
+  info1_p:"Each 100 m of the course is graded from your GPX elevation. We weight every segment by its metabolic cost using Minetti's energy-cost model, so climbs slow you down and descents speed you up automatically. Your goal time is then distributed across these weighted segments to give realistic per-kilometer targets.",
+  info2_h:"How weather changes your plan",
+  info2_p:"Using the start coordinates and date, we pull the apparent (\"feels-like\") temperature from Open-Meteo. Within ~16 days that's a real forecast; further out we fall back to a multi-year seasonal normal. Heat above ~15 °C adds a progressive pacing penalty and raises your fluid and sodium needs.",
+  info3_h:"Limitations",
+  lim1:"GPS elevation is noisy — D+ is smoothed but still device-dependent.",
+  lim2:"Trail surface (rocks, mud, stairs) isn't in a GPX, so technical courses may be underestimated.",
+  lim3:"Heat tolerance is personal; the penalty is an average trend, not a guarantee.",
+  lim4:"Forecasts are reliable within ~16 days only — beyond that it's a seasonal normal, not a prediction.",
+  rel_hyrox:"→ HYROX finish-time calculator", rel_pace:"→ Pace calculator", rel_guide:"→ Pacing guide",
+  foot1:"Race Planner · free tools for runners and HYROX athletes", foot_calc:"HYROX calculator",
+  foot2:"Single-serve sports nutrition", foot3:"Weather data by Open-Meteo (CC-BY 4.0). Hill model after Minetti et al. (2002).",
+  d_easy:"Easy", d_mod:"Moderate", d_hard:"Hard", d_vhard:"Very hard",
+  badge_fc:"Forecast", badge_norm:"Seasonal normal", badge_flat:"Flat course — no elevation in file",
+  pen_lbl:"heat penalty", loc_lbl:"Location", date_lbl:"date",
+  gel:"gel", water:"water",
+  err_parse:"Couldn't read that file. Make sure it's a valid .gpx with track points.",
+  err_pts:"This GPX has too few points to plan.", err_time:"Enter a valid goal time.",
+  err_weather:"Weather lookup failed — plan built without heat correction.",
+  chart_ele:"Elevation (m)", chart_dist:"Distance (km)"
+ },
+ ko:{
+  title:"트레일 GPX 레이스플랜 — 경사·날씨 보정 페이싱 & 보급 | 레이스 플래너",
+  desc:"트레일·로드 GPX 파일 하나로 경사 보정 페이싱, 고도 프로파일, 구간별 스플릿, 날씨(더위) 보정, 보급 타이밍까지. 무료, 브라우저에서 바로 실행.",
+  nav_hyrox:"하이록스", nav_pace:"페이스",
+  h1:"트레일 GPX 레이스플랜 — 경사·날씨 보정 페이싱 & 보급",
+  lead:"트레일·로드 GPX 파일을 올리면 경사 보정 페이싱 플랜이 나옵니다: 고도 프로파일, km별 목표 스플릿, 실제 날씨 기반 더위 보정, 보급 타이밍. 모든 처리는 브라우저 안에서 — 파일은 어디로도 전송되지 않습니다.",
+  up_title:"📂 1. 코스 업로드 (GPX)", pz_or:"파일 없이 바로 체험 — 인기 대회",pz_uiit:"울릉도 국제 트레일 40K",pz_cool:"쿨밸리 트레일레이스 17K", up_drop:"GPX 파일을 여기로 끌어다 놓으세요", up_or:"또는 탭하여 파일 선택",
+  up_priv:"🔒 브라우저에서 직접 분석합니다. 업로드되지 않습니다.",
+  sum_title:"🗻 코스 요약", s_dist:"거리", s_up:"상승 D+", s_down:"하강 D−", s_hi:"최고 / 최저",
+  in_title:"🎯 2. 플랜 설정", in_goal:"목표 완주 시간", in_type:"노면 유형", in_road:"로드", in_trail:"트레일 (파워하이킹 허용)",
+  in_date:"레이스 날짜", in_start:"출발 시각", in_lat:"시작 위도", in_lon:"시작 경도",
+  in_level:"보급 수준 (탄수)", in_lvl1:"보수적 · 30 g/h", in_lvl2:"표준 · 45 g/h", in_lvl3:"적극적 · 60 g/h",
+  in_weather:"날씨 보정", in_won:"켜기 (Open-Meteo)", in_woff:"끄기",
+  in_btn:"레이스 플랜 생성", gen_load:"날씨 조회 & 플랜 생성 중…",
+  w_title:"🌡️ 레이스 당일 날씨", w_feel:"체감온도", w_temp:"기온", w_hum:"습도", w_wind:"바람",
+  res_title:"📊 내 플랜", res_finish:"보정 완주", res_finishu:"날씨 보정 후", res_avg:"평균 페이스",
+  res_gels:"젤", res_gelsu:"개당 ~25g", res_fluid:"수분", res_fluidu:"총 ml",
+  sp_title:"⏱️ km별 스플릿", sp_km:"km", sp_grade:"경사", sp_pace:"목표 페이스", sp_cum:"누적", sp_fuel:"보급 / 수분",
+  fu_title:"🥤 보급 & 수분 플랜", fu_carb:"탄수/h", fu_water:"수분/h", fu_na:"나트륨/h", fu_int:"보급 간격",
+  fu_at:"시점", fu_pt:"지점", fu_take:"섭취", fu_cta_t:"→ 애슬리츠픽에서 레이스 보급 준비",
+  fu_cta_s:"트레일 레이스 보급 팩 — 플랜이 요구하는 보급을 시점까지 한 번에.",
+  pk_match:"내 플랜에 맞춘 팩",
+  pk_e_t:"에센셜 6 · 11,300원",
+  pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
+  pk_p_t:"프로 8 · 21,500원",
+  pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
+  save_t:"⬇ 카드 이미지 저장", save_done:"저장됨 ✓ 캡션 복사", cap_t:"캡션 복사", cap_done:"복사됨 ✓", share_t:"공유하기", share_hint:"이미지를 저장해 스토리·피드에 올리세요. 캡션도 자동 복사됩니다.", prev_h:"↓ 공유용 스토리 카드",
+  teaser_t:"누군가 트레일 레이스 플랜을 공유했어요", teaser_cta:"아래에서 내 GPX를 올려 나만의 플랜 만들기 →",
+  info1_h:"경사 보정은 어떻게 동작하나요",
+  info1_p:"코스를 100m 단위로 나눠 GPX 고도에서 경사를 계산합니다. 각 구간을 Minetti 에너지비용 모델로 가중하여, 오르막은 자동으로 감속·내리막은 가속됩니다. 목표 시간을 이 가중 구간들에 배분해 현실적인 km별 목표 페이스를 만듭니다.",
+  info2_h:"날씨가 플랜을 어떻게 바꾸나요",
+  info2_p:"시작 좌표와 날짜로 Open-Meteo에서 체감온도를 가져옵니다. 약 16일 이내는 실제 예보, 그 이상이면 다년 평년값으로 폴백합니다. 약 15°C 이상 더위는 페이스 페널티를 누진 적용하고 수분·나트륨 권장량을 높입니다.",
+  info3_h:"한계",
+  lim1:"GPS 고도는 노이즈가 있어 D+는 스무딩해도 기기차가 남습니다.",
+  lim2:"노면 기술도(바위·진흙·계단)는 GPX에 없어 테크니컬 코스는 과소평가될 수 있습니다.",
+  lim3:"더위 내성은 개인차가 큽니다 — 페널티는 평균 경향이며 보장이 아닙니다.",
+  lim4:"예보는 약 16일 이내만 신뢰할 수 있고, 그 이상은 평년값(예측 아님)입니다.",
+  rel_hyrox:"→ 하이록스 완주 기록 계산기", rel_pace:"→ 페이스 계산기", rel_guide:"→ 페이싱 가이드",
+  foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구", foot_calc:"하이록스 계산기",
+  foot2:"스포츠 뉴트리션 낱개 구매", foot3:"날씨 데이터 Open-Meteo (CC-BY 4.0). 경사 모델 Minetti et al. (2002).",
+  d_easy:"쉬움", d_mod:"보통", d_hard:"어려움", d_vhard:"매우 어려움",
+  badge_fc:"예보", badge_norm:"평년값", badge_flat:"평지 코스 — 파일에 고도 없음",
+  pen_lbl:"더위 페널티", loc_lbl:"위치", date_lbl:"날짜",
+  gel:"젤", water:"수분",
+  err_parse:"파일을 읽지 못했습니다. 트랙 포인트가 있는 올바른 .gpx인지 확인하세요.",
+  err_pts:"플랜을 만들기엔 GPX 포인트가 너무 적습니다.", err_time:"올바른 목표 시간을 입력하세요.",
+  err_weather:"날씨 조회 실패 — 더위 보정 없이 플랜을 생성했습니다.",
+  chart_ele:"고도 (m)", chart_dist:"거리 (km)"
+ }
 };
 var LANG="en";
 function detectLang(){
   var u=new URLSearchParams(location.search).get("lang");
   if(u==="ko"||u==="en")return u;
-  var s=localStorage.getItem("rp_lang"); if(s==="ko"||s==="en")return s;
+  var s=localStorage.getItem("rp_lang");
+  if(s==="ko"||s==="en")return s;
   var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
   var nav=(navigator.language||navigator.userLanguage||"").toLowerCase();
   if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";
   return "en";
 }
 function applyLang(){
-  var d=I18N[LANG];document.documentElement.lang=LANG;
+  var d=I18N[LANG];
+  document.documentElement.lang=LANG;
   document.querySelectorAll("[data-i18n]").forEach(function(el){
     var k=el.getAttribute("data-i18n");if(d[k]==null)return;
     if(el.tagName==="TITLE")document.title=d[k];
@@ -603,69 +631,363 @@ function applyLang(){
   });
   document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");
   document.getElementById("lang-en").classList.toggle("on",LANG==="en");
-  if(document.getElementById("result").classList.contains("show"))calc();
+  if(window.PLAN)renderAll(window.PLAN);
 }
 function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 
-function fmt(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),s=sec%60;if(m>=60){var h=Math.floor(m/60);m=m%60;return h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}return m+":"+String(s).padStart(2,"0");}
-function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+":"+String(s).padStart(2,"0");}
-function toSec(str){var p=str.split(":").map(Number);return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
-function v(id){return parseInt(document.getElementById(id).value,10);}
+/* ================= helpers ================= */
+function pace(sec){if(!isFinite(sec)||sec<=0)return "—";var m=Math.floor(sec/60),s=Math.round(sec%60);if(s===60){m++;s=0;}return m+":"+String(s).padStart(2,"0");}
+function fmt(sec){sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h>0?h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"):m+":"+String(s).padStart(2,"0");}
+function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+function ni(id){return parseInt(document.getElementById(id).value,10)||0;}
 
-var AP_KIT={
- gel:{no:103,en:"GU Liquid Energy",ko:"GU 리퀴드 에너지젤"},
- elec:{no:106,en:"Yohemite electrolyte tab",ko:"요헤미티 전해질 발포정"},
- cramp:{no:52,en:"Crampfix Quickshot",ko:"크램픽스 퀵샷"}
-};
-function apUrl(no){return "https://athletespick.com/product/detail.html?product_no="+no+"&utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=hyrox";}
-function buildKit(secs){
- var ko=LANG==="ko",m=Math.round(secs/60),gels=m<60?1:(m<=90?2:3);
- function row(emoji,label,prod,qty,spec){
-  return '<a class="kititem" href="'+apUrl(prod.no)+'" target="_blank" rel="noopener"><span class="ke">'+emoji+'</span><span class="kt"><b>'+label+' ×'+qty+'</b><span class="ks">'+(ko?prod.ko:prod.en)+' · '+spec+'</span></span><span class="kb">'+(ko?"담기":"Add")+' →</span></a>';
- }
- var head='<div class="kithead">'+(ko?"추천 낱개 키트 · 애슬리츠픽":"Single-serve kit · Athlete's Pick")+'</div>';
- var g=row("🥤",(ko?"에너지젤":"Energy gel"),AP_KIT.gel,gels,(ko?"탄수 ~20g":"~20g carb"));
- var e=row("💧",(ko?"전해질":"Electrolyte"),AP_KIT.elec,1,"Na 220mg");
- var cr='<div class="kitnote">'+(ko?"쥐가 잘 나면 ":"Prone to cramps? ")+'<a href="'+apUrl(AP_KIT.cramp.no)+'" target="_blank" rel="noopener">'+(ko?"크램픽스 퀵샷 →":"Crampfix Quickshot →")+'</a></div>';
- return head+'<div class="kitlist">'+g+e+'</div>'+cr;
+/* ================= GPX parse + preprocess ================= */
+function haversine(lat1,lon1,lat2,lon2){
+  var R=6371000,toR=Math.PI/180;
+  var dLat=(lat2-lat1)*toR,dLon=(lon2-lon1)*toR;
+  var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*toR)*Math.cos(lat2*toR)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return 2*R*Math.asin(Math.min(1,Math.sqrt(a)));
 }
-function calc(){
-  var d=I18N[LANG],pm=v("pmin"),ps=v("psec");
-  if(isNaN(pm)||isNaN(ps)){alert(d.err);return;}
-  var fresh=pm*60+ps; if(fresh<150||fresh>720){alert(d.err);return;}
-  var sex=document.getElementById("sex").value,lvl=LV[document.getElementById("lvl").value];
-  var tier=document.getElementById("lvl").value;
-  var inPace=fresh+lvl.off,runTotal=inPace*8;
-  var staArr=STA[sex][tier];
-  var staTotal=staArr.reduce(function(a,b){return a+b;},0),roxTotal=lvl.rox*8;
-  var finish=runTotal+staTotal+roxTotal;
-  var cmed=GMED[sex]+DIVD[document.getElementById("div").value]+AGED[document.getElementById("age").value];
-  document.getElementById("pctl").innerHTML=d.pctl_txt(pctileTop(finish,cmed));
-  document.getElementById("finish").textContent=fmt(finish);
-  document.getElementById("inpace").textContent=pace(inPace);
-  document.getElementById("off").textContent=lvl.off;
-  document.getElementById("mRun").textContent=fmt(runTotal);
-  document.getElementById("mSta").textContent=fmt(staTotal);
-  document.getElementById("mRox").textContent=fmt(roxTotal);
-  var pr=Math.round(runTotal/finish*100),pst=Math.round(staTotal/finish*100),prx=100-pr-pst;
-  document.getElementById("bar").innerHTML='<i style="width:'+pr+'%;background:var(--run)"></i><i style="width:'+pst+'%;background:var(--sta)"></i><i style="width:'+prx+'%;background:var(--roxc)"></i>';
-  document.getElementById("pRun").textContent=pr+"%";document.getElementById("pSta").textContent=pst+"%";document.getElementById("pRox").textContent=prx+"%";
-  var names=STA_NAMES[LANG],tb=document.getElementById("tbody");tb.innerHTML="";
-  names.forEach(function(st,i){var tr=document.createElement("tr");
-    tr.innerHTML='<td><span class="num">'+(i+1)+'</span>'+st[0]+'<span class="d">'+st[1]+'</span></td><td class="t">'+fmt(staArr[i])+'</td>';tb.appendChild(tr);});
-  var runsEl=document.getElementById("runs");runsEl.innerHTML="";
-  for(var i=0;i<8;i++){var p=inPace-10+(20*i/7);var el=document.createElement("div");
-    el.innerHTML='<div class="rk">'+d.run+' '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(el);}
-  var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
-  document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
-  document.getElementById("fuelKit").innerHTML=buildKit(finish);
-  document.getElementById("result").classList.add("show");
-  try{if(window.gtag)gtag('event','plan_generated',{sport:'hyrox',sex:sex,tier:tier,division:document.getElementById("div").value,finish_sec:Math.round(finish)});}catch(e){}
+function parseGPX(text){
+  var xml=new DOMParser().parseFromString(text,"application/xml");
+  if(xml.getElementsByTagName("parsererror").length)throw new Error("parse");
+  var pts=xml.getElementsByTagName("trkpt");
+  if(!pts.length)pts=xml.getElementsByTagName("rtept");
+  var lat=[],lon=[],ele=[],hasEle=false;
+  for(var i=0;i<pts.length;i++){
+    var la=parseFloat(pts[i].getAttribute("lat")),lo=parseFloat(pts[i].getAttribute("lon"));
+    if(!isFinite(la)||!isFinite(lo))continue;
+    var e=pts[i].getElementsByTagName("ele")[0];
+    var ev=e?parseFloat(e.textContent):NaN;
+    if(isFinite(ev))hasEle=true;
+    lat.push(la);lon.push(lo);ele.push(isFinite(ev)?ev:0);
+  }
+  return {lat:lat,lon:lon,ele:ele,hasEle:hasEle};
 }
-document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
-document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();document.getElementById("go").click();}});});
-(function(){var fk=document.getElementById("fuelKit");if(fk)fk.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="athletespick"]');if(a&&window.gtag){var m=a.href.match(/product_no=(\d+)/);gtag('event','fuel_click',{sport:'hyrox',medium:'fuelkit',product_no:m?m[1]:''});}});
-var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",function(){if(window.gtag)gtag('event','fuel_click',{sport:'hyrox',medium:'fuelplan'});});})();
+function movavg(arr,win){
+  var n=arr.length,out=new Array(n),h=Math.floor(win/2);
+  for(var i=0;i<n;i++){var s=0,c=0;for(var j=i-h;j<=i+h;j++){if(j>=0&&j<n){s+=arr[j];c++;}}out[i]=s/c;}
+  return out;
+}
+function buildSegments(g){
+  var n=g.lat.length;
+  var cum=[0];
+  for(var i=1;i<n;i++)cum.push(cum[i-1]+haversine(g.lat[i-1],g.lon[i-1],g.lat[i],g.lon[i]));
+  var total=cum[n-1];
+  var eleS=g.hasEle?movavg(g.ele,5):g.ele.slice();
+  var STEP=100; var Nseg=Math.max(1,Math.round(total/STEP));
+  var sampD=[],sampE=[],k=0;
+  for(var s=0;s<=Nseg;s++){
+    var td=Math.min(total,s*STEP);
+    while(k<n-2&&cum[k+1]<td)k++;
+    var d0=cum[k],d1=cum[k+1],frac=(d1>d0)?(td-d0)/(d1-d0):0;
+    var ev=eleS[k]+(eleS[k+1]-eleS[k])*frac;
+    sampD.push(td);sampE.push(ev);
+  }
+  if(g.hasEle&&sampE.length>4)sampE=movavg(sampE,3);
+  var seg=[],dPlus=0,dMinus=0,hi=-1e9,lo=1e9;
+  for(var s=0;s<sampD.length-1;s++){
+    var dist=sampD[s+1]-sampD[s]; if(dist<=0)continue;
+    var dEle=sampE[s+1]-sampE[s];
+    if(Math.abs(dEle)<0.5&&g.hasEle)dEle=0;
+    var grade=g.hasEle?dEle/dist:0;
+    if(dEle>0)dPlus+=dEle;else dMinus+=-dEle;
+    seg.push({d0:sampD[s],d1:sampD[s+1],dist:dist,grade:grade,ele:sampE[s]});
+    hi=Math.max(hi,sampE[s]);lo=Math.min(lo,sampE[s]);
+  }
+  hi=Math.max(hi,sampE[sampE.length-1]);lo=Math.min(lo,sampE[sampE.length-1]);
+  return {total:total,seg:seg,dPlus:dPlus,dMinus:dMinus,hi:hi,lo:lo,
+          startLat:g.lat[0],startLon:g.lon[0],hasEle:g.hasEle,prof:{d:sampD,e:sampE}};
+}
+
+/* ================= Minetti cost + power-hike ================= */
+function minettiC(i){
+  i=clamp(i,-0.45,0.45);
+  return 155.4*Math.pow(i,5)-30.4*Math.pow(i,4)-43.3*Math.pow(i,3)+46.3*i*i+19.5*i+3.6;
+}
+var C0=3.6;
+function segWeight(seg,type){
+  var ratio=minettiC(seg.grade)/C0;
+  if(type==="trail"&&seg.grade>0.20){
+    var rAt20=minettiC(0.20)/C0;
+    var extra=(ratio-rAt20)*0.55;
+    ratio=rAt20+Math.max(0,extra);
+  }
+  ratio=clamp(ratio,0.80,5.0); // 0.80 floor caps unrealistic downhill speed (braking limit, not energy)
+  return {w:seg.dist*ratio,ratio:ratio,hike:(type==="trail"&&seg.grade>0.20)};
+}
+
+/* ================= weather (Open-Meteo) ================= */
+function heatPenaltyPct(Ta){
+  if(Ta<=15)return 0;
+  var p=(Math.min(Ta,25)-15)*0.7;
+  if(Ta>25)p+=(Math.min(Ta,30)-25)*1.0;
+  if(Ta>30)p+=(Ta-30)*1.5;
+  return p;
+}
+function isoDate(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function fetchJSON(url){return fetch(url).then(function(r){if(!r.ok)throw new Error("http");return r.json();});}
+function getWeather(lat,lon,dateStr,startH){
+  var today=new Date();today.setHours(0,0,0,0);
+  var race=new Date(dateStr+"T00:00:00");
+  var days=Math.round((race-today)/86400000);
+  if(days>=0&&days<=15){
+    var u="https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lon+
+      "&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m"+
+      "&start_date="+dateStr+"&end_date="+dateStr+"&timezone=auto";
+    return fetchJSON(u).then(function(j){
+      var idx=clamp(startH,0,23);var h=j.hourly;
+      return {mode:"fc",feel:h.apparent_temperature[idx],temp:h.temperature_2m[idx],
+              hum:h.relative_humidity_2m[idx],wind:h.wind_speed_10m[idx]};
+    });
+  } else {
+    var mmdd=dateStr.slice(5);var ys=[];var Y=today.getFullYear();
+    for(var y=Y-1;y>=Y-5;y--)ys.push(y);
+    var calls=ys.map(function(y){
+      var ds=y+"-"+mmdd;
+      var u="https://archive-api.open-meteo.com/v1/archive?latitude="+lat+"&longitude="+lon+
+        "&start_date="+ds+"&end_date="+ds+
+        "&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=auto";
+      return fetchJSON(u).catch(function(){return null;});
+    });
+    return Promise.all(calls).then(function(res){
+      var idx=clamp(startH,0,23),sf=0,st=0,sh=0,sw=0,c=0;
+      res.forEach(function(j){
+        if(!j||!j.hourly||!j.hourly.apparent_temperature)return;
+        var H=j.hourly;
+        if(H.apparent_temperature[idx]==null)return;
+        sf+=H.apparent_temperature[idx];st+=H.temperature_2m[idx];
+        sh+=H.relative_humidity_2m[idx];sw+=H.wind_speed_10m[idx];c++;
+      });
+      if(!c)throw new Error("noclim");
+      return {mode:"norm",feel:sf/c,temp:st/c,hum:sh/c,wind:sw/c};
+    });
+  }
+}
+
+/* ================= plan builder ================= */
+function buildPlan(course,goalSec,type,level,weather){
+  var pen=weather?heatPenaltyPct(weather.feel):0;
+  var Tadj=goalSec*(1+pen/100);
+  var W=0,wseg=[];
+  course.seg.forEach(function(s){var x=segWeight(s,type);wseg.push(x);W+=x.w;});
+  var p0=Tadj/W;
+  var kms=[],curKm=1,kmTime=0,kmDist=0,kmGradeNum=0,kmHike=false,t=0;
+  course.seg.forEach(function(s,i){
+    var st=wseg[i].w*p0; t+=st;
+    kmTime+=st;kmDist+=s.dist;kmGradeNum+=s.grade*s.dist;
+    if(wseg[i].hike)kmHike=true;
+    if(s.d1>=curKm*1000-1||i===course.seg.length-1){
+      kms.push({km:curKm,dist:kmDist,grade:kmGradeNum/Math.max(1,kmDist),
+                pace:kmTime/(kmDist/1000),cum:t,hike:kmHike,
+                ele:s.ele,distEnd:s.d1});
+      curKm++;kmTime=0;kmDist=0;kmGradeNum=0;kmHike=false;
+    }
+  });
+  var total=t;
+  var Th=total/3600;
+  var carbH=level;
+  var feel=weather?weather.feel:15;
+  var waterH=clamp(450+Math.max(0,feel-15)*30,400,1000);
+  var naH=clamp(350+Math.max(0,feel-15)*35,300,1200);
+  var gels=Math.max(0,Math.round(Th*carbH/25));
+  var fluidTot=Math.round(Th*waterH);
+  var naTot=Math.round(Th*naH);
+  var interval=feel>27?30:(feel>20?35:40);
+  var marks=[];
+  for(var mt=interval*60;mt<total-120;mt+=interval*60){
+    var pt=kms[0];for(var z=0;z<kms.length;z++){if(kms[z].cum>=mt){pt=kms[z];break;}}
+    marks.push({t:mt,km:(pt.distEnd/1000),ele:pt.ele,
+                gel:1,water:Math.round(waterH*interval/60)});
+  }
+  return {course:course,goalSec:goalSec,Tadj:total,pen:pen,weather:weather,type:type,
+          kms:kms,carbH:carbH,waterH:Math.round(waterH),naH:Math.round(naH),
+          gels:gels,fluidTot:fluidTot,naTot:naTot,interval:interval,marks:marks,
+          avgPace:total/(course.total/1000)};
+}
+
+/* ================= rendering ================= */
+var CHART=null;
+function difficultyLabel(course){
+  var d=I18N[LANG];
+  if(!course.hasEle)return d.badge_flat;
+  var perKm=course.dPlus/(course.total/1000);
+  var lbl=perKm<10?d.d_easy:perKm<25?d.d_mod:perKm<45?d.d_hard:d.d_vhard;
+  return lbl+" · "+Math.round(perKm)+" m D+/km";
+}
+function showCourse(course){
+  document.getElementById("s_dist").textContent=(course.total/1000).toFixed(2);
+  document.getElementById("s_up").textContent=Math.round(course.dPlus);
+  document.getElementById("s_down").textContent=Math.round(course.dMinus);
+  document.getElementById("s_hi").textContent=course.hasEle?(Math.round(course.hi)+" / "+Math.round(course.lo)):"—";
+  document.getElementById("s_diff").textContent=difficultyLabel(course);
+  document.getElementById("sum_card").classList.add("show");
+  document.getElementById("in_card").classList.add("show");
+  if(document.getElementById("in_lat").value==="")document.getElementById("in_lat").value=course.startLat.toFixed(4);
+  if(document.getElementById("in_lon").value==="")document.getElementById("in_lon").value=course.startLon.toFixed(4);
+}
+function renderAll(P){
+  var d=I18N[LANG];
+  if(P.weather){
+    var w=P.weather;
+    document.getElementById("w_card").classList.add("show");
+    var b=document.getElementById("w_badge");
+    b.textContent=w.mode==="fc"?d.badge_fc:d.badge_norm;
+    b.className="badge "+(w.mode==="fc"?"fc":"norm");
+    var pb=document.getElementById("w_pen");
+    if(P.pen>0.5){pb.style.display="";pb.textContent="+"+P.pen.toFixed(0)+"% "+d.pen_lbl;}else pb.style.display="none";
+    document.getElementById("w_feel").textContent=w.feel.toFixed(0)+"°C";
+    document.getElementById("w_temp").textContent=w.temp.toFixed(0)+"°C";
+    document.getElementById("w_hum").textContent=Math.round(w.hum)+"%";
+    document.getElementById("w_wind").textContent=w.wind.toFixed(0)+" km/h";
+    document.getElementById("w_loc").textContent=d.loc_lbl+": "+(+document.getElementById("in_lat").value).toFixed(3)+", "+(+document.getElementById("in_lon").value).toFixed(3)+" · "+d.date_lbl+" "+document.getElementById("in_date").value;
+  } else {
+    document.getElementById("w_card").classList.remove("show");
+  }
+  document.getElementById("res_card").classList.add("show");
+  document.getElementById("res_finish").textContent=fmt(P.Tadj);
+  document.getElementById("res_avg").textContent=pace(P.avgPace);
+  document.getElementById("res_gels").textContent=P.gels;
+  document.getElementById("res_fluid").textContent=P.fluidTot;
+  var tb=document.getElementById("sp_tb");tb.innerHTML="";
+  var markByKm={};P.marks.forEach(function(m){markByKm[Math.round(m.km)]=m;});
+  P.kms.forEach(function(k){
+    var gp=(k.grade*100);
+    var gc=gp>1?"g-up":(gp<-1?"g-dn":"");
+    var gtxt=(gp>0?"+":"")+gp.toFixed(1)+"%"+(k.hike?" ⛰":"");
+    var fuel="";var mk=markByKm[k.km];
+    if(mk)fuel='<span class="fuelnote">'+mk.gel+" "+d.gel+" · "+mk.water+"ml</span>";
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td>'+k.km+'</td><td class="r '+gc+'">'+gtxt+'</td><td class="t">'+pace(k.pace)+'</td><td class="r">'+fmt(k.cum)+'</td><td>'+fuel+'</td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById("sp_card").classList.add("show");
+  document.getElementById("fu_carb").textContent=P.carbH;
+  document.getElementById("fu_water").textContent=P.waterH;
+  document.getElementById("fu_na").textContent=P.naH;
+  document.getElementById("fu_int").textContent=P.interval;
+  var ft=document.getElementById("fu_tb");ft.innerHTML="";
+  P.marks.forEach(function(m){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td>'+fmt(m.t)+'</td><td>'+m.km.toFixed(1)+' km'+(P.course.hasEle?' · '+Math.round(m.ele)+'m':'')+'</td><td>'+m.gel+' '+d.gel+' + '+m.water+'ml '+d.water+'</td>';
+    ft.appendChild(tr);
+  });
+  var pkPro=P.carbH>=60;
+  document.getElementById("fu_pack_m").textContent=d.pk_match;
+  document.getElementById("fu_pack_t").textContent=pkPro?d.pk_p_t:d.pk_e_t;
+  document.getElementById("fu_pack_d").textContent=pkPro?d.pk_p_d:d.pk_e_d;
+  document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(pkPro?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
+  try{if(window.buildShareCard){buildShareCard(P);if(window.rpAfterRender)rpAfterRender();}}catch(e){}
+  document.getElementById("fu_card").classList.add("show");
+  drawChart(P);
+}
+function drawChart(P){
+  var d=I18N[LANG];
+  if(!P.course.hasEle){if(CHART){CHART.destroy();CHART=null;}return;}
+  var prof=P.course.prof;
+  var pts=prof.d.map(function(dd,i){return {x:dd/1000,y:prof.e[i]};});
+  var stride=Math.max(1,Math.floor(pts.length/250));
+  var cpts=pts.filter(function(_,i){return i%stride===0;});
+  var markPts=P.marks.map(function(m){return {x:m.km,y:m.ele};});
+  if(CHART)CHART.destroy();
+  var ctx=document.getElementById("chart").getContext("2d");
+  CHART=new Chart(ctx,{type:"line",
+    data:{datasets:[
+      {label:d.chart_ele,data:cpts,parsing:false,borderColor:"#7be0a4",borderWidth:1.5,
+       backgroundColor:"rgba(123,224,164,.12)",fill:true,pointRadius:0,tension:.1},
+      {label:"fuel",data:markPts,parsing:false,showLine:false,
+       pointBackgroundColor:"#c5ff3d",pointBorderColor:"#10130a",pointRadius:5,pointStyle:"triangle"}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,animation:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        title:function(it){return it[0].parsed.x.toFixed(1)+" km";},
+        label:function(it){return Math.round(it.parsed.y)+" m";}}}},
+      scales:{
+        x:{type:"linear",title:{display:true,text:d.chart_dist,color:"#9aa6b2",font:{size:10}},
+           ticks:{color:"#9aa6b2",font:{size:10}},grid:{color:"#2a313d"}},
+        y:{title:{display:true,text:d.chart_ele,color:"#9aa6b2",font:{size:10}},
+           ticks:{color:"#9aa6b2",font:{size:10}},grid:{color:"#2a313d"}}}}
+  });
+}
+
+/* ================= flow ================= */
+var RP_PRESETS={"uiit":{"gh":8,"gm":0,"km":40148,"lat":[37.51131,37.51156,37.51166,37.51145,37.51123,37.51117,37.51125,37.51144,37.51164,37.51183,37.51203,37.51222,37.51231,37.5123,37.51219,37.51225,37.51226,37.51234,37.51239,37.5124,37.51241,37.51248,37.51255,37.5126,37.5127,37.51273,37.51277,37.51281,37.51285,37.51285,37.51272,37.51245,37.5124,37.51232,37.51231,37.51215,37.5121,37.51213,37.51214,37.51207,37.51203,37.51211,37.51236,37.51261,37.51285,37.51307,37.51329,37.51354,37.51371,37.51382,37.51393,37.51394,37.51394,37.51397,37.51384,37.51368,37.51366,37.51367,37.5138,37.51393,37.51413,37.5143,37.51453,37.51473,37.51502,37.51526,37.51537,37.51545,37.51541,37.51561,37.51573,37.51579,37.51597,37.51603,37.51616,37.51624,37.5163,37.51635,37.51639,37.51665,37.51694,37.51723,37.51753,37.51778,37.51791,37.51817,37.51845,37.51869,37.51895,37.51894,37.51874,37.51866,37.51852,37.51859,37.51854,37.5184,37.51811,37.51787,37.51786,37.51768,37.51756,37.51727,37.51701,37.51682,37.51656,37.51634,37.51608,37.51581,37.51552,37.51532,37.51509,37.51494,37.51488,37.51487,37.51482,37.51488,37.51493,37.51495,37.51492,37.5149,37.51506,37.51534,37.51549,37.51563,37.51584,37.51598,37.51599,37.51604,37.516,37.51613,37.51632,37.51646,37.51659,37.51665,37.51659,37.5166,37.51669,37.51685,37.51698,37.51721,37.51747,37.5177,37.51786,37.51775,37.51764,37.51764,37.51776,37.51786,37.51789,37.51803,37.51823,37.51848,37.51864,37.51858,37.51841,37.51837,37.51836,37.51829,37.51814,37.51789,37.51803,37.51816,37.51827,37.51831,37.51823,37.51815,37.51808,37.51811,37.51836,37.51864,37.51896,37.51923,37.51947,37.51972,37.52,37.52025,37.52043,37.52056,37.52068,37.5209,37.52109,37.52105,37.52121,37.52144,37.52155,37.52166,37.52191,37.52185,37.52208,37.52212,37.5222,37.52229,37.52246,37.5226,37.52285,37.52308,37.52321,37.52345,37.52375,37.52398,37.52424,37.52449,37.52472,37.52491,37.52515,37.52537,37.52561,37.52577,37.52583,37.52592,37.52603,37.52616,37.5263,37.5264,37.52651,37.52661,37.5267,37.52684,37.52697,37.52693,37.52705,37.52712,37.52704,37.5269,37.52676,37.5266,37.52655,37.52653,37.52653,37.52653,37.52653,37.52652,37.52649,37.52627,37.52602,37.52585,37.52598,37.52594,37.5257,37.52548,37.52525,37.525,37.52482,37.52492,37.52493,37.52504,37.52503,37.52503,37.52511,37.52511,37.52493,37.52487,37.52468,37.52455,37.52436,37.52436,37.52435,37.52443,37.52446,37.52453,37.52464,37.52483,37.52513,37.52525,37.52535,37.5255,37.52555,37.52538,37.52521,37.52505,37.52475,37.52494,37.52509,37.52501,37.52501,37.52506,37.52529,37.52557,37.52584,37.52613,37.52644,37.52674,37.52702,37.52732,37.52758,37.52781,37.528,37.52812,37.52827,37.5285,37.52851,37.52868,37.52899,37.5293,37.5296,37.52983,37.52993,37.5301,37.53008,37.52978,37.52948,37.52922,37.52944,37.52975,37.53006,37.53034,37.53056,37.53074,37.53082,37.53082,37.53085,37.53087,37.53102,37.53099,37.53076,37.5306,37.53037,37.53011,37.52995,37.52987,37.52986,37.52967,37.52945,37.52933,37.52954,37.52948,37.52954,37.52939,37.52916,37.52899,37.52904,37.5291,37.52902,37.52877,37.52848,37.52828,37.52805,37.52783,37.52762,37.52735,37.52713,37.52695,37.52675,37.52669,37.52653,37.52638,37.52626,37.52599,37.52581,37.52562,37.52539,37.52517,37.52505,37.52495,37.52485,37.52465,37.5244,37.52424,37.52415,37.52417,37.52424,37.52408,37.52414,37.52415,37.52406,37.52395,37.52384,37.52357,37.52337,37.52313,37.52309,37.52279,37.52255,37.52231,37.52218,37.52197,37.52167,37.52141,37.52113,37.52092,37.52061,37.52032,37.52001,37.51972,37.51946,37.51925,37.51906,37.51886,37.51866,37.51841,37.5181,37.51782,37.51753,37.5173,37.51709,37.51701,37.517,37.51693,37.51705,37.51676,37.51649,37.51636,37.51627,37.51646,37.51675,37.51703,37.51733,37.5176,37.5177,37.51781,37.51773,37.51773,37.51802,37.51827,37.5183,37.51825,37.51822,37.51849,37.51836,37.51819,37.51814,37.51833,37.51848,37.51877,37.51896,37.51911,37.51908,37.51922,37.51944,37.51942,37.51955,37.51951,37.51962,37.51966,37.5197,37.51968,37.51967,37.51965,37.51961,37.51968,37.51982,37.51993,37.52004,37.5201,37.52029,37.52048,37.52054,37.52071,37.52078,37.52091,37.52109,37.52121,37.52131,37.52146,37.52132,37.52108,37.52094,37.52093,37.52075,37.52058,37.52056,37.5205,37.52051,37.52058,37.52073,37.5208,37.52065,37.52056,37.52041,37.52028,37.52009,37.51997,37.5199,37.51986,37.51973,37.51973,37.51969,37.51963,37.51949,37.51948,37.51953,37.51974,37.51981,37.51958,37.51927,37.51899,37.51876,37.51858,37.51828,37.51798,37.51781,37.51769,37.51756,37.51738,37.51727,37.51714,37.51696,37.51683,37.51669,37.51666,37.51642,37.51642,37.51625,37.51601,37.51586,37.51585,37.51579,37.51574,37.51569,37.51555,37.51545,37.51528,37.51508,37.51489,37.51473,37.51459,37.51453,37.51446,37.51436,37.51437,37.51429,37.51436,37.51453,37.51462,37.51468,37.51468,37.51444,37.5143,37.51407,37.5138,37.51355,37.51332,37.51302,37.51313,37.5134,37.51367,37.51395,37.51422,37.5145,37.5148,37.51509,37.51534,37.51564,37.51593,37.51615,37.51628,37.51636,37.51646,37.51662,37.51676,37.51691,37.51702,37.5171,37.51719,37.51732,37.51735,37.51737,37.51741,37.51742,37.51741,37.51748,37.51769,37.5179,37.51818,37.51845,37.51874,37.519,37.51928,37.51956,37.51983,37.52008,37.52036,37.52066,37.52096,37.52119,37.52148,37.52164,37.52185,37.52206,37.52232,37.5226,37.52291,37.52321,37.52345,37.52361,37.52376,37.52389,37.52395,37.52389,37.52385,37.52377,37.52368,37.5236,37.52361,37.52365,37.52378,37.52404,37.5243,37.5246,37.52491,37.52521,37.52543,37.52551,37.52571,37.52596,37.5262,37.52641,37.52668,37.52698,37.52727,37.52757,37.52785,37.52809,37.52803,37.52812,37.52823,37.52848,37.52864,37.52874,37.52897,37.52923,37.52946,37.5292,37.5289,37.52861,37.52833,37.5281,37.5279,37.52768,37.52737,37.52706,37.52687,37.52682,37.52681,37.5265,37.5262,37.52598,37.52589,37.52565,37.52534,37.52504,37.52475,37.52466,37.5244,37.52411,37.52386,37.52355,37.52327,37.52301,37.52283,37.52255,37.52246,37.5223,37.522,37.52171,37.52142,37.52113,37.52097,37.5209,37.52097,37.52084,37.5206,37.52052,37.5205,37.52039,37.5202,37.52034,37.52038,37.52015,37.52005,37.51986,37.51958,37.51953,37.51965,37.51973,37.51951,37.51942,37.51936,37.51912,37.51901,37.51896,37.51867,37.51851,37.5185,37.51824,37.51795,37.51777,37.51747,37.51724,37.51696,37.51678,37.51664,37.51636,37.51616,37.51617,37.51616,37.51635,37.51632,37.51657,37.51658,37.51649,37.51658,37.5164,37.5161,37.51584,37.51562,37.51541,37.51522,37.51514,37.51505,37.51505,37.51522,37.51522,37.51493,37.51464,37.51434,37.51404,37.51374,37.51345,37.51339,37.51349,37.51348,37.51347,37.51346,37.51336,37.51319,37.51294,37.51266,37.51244,37.51222,37.51222,37.51197,37.51186,37.51173,37.51166,37.51157,37.51145,37.51132,37.51119,37.51106,37.51105,37.51107,37.51103,37.51086,37.5107,37.51053,37.51032,37.51012,37.50993,37.50973,37.50951,37.50928,37.50904,37.50881,37.50858,37.50833,37.50808,37.50788,37.50769,37.50753,37.50741,37.50733,37.50721,37.50706,37.50686,37.50667,37.5065,37.50635,37.5062,37.50601,37.50576,37.50552,37.50532,37.50508,37.50482,37.50452,37.50423,37.50397,37.50366,37.50336,37.5031,37.50282,37.50252,37.50223,37.50194,37.50165,37.50134,37.50103,37.50072,37.50043,37.50019,37.5,37.4999,37.49987,37.49987,37.49988,37.49975,37.49948,37.49921,37.49901,37.49878,37.4985,37.49829,37.49808,37.49799,37.49784,37.49769,37.49765,37.49739,37.49716,37.49691,37.4966,37.49629,37.49598,37.49568,37.49537,37.49506,37.49476,37.49449,37.4942,37.49412,37.49421,37.49411,37.49404,37.49404,37.4942,37.49434,37.49435,37.4943,37.49429,37.49432,37.49439,37.49447,37.49455,37.49466,37.49482,37.4951,37.49536,37.49557,37.49567,37.4956,37.49562,37.4956,37.49581,37.49592,37.49612,37.4963,37.49656,37.49678,37.49697,37.49711,37.49727,37.49741,37.49752,37.49765,37.49776,37.49788,37.49801,37.49811,37.49813,37.49813,37.49823,37.49847,37.49869,37.49887,37.49904,37.49927,37.49926,37.49934,37.49955,37.4997,37.49993,37.50011,37.50035,37.50053,37.50077,37.501,37.50127,37.50147,37.50162,37.5018,37.50207,37.5019,37.50168,37.50172,37.50183,37.50208,37.50234,37.50255,37.50269,37.50285,37.503,37.50314,37.50328,37.5035,37.50363,37.50377,37.50381,37.504,37.5041,37.50419,37.50416,37.50393,37.50388,37.50376,37.50358,37.50357,37.50377,37.50406,37.50434,37.50459,37.50485,37.50511,37.50532,37.50555,37.5058,37.50602,37.50609,37.50617,37.50628,37.50634,37.50636,37.50638,37.50641,37.50633,37.50621,37.50619,37.50613,37.50603,37.50603,37.50604,37.50595,37.50586,37.50586,37.50586,37.50585,37.50586,37.50586,37.50593,37.50599,37.50604,37.5061,37.50623,37.5064,37.50649,37.50656,37.5066,37.50643,37.50629,37.50629,37.50629,37.50627,37.50631,37.5063,37.50611,37.506,37.506,37.50593,37.50584,37.50565,37.50547,37.50532,37.50514,37.50495,37.50469,37.50444,37.50421,37.50397,37.5037,37.50342,37.50321,37.50295,37.50268,37.5024,37.50212,37.50182,37.50156,37.50131,37.50105,37.50077,37.50047,37.50018,37.49988,37.49962,37.49936,37.49911,37.49889,37.49867,37.49843,37.49816,37.49796,37.49781,37.49782,37.49793,37.4978,37.49767,37.49757,37.49748,37.49732,37.49715,37.49692,37.49674,37.49657,37.49637,37.49617,37.49596,37.49594,37.4957,37.49551,37.49539,37.49515,37.49493,37.49482,37.49472,37.49464,37.49452,37.49447,37.49442,37.49444,37.49448,37.49443,37.49432,37.49425,37.49409,37.494,37.49394,37.49382,37.49364,37.49343,37.49317,37.49289,37.49261,37.49231,37.49204,37.49176,37.49152,37.49124,37.49094,37.49063,37.49039,37.49015,37.48984,37.48955,37.48932,37.48909,37.48882,37.48852,37.48821,37.48791,37.48764,37.48734,37.48704,37.48673,37.48642,37.4861,37.4858,37.48554,37.48526,37.485,37.48512,37.48504,37.48481,37.48467,37.48444,37.48415,37.48389,37.4836,37.48343,37.48324,37.483,37.48291,37.48264,37.48241,37.48216,37.48193,37.48178,37.48168,37.48158,37.4816,37.48167,37.48148,37.48117,37.48095,37.48078,37.48057,37.48038,37.48033,37.48004,37.47981,37.47952,37.47922,37.47893,37.47865,37.47867,37.47842,37.47835,37.4783,37.47814,37.47822,37.47846,37.47875,37.47906,37.47937,37.47966,37.47989,37.48,37.48012,37.48041,37.48072,37.4809,37.4809,37.48086,37.48086,37.48077,37.48063,37.48063,37.48056,37.48053,37.48053,37.48028,37.48005,37.47982,37.47951,37.47929,37.479,37.47871,37.4784,37.47811,37.47785,37.47754,37.47754,37.4777,37.4775,37.47723,37.47696,37.47694,37.47663,37.47634,37.47635,37.47648,37.47658,37.47672,37.47679,37.47681,37.47653,37.47622,37.47598,37.47574],"lon":[130.81306,130.81285,130.81248,130.8122,130.81192,130.81157,130.8112,130.81088,130.81057,130.81027,130.80996,130.80965,130.80928,130.80889,130.80852,130.80818,130.80778,130.8074,130.80701,130.80662,130.80622,130.80584,130.80546,130.80507,130.8047,130.8043,130.80391,130.80352,130.80312,130.80273,130.80244,130.80229,130.8019,130.80151,130.80116,130.80083,130.80044,130.80005,130.79966,130.79928,130.79888,130.79852,130.7983,130.79806,130.7978,130.79752,130.79723,130.797,130.79668,130.79633,130.79596,130.79557,130.79521,130.7951,130.79475,130.79442,130.79405,130.79367,130.79345,130.79379,130.79409,130.79434,130.79413,130.79385,130.79394,130.79407,130.79441,130.79478,130.79509,130.79537,130.79572,130.79604,130.7963,130.79596,130.79563,130.7953,130.79505,130.7947,130.79433,130.79431,130.79436,130.79448,130.79459,130.79479,130.79501,130.79518,130.79531,130.7955,130.79567,130.79591,130.79617,130.79642,130.79667,130.79703,130.79738,130.79767,130.79757,130.79766,130.79803,130.79833,130.79858,130.79871,130.79891,130.7992,130.79913,130.79888,130.79867,130.7985,130.79838,130.79808,130.79783,130.7981,130.79839,130.79876,130.79915,130.79953,130.79985,130.80022,130.80061,130.80098,130.80122,130.80131,130.8013,130.8016,130.80146,130.80181,130.80219,130.80255,130.80294,130.80326,130.80355,130.80389,130.80419,130.80447,130.80484,130.80521,130.80556,130.80587,130.8062,130.8064,130.80652,130.80673,130.80701,130.80732,130.80766,130.80803,130.80839,130.80875,130.80913,130.80945,130.80952,130.8097,130.81002,130.81039,130.81064,130.81096,130.81128,130.8116,130.81185,130.81204,130.81231,130.81262,130.81297,130.81327,130.81364,130.81401,130.81439,130.81473,130.81474,130.81457,130.81453,130.81468,130.81493,130.81516,130.81533,130.81557,130.81589,130.81624,130.81657,130.81635,130.81636,130.81673,130.81675,130.8165,130.81667,130.81698,130.81693,130.81676,130.81652,130.81623,130.81593,130.81558,130.81571,130.81573,130.81558,130.81546,130.81551,130.81534,130.81543,130.81537,130.81556,130.8158,130.81606,130.81632,130.81658,130.81686,130.81711,130.81743,130.81782,130.8182,130.81857,130.81893,130.81929,130.81966,130.82003,130.82041,130.82078,130.82114,130.82149,130.82188,130.82214,130.82251,130.8229,130.82325,130.82361,130.82395,130.82434,130.82473,130.82513,130.82553,130.82592,130.82632,130.82672,130.82689,130.82697,130.82729,130.82757,130.82788,130.82804,130.82823,130.82846,130.82864,130.82894,130.82926,130.8296,130.82988,130.83016,130.83038,130.83055,130.8308,130.83106,130.83135,130.83136,130.83156,130.8318,130.83195,130.83227,130.83261,130.83289,130.83313,130.83343,130.83363,130.83364,130.83383,130.83403,130.83433,130.83457,130.83488,130.83515,130.83534,130.83531,130.83544,130.83574,130.83611,130.8365,130.83686,130.83706,130.83705,130.83718,130.83723,130.83719,130.83717,130.8373,130.83732,130.83753,130.83779,130.83808,130.83839,130.83874,130.83854,130.83815,130.83792,130.83794,130.83801,130.83799,130.83825,130.83862,130.83891,130.83903,130.83904,130.83897,130.83914,130.8393,130.83935,130.83939,130.83952,130.83979,130.84009,130.84047,130.84086,130.84126,130.84164,130.84198,130.84231,130.84255,130.84284,130.84306,130.84327,130.84354,130.84389,130.84425,130.84449,130.84434,130.84455,130.84484,130.84507,130.84533,130.84558,130.8456,130.84573,130.84604,130.84639,130.84673,130.84683,130.8469,130.84694,130.84686,130.84694,130.84718,130.84722,130.84737,130.84729,130.84735,130.84709,130.84703,130.84694,130.84671,130.84666,130.84685,130.84705,130.84718,130.84726,130.84741,130.8476,130.84785,130.84808,130.84827,130.84856,130.84892,130.84929,130.84963,130.84978,130.85013,130.85046,130.85074,130.85092,130.85118,130.85102,130.85089,130.8508,130.85059,130.85057,130.8504,130.85019,130.84987,130.84968,130.84975,130.8499,130.84989,130.84978,130.84972,130.84976,130.84974,130.8496,130.84971,130.85001,130.85033,130.85063,130.85094,130.85104,130.85109,130.85121,130.85135,130.8516,130.85185,130.85221,130.85261,130.85297,130.85329,130.85342,130.85339,130.85359,130.85393,130.85409,130.85414,130.85408,130.85404,130.85389,130.85404,130.8544,130.85471,130.85506,130.85519,130.85536,130.85573,130.85597,130.85629,130.8564,130.85671,130.85704,130.85741,130.85765,130.85796,130.85802,130.85816,130.85849,130.85887,130.8592,130.85946,130.85977,130.85989,130.86009,130.86029,130.86041,130.8606,130.8608,130.86113,130.86152,130.86189,130.86226,130.86262,130.86298,130.86334,130.8637,130.86398,130.86384,130.86347,130.86371,130.86355,130.86377,130.86363,130.86397,130.86434,130.86466,130.865,130.86525,130.8656,130.86599,130.86628,130.86659,130.86697,130.86736,130.86775,130.86811,130.86845,130.8688,130.86915,130.86952,130.86987,130.87023,130.87053,130.87088,130.87126,130.87164,130.87198,130.87237,130.87275,130.87314,130.87349,130.87387,130.87426,130.87454,130.87484,130.87506,130.87515,130.87525,130.87548,130.87578,130.87584,130.87589,130.87612,130.87637,130.87667,130.8769,130.87717,130.87701,130.87686,130.87663,130.87669,130.87687,130.87696,130.87727,130.87741,130.87756,130.87785,130.87814,130.87848,130.87886,130.87921,130.87954,130.87986,130.87975,130.87994,130.88009,130.88014,130.88025,130.88051,130.88075,130.881,130.8813,130.88148,130.88183,130.88212,130.88248,130.88277,130.88312,130.88334,130.88349,130.88365,130.88383,130.88406,130.88427,130.88434,130.88443,130.88453,130.88461,130.88444,130.88432,130.88424,130.88422,130.88415,130.88402,130.884,130.88403,130.88423,130.88453,130.88487,130.88521,130.88553,130.88586,130.88619,130.88654,130.88691,130.88726,130.88762,130.88798,130.8883,130.88869,130.88906,130.88945,130.88983,130.89013,130.89041,130.89049,130.89049,130.89058,130.89066,130.8908,130.89096,130.89111,130.89132,130.89143,130.89143,130.89151,130.89174,130.89185,130.89217,130.89239,130.89265,130.89278,130.89279,130.89278,130.89275,130.89294,130.89318,130.8935,130.89384,130.89421,130.89458,130.89496,130.89531,130.89565,130.89599,130.89637,130.89676,130.89697,130.89718,130.89736,130.89746,130.8975,130.89757,130.8977,130.89806,130.89836,130.89857,130.89881,130.8991,130.8993,130.89937,130.89926,130.89918,130.89922,130.89943,130.89976,130.89987,130.90008,130.90024,130.90048,130.9008,130.901,130.90118,130.90137,130.9014,130.90129,130.90117,130.90128,130.90145,130.90175,130.90199,130.90198,130.90208,130.90227,130.90266,130.90298,130.90298,130.90299,130.90319,130.90352,130.9037,130.90372,130.90372,130.90369,130.90334,130.90323,130.90317,130.90298,130.90297,130.90313,130.90331,130.90361,130.90377,130.90411,130.90445,130.90436,130.90438,130.90435,130.90444,130.90411,130.90373,130.90336,130.90302,130.90279,130.90263,130.90297,130.90328,130.90354,130.90378,130.90415,130.90438,130.90474,130.90504,130.90515,130.9049,130.90456,130.9042,130.90398,130.90363,130.90329,130.90314,130.90278,130.90249,130.90235,130.90256,130.90293,130.90314,130.90318,130.90288,130.90279,130.90253,130.90251,130.90219,130.90193,130.90184,130.90209,130.90248,130.90284,130.9031,130.90348,130.90365,130.90404,130.90441,130.90478,130.90506,130.90501,130.90483,130.90454,130.90425,130.90442,130.9048,130.90517,130.90554,130.90586,130.90622,130.90612,130.90599,130.90588,130.90581,130.90591,130.90596,130.90559,130.90524,130.90485,130.90445,130.90405,130.90369,130.90337,130.90315,130.90296,130.90276,130.90247,130.90209,130.90198,130.90176,130.90201,130.90165,130.90196,130.90202,130.90216,130.90249,130.90277,130.90316,130.90355,130.90394,130.9042,130.90454,130.90488,130.90516,130.90547,130.90578,130.9061,130.90638,130.90665,130.90691,130.90717,130.90744,130.90768,130.90793,130.90823,130.90855,130.90889,130.90925,130.90963,130.91,130.91034,130.91064,130.91096,130.91128,130.91163,130.91197,130.91229,130.91252,130.91278,130.91309,130.91334,130.91356,130.91367,130.91381,130.91399,130.91401,130.91411,130.91434,130.91451,130.91463,130.91479,130.91493,130.91507,130.91517,130.9152,130.91516,130.915,130.91475,130.91444,130.91406,130.91367,130.91327,130.91288,130.91254,130.91232,130.91213,130.91224,130.91252,130.91262,130.91234,130.91205,130.91166,130.91133,130.91099,130.9107,130.91048,130.91021,130.90998,130.9099,130.90981,130.90973,130.90965,130.90955,130.90956,130.90965,130.90979,130.90984,130.90952,130.90916,130.90882,130.90844,130.90805,130.90771,130.90736,130.90701,130.90663,130.90623,130.90584,130.90546,130.90508,130.9047,130.90433,130.90399,130.90383,130.90366,130.9037,130.90403,130.90433,130.90468,130.90498,130.90494,130.90513,130.90501,130.9049,130.90469,130.90441,130.90413,130.90381,130.90348,130.90313,130.90276,130.90241,130.90209,130.90174,130.90138,130.90102,130.90062,130.90025,130.89989,130.89964,130.89947,130.89935,130.89944,130.89955,130.89924,130.89891,130.89863,130.89833,130.89813,130.89784,130.89762,130.8973,130.89706,130.89684,130.89668,130.89638,130.89605,130.89574,130.89554,130.89542,130.89531,130.89519,130.89484,130.89468,130.89458,130.89431,130.89399,130.89368,130.89335,130.89301,130.8927,130.89247,130.89227,130.89196,130.89166,130.89144,130.89121,130.8911,130.89071,130.89058,130.8902,130.88988,130.88958,130.88922,130.8892,130.88927,130.88934,130.88919,130.889,130.8888,130.88857,130.88839,130.88833,130.88821,130.88787,130.88751,130.88714,130.88678,130.88645,130.88613,130.88575,130.8854,130.88506,130.88471,130.88436,130.88403,130.88366,130.88331,130.88298,130.88263,130.88228,130.8819,130.88153,130.88115,130.88082,130.88046,130.88009,130.87972,130.87935,130.879,130.87876,130.87864,130.87825,130.87787,130.87759,130.87725,130.87686,130.87646,130.87607,130.87572,130.87539,130.87508,130.87472,130.87432,130.87394,130.87357,130.87328,130.87301,130.8727,130.87237,130.87211,130.87197,130.87178,130.87152,130.87126,130.87106,130.87093,130.87073,130.87054,130.8704,130.87033,130.87048,130.87044,130.87035,130.87025,130.87009,130.87001,130.86995,130.87003,130.87002,130.86982,130.86961,130.86936,130.86909,130.86881,130.86858,130.86839,130.86812,130.86783,130.86745,130.86712,130.86744,130.8678,130.86816,130.86851,130.86884,130.86916,130.86942,130.86973,130.87003,130.87028,130.87057,130.87083,130.87121,130.87145,130.87177,130.87212,130.87235,130.8726,130.87297,130.87332,130.8737,130.87407,130.87445,130.87484,130.87523,130.87562,130.87601,130.87637,130.87672,130.87699,130.87737,130.87776,130.87802,130.87834,130.87862,130.87884,130.87903,130.87915,130.8792,130.87939,130.87959,130.87984,130.87999,130.88009,130.88012,130.88038,130.88053,130.88055,130.88063,130.88072,130.88044,130.88025,130.88016,130.8801,130.88004,130.88002,130.88013,130.88021,130.88018,130.88015,130.88015,130.88022,130.88045,130.88063,130.8806,130.88027,130.87997,130.87989,130.87961,130.87953,130.87939,130.87916,130.87901,130.87869,130.87838,130.87857,130.87894,130.87914,130.8794,130.87965,130.87991,130.88026,130.88063,130.88101,130.8814,130.88179,130.88202,130.88203,130.88231,130.88264,130.88274,130.88285,130.8831,130.8832,130.88346,130.88362,130.88374,130.88385,130.88385,130.88424,130.88441,130.8848,130.88519,130.88553,130.88584,130.8861,130.88615,130.88607,130.88603,130.88617,130.88644,130.8868,130.88716,130.8873,130.88724,130.88751,130.8879,130.8883,130.88869,130.88906,130.88942,130.88979,130.8894,130.88901,130.88864,130.88889,130.88915,130.88941,130.88936,130.88911,130.88904,130.88916,130.88925,130.8893,130.88909,130.88905,130.88941,130.88975,130.88994,130.88973,130.88958,130.88996,130.88991,130.8899,130.89028,130.89064,130.89101,130.89136,130.89175,130.89214,130.89229,130.89227,130.89207,130.89197],"ele":[77,76,69,62,60,60,59,56,55,58,54,50,51,49,47,48,47,47,47,39,36,36,34,33,32,29,26,23,24,24,22,21,20,20,18,16,15,13,12,11,10,9,8,9,9,8,9,13,21,20,19,21,17,16,12,10,10,9,7,8,7,10,13,12,16,16,24,33,47,56,69,76,74,68,64,60,55,54,49,54,68,72,74,73,77,82,87,94,97,97,114,127,140,152,150,161,162,160,162,158,154,146,144,150,151,148,146,143,143,138,126,130,133,138,141,145,148,146,143,143,147,156,165,171,180,183,187,192,192,191,193,202,216,227,234,241,250,260,266,273,280,280,279,280,281,275,270,261,256,258,258,258,260,258,262,261,253,249,250,258,240,222,208,198,191,187,181,176,175,173,170,164,160,158,153,151,148,143,139,131,127,126,120,113,106,100,91,93,85,84,81,70,67,61,38,18,16,10,9,6,5,6,8,9,9,9,10,12,12,10,9,9,9,9,8,8,8,9,8,6,5,4,2,4,5,5,6,5,3,2,2,5,5,7,12,19,21,25,33,39,48,56,60,65,74,83,91,99,105,114,128,139,147,152,161,164,178,192,200,205,210,213,208,215,222,230,232,244,249,250,253,249,245,237,228,219,210,208,201,196,190,180,173,170,168,164,160,155,152,145,145,140,131,123,115,112,109,103,103,105,112,116,108,104,100,97,90,87,84,79,74,67,57,57,65,70,77,83,86,88,89,93,91,99,104,111,119,135,143,161,170,176,180,190,201,209,227,247,255,269,275,291,300,315,322,327,331,333,341,352,359,371,378,387,397,405,413,425,440,453,457,469,494,516,536,544,547,550,556,567,566,574,570,566,558,551,550,551,538,527,519,519,517,519,514,508,507,503,497,496,495,501,499,488,483,478,467,469,457,461,459,452,441,442,444,446,447,448,451,457,463,468,476,481,485,492,497,504,504,506,506,508,509,513,515,515,515,518,521,516,506,497,487,476,467,454,446,446,440,433,426,421,415,411,405,399,394,388,381,373,366,362,359,357,358,357,359,361,358,356,357,357,357,356,355,355,356,357,358,360,362,362,365,367,366,366,370,371,372,373,375,376,377,381,386,389,393,399,404,410,415,422,432,442,455,456,459,462,473,482,507,513,526,543,558,571,585,594,602,616,628,626,633,641,648,654,669,679,685,693,695,703,716,729,738,749,757,758,757,758,763,770,777,779,782,784,780,779,788,797,804,812,822,827,827,820,808,798,791,777,761,748,744,742,738,732,725,720,712,702,694,689,685,679,674,666,660,654,650,650,654,656,652,650,648,640,629,618,608,599,596,593,590,587,585,580,575,568,562,558,554,550,546,544,542,541,537,530,523,514,504,498,495,489,483,478,475,472,470,470,467,466,465,463,456,446,420,398,384,367,356,348,354,364,376,387,402,399,389,418,406,397,405,388,386,371,372,338,346,350,365,414,420,439,458,476,486,485,464,443,451,429,416,422,420,417,394,395,392,402,389,372,366,363,354,340,347,348,321,303,293,284,281,283,291,280,279,282,271,269,271,282,284,273,271,269,280,276,283,278,287,291,296,300,294,294,284,296,277,291,307,300,306,311,315,325,339,342,338,340,338,326,324,333,339,344,351,350,344,344,346,343,337,337,335,334,327,315,304,285,281,260,254,247,244,240,234,231,228,229,217,203,196,190,191,185,185,179,169,172,165,154,145,137,130,128,125,132,134,131,125,115,102,96,96,92,88,75,70,59,53,50,44,40,36,38,38,33,35,35,31,29,28,24,20,20,17,14,12,12,11,9,6,6,8,11,10,10,12,10,7,5,10,13,13,13,13,13,12,10,12,11,11,12,12,13,12,10,7,7,10,15,18,22,29,29,34,38,41,43,46,49,54,60,63,66,70,72,70,69,68,70,70,80,86,94,98,101,105,110,116,126,133,136,138,139,142,154,159,168,178,185,192,206,219,226,234,238,241,254,264,278,287,301,306,310,319,330,336,342,353,363,360,354,357,368,382,398,410,416,424,434,442,458,474,491,504,516,529,544,550,567,568,583,588,588,590,597,608,615,618,624,630,644,653,665,674,682,690,701,708,718,732,740,747,758,773,791,799,813,826,836,841,845,855,869,881,892,902,912,923,933,941,950,952,953,950,944,934,934,942,947,950,952,955,959,961,959,953,951,948,943,934,930,928,923,911,901,894,887,882,881,888,895,898,901,906,910,914,918,927,937,941,935,930,930,931,936,942,948,953,960,964,957,964,959,949,940,928,917,903,892,888,886,880,867,863,855,856,864,871,869,868,864,857,850,850,845,836,831,828,819,815,808,798,791,782,769,755,746,745,741,740,736,732,728,720,715,709,700,693,683,671,661,663,656,640,630,622,619,608,595,583,570,554,537,525,515,504,497,484,469,455,440,425,411,398,391,381,378,381,369,359,354,348,345,340,336,338,348,342,329,322,317,310,304,305,298,296,293,292,290,284,294,289,288,283,275,274,275,279,285,288,284,277,266,255,250,253,243,234,227,215,204,198,195,196,199,206,199,193,194,196,199,197,185,174,165,165,159,147,140,130,130,129,114,108,102,92,89,85,81,74,65,63,63,62,57]},"coolvalley":{"gh":2,"gm":45,"km":18824,"lat":[35.64014,35.63984,35.63971,35.63989,35.64019,35.64051,35.64082,35.64112,35.64138,35.64165,35.64179,35.64181,35.64186,35.64212,35.64242,35.64265,35.64288,35.6431,35.64333,35.64356,35.64378,35.64379,35.64383,35.64396,35.64399,35.64401,35.64421,35.64442,35.64459,35.64471,35.64486,35.64462,35.64453,35.64463,35.6447,35.64481,35.64483,35.64485,35.64493,35.64504,35.64485,35.64459,35.64445,35.6442,35.64417,35.64425,35.64436,35.64438,35.64431,35.64407,35.64379,35.64366,35.64343,35.64321,35.6429,35.64266,35.64252,35.64246,35.64247,35.64277,35.64302,35.6433,35.6434,35.6432,35.64289,35.64261,35.64235,35.64209,35.64195,35.64179,35.6415,35.64123,35.64094,35.64066,35.64038,35.64011,35.6398,35.63967,35.63942,35.63916,35.63885,35.63854,35.63827,35.63798,35.63767,35.63741,35.63712,35.63681,35.63654,35.63632,35.6361,35.63578,35.63548,35.6352,35.63499,35.63485,35.63464,35.63439,35.6341,35.63382,35.63355,35.63326,35.63297,35.63267,35.63247,35.63225,35.63194,35.63163,35.63133,35.63108,35.63077,35.63046,35.63017,35.62989,35.62959,35.62928,35.62903,35.62876,35.62851,35.62827,35.62799,35.62768,35.62738,35.62707,35.62676,35.62655,35.6263,35.62601,35.6257,35.62539,35.62512,35.62483,35.62454,35.62424,35.62394,35.62369,35.62349,35.62334,35.62303,35.62278,35.62252,35.62226,35.62195,35.62168,35.6214,35.62117,35.62088,35.62059,35.62034,35.62015,35.61992,35.61963,35.61933,35.61902,35.61872,35.61841,35.6181,35.61783,35.61754,35.61728,35.61699,35.6167,35.61647,35.61623,35.61595,35.61564,35.61533,35.61502,35.61471,35.6144,35.61409,35.61378,35.61348,35.61318,35.61296,35.61273,35.61242,35.61212,35.61183,35.61155,35.61132,35.61111,35.61085,35.61057,35.61028,35.61002,35.6098,35.60952,35.60939,35.60935,35.60931,35.60908,35.60904,35.60917,35.60927,35.60923,35.60919,35.60928,35.60935,35.6094,35.6094,35.60948,35.6095,35.60955,35.60945,35.60935,35.60927,35.6092,35.60897,35.6088,35.60883,35.60891,35.60904,35.60919,35.6094,35.60957,35.60969,35.60981,35.60979,35.60963,35.60944,35.60924,35.60908,35.60906,35.60904,35.60895,35.60898,35.60893,35.6089,35.60889,35.60864,35.60838,35.60807,35.60777,35.60747,35.60716,35.60693,35.60671,35.60653,35.60632,35.60601,35.6057,35.60539,35.60509,35.60482,35.6045,35.6042,35.60388,35.60358,35.60327,35.60296,35.60266,35.60241,35.60213,35.60184,35.60159,35.6013,35.60111,35.60113,35.60106,35.60103,35.60087,35.60088,35.60071,35.60042,35.60022,35.59998,35.59978,35.59954,35.5994,35.5992,35.59912,35.59889,35.59875,35.5985,35.59822,35.59794,35.5977,35.59741,35.59712,35.59684,35.59654,35.59623,35.59594,35.59565,35.59539,35.59511,35.59484,35.59458,35.59432,35.59405,35.59375,35.59348,35.59323,35.59303,35.59288,35.59277,35.59282,35.593,35.59318,35.59332,35.59342,35.59353,35.59347,35.59339,35.59345,35.59365,35.59375,35.59393,35.59408,35.59424,35.59437,35.5945,35.59468,35.59491,35.59504,35.59531,35.59555,35.59578,35.59602,35.59627,35.59648,35.59674,35.59705,35.59734,35.59764,35.59795,35.59825,35.59856,35.59881,35.59887,35.5988,35.59873,35.59865,35.59867,35.59878,35.59893,35.59908,35.59919,35.5993,35.59933,35.59931,35.59923,35.59897,35.59872,35.59855,35.59837,35.5982,35.59796,35.59767,35.59743,35.59735,35.59738,35.59758,35.59777,35.5977,35.59757,35.59728,35.59697,35.59666,35.59639,35.59613,35.59598,35.59616,35.59637,35.59662,35.59691,35.5972,35.59746,35.59776,35.59801,35.59825,35.59851,35.59876,35.59897,35.59924,35.59948,35.59969,35.59987,35.59999,35.6001,35.60022,35.6004,35.60049,35.60051,35.60053,35.60058,35.60062,35.60086,35.6011,35.60119,35.6013,35.60146,35.60169,35.60193,35.60221,35.60251,35.60273,35.60281,35.6027,35.60255,35.60229,35.60206,35.60212,35.60234,35.60265,35.60296,35.60326,35.60357,35.60387,35.60413,35.60427,35.60431,35.60427,35.60436,35.6046,35.60487,35.60514,35.6049,35.60461,35.60435,35.6042,35.60424,35.60424,35.60409,35.60384,35.60353,35.60322,35.60291,35.6026,35.60229,35.60205,35.60197,35.60214,35.60242,35.60262,35.60277,35.60278,35.60268,35.60239,35.60209,35.60179,35.60152,35.60132,35.60113,35.60107,35.60095,35.60066,35.60057,35.60052,35.60047,35.60046,35.60043,35.60047,35.6004,35.6003,35.60015,35.59995,35.59972,35.59948,35.59931,35.59902,35.59877,35.59847,35.59823,35.59799,35.59774,35.59749,35.59723,35.59698,35.5967,35.59639,35.59612,35.59593,35.596,35.59625,35.59653,35.59681,35.59712,35.59743,35.59762,35.59772,35.59755,35.59737,35.59729,35.59732,35.59758,35.59789,35.59814,35.59831,35.59846,35.59863,35.59884,35.59913,35.59924,35.59927,35.59922,35.59912,35.59902,35.59887,35.59872,35.59861,35.59856,35.59863,35.59871,35.5988,35.59887,35.59866,35.59836,35.59806,35.59776,35.59746,35.59715,35.59685,35.59655,35.59629,35.59604,35.59582,35.59559,35.59537,35.59509,35.59482,35.59454,35.59427,35.59407,35.59393,35.59381,35.5937,35.59361,35.5935,35.59341,35.5933,35.59312,35.59286,35.59255,35.59226,35.59207,35.5919,35.59173],"lon":[127.52021,127.52033,127.52065,127.52093,127.52097,127.52096,127.52089,127.52095,127.52117,127.52136,127.52165,127.52204,127.52242,127.52243,127.52231,127.52206,127.5218,127.52152,127.52125,127.52099,127.52071,127.52033,127.51995,127.51985,127.52022,127.52061,127.52089,127.52118,127.5215,127.52184,127.52218,127.52232,127.52264,127.523,127.52336,127.5237,127.524,127.52438,127.52471,127.52507,127.52529,127.5255,127.52584,127.52607,127.52643,127.52679,127.52707,127.52745,127.52769,127.52793,127.52802,127.52834,127.52859,127.52884,127.52888,127.52907,127.52938,127.52976,127.53008,127.52998,127.52984,127.52998,127.53034,127.53059,127.53066,127.53081,127.53096,127.53107,127.53142,127.53173,127.53187,127.53207,127.53218,127.53235,127.53245,127.53229,127.53237,127.53269,127.53274,127.53293,127.53285,127.53281,127.53292,127.53299,127.533,127.5332,127.53324,127.53327,127.53346,127.53371,127.5339,127.53392,127.534,127.53388,127.53418,127.5345,127.53478,127.53487,127.535,127.53516,127.53535,127.5355,127.53563,127.53572,127.53601,127.53628,127.53634,127.53641,127.53651,127.53672,127.53673,127.53668,127.53677,127.53693,127.53704,127.53711,127.53733,127.53752,127.53773,127.53797,127.53786,127.53776,127.53779,127.53786,127.53778,127.53752,127.53727,127.53714,127.53712,127.53718,127.53735,127.53749,127.5376,127.53768,127.53774,127.53792,127.5382,127.53838,127.53835,127.53828,127.53807,127.53785,127.53782,127.5377,127.53761,127.53764,127.53778,127.53785,127.53806,127.53836,127.5386,127.53874,127.53883,127.53886,127.53879,127.53883,127.53887,127.5387,127.53855,127.53834,127.53821,127.53807,127.53781,127.53758,127.53742,127.53743,127.53739,127.53737,127.53737,127.53737,127.53735,127.53733,127.5374,127.53753,127.53779,127.53801,127.53801,127.53807,127.53798,127.5379,127.53768,127.5374,127.53718,127.53704,127.53688,127.5367,127.53646,127.53636,127.53603,127.53566,127.53545,127.53524,127.53491,127.53457,127.5342,127.53382,127.53344,127.53308,127.53271,127.53234,127.53199,127.53162,127.53124,127.53087,127.5305,127.53013,127.52976,127.52939,127.52913,127.52884,127.52847,127.5281,127.52776,127.52743,127.52714,127.52683,127.52647,127.52612,127.52575,127.52543,127.52513,127.52483,127.52449,127.52412,127.52373,127.52336,127.52299,127.52262,127.52223,127.52186,127.52163,127.52148,127.52152,127.52159,127.52148,127.52141,127.52116,127.52089,127.52058,127.52031,127.52029,127.52027,127.52017,127.52011,127.51993,127.51994,127.51985,127.51987,127.51978,127.5198,127.51986,127.51998,127.51975,127.51959,127.51941,127.51919,127.51925,127.51919,127.51882,127.51846,127.51808,127.51778,127.51785,127.51805,127.51816,127.51845,127.51865,127.51894,127.51918,127.51952,127.5198,127.52016,127.52042,127.52075,127.52097,127.52115,127.5213,127.52153,127.52165,127.52166,127.5217,127.52177,127.52175,127.52162,127.52176,127.52196,127.52201,127.52219,127.5224,127.52261,127.52281,127.52287,127.52306,127.52327,127.52354,127.52387,127.52423,127.5245,127.52477,127.52507,127.52539,127.52575,127.52607,127.5264,127.52675,127.52709,127.52736,127.52759,127.52785,127.52819,127.52852,127.52887,127.52923,127.52954,127.52974,127.5299,127.52984,127.52959,127.52934,127.52908,127.52885,127.52876,127.52892,127.52887,127.52878,127.52872,127.52882,127.5289,127.52898,127.52921,127.52957,127.52995,127.53033,127.5307,127.53108,127.53145,127.53178,127.53212,127.53248,127.53285,127.53323,127.53362,127.53398,127.53416,127.53394,127.53362,127.5333,127.53298,127.53273,127.53264,127.53282,127.53317,127.53356,127.53385,127.53415,127.53451,127.53485,127.53495,127.53502,127.53511,127.5353,127.53552,127.53585,127.53616,127.53645,127.53666,127.53679,127.53693,127.53715,127.53721,127.53746,127.5377,127.53792,127.53815,127.53843,127.53862,127.53887,127.53915,127.53947,127.53983,127.54019,127.54054,127.54084,127.54121,127.54159,127.54198,127.54236,127.54274,127.54295,127.54274,127.54238,127.54202,127.54169,127.54144,127.5412,127.54134,127.54146,127.54173,127.54209,127.54244,127.54277,127.54299,127.54325,127.54359,127.54385,127.5438,127.54374,127.54364,127.54362,127.54372,127.54393,127.54428,127.54464,127.54503,127.54539,127.54563,127.54582,127.54602,127.54588,127.54571,127.54552,127.54518,127.5448,127.54441,127.54408,127.54386,127.54378,127.5438,127.54388,127.54397,127.54402,127.54381,127.54345,127.54316,127.54298,127.54269,127.54236,127.54198,127.54164,127.54153,127.5414,127.5414,127.54159,127.54188,127.54219,127.54256,127.54292,127.54296,127.5426,127.54222,127.54184,127.54145,127.54107,127.54069,127.54032,127.53996,127.53962,127.53933,127.53907,127.53883,127.53853,127.53837,127.53816,127.53808,127.53783,127.53759,127.53734,127.53712,127.53689,127.53666,127.5365,127.5364,127.53623,127.53592,127.53557,127.53534,127.53514,127.53497,127.5349,127.53486,127.53461,127.53425,127.53396,127.53364,127.53328,127.5329,127.53269,127.53276,127.53296,127.53329,127.53363,127.53396,127.53423,127.53413,127.53378,127.53339,127.53301,127.53265,127.53228,127.53194,127.5316,127.53124,127.53086,127.53048,127.53011,127.52974,127.52937,127.52909,127.52899,127.52887,127.52879,127.5288,127.52884,127.52894,127.52902,127.52923,127.52947,127.52974,127.53,127.53028,127.53044,127.53063,127.5306,127.53039,127.5301,127.52975,127.52939,127.52903,127.52866,127.5283,127.52793,127.52756,127.52727,127.52705,127.52696,127.52707,127.52737,127.52769,127.52802],"ele":[438,440,441,441,439,437,436,437,437,434,432,432,433,431,430,431,430,430,431,433,435,434,433,434,436,438,442,445,443,443,446,451,455,461,468,476,480,487,490,491,489,487,488,484,480,477,475,475,477,480,480,484,480,479,480,479,480,481,480,479,475,468,465,469,474,477,482,492,508,516,521,528,535,542,548,551,551,558,565,576,581,584,588,591,596,602,610,621,636,649,658,669,682,692,698,702,700,692,684,682,678,672,669,669,670,672,678,684,691,702,711,721,727,734,742,751,764,775,787,792,790,790,794,799,806,812,813,814,825,838,845,852,860,871,879,887,895,894,890,885,878,878,886,893,901,908,923,930,935,935,940,949,953,942,929,928,934,933,928,921,920,920,921,924,926,926,924,924,921,920,919,923,925,926,938,944,949,958,964,973,978,979,982,983,988,991,993,995,998,1002,1002,1001,994,986,977,972,972,971,963,958,948,937,928,918,904,899,900,901,902,901,898,891,881,871,858,850,845,846,854,859,860,860,857,857,855,852,857,865,869,871,862,853,843,830,814,806,806,804,799,798,791,786,777,771,765,757,755,755,751,744,742,741,739,737,735,734,734,734,728,716,705,701,702,702,700,697,690,693,690,693,693,686,682,681,684,692,692,688,690,692,692,685,671,666,663,654,647,638,631,624,623,615,610,600,592,585,574,567,543,524,506,488,478,468,453,445,443,442,448,454,461,463,464,461,461,457,462,467,470,473,474,465,461,462,460,460,469,473,473,474,476,480,483,485,471,475,475,478,480,484,485,481,485,493,494,494,493,493,495,500,505,505,503,497,492,489,497,503,507,512,508,503,504,509,513,513,512,513,515,516,516,517,517,518,518,518,521,530,532,528,529,530,529,532,533,527,523,525,529,534,538,539,547,550,550,546,546,550,550,554,559,560,556,556,556,556,557,559,564,570,569,565,564,565,562,560,561,561,562,563,564,564,563,563,564,564,560,556,556,557,560,559,556,557,560,558,553,550,550,544,545,548,550,541,538,534,532,532,524,524,530,532,531,530,530,529,532,533,529,522,521,518,518,519,518,517,516,514,513,512,513,512,510,505,504,506,510,509,504,499,494,491,496,503,507,509,501,492,492,493,493,494,496,491,482,484,489,486,482,480,480,476,490,490,486,480,474,475,477,472,466,464,464,464,463,462,462,460,458,456,457,461,464,460,455,453,452,451,448,444,441,441,441,441,437,437,438,439,437]}};
+function rescaleCourse(c,trueTot){
+  if(!c||!isFinite(trueTot)||trueTot<=0)return c;
+  var f=trueTot/c.total; if(!isFinite(f)||f<=0)return c;
+  c.total=trueTot;
+  if(c.seg)c.seg.forEach(function(sg){sg.d0*=f;sg.d1*=f;sg.dist*=f;if(isFinite(sg.grade))sg.grade=sg.grade/f;});
+  if(c.prof&&c.prof.d)c.prof.d=c.prof.d.map(function(x){return x*f;});
+  return c;
+}
+function loadPreset(k){
+  var p=RP_PRESETS[k];if(!p)return;
+  clearErr("up_err");
+  var c=buildSegments({lat:p.lat,lon:p.lon,ele:p.ele,hasEle:true});
+  window.COURSE=rescaleCourse(c,p.km);
+  showCourse(window.COURSE);
+  document.getElementById("g_h").value=p.gh;
+  document.getElementById("g_m").value=p.gm;
+  document.getElementById("g_s").value=0;
+  var w=document.getElementById("in_weather");if(w)w.value="0";
+  generate();
+  try{if(window.gtag)gtag('event','preset_plan',{sport:'trail',preset:k,dist_km:+(window.COURSE.total/1000).toFixed(1)});}catch(e){}
+  var rc=document.getElementById("res_card");if(rc)rc.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function showErr(id,msg){var e=document.getElementById(id);e.textContent=msg;e.classList.add("show");}
+function clearErr(id){document.getElementById(id).classList.remove("show");}
+function handleFile(file){
+  clearErr("up_err");
+  var r=new FileReader();
+  r.onload=function(){
+    try{
+      var g=parseGPX(r.result);
+      if(g.lat.length<5){showErr("up_err",I18N[LANG].err_pts);return;}
+      window.COURSE=buildSegments(g);
+      showCourse(window.COURSE);
+      document.getElementById("in_card").scrollIntoView({behavior:"smooth",block:"nearest"});
+    }catch(e){showErr("up_err",I18N[LANG].err_parse);}
+  };
+  r.onerror=function(){showErr("up_err",I18N[LANG].err_parse);};
+  r.readAsText(file);
+}
+function generate(){
+  var d=I18N[LANG];clearErr("gen_err");
+  if(!window.COURSE)return;
+  var goal=ni("g_h")*3600+ni("g_m")*60+ni("g_s");
+  if(goal<=0){showErr("gen_err",d.err_time);return;}
+  var type=document.getElementById("in_type").value;
+  var level=parseInt(document.getElementById("in_level").value,10);
+  var useW=document.getElementById("in_weather").value==="1";
+  var dateStr=document.getElementById("in_date").value;
+  var lat=parseFloat(document.getElementById("in_lat").value);
+  var lon=parseFloat(document.getElementById("in_lon").value);
+  var startH=parseInt((document.getElementById("in_starth").value||"08:00").slice(0,2),10);
+  var btn=document.getElementById("genbtn");
+  function finish(weather){
+    document.getElementById("gen_load").classList.remove("show");btn.disabled=false;
+    window.PLAN=buildPlan(window.COURSE,goal,type,level,weather);
+    renderAll(window.PLAN);
+    try{if(window.gtag)gtag('event','plan_generated',{sport:'trail',level:level,dist_km:+(window.COURSE.total/1000).toFixed(1)});}catch(e){}
+    document.getElementById("res_card").scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  if(useW&&dateStr&&isFinite(lat)&&isFinite(lon)){
+    btn.disabled=true;document.getElementById("gen_load").classList.add("show");
+    getWeather(lat,lon,dateStr,startH).then(function(w){finish(w);})
+      .catch(function(){showErr("gen_err",d.err_weather);finish(null);});
+  } else { finish(null); }
+}
+(function(){
+  var drop=document.getElementById("drop"),file=document.getElementById("file");
+  drop.addEventListener("click",function(){file.click();});
+  file.addEventListener("change",function(){if(file.files[0])handleFile(file.files[0]);});
+  ["dragenter","dragover"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add("over");});});
+  ["dragleave","drop"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove("over");});});
+  drop.addEventListener("drop",function(e){var f=e.dataTransfer.files[0];if(f)handleFile(f);});
+  var dt=new Date();dt.setDate(dt.getDate()+7);
+  document.getElementById("in_date").value=isoDate(dt);
+})();
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
@@ -680,5 +1002,90 @@ var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l
 if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
 setTimeout(paint,0);
 })();</script>
+<script>
+/* ===== share result card (a) — image download + summary URL loop ===== */
+function rpFuelClick(){try{if(window.gtag){var P=window.PLAN;gtag('event','fuel_click',{sport:'trail',pack:(P&&P.carbH>=60)?'pro8':'essential6',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
+function _rpPack(P){return P.carbH>=60?{n:"Pro 8",p:"₩21,500"}:{n:"Essential 6",p:"₩11,300"};}
+function _rpTier(P,ko){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var e=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";var k=pk<10?"쉬움":pk<25?"보통":pk<45?"하드":"브루탈";return (ko?k:e)+(ko?" 트레일 · ":" TRAIL · ")+Math.round(P.course.total/1000)+"K";}
+function _rpRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
+  return "https://raceplanner.online/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
+function buildShareCard(P){
+  var c=document.getElementById("rp_canvas"),x=c.getContext("2d"),W=1080,H=1920,M=90;
+  var ko=window.LANG==="ko";
+  var L=ko?{plan:"트레일 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",pack:"매칭 보급 팩",f1:"무료 경사보정 트레일 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
+        :{plan:"TRAIL RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",pack:"MATCHED FUEL PACK",f1:"Free hill-adjusted trail race planner",f2:"Upload your GPX · get your plan free"};
+  x.fillStyle="#0a0c10";x.fillRect(0,0,W,H);x.textBaseline="alphabetic";
+  x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(L.plan,M,150);
+  x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.textAlign="right";x.fillText("@athletespick",W-M,150);
+  x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,192);x.lineTo(W-M,192);x.stroke();
+  var tier=_rpTier(P,ko);
+  x.font="800 42px system-ui,sans-serif";var tw=x.measureText(tier).width,pw=tw+90,ph=94,px=(W-pw)/2,py=290;
+  x.fillStyle="rgba(200,255,67,.12)";_rpRR(x,px,py,pw,ph,47);x.fill();
+  x.strokeStyle="#c8ff43";x.lineWidth=3;_rpRR(x,px,py,pw,ph,47);x.stroke();
+  x.fillStyle="#c8ff43";x.textAlign="center";x.fillText(tier,W/2,py+61);
+  x.fillStyle="#8b97a6";x.font="600 36px system-ui,sans-serif";x.fillText(L.goal,W/2,540);
+  x.fillStyle="#f3f6fa";x.font="800 200px 'Space Grotesk',system-ui,sans-serif";x.fillText(fmt(P.goalSec),W/2,720);
+  function stat(cx,l,v,u){x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText(l,cx,850);
+    x.fillStyle="#c8ff43";x.font="800 76px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,935);
+    x.fillStyle="#5a6573";x.font="600 26px system-ui,sans-serif";x.fillText(u,cx,975);}
+  stat(M+150,L.dist,(P.course.total/1000).toFixed(1),"km");
+  stat(W/2,L.asc,Math.round(P.course.dPlus)+"","m");
+  stat(W-M-150,L.pace,pace(P.avgPace),"/km");
+  var by=1050,bh=290;
+  x.fillStyle="#11150c";_rpRR(x,M,by,W-2*M,bh,20);x.fill();x.strokeStyle="#2c3a30";x.lineWidth=2;_rpRR(x,M,by,W-2*M,bh,20);x.stroke();
+  x.textAlign="left";x.fillStyle="#6ee7a8";x.font="700 32px system-ui,sans-serif";x.fillText(L.fuel,M+35,by+68);
+  function f3(cx,l,v,u){x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 26px system-ui,sans-serif";x.fillText(l,cx,by+138);
+    x.fillStyle="#f3f6fa";x.font="800 66px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,by+218);
+    x.fillStyle="#5a6573";x.font="600 24px system-ui,sans-serif";x.fillText(u,cx,by+256);}
+  f3(M+150,L.carb,P.carbH+"","g");f3(W/2,L.na,P.naH+"","mg");f3(W-M-150,L.every,P.interval+"",L.umin);
+  var pk=_rpPack(P);
+  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText(L.pack,W/2,1460);
+  x.fillStyle="#c8ff43";x.font="800 58px 'Space Grotesk',system-ui,sans-serif";x.fillText(pk.n+"  ·  "+pk.p,W/2,1532);
+  x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,1660);x.lineTo(W-M,1660);x.stroke();
+  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText(L.f1,W/2,1740);
+  x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",W/2,1812);
+  x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1864);
+  return c;}
+function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
+  return (window.LANG==="ko")
+    ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.online/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
+    :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.online/gpx #raceplanner #trailrunning @athletespick";}
+function rpToast(id,key){var b=document.getElementById(id);if(!b)return;var s=b.querySelector("span");if(!s)return;var d=(window.I18N&&I18N[window.LANG])||{};var k=s.getAttribute("data-i18n");var orig=(k&&d[k])?d[k]:s.textContent;s.textContent=d[key]||"✓";setTimeout(function(){s.textContent=orig;},2200);}
+function _rpDownload(cb){var c=document.getElementById("rp_canvas");
+  if(c.toBlob){c.toBlob(function(b){if(!b){if(cb)cb();return;}var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="raceplanner-trail-plan.png";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);if(cb)cb();},"image/png");}
+  else{var a2=document.createElement("a");a2.href=c.toDataURL("image/png");a2.download="raceplanner-trail-plan.png";document.body.appendChild(a2);a2.click();a2.remove();if(cb)cb();}}
+function rpSaveCard(){var P=window.PLAN;if(!P)return;
+  try{if(window.gtag)gtag('event','share_result',{sport:'trail',method:'save',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(rpCaption(P)).catch(function(){});
+  _rpDownload(function(){rpToast('save_btn','save_done');});}
+function rpCopyCaption(){var P=window.PLAN;if(!P)return;
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(rpCaption(P)).then(function(){rpToast('cap_btn','cap_done');}).catch(function(){rpToast('cap_btn','cap_done');});
+  else rpToast('cap_btn','cap_done');}
+function rpShareCard(){var P=window.PLAN;if(!P)return;var c=document.getElementById("rp_canvas");if(!c.toBlob){rpSaveCard();return;}
+  c.toBlob(function(b){var f=b?new File([b],"raceplanner-trail-plan.png",{type:"image/png"}):null;
+    if(f&&navigator.canShare&&navigator.canShare({files:[f]})){
+      try{if(window.gtag)gtag('event','share_result',{sport:'trail',method:'native',pack:(P.carbH>=60)?'pro8':'essential6'});}catch(e){}
+      navigator.share({files:[f],text:rpCaption(P)}).catch(function(){});
+    }else{rpSaveCard();}},"image/png");}
+function rpAfterRender(){var cp=document.getElementById("cardprev");if(cp)cp.style.display="block";
+  var sb=document.getElementById("share_btn");if(!sb)return;var ok=false;
+  try{ok=!!(navigator.canShare&&navigator.canShare({files:[new File([new Blob(["x"],{type:"image/png"})],"x.png",{type:"image/png"})]}));}catch(e){ok=false;}
+  sb.style.display=ok?"":"none";}
+(function(){try{
+  var p=new URLSearchParams(location.search);if(p.get("s")!=="1")return;
+  function sv(id,v){var e=document.getElementById(id);if(e&&v!=null&&v!=="")e.value=v;}
+  var goal=parseInt(p.get("goal"),10);
+  if(goal>0){sv("g_h",Math.floor(goal/3600));sv("g_m",Math.floor((goal%3600)/60));sv("g_s",goal%60);}
+  sv("in_level",p.get("lvl"));
+  var d=(window.I18N&&I18N[window.LANG])?I18N[window.LANG]:{};
+  var t=document.getElementById("teaser");if(!t)return;
+  var dist=p.get("d"),up=p.get("up");
+  var sum=(dist?dist+"km":"")+(up?" · D+"+up+"m":"")+(goal>0?" · "+fmt(goal):"");
+  document.getElementById("teaser_t").textContent=d.teaser_t||"Someone shared their trail race plan";
+  document.getElementById("teaser_s").textContent=(sum?sum+"  —  ":"")+(d.teaser_cta||"Upload your GPX below to build your own →");
+  t.style.display="";
+}catch(e){}})();
+</script>
 </body>
 </html>
