@@ -5,7 +5,7 @@ Race Planner — programmatic marathon goal-time pace pages generator.
 Reuses the CSS/header from the live /pace/index.html for exact visual parity.
 Emits: /pace/marathon/index.html (hub) + /pace/marathon/<slug>/index.html (spokes)
 Each spoke page carries UNIQUE data (splits, checkpoints, Riegel equivalents,
-fuelling, tailored FAQ) so it survives Google's Helpful-Content / scaled-content rules.
+fueling, tailored FAQ) so it survives Google's Helpful-Content / scaled-content rules.
 """
 import os, re, html, sys
 
@@ -192,7 +192,7 @@ def build_spoke(slug, label, T, prevg, nextg):
         f'<div><div class="rk">{n}</div><div class="rv">{hms(riegel(dd))}</div></div>' for n,dd in eq
     )
 
-    # fuelling (all these goals >2.5h -> 60-90 g/h band; trained gut up to ~90+)
+    # fueling (all these goals >2.5h -> 60-90 g/h band; trained gut up to ~90+)
     lo_gph, hi_gph = 60, 90
     carb_lo = round(lo_gph*hours); carb_hi = round(hi_gph*hours)
     na_lo, na_hi = 300, 800  # mg/h typical individual range
@@ -203,11 +203,11 @@ def build_spoke(slug, label, T, prevg, nextg):
     # ---- FAQ (schema) ----
     faq = [
      (f"What pace is a {label} marathon?",
-      f"A {label} marathon requires an even pace of {pk_s} per kilometre ({pm_s} per mile), about {spd_s} km/h. Over 42.195 km that adds up to exactly {label}."),
+      f"A {label} marathon requires an even pace of {pk_s} per kilometer ({pm_s} per mile), about {spd_s} km/h. Over 42.195 km that adds up to exactly {label}."),
      (f"What are the 5K, 10K and halfway splits for a {label} marathon?",
       f"At even pace you pass 5K in {hms(pk*5)}, 10K in {hms(pk*10)}, and the halfway point (21.1 km) in {half_t}. Reaching halfway meaningfully faster than {half_t} is the classic positive-split mistake that causes late-race slowdown."),
      (f"How many carbohydrates do I need for a {label} marathon?",
-      f"For a run of about {hours:.1f} hours, sports-nutrition consensus is roughly {lo_gph}–{hi_gph} g of carbohydrate per hour — around {carb_lo}–{carb_hi} g total — plus {na_lo}–{na_hi} mg of sodium per hour depending on sweat rate. Practise your exact fuelling in training; never try anything new on race day."),
+      f"For a run of about {hours:.1f} hours, sports-nutrition consensus is roughly {lo_gph}–{hi_gph} g of carbohydrate per hour — around {carb_lo}–{carb_hi} g total — plus {na_lo}–{na_hi} mg of sodium per hour depending on sweat rate. Practice your exact fueling in training; never try anything new on race day."),
     ]
     faq_html = "\n".join(
       f'<h2>{html.escape(q)}</h2><p>{html.escape(a)}</p>' for q,a in faq
@@ -237,7 +237,7 @@ def build_spoke(slug, label, T, prevg, nextg):
 <section class="hero-top">
   <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">MARATHON GOAL PACE</span></span>
   <h1 data-i18n="h1">{label} Marathon Pace</h1>
-  <p class="lead" data-i18n="lead">The exact even pace, per-kilometre splits and checkpoint times you need to run a {label} marathon — plus fuelling and equivalent race times. Free.</p>
+  <p class="lead" data-i18n="lead">The exact even pace, per-kilometer splits and checkpoint times you need to run a {label} marathon — plus fueling and equivalent race times. Free.</p>
 </section>
 
 <div class="card console">
@@ -263,8 +263,8 @@ def build_spoke(slug, label, T, prevg, nextg):
 </div>
 
 <div class="fuel">
-  <h3>⚡ <span data-i18n="fuel_h">Fuelling for a {label} marathon</span></h3>
-  <p data-i18n="fuel_p">At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fuelling in training — never race on something new.</p>
+  <h3>⚡ <span data-i18n="fuel_h">Fueling for a {label} marathon</span></h3>
+  <p data-i18n="fuel_p">At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fueling in training — never race on something new.</p>
   <a class="cta" href="https://athletespick.com?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=marathon_{slug}" target="_blank" rel="noopener" onclick="rpFuel()"><span data-i18n="fuel_cta">Build your race-day fuel →</span></a>
 </div>
 
@@ -277,7 +277,7 @@ def build_spoke(slug, label, T, prevg, nextg):
   <div class="hint" data-i18n="eq_note">Equivalent performances at the same fitness (Riegel model). Useful for pacing tune-up races.</div>
 </div>
 
-<details class="card"><summary style="cursor:pointer;font-weight:700;font-size:14px" data-i18n="full_split">Full kilometre-by-kilometre split table ▾</summary>
+<details class="card"><summary style="cursor:pointer;font-weight:700;font-size:14px" data-i18n="full_split">Full kilometer-by-kilometer split table ▾</summary>
   <table style="margin-top:12px"><thead><tr><th>KM</th><th style="text-align:right" data-i18n="pc_cumul">Cumulative</th><th style="text-align:right" data-i18n="pc_pacekm">Pace/km</th></tr></thead>
   <tbody>
 {split_rows}
@@ -293,32 +293,32 @@ def build_spoke(slug, label, T, prevg, nextg):
     <a class="morelink" href="/pace/marathon/"><span class="ic">≡</span><span data-i18n="allgoals">All marathon goal times</span></a>
     <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
   </div>
-  <p class="disc" data-i18n="disc">Times are mathematical even-pace targets, not a guarantee. Real results vary with course, weather, fitness and fuelling. Nutrition guidance is general — consult a professional for individual needs.</p>
+  <p class="disc" data-i18n="disc">Times are mathematical even-pace targets, not a guarantee. Real results vary with course, weather, fitness and fueling. Nutrition guidance is general — consult a professional for individual needs.</p>
 </div>
 {ld}
 """
 
     en = {
-      "title": f"{label} Marathon Pace — Splits, Pace Chart & Fuelling | Race Planner",
-      "desc": f"Exact pace for a {label} marathon: {pk_s}/km ({pm_s}/mi). Full km splits, 5K/10K/halfway checkpoints, carb & sodium fuelling, and equivalent 5K/10K/half times. Free.",
+      "title": f"{label} Marathon Pace — Splits, Pace Chart & Fueling | Race Planner",
+      "desc": f"Exact pace for a {label} marathon: {pk_s}/km ({pm_s}/mi). Full km splits, 5K/10K/halfway checkpoints, carb & sodium fueling, and equivalent 5K/10K/half times. Free.",
       "eyebrow":"MARATHON GOAL PACE",
       "h1": f"{label} Marathon Pace",
-      "lead": f"The exact even pace, per-kilometre splits and checkpoint times you need to run a {label} marathon — plus fuelling and equivalent race times. Free.",
+      "lead": f"The exact even pace, per-kilometer splits and checkpoint times you need to run a {label} marathon — plus fueling and equivalent race times. Free.",
       "need":"Required even pace","permi":"per mile","speed":"speed","finish":"finish",
       "m5":"5K split","m21":"Halfway","m30":"30K split",
       "adjust":'Want a different target? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.',
       "cp_sect":"CHECKPOINT SPLITS","cp_dist":"Distance","cp_time":"Time at even pace",
-      "fuel_h": f"Fuelling for a {label} marathon",
-      "fuel_p": f"At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fuelling in training — never race on something new.",
+      "fuel_h": f"Fueling for a {label} marathon",
+      "fuel_p": f"At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fueling in training — never race on something new.",
       "fuel_cta":"Build your race-day fuel →",
       "eq_sect":"EQUIVALENT RACE TIMES","eq_note":"Equivalent performances at the same fitness (Riegel model). Useful for pacing tune-up races.",
-      "full_split":"Full kilometre-by-kilometre split table ▾","pc_cumul":"Cumulative","pc_pacekm":"Pace/km",
+      "full_split":"Full kilometer-by-kilometer split table ▾","pc_cumul":"Cumulative","pc_pacekm":"Pace/km",
       "why_h": f"How to actually run a {label} marathon",
       "why_p": f'The pace above assumes an even effort. In a study of over 4 million race records, 28% of men and 17% of women slowed dramatically in the second half — "hitting the wall" — almost always because they banked time early. Aim to reach halfway ({half_t}) on schedule or a few seconds behind, then hold. A flat, even or slight negative split is how most runners hit {label}.',
       "prev": (f"{prevg[1]} marathon pace" if prevg else ""),
       "next": (f"{nextg[1]} marathon pace" if nextg else ""),
       "allgoals":"All marathon goal times","tool":"Pace calculator &amp; predictor",
-      "disc":"Times are mathematical even-pace targets, not a guarantee. Real results vary with course, weather, fitness and fuelling. Nutrition guidance is general — consult a professional for individual needs.",
+      "disc":"Times are mathematical even-pace targets, not a guarantee. Real results vary with course, weather, fitness and fueling. Nutrition guidance is general — consult a professional for individual needs.",
       "foot1":"Race Planner · free tools for runners and HYROX athletes","foot_calc":"Pace calculator","foot2":"Single-serve sports nutrition",
     }
     ko = {
@@ -330,7 +330,7 @@ def build_spoke(slug, label, T, prevg, nextg):
       "need":"필요 이븐 페이스","permi":"마일당","speed":"속도","finish":"완주",
       "m5":"5K 구간","m21":"중간지점","m30":"30K 구간",
       "adjust":'다른 목표가 필요하세요? 전체 <a href="/pace/" style="color:var(--mint)">페이스 계산기·기록예측</a>을 쓰세요.',
-      "cp_sect":"체크포인트 구간","cp_dist":"거리","cp_time":"이븐 페이스 통과 기록",
+      "cp_sect":"체크포인트 구간","cp_dist":"거리","cp_time":"이븐 페이스 기준 통과 기록",
       "fuel_h": f"{label} 마라톤 보급 전략",
       "fuel_p": f"약 {hours:.1f}시간 달리는 레이스라면 시간당 <b>탄수 {lo_gph}–{hi_gph} g</b>(총 {carb_lo}–{carb_hi} g)와 <b>나트륨 {na_lo}–{na_hi} mg</b>을 목표로 하세요. 정확한 보급은 반드시 훈련에서 테스트하고, 레이스 당일 새 제품은 금물입니다.",
       "fuel_cta":"레이스 보급 구성하기 →",
@@ -373,7 +373,7 @@ def build_hub():
 <section class="hero-top">
   <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">MARATHON PACE CHART</span></span>
   <h1 data-i18n="h1">Marathon Pace Chart by Goal Time</h1>
-  <p class="lead" data-i18n="lead">Pick your target finish time to get the exact even pace, per-kilometre splits, checkpoint times and fuelling for your marathon. Free, no sign-up.</p>
+  <p class="lead" data-i18n="lead">Pick your target finish time to get the exact even pace, per-kilometer splits, checkpoint times and fueling for your marathon. Free, no sign-up.</p>
 </section>
 <div class="card">
   <div class="sect" data-i18n="pick">PICK YOUR GOAL</div>
@@ -393,10 +393,10 @@ def build_hub():
 {ld}
 """
     en = {
-      "title":"Marathon Pace Chart by Goal Time — Splits & Fuelling | Race Planner",
-      "desc":"Free marathon pace chart. Pick a goal time (2:45 to 5:30) for exact even pace, per-km splits, 5K/10K/halfway checkpoints and carb & sodium fuelling.",
+      "title":"Marathon Pace Chart by Goal Time — Splits & Fueling | Race Planner",
+      "desc":"Free marathon pace chart. Pick a goal time (2:45 to 5:30) for exact even pace, per-km splits, 5K/10K/halfway checkpoints and carb & sodium fueling.",
       "eyebrow":"MARATHON PACE CHART","h1":"Marathon Pace Chart by Goal Time",
-      "lead":"Pick your target finish time to get the exact even pace, per-kilometre splits, checkpoint times and fuelling for your marathon. Free, no sign-up.",
+      "lead":"Pick your target finish time to get the exact even pace, per-kilometer splits, checkpoint times and fueling for your marathon. Free, no sign-up.",
       "pick":"PICK YOUR GOAL",
       "custom":'Need a time not listed, or another distance? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.',
       "how_h":"How to use a marathon pace chart",
