@@ -388,7 +388,7 @@ header{display:block}
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/gpx/" data-nav="0">Trail GPX Plan</a>
+    <a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a>
     <a class="navlink" href="/" data-nav="1">HYROX Calculator</a>
     <a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>
     <a class="navlink" href="/guide/" data-nav="3">Guides</a>
@@ -492,7 +492,7 @@ header{display:block}
     <p data-i18n="i2_p">SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100</p>
     <h2 data-i18n="more_tools">Other tools</h2>
     <div class="moregrid">
-      <a class="morelink" href="/gpx/"><span class="ic">⛰</span><span data-i18n="more_gpx">Trail GPX race plan — elevation &amp; weather</span></a>
+      <a class="morelink" href="/gpx/"><span class="ic">⛰</span><span data-i18n="more_gpx">GPX race plan — trail &amp; road · elevation &amp; weather</span></a>
       <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="more_pace">Marathon pace &amp; race-time predictor</span></a>
     </div>
     <h2 data-i18n="more_hxg">HYROX guides</h2>
@@ -555,7 +555,7 @@ var I18N={
   i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
   i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
   i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
-  more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"Trail GPX race plan — elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
+  more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"GPX race plan — trail & road · elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
   foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
   disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
   err:"Please check your pace (2:30–12:00 /km).",run:"Run",
@@ -577,7 +577,7 @@ var I18N={
   i1_l1:"지친 다리 러닝(compromised running): 레이스 중 런은 전력 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
   i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
   i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
-  more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"트레일 GPX 레이스플랜 — 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
+  more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"GPX 레이스플랜 — 트레일·로드 · 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
   disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
   err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
@@ -669,7 +669,7 @@ var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",func
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
-var NAV=[["/gpx/","Trail GPX Plan","트레일 GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
 function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
 function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
  document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;

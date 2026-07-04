@@ -74,7 +74,7 @@
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/gpx/" data-nav="0">Trail GPX Plan</a>
+    <a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a>
     <a class="navlink" href="/" data-nav="1">HYROX Calculator</a>
     <a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>
     <a class="navlink" href="/guide/" data-nav="3">Guides</a>
@@ -112,7 +112,7 @@
 
   <div class="gsec">
     <div class="gsec-h"><span class="sport" data-i18n="s_trail">Trail</span><span class="ln"></span><span class="soon" data-i18n="soon">Coming soon</span></div>
-    <div class="gsoon" data-i18n="tr_d">Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">Trail GPX Plan</a> tool.</div>
+    <div class="gsoon" data-i18n="tr_d">Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">GPX Race Plan</a> tool.</div>
   </div>
 
   <div class="gsec">
@@ -134,7 +134,7 @@ var I18N={
   hx1:"HYROX pacing guide",hx1d:"Run pace by goal finish, 8-run split strategy and how to avoid going out too fast.",
   hx2:"HYROX nutrition guide",hx2d:"What and when to fuel for a 60–90 min hybrid race, plus hydration and sodium.",
   hx3:"8-station breakdown",hx3d:"Station-by-station tactics and target times for all eight HYROX stations.",
-  tr_d:'Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">Trail GPX Plan</a> tool.',
+  tr_d:'Trail guides are on the way. Meanwhile, build a hill-adjusted plan with the <a href="/gpx/">GPX Race Plan</a> tool.',
   mr_d:'Marathon guides are on the way. Meanwhile, predict your splits with the <a href="/pace/">Marathon Pace &amp; Predictor</a> tool.',
   foot1:"Race Planner · free tools & guides for runners and HYROX athletes",foot2:"Single-serve sports nutrition"},
  ko:{title:"가이드 — 하이록스·트레일·마라톤 레이스 전략 | 레이스 플래너",desc:"하이록스·트레일·마라톤 레이스 전략 가이드 — 페이싱·보급·스테이션 공략을 종목별로 정리. 무료.",
@@ -143,7 +143,7 @@ var I18N={
   hx1:"하이록스 페이싱 가이드",hx1d:"목표 완주별 런 페이스, 8개 런 스플릿 전략, 초반 과속을 피하는 법.",
   hx2:"하이록스 보급 가이드",hx2d:"60~90분 하이브리드 레이스의 보급 타이밍, 수분·나트륨까지.",
   hx3:"8개 스테이션 공략",hx3d:"8개 스테이션별 공략과 목표 시간.",
-  tr_d:'트레일 가이드는 준비 중입니다. 그동안 <a href="/gpx/">트레일 GPX 레이스플랜</a> 도구로 고도 보정 계획을 만들어 보세요.',
+  tr_d:'트레일 가이드는 준비 중입니다. 그동안 <a href="/gpx/">GPX 레이스플랜</a> 도구로 고도 보정 계획을 만들어 보세요.',
   mr_d:'마라톤 가이드는 준비 중입니다. 그동안 <a href="/pace/">마라톤 페이스·기록예측</a> 도구로 구간 기록을 예측해 보세요.',
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구·가이드",foot2:"스포츠 뉴트리션 낱개 구매"}
 };
@@ -154,7 +154,7 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
-var NAV=[["/gpx/","Trail GPX Plan","트레일 GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
 function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
 function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
  document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;

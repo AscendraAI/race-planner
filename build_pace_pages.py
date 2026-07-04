@@ -67,7 +67,7 @@ HEADER = (
 '<a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>'
 '<span class="spacer"></span>'
 '<nav class="nav">'
-'<a class="navlink" href="/gpx/" data-nav="0">Trail GPX Plan</a>'
+'<a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a>'
 '<a class="navlink" href="/" data-nav="1">HYROX Calculator</a>'
 '<a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>'
 '<a class="navlink" href="/guide/" data-nav="3">Guides</a>'
@@ -78,7 +78,7 @@ HEADER = (
 )
 
 NAV_PAINT = """<script>(function(){
-var NAV=[["/gpx/","Trail GPX Plan","트레일 GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
 function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
 function paint(){var L=lang();var path=location.pathname.replace(/index\\.html$/,"");if(path.length>1)path=path.replace(/\\/$/,"")+"/";
  document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;
