@@ -495,5 +495,24 @@ var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l
 if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
 setTimeout(paint,0);
 })();</script>
+
+<script>/* rp_profile: login-free personalization (local only) */
+(function(){try{
+var K="rp_profile",$=function(i){return document.getElementById(i)};
+var P=JSON.parse(localStorage.getItem(K)||"{}"),applied=false;
+if(P.race&&$("rp_preset")){
+ $("rp_preset").value=P.race.d||$("rp_preset").value;
+ if($("rp_preset").onchange)$("rp_preset").onchange();
+ if(P.race.d==="custom"&&$("rp_km"))$("rp_km").value=P.race.km||"";
+ if(!$("rp_h").value){$("rp_h").value=P.race.h||"";$("rp_m").value=P.race.m||"";$("rp_s").value=P.race.s||"";}
+ applied=true;}
+if(applied&&window.gtag)gtag('event','profile_prefill',{page:'pace'});
+if(window.predict){var _pr=window.predict;window.predict=function(){try{
+var Q=JSON.parse(localStorage.getItem(K)||"{}");Q.v=1;
+Q.race={d:$("rp_preset").value,km:$("rp_km")?$("rp_km").value:"",h:$("rp_h").value,m:$("rp_m").value,s:$("rp_s").value};
+Q.updated=Date.now();localStorage.setItem(K,JSON.stringify(Q));}catch(e){}
+return _pr.apply(this,arguments);};}
+}catch(e){}})();
+</script>
 </body>
 </html>

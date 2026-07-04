@@ -1089,5 +1089,18 @@ function rpAfterRender(){var cp=document.getElementById("cardprev");if(cp)cp.sty
   t.style.display="";
 }catch(e){}})();
 </script>
+
+<script>/* rp_profile: login-free personalization (local only) */
+(function(){try{
+var K="rp_profile",$=function(i){return document.getElementById(i)};
+var P=JSON.parse(localStorage.getItem(K)||"{}");
+if(P.fuel&&$("in_level")){$("in_level").value=P.fuel;if(window.gtag)gtag('event','profile_prefill',{page:'gpx'});}
+var b=$("genbtn");
+if(b)b.addEventListener("click",function(){try{
+var Q=JSON.parse(localStorage.getItem(K)||"{}");Q.v=1;
+Q.fuel=$("in_level").value;Q.updated=Date.now();
+localStorage.setItem(K,JSON.stringify(Q));}catch(e){}});
+}catch(e){}})();
+</script>
 </body>
 </html>

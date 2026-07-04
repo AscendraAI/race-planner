@@ -680,5 +680,21 @@ var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l
 if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
 setTimeout(paint,0);
 })();</script>
+
+<script>/* rp_profile: login-free personalization (local only) */
+(function(){try{
+var K="rp_profile",$=function(i){return document.getElementById(i)};
+var P=JSON.parse(localStorage.getItem(K)||"{}"),applied=false;
+if(P.p5k&&$("pmin")&&$("psec")&&!$("pmin").value){$("pmin").value=P.p5k.m||"";$("psec").value=P.p5k.s||"";applied=true;}
+["sex","lvl","div","age"].forEach(function(k){if(P[k]!=null&&$(k))$(k).value=P[k];});
+if(applied&&window.gtag)gtag('event','profile_prefill',{page:'hyrox'});
+var go=$("go");
+if(go)go.addEventListener("click",function(){try{
+var Q=JSON.parse(localStorage.getItem(K)||"{}");Q.v=1;
+Q.p5k={m:$("pmin").value,s:$("psec").value};
+["sex","lvl","div","age"].forEach(function(k){if($(k))Q[k]=$(k).value;});
+Q.updated=Date.now();localStorage.setItem(K,JSON.stringify(Q));}catch(e){}});
+}catch(e){}})();
+</script>
 </body>
 </html>
