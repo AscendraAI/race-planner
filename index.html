@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
+<meta name="google-site-verification" content="qf1B9F239atE39TMm2w7QMfl8fSz_xDC546FEqJa-uc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <title data-i18n="title">HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner</title>
-<meta name="description" data-i18n="desc" content="Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
+<meta name="description" data-i18n="desc" content="Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
 <meta name="keywords" content="hyrox calculator, hyrox time calculator, hyrox pace, hyrox finish time, roxzone, compromised running, 하이록스 계산기, 하이록스 페이스, 하이록스 완주 기록" />
 <link rel="canonical" href="https://raceplanner.online/" />
 <link rel="alternate" hreflang="en" href="https://raceplanner.online/?lang=en" />
@@ -395,7 +399,7 @@ header{display:block}
   <section class="hero-top">
     <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Real-data HYROX predictor</span></span>
     <h1 data-i18n="h1">HYROX finish-time calculator</h1>
-    <p class="lead" data-i18n="lead">Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.</p>
+    <p class="lead" data-i18n="lead">Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.</p>
     <div class="trust">
       <span><b>400K+</b> <span data-i18n="t_athletes">real HYROX results</span></span>
       <span data-i18n="t_free">⚡ Free · no signup</span>
@@ -406,7 +410,7 @@ header{display:block}
   <div class="card console">
     <div class="inputgrid">
       <div class="field field-pace">
-        <label><span data-i18n="in_pace">Your easy 5K pace</span> <span style="font-weight:400;color:var(--faint)">(/km)</span></label>
+        <label><span data-i18n="in_pace">Your all-out 5K pace</span> <span style="font-weight:400;color:var(--faint)">(/km)</span></label>
         <div class="pace">
           <input id="pmin" type="number" inputmode="numeric" min="2" max="9" value="5" aria-label="minutes" />
           <span class="sep">:</span>
@@ -431,7 +435,7 @@ header{display:block}
         <select id="age"><option value="a3034" data-i18n="age_any">All ages</option><option value="a1624" data-i18n="age1">16–24</option><option value="a2529" data-i18n="age2">25–29</option><option value="a3034" data-i18n="age3">30–34</option><option value="a3539" data-i18n="age4">35–39</option><option value="a4044" data-i18n="age5">40–44</option><option value="a4549" data-i18n="age6">45–49</option><option value="a5054" data-i18n="age7">50–54</option><option value="a5559" data-i18n="age8">55–59</option><option value="a60" data-i18n="age9">60+</option></select>
       </div>
     </div>
-    <div class="hint" data-i18n="in_hint">Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.</div>
+    <div class="hint" data-i18n="in_hint">The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.</div>
     <button class="calc" id="go"><span data-i18n="btn">Predict finish time</span><span class="arr">→</span></button>
   </div>
 
@@ -468,17 +472,17 @@ header{display:block}
       </div>
 
       <div class="fuel">
-        <h3 data-i18n="fuel_h">⚡ Fueling for this race</h3>
+        <h3 data-i18n="fuel_h">⚡ Your fueling plan for this race</h3>
         <div id="fuelBody"></div>
         <div id="fuelKit"></div>
-        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get the exact single-serve fuel — Athlete's Pick →</a>
+        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get your race-day fuel — Athlete's Pick →</a>
       </div>
     </div>
   </div>
 
   <div class="info">
-    <h2 data-i18n="i1_h">How does this calculator predict?</h2>
-    <p data-i18n="i1_p">A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.</p>
+    <h2 data-i18n="i1_h">How this calculator predicts your time</h2>
+    <p data-i18n="i1_p">A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.</p>
     <ul>
       <li data-i18n="i1_l1">Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.</li>
       <li data-i18n="i1_l2">Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.</li>
@@ -535,19 +539,19 @@ function pctileTop(fin,cmed){
 
 var I18N={
  en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
-  desc:"Enter your easy 5K running pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
+  desc:"Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
   nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",eyebrow:"Real-data HYROX predictor",h1:"HYROX finish-time calculator",
-  lead:"Enter your easy 5K pace. We apply real-data adjustments (compromised running + roxzone + stations) to predict your HYROX finish time.",
+  lead:"Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.",
   t_athletes:"real HYROX results",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
-  in_pace:"Your easy 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
+  in_pace:"Your all-out 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
   in_div:"Division",div_open:"Open",div_pro:"Pro",in_age:"Age",age_any:"All ages",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
   pctl_txt:function(t){return '≈ <b>Top '+t+'%</b> <span class="pctsub">vs same gender · division · age (approx.)</span>';},
-  in_hint:"Enter your pace for an all-out 5K. Your in-race pace is adjusted automatically.",btn:"Predict finish time",
+  in_hint:"The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.",btn:"Predict finish time",
   r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
   m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
   s_pacing:"8-run pacing (even split)",pacing_hint:"Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.",
-  fuel_h:"⚡ Fuel schedule for this race",fuel_cta:"Get the exact single-serve fuel — Athlete's Pick →",
-  i1_h:"How does this calculator predict?",i1_p:"A HYROX finish is run + stations + roxzone. The nominal 8km (8×1km) is pure running; the roxzone adds about 6.5% on top.",
+  fuel_h:"⚡ Your fueling plan for this race",fuel_cta:"Get your race-day fuel — Athlete's Pick →",
+  i1_h:"How this calculator predicts your time",i1_p:"A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.",
   i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
   i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
   i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
@@ -557,20 +561,20 @@ var I18N={
   err:"Please check your pace (2:30–12:00 /km).",run:"Run",
   fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
  ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
-  desc:"평소 5K 페이스만 넣으면 하이록스 예상 완주 기록·인레이스 런 페이스·스테이션별 목표·8개 런 페이싱을 계산합니다.",
+  desc:"전력 5K 페이스만 넣으면 하이록스 예상 완주 기록, 레이스 중 런 페이스, 스테이션별 목표, 8개 런 페이싱까지 한 번에 계산합니다.",
   nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
-  lead:"평소 5K 페이스를 넣으면 실데이터 보정(컴프로마이즈드 러닝+록스존+스테이션)으로 예상 완주 기록을 계산합니다.",
+  lead:"전력 5K 페이스를 넣으세요. 레이스에서 실제로 잃는 시간 — 지친 다리 러닝, 록스존, 8개 스테이션 — 을 더해 예상 완주 기록을 계산합니다.",
   t_athletes:"건 공개 HYROX 결과",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
-  in_pace:"평소 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
+  in_pace:"전력 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
   in_div:"부문",div_open:"오픈",div_pro:"프로",in_age:"연령",age_any:"전체",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
   pctl_txt:function(t){return '≈ <b>상위 '+t+'%</b> <span class="pctsub">동일 성별·부문·연령 기준 (근사)</span>';},
-  in_hint:"전력 5K를 뛸 때의 1km 페이스를 넣으세요. 레이스 페이스는 자동 보정됩니다.",btn:"완주 기록 예측",
-  r_finish:"예상 완주 기록",r_inpace:"인레이스 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
+  in_hint:"전력으로 5K를 달릴 때의 km당 페이스입니다. 레이스 중 페이스는 자동으로 보정해 드립니다.",btn:"완주 기록 예측",
+  r_finish:"예상 완주 기록",r_inpace:"레이스 중 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
   m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
   s_pacing:"8개 런 페이싱 (이븐 스플릿)",pacing_hint:"Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하세요. 최악 구간이 Run7~8이면 초반 과속입니다.",
-  fuel_h:"⚡ 이 레이스 보급 스케줄",fuel_cta:"필요량만큼 낱개로 — 애슬리츠픽 →",
-  i1_h:"이 계산기는 어떻게 예측하나요?",i1_p:"하이록스 완주는 런 + 스테이션 + 록스존의 합입니다. 명목 8km(8×1km)는 순수 러닝이고, 록스존이 그 위에 약 6.5% 더해집니다.",
-  i1_l1:"컴프로마이즈드 러닝: 레이스 중 런은 신선한 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
+  fuel_h:"⚡ 이 레이스의 보급 플랜",fuel_cta:"레이스 보급 준비하기 — 애슬리츠픽 →",
+  i1_h:"이 계산기는 이렇게 예측합니다",i1_p:"하이록스 완주 기록은 런 + 스테이션 + 록스존의 합입니다. 공식 8km(8×1km)는 순수 러닝이고, 록스존이 여기에 약 6.5%를 더합니다.",
+  i1_l1:"지친 다리 러닝(compromised running): 레이스 중 런은 전력 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
   i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
   i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
   more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"트레일 GPX 레이스플랜 — 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
@@ -656,9 +660,12 @@ function calc(){
   document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
   document.getElementById("fuelKit").innerHTML=buildKit(finish);
   document.getElementById("result").classList.add("show");
+  try{if(window.gtag)gtag('event','plan_generated',{sport:'hyrox',sex:sex,tier:tier,division:document.getElementById("div").value,finish_sec:Math.round(finish)});}catch(e){}
 }
 document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
 document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();document.getElementById("go").click();}});});
+(function(){var fk=document.getElementById("fuelKit");if(fk)fk.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="athletespick"]');if(a&&window.gtag){var m=a.href.match(/product_no=(\d+)/);gtag('event','fuel_click',{sport:'hyrox',medium:'fuelkit',product_no:m?m[1]:''});}});
+var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",function(){if(window.gtag)gtag('event','fuel_click',{sport:'hyrox',medium:'fuelplan'});});})();
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){

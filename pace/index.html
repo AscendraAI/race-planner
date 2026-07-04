@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 <title data-i18n="title">Marathon Pace Calculator & Race Time Predictor | Race Planner</title>
 <meta name="description" data-i18n="desc" content="Free running pace calculator and race time predictor. Enter distance and time to get pace, speed and split times, or predict your 5K, 10K, half and full marathon times." />
@@ -262,7 +265,7 @@ header{display:block}
     <main class="center">
       <section class="hero-top" style="text-align:center"><span class="eyebrow"><span class="pulse"></span>MARATHON PACE &amp; PREDICTOR</span>
 <h1 data-i18n="h1">Marathon Pace &amp; Race-Time Predictor</h1>
-<p class="lead" data-i18n="lead">Calculate your running pace, speed and split times, or predict your race times across 5K, 10K, half and full marathon — all free.</p></section>
+<p class="lead" data-i18n="lead">Work out your pace, speed and per-kilometer splits — or take one recent result and predict your 5K, 10K, half and full marathon times.</p></section>
 
       <!-- Pace Calculator -->
       <div class="card">
@@ -307,7 +310,7 @@ header{display:block}
       <!-- Race Time Predictor -->
       <div class="card">
         <div class="ctitle" data-i18n="rp_title">🔮 Race Time Predictor</div>
-        <p style="font-size:13px;color:var(--sub);margin:-6px 0 14px" data-i18n="rp_sub">Enter a recent race result. We project your other distances (Riegel formula).</p>
+        <p style="font-size:13px;color:var(--sub);margin:-6px 0 14px" data-i18n="rp_sub">Enter one recent race result. We project your equivalent times at every other distance with Riegel's formula.</p>
         <div class="grid2">
           <div class="field" style="margin:0">
             <label data-i18n="rp_dist">Recent race distance</label>
@@ -337,13 +340,13 @@ header{display:block}
         <button class="calc" onclick="predict()" data-i18n="rp_btn">Predict my times</button>
         <div class="out" id="rp_out">
           <table><thead><tr><th data-i18n="rp_race">Race</th><th style="text-align:right" data-i18n="rp_pred">Predicted</th><th style="text-align:right" data-i18n="rp_pace">Pace/km</th></tr></thead><tbody id="rp_tb"></tbody></table>
-          <p style="font-size:11px;color:#566;margin-top:10px" data-i18n="rp_note">Estimates assume comparable training and conditions. Real results vary with course, weather and endurance.</p>
+          <p style="font-size:11px;color:#566;margin-top:10px" data-i18n="rp_note">Estimates assume comparable training and conditions — real results vary with course, weather and distance-specific preparation.</p>
         </div>
       </div>
 
       <div class="info">
         <h2 data-i18n="info1_h">How is pace calculated?</h2>
-        <p data-i18n="info1_p">Pace is your time divided by distance. This tool also converts to min/mile and km/h, and breaks your run into per-kilometer splits so you can plan an even effort.</p>
+        <p data-i18n="info1_p">Pace is simply time divided by distance. This tool also converts it to min/mile and km/h, then breaks your race into per-kilometer splits so you can plan an even effort from the gun.</p>
         <h2 data-i18n="info2_h">How does the predictor work?</h2>
         <p data-i18n="info2_p">It uses Riegel's formula: T2 = T1 × (D2 / D1)^1.06. It's a well-known endurance model — accurate for similar effort levels, less so when jumping from very short to very long distances without specific training.</p>
         <div class="related">
@@ -366,31 +369,31 @@ var I18N={
  en:{title:"Marathon Pace Calculator & Race Time Predictor | Race Planner",
    desc:"Free marathon pace calculator and race-time predictor — also 5K, 10K and half marathon.",
    nav_hyrox:"HYROX", nav_gpx:"GPX", h1:"Marathon Pace & Race-Time Predictor",
-   lead:"Calculate your running pace, speed and split times, or predict your race times across 5K, 10K, half and full marathon — all free.",
+   lead:"Work out your pace, speed and per-kilometer splits — or take one recent result and predict your 5K, 10K, half and full marathon times.",
    pc_title:"⏱️ Pace Calculator", pc_dist:"Distance", pc_custom:"Custom (km)", pc_distkm:"Distance (km)",
    pc_time:"Finish time", pc_btn:"Calculate pace", pc_pacekm:"Pace /km", pc_pacemi:"Pace /mile", pc_speed:"Speed",
    pc_split:"Split", pc_cumul:"Cumulative",
-   rp_title:"🔮 Race Time Predictor", rp_sub:"Enter a recent race result. We project your other distances (Riegel formula).",
+   rp_title:"🔮 Race Time Predictor", rp_sub:"Enter one recent race result. We project your equivalent times at every other distance with Riegel's formula.",
    rp_dist:"Recent race distance", rp_time:"Your time", rp_btn:"Predict my times", rp_race:"Race", rp_pred:"Predicted", rp_pace:"Pace/km",
-   rp_note:"Estimates assume comparable training and conditions. Real results vary with course, weather and endurance.",
-   info1_h:"How is pace calculated?", info1_p:"Pace is your time divided by distance. This tool also converts to min/mile and km/h, and breaks your run into per-kilometer splits so you can plan an even effort.",
+   rp_note:"Estimates assume comparable training and conditions — real results vary with course, weather and distance-specific preparation.",
+   info1_h:"How is pace calculated?", info1_p:"Pace is simply time divided by distance. This tool also converts it to min/mile and km/h, then breaks your race into per-kilometer splits so you can plan an even effort from the gun.",
    info2_h:"How does the predictor work?", info2_p:"It uses Riegel's formula: T2 = T1 × (D2 / D1)^1.06. It's a well-known endurance model — accurate for similar effort levels, less so when jumping from very short to very long distances without specific training.",
    rel_hyrox:"→ HYROX finish-time calculator", rel_fuel:"→ Race nutrition",
    foot1:"Race Planner · free tools for runners and HYROX athletes", foot_calc:"HYROX calculator", foot2:"Single-serve sports nutrition",
    km:"km", err_time:"Please enter a valid time.", err_dist:"Please enter a valid distance.",
    r5:"5K", r10:"10K", rhalf:"Half Marathon", rfull:"Marathon"},
  ko:{title:"마라톤 페이스 계산기 & 기록 예측 | 레이스 플래너",
-   desc:"무료 러닝 페이스 계산기와 마라톤 기록 예측기.",
+   desc:"러닝 페이스·속도·구간 기록 계산과 5K·10K·하프·풀 기록 예측을 무료로. Riegel 공식 기반.",
    nav_hyrox:"하이록스", nav_gpx:"GPX", h1:"마라톤 페이스·기록예측",
-   lead:"러닝 페이스·속도·구간 기록을 계산하거나, 5K·10K·하프·풀 마라톤 기록을 예측하세요. 모두 무료입니다.",
+   lead:"페이스·속도·km별 구간 기록을 계산하고, 최근 기록 하나로 5K·10K·하프·풀 기록까지 예측하세요.",
    pc_title:"⏱️ 페이스 계산기", pc_dist:"거리", pc_custom:"직접 입력 (km)", pc_distkm:"거리 (km)",
    pc_time:"완주 시간", pc_btn:"페이스 계산", pc_pacekm:"페이스 /km", pc_pacemi:"페이스 /mile", pc_speed:"속도",
    pc_split:"구간", pc_cumul:"누적",
-   rp_title:"🔮 기록 예측", rp_sub:"최근 기록 하나를 입력하면 다른 거리 기록을 예측합니다 (Riegel 공식).",
+   rp_title:"🔮 기록 예측", rp_sub:"최근 레이스 기록 하나면 됩니다. Riegel 공식으로 다른 모든 거리의 등가 기록을 예측합니다.",
    rp_dist:"최근 레이스 거리", rp_time:"내 기록", rp_btn:"내 기록 예측", rp_race:"종목", rp_pred:"예측", rp_pace:"페이스/km",
-   rp_note:"비슷한 훈련·컨디션을 가정한 추정치입니다. 실제 기록은 코스·날씨·지구력에 따라 달라집니다.",
-   info1_h:"페이스는 어떻게 계산하나요?", info1_p:"페이스는 시간을 거리로 나눈 값입니다. min/mile·km/h로도 변환하고, km별 구간으로 나눠 이븐 페이스를 계획할 수 있게 보여줍니다.",
-   info2_h:"예측은 어떤 원리인가요?", info2_p:"Riegel 공식(T2 = T1 × (D2/D1)^1.06)을 씁니다. 널리 쓰이는 지구력 모델로, 비슷한 강도에서 정확하며 아주 짧은 거리에서 아주 긴 거리로 건너뛸 때는 오차가 커집니다.",
+   rp_note:"비슷한 훈련·컨디션을 가정한 추정치입니다. 실제 기록은 코스, 날씨, 거리별 훈련량에 따라 달라집니다.",
+   info1_h:"페이스는 어떻게 계산하나요?", info1_p:"페이스는 시간을 거리로 나눈 값입니다. min/mile과 km/h로 함께 변환하고, km별 구간표로 나눠 출발부터 이븐 페이스를 계획할 수 있게 보여드립니다.",
+   info2_h:"예측은 어떤 원리인가요?", info2_p:"Riegel 공식(T2 = T1 × (D2/D1)^1.06)을 씁니다. 지구력 종목에서 가장 널리 검증된 모델로, 비슷한 강도의 거리끼리는 정확하지만 5K에서 풀코스처럼 거리 차가 크면 전용 훈련 없이는 오차가 커집니다.",
    rel_hyrox:"→ 하이록스 완주 기록 계산기", rel_fuel:"→ 레이스 보급",
    foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구", foot_calc:"하이록스 계산기", foot2:"스포츠 뉴트리션 낱개 구매",
    km:"km", err_time:"시간을 올바르게 입력해 주세요.", err_dist:"거리를 올바르게 입력해 주세요.",
