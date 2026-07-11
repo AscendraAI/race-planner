@@ -1,0 +1,11 @@
+# Race Planner (raceplanner.online)
+> Free Korean-first race-day planning tools: trail/ultra GPX pacing+fueling, marathon pace, HYROX predictor.
+
+## Tools
+- [Trail GPX Race Plan](https://raceplanner.online/gpx/): upload GPX -> hill/heat-adjusted pacing + fueling plan. Params: goal, temp, level, race
+- [Marathon Pace](https://raceplanner.online/pace/): pace calculator and Riegel predictor. Params: distance, time
+- [HYROX Calculator](https://raceplanner.online/)
+
+## Docs
+- [AI integration guide](https://raceplanner.online/ai/)
+- [URL parameters](https://raceplanner.online/api-docs/)

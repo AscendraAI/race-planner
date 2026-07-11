@@ -439,6 +439,21 @@ function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);if(s===60){m++;
 function fmt(sec){sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h>0?h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"):m+":"+String(s).padStart(2,"0");}
 function n(id){return parseFloat(document.getElementById(id).value);}
 function ni(id){return parseInt(document.getElementById(id).value,10)||0;}
+function applyPacePrefill(){
+  try{
+    var p=new URLSearchParams(location.search);
+    var dist=parseFloat(p.get("distance"));
+    if(isFinite(dist)&&dist>0){
+      var preset=document.getElementById("pc_preset");
+      var known=["5","10","21.0975","42.195"], chosen="";
+      for(var i=0;i<known.length;i++){if(Math.abs(dist-parseFloat(known[i]))<0.001){chosen=known[i];break;}}
+      if(chosen){preset.value=chosen;}else{preset.value="custom";document.getElementById("pc_km").value=dist;}
+      presetChange();
+    }
+    var time=p.get("time"), m=/^(\d{1,2}):([0-5]?\d)(?::([0-5]?\d))?$/.exec(time||"");
+    if(m){document.getElementById("pc_h").value=+m[1];document.getElementById("pc_m").value=+m[2];document.getElementById("pc_s").value=+(m[3]||0);}
+  }catch(e){}
+}
 
 function presetChange(){var c=document.getElementById("pc_preset").value==="custom";document.getElementById("pc_customwrap").style.display=c?"":"none";}
 function rpPreset(){var c=document.getElementById("rp_preset").value==="custom";document.getElementById("rp_customwrap").style.display=c?"":"none";}
@@ -481,7 +496,7 @@ function predict(){
   document.getElementById("rp_out").classList.add("show");
 }
 
-LANG=detectLang();applyLang();
+LANG=detectLang();applyLang();applyPacePrefill();
 </script>
 <script>(function(){
 var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
