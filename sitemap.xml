@@ -22,6 +22,22 @@
     <changefreq>weekly</changefreq><priority>0.9</priority>
   </url>
   <url>
+    <loc>https://raceplanner.online/ai/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/ai/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/ai/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/ai/"/>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raceplanner.online/api-docs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/api-docs/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/api-docs/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raceplanner.online/api-docs/"/>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://raceplanner.online/guide/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://raceplanner.online/guide/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://raceplanner.online/guide/?lang=ko"/>

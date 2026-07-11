@@ -251,6 +251,24 @@
   .packbox .pk_match{font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
   .packbox .pk_name{font-weight:800;font-size:15px;color:var(--mint);margin-bottom:5px}
   .packbox .pk_desc{font-size:12.5px;color:var(--ink2);line-height:1.55}
+  .fuelkit{margin-top:16px;padding:16px;border:1px solid #2c3a30;border-radius:14px;background:linear-gradient(150deg,rgba(110,231,168,.09),rgba(19,23,31,.9))}
+  .fuelkit_head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .fuelkit_head h3{font-size:16px;letter-spacing:-.2px;margin:0}
+  .fuelkit_head p{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.55}
+  .fuelkit_price{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--accent);font-weight:800;white-space:nowrap}
+  .fuelkit_body{border-top:1px solid var(--line);padding-top:13px}
+  .fuelkit_name{font-weight:800;color:var(--mint);font-size:15px;margin-bottom:4px}
+  .fuelkit_comp,.fuelkit_extra,.fuelkit_total{font-size:12.5px;color:var(--ink2);line-height:1.55;font-variant-numeric:tabular-nums}
+  .fuelkit_extra{color:var(--accent);margin-top:5px}
+  .fuelkit_total{text-align:right;margin-top:10px;color:var(--accent);font-weight:800}
+  .fuelkit_cta,.fuelkit_line a{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--accentink);font-weight:800;border-radius:11px;padding:11px 14px;margin-top:12px;font-size:14px;transition:.15s}
+  .fuelkit_cta:hover,.fuelkit_line a:hover{filter:brightness(1.05)}
+  .fuelkit_toggle{display:flex;align-items:center;gap:9px;margin-top:13px;font-size:12.5px;color:var(--ink2);font-weight:700}
+  .fuelkit_toggle input{width:18px;height:18px;padding:0;border-radius:5px;accent-color:var(--accent)}
+  .fuelkit_line{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .fuelkit_line:last-child{border-bottom:none}
+  .fuelkit_line b{display:block;font-size:13.5px}
+  .fuelkit_line span{display:block;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
   .sharebtn{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;width:100%;background:transparent;border:1px solid var(--line2);color:var(--ink2);font-weight:700;padding:13px;border-radius:12px;font-size:13.5px;cursor:pointer;transition:.15s}
   .sharebtn:hover{border-color:var(--accent);color:var(--accent)}
   .sharerow{display:flex;gap:9px}
@@ -461,15 +479,7 @@ header{display:block}
         <table style="margin-top:6px"><thead><tr>
           <th data-i18n="fu_at">At</th><th data-i18n="fu_pt">Point</th><th data-i18n="fu_take">Take</th>
         </tr></thead><tbody id="fu_tb"></tbody></table>
-        <div class="packbox" id="fu_pack">
-          <div class="pk_match" id="fu_pack_m"></div>
-          <div class="pk_name" id="fu_pack_t"></div>
-          <div class="pk_desc" id="fu_pack_d"></div>
-        </div>
-        <a class="cta" id="fu_cta" href="https://athletespick.com/surl/P/98?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail" target="_blank" rel="noopener" onclick="rpFuelClick()">
-          <b data-i18n="fu_cta_t">Get your race-day fuel — Athlete's Pick →</b>
-          <span data-i18n="fu_cta_s">A trail race pack matched to this plan — every gel and electrolyte, timed.</span>
-        </a>
+        <div class="fuelkit" id="fu_kit"></div>
         <div class="cardprev" id="cardprev" style="display:none"><canvas id="rp_canvas" width="1080" height="1920"></canvas><div class="cardprev_h" data-i18n="prev_h">Your story card is ready ↓</div></div>
         <div class="sharerow">
           <button class="sharebtn primary" id="save_btn" type="button" onclick="rpSaveCard()"><span data-i18n="save_t">⬇ Save card image</span></button>
@@ -530,13 +540,10 @@ var I18N={
   res_gels:"Gels", res_gelsu:"~25g each", res_fluid:"Fluid", res_fluidu:"total ml",
   sp_title:"⏱️ Kilometer splits", sp_km:"Km", sp_grade:"Grade", sp_pace:"Target pace", sp_cum:"Cumulative", sp_fuel:"Fuel / water",
   fu_title:"🥤 Fueling & hydration plan", fu_carb:"Carbs/h", fu_water:"Water/h", fu_na:"Sodium/h", fu_int:"Fuel every",
-  fu_at:"At", fu_pt:"Point", fu_take:"Take", fu_cta_t:"Get your race-day fuel — Athlete's Pick →",
-  fu_cta_s:"A trail race pack matched to this plan — every gel and electrolyte, timed.",
-  pk_match:"Matched to your plan",
-  pk_e_t:"Essential 6 · ₩11,300",
-  pk_e_d:"First trail 15K · 6 servings: pre-load, bottle drink, race gel, late caffeine, anti-cramp, recovery — timed to each stage.",
-  pk_p_t:"Pro 8 · ₩21,500",
-  pk_p_d:"PB push · 8 servings: BCAA pre-load, dual-source carbs, main gels, 120 mg caffeine, CRAMPFIX, layered recovery — precision dosing.",
+  fu_at:"At", fu_pt:"Point", fu_take:"Take",
+  kit_h:"Race-day fuel kit", kit_s:"Matched to this plan's fueling numbers", kit_add:"Add →",
+  kit_add_plain:"Add", kit_extra:"Gels for this plan +", kit_cramp:"Prone to cramping",
+  kit_total:"Total", kit_servings:"servings", kit_gels:"gels",
   save_t:"⬇ Save card image", save_done:"Saved ✓ caption copied", cap_t:"Copy caption", cap_done:"Copied ✓", share_t:"Share", share_hint:"Save the image and post it to your story or feed — your caption is copied too.", prev_h:"Your story card is ready ↓",
   teaser_t:"Someone shared their race plan", teaser_cta:"Upload your GPX below to build your own →",
   info1_h:"How the hill adjustment works",
@@ -552,7 +559,7 @@ var I18N={
   foot1:"Race Planner · free tools for runners and HYROX athletes", foot_calc:"HYROX calculator",
   foot2:"Single-serve sports nutrition", foot3:"Weather data by Open-Meteo (CC-BY 4.0). Hill model after Minetti et al. (2002).",
   d_easy:"Easy", d_mod:"Moderate", d_hard:"Hard", d_vhard:"Very hard",
-  badge_fc:"Forecast", badge_norm:"Seasonal normal", badge_flat:"Flat course — no elevation in file",
+  badge_fc:"Forecast", badge_norm:"Seasonal normal", badge_temp:"URL temp", badge_flat:"Flat course — no elevation in file",
   pen_lbl:"heat penalty", loc_lbl:"Location", date_lbl:"date",
   gel:"gel", water:"water",
   err_parse:"Couldn't read that file. Make sure it's a valid .gpx with track points.",
@@ -579,13 +586,10 @@ var I18N={
   res_gels:"젤", res_gelsu:"개당 ~25g", res_fluid:"수분", res_fluidu:"총 ml",
   sp_title:"⏱️ km별 스플릿", sp_km:"km", sp_grade:"경사", sp_pace:"목표 페이스", sp_cum:"누적", sp_fuel:"보급 / 수분",
   fu_title:"🥤 보급 & 수분 플랜", fu_carb:"탄수/h", fu_water:"수분/h", fu_na:"나트륨/h", fu_int:"보급 간격",
-  fu_at:"시점", fu_pt:"지점", fu_take:"섭취", fu_cta_t:"레이스 보급 준비하기 — 애슬리츠픽 →",
-  fu_cta_s:"이 플랜에 맞춘 트레일 보급 팩 — 젤 하나까지 섭취 시점대로.",
-  pk_match:"내 플랜에 맞춘 팩",
-  pk_e_t:"에센셜 6 · 11,300원",
-  pk_e_d:"트레일 15K 첫 완주 · 6포: 사전 부스트·보틀 드링크·레이스 젤·후반 카페인·경련 대응·회복 — 시점별 풀세팅.",
-  pk_p_t:"프로 8 · 21,500원",
-  pk_p_d:"PB 단축 · 8포: BCAA 사전로딩·듀얼소스 탄수·메인 젤·카페인 120mg·CRAMPFIX·다층 회복 — 정밀 도징.",
+  fu_at:"시점", fu_pt:"지점", fu_take:"섭취",
+  kit_h:"이 레이스 보급 세트", kit_s:"이 플랜의 보급량 그대로 맞춘 구성", kit_add:"담기 →",
+  kit_add_plain:"담기", kit_extra:"이 플랜 기준 젤 +", kit_cramp:"쥐가 잘 나는 편",
+  kit_total:"합계", kit_servings:"포", kit_gels:"젤",
   save_t:"⬇ 카드 이미지 저장", save_done:"저장됨 ✓ 캡션 복사", cap_t:"캡션 복사", cap_done:"복사됨 ✓", share_t:"공유하기", share_hint:"이미지를 저장해 스토리·피드에 올리세요. 캡션도 자동 복사됩니다.", prev_h:"내 스토리 카드 완성 ↓",
   teaser_t:"친구가 GPX 레이스 플랜을 공유했어요", teaser_cta:"아래에서 내 GPX를 올려 나만의 플랜 만들기 →",
   info1_h:"경사 보정은 어떻게 동작하나요",
@@ -601,7 +605,7 @@ var I18N={
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구", foot_calc:"하이록스 계산기",
   foot2:"스포츠 뉴트리션 낱개 구매", foot3:"날씨 데이터 Open-Meteo (CC-BY 4.0). 경사 모델 Minetti et al. (2002).",
   d_easy:"쉬움", d_mod:"보통", d_hard:"어려움", d_vhard:"매우 어려움",
-  badge_fc:"예보", badge_norm:"평년값", badge_flat:"평지 코스 — 파일에 고도 없음",
+  badge_fc:"예보", badge_norm:"평년값", badge_temp:"URL 기온", badge_flat:"평지 코스 — 파일에 고도 없음",
   pen_lbl:"더위 페널티", loc_lbl:"위치", date_lbl:"날짜",
   gel:"젤", water:"수분",
   err_parse:"파일을 읽지 못했습니다. 트랙 포인트가 있는 올바른 .gpx인지 확인하세요.",
@@ -641,6 +645,51 @@ function pace(sec){if(!isFinite(sec)||sec<=0)return "—";var m=Math.floor(sec/6
 function fmt(sec){sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h>0?h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0"):m+":"+String(s).padStart(2,"0");}
 function clamp(v,a,b){return v<a?a:(v>b?b:v);}
 function ni(id){return parseInt(document.getElementById(id).value,10)||0;}
+function moneyKrw(v){return "₩"+Math.round(v).toLocaleString("ko-KR");}
+function apUrl(no,raceType){return "https://athletespick.com/surl/P/"+no+"?utm_source=raceplanner&utm_medium=fuelpack&utm_campaign="+encodeURIComponent(raceType||"trail");}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+
+/* ================= Olla fuel basket ================= */
+const OLLA_SKUS = [
+  { no: 46, ko: '올라 120 하이드로 에너지젤', en: 'olla 120 Hydro Energy Gel', price: 1700, slot: 'gel' },
+  { no: 55, ko: '올라 하이드로 에너지젤 바이트', en: 'olla Hydro Gel Bite', price: 1800, slot: 'gel_bite' },
+  { no: 57, ko: '올라 카페인샷 120mg', en: 'olla Caffeine Shot 120mg', price: 1700, slot: 'caffeine' },
+  { no: 97, ko: '올라 하이포토닉 100', en: 'olla Hypotonic 100', price: 1800, slot: 'electrolyte' },
+  { no: 54, ko: '올라 크램프턴 허니레몬', en: 'olla Crampton Honey Lemon', price: 2100, slot: 'anticramp' },
+  { no: 58, ko: '올라 아미노 5000+', en: 'olla Amino 5000+', price: 1530, slot: 'recovery' },
+];
+const OLLA_PACKS = [
+  { key: 'marathon',  no: 107, ko: '올라 풀마라톤 레이스 팩 [10포]', en: 'olla Marathon Race Pack [10]', price: 15900, servings: 10, gelUnits: 7 },
+  { key: 'trail_mid', no: 108, ko: '올라 트레일 레이스 팩 15-30K [9포]', en: 'olla Trail Race Pack 15-30K [9]', price: 14900, servings: 9, gelUnits: 6 },
+  { key: 'ultra',     no: 109, ko: '올라 울트라 레이스 팩 40K+ [19포]', en: 'olla Ultra Race Pack 40K+ [19]', price: 29900, servings: 19, gelUnits: 13 },
+];
+const GEL_CARBS_G = 25;
+function skuByNo(no){for(var i=0;i<OLLA_SKUS.length;i++){if(OLLA_SKUS[i].no===no)return OLLA_SKUS[i];}return null;}
+function packByKey(key){for(var i=0;i<OLLA_PACKS.length;i++){if(OLLA_PACKS[i].key===key)return OLLA_PACKS[i];}return null;}
+function lineFromSku(no,qty){var s=skuByNo(no);return {no:s.no,nameKo:s.ko,nameEn:s.en,qty:qty,price:s.price*qty};}
+function fallbackLines(pack){
+  var comp={marathon:[[46,pack.gelUnits],[97,1],[57,1],[58,1]],trail_mid:[[46,pack.gelUnits],[97,1],[54,1],[58,1]],ultra:[[46,pack.gelUnits],[97,2],[57,2],[54,1],[58,1]]}[pack.key]||[[46,pack.gelUnits]];
+  return comp.filter(function(x){return x[1]>0;}).map(function(x){return lineFromSku(x[0],x[1]);});
+}
+function computeFuelBasketWeb(input){
+  input=input||{};
+  var gels=Math.max(0,Math.round(+input.gels||0));
+  var Th=+input.Th||0;
+  var raceType=input.raceType||"trail";
+  var key=(Th>=5||gels>=10)?"ultra":"trail_mid";
+  if(raceType==="marathon")key=(Th>=5||gels>=10)?"ultra":"trail_mid";
+  var pack=packByKey(key);
+  var lines=[];
+  if(!pack||pack.no===null){
+    if(pack)lines=fallbackLines(pack);
+  } else {
+    var extraGels=Math.max(0,gels-pack.gelUnits);
+    if(extraGels>0)lines.push(lineFromSku(46,extraGels));
+  }
+  if(input.crampProne)lines.push(lineFromSku(54,1));
+  var total=(pack&&pack.no!==null?pack.price:0)+lines.reduce(function(s,l){return s+l.price;},0);
+  return {pack:(pack&&pack.no!==null)?pack:null,lines:lines,totalKrw:total};
+}
 
 /* ================= GPX parse + preprocess ================= */
 function haversine(lat1,lon1,lat2,lon2){
@@ -833,7 +882,7 @@ function renderAll(P){
     var w=P.weather;
     document.getElementById("w_card").classList.add("show");
     var b=document.getElementById("w_badge");
-    b.textContent=w.mode==="fc"?d.badge_fc:d.badge_norm;
+    b.textContent=w.mode==="fc"?d.badge_fc:(w.mode==="prefill"?d.badge_temp:d.badge_norm);
     b.className="badge "+(w.mode==="fc"?"fc":"norm");
     var pb=document.getElementById("w_pen");
     if(P.pen>0.5){pb.style.display="";pb.textContent="+"+P.pen.toFixed(0)+"% "+d.pen_lbl;}else pb.style.display="none";
@@ -873,14 +922,37 @@ function renderAll(P){
     tr.innerHTML='<td>'+fmt(m.t)+'</td><td>'+m.km.toFixed(1)+' km'+(P.course.hasEle?' · '+Math.round(m.ele)+'m':'')+'</td><td>'+m.gel+' '+d.gel+' + '+m.water+'ml '+d.water+'</td>';
     ft.appendChild(tr);
   });
-  var pkPro=P.carbH>=60;
-  document.getElementById("fu_pack_m").textContent=d.pk_match;
-  document.getElementById("fu_pack_t").textContent=pkPro?d.pk_p_t:d.pk_e_t;
-  document.getElementById("fu_pack_d").textContent=pkPro?d.pk_p_d:d.pk_e_d;
-  document.getElementById("fu_cta").href="https://athletespick.com/surl/P/"+(pkPro?"99":"98")+"?utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=trail";
+  renderFuelKit(P);
   try{if(window.buildShareCard){buildShareCard(P);if(window.rpAfterRender)rpAfterRender();}}catch(e){}
   document.getElementById("fu_card").classList.add("show");
   drawChart(P);
+}
+function renderFuelKit(P){
+  var d=I18N[LANG], box=document.getElementById("fu_kit");if(!box)return;
+  var cr=document.getElementById("fu_cramp");
+  var crampProne=!!(cr&&cr.checked);
+  var planHours=isFinite(P.Th)?P.Th:(P.Tadj/3600);
+  var basket=computeFuelBasketWeb({gels:P.gels,naTot:P.naTot,Th:planHours,raceType:"trail",crampProne:crampProne});
+  window.FUEL_BASKET=basket;
+  var mode=basket.pack?"pack":"items";
+  var h='<div class="fuelkit_head"><div><h3>'+esc(d.kit_h)+'</h3><p>'+esc(d.kit_s)+'</p></div><div class="fuelkit_price">'+moneyKrw(basket.totalKrw)+'</div></div><div class="fuelkit_body">';
+  if(basket.pack){
+    var p=basket.pack, extra=0;
+    basket.lines.forEach(function(l){if(l.no===46)extra+=l.qty;});
+    h+='<div class="fuelkit_name">'+esc(LANG==="ko"?p.ko:p.en)+'</div>';
+    h+='<div class="fuelkit_comp">'+p.servings+' '+esc(d.kit_servings)+' · '+p.gelUnits+' '+esc(d.kit_gels)+' · '+moneyKrw(p.price)+'</div>';
+    if(extra>0)h+='<div class="fuelkit_extra">'+esc(d.kit_extra)+extra+'</div>';
+    h+='<a class="fuelkit_cta" href="'+apUrl(p.no,"trail")+'" target="_blank" rel="noopener" onclick="rpFuelPackClick('+p.no+','+basket.totalKrw+')">'+esc(d.kit_add)+'</a>';
+  } else {
+    basket.lines.forEach(function(l){
+      var nm=LANG==="ko"?l.nameKo:l.nameEn;
+      h+='<div class="fuelkit_line"><div><b>'+esc(nm)+'</b><span>x'+l.qty+' · '+moneyKrw(l.price)+'</span></div><a href="'+apUrl(l.no,"trail")+'" target="_blank" rel="noopener" onclick="rpFuelSkuClick('+l.no+','+l.qty+','+l.price+')">'+esc(d.kit_add_plain)+'</a></div>';
+    });
+    h+='<div class="fuelkit_total">'+esc(d.kit_total)+' '+moneyKrw(basket.totalKrw)+'</div>';
+  }
+  h+='</div><label class="fuelkit_toggle"><input id="fu_cramp" type="checkbox" '+(crampProne?'checked':'')+' onchange="renderFuelKit(window.PLAN)"> <span>'+esc(d.kit_cramp)+'</span></label>';
+  box.innerHTML=h;
+  try{if(window.gtag)gtag('event','fuel_reco_view',{race_type:'trail',basket_value:basket.totalKrw,mode:mode});}catch(e){}
 }
 function drawChart(P){
   var d=I18N[LANG];
@@ -978,6 +1050,8 @@ function generate(){
     btn.disabled=true;document.getElementById("gen_load").classList.add("show");
     getWeather(lat,lon,dateStr,startH).then(function(w){finish(w);})
       .catch(function(){showErr("gen_err",d.err_weather);finish(null);});
+  } else if(window.RP_PREFILL_TEMP&&isFinite(window.RP_PREFILL_TEMP.feel)) {
+    finish(window.RP_PREFILL_TEMP);
   } else { finish(null); }
 }
 (function(){
@@ -989,8 +1063,22 @@ function generate(){
   drop.addEventListener("drop",function(e){var f=e.dataTransfer.files[0];if(f)handleFile(f);});
   var dt=new Date();dt.setDate(dt.getDate()+7);
   document.getElementById("in_date").value=isoDate(dt);
+  applyGPXPrefill();
 })();
 LANG=detectLang();applyLang();
+function applyGPXPrefill(){
+  try{
+    var p=new URLSearchParams(location.search);
+    var race=p.get("race"); /* E4 race preset slot: parsed but intentionally unused. */
+    if(race){}
+    var goal=p.get("goal"), m=/^(\d{1,2}):([0-5]?\d)(?::([0-5]?\d))?$/.exec(goal||"");
+    if(m){document.getElementById("g_h").value=+m[1];document.getElementById("g_m").value=+m[2];document.getElementById("g_s").value=+(m[3]||0);}
+    var temp=parseFloat(p.get("temp"));
+    if(isFinite(temp)){window.RP_PREFILL_TEMP={mode:"prefill",feel:temp,temp:temp,hum:0,wind:0};var w=document.getElementById("in_weather");if(w)w.value="0";}
+    var level=p.get("level"), map={1:"30",2:"45",3:"60","30":"30","45":"45","60":"60"};
+    if(map[level])document.getElementById("in_level").value=map[level];
+  }catch(e){}
+}
 </script>
 <script>(function(){
 var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
@@ -1006,8 +1094,10 @@ setTimeout(paint,0);
 })();</script>
 <script>
 /* ===== share result card (a) — image download + summary URL loop ===== */
-function rpFuelClick(){try{if(window.gtag){var P=window.PLAN;gtag('event','fuel_click',{sport:'trail',pack:(P&&P.carbH>=60)?'pro8':'essential6',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
-function _rpPack(P){return P.carbH>=60?{n:"Pro 8",p:"₩21,500"}:{n:"Essential 6",p:"₩11,300"};}
+function rpFuelClick(extra){try{if(window.gtag){var P=window.PLAN,B=window.FUEL_BASKET;gtag('event','fuel_click',{sport:'trail',pack:(B&&B.pack)?B.pack.no:'items',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
+function rpFuelPackClick(no,value){try{if(window.gtag)gtag('event','fuel_pack_click',{pack_no:no,value:value});}catch(e){}rpFuelClick();}
+function rpFuelSkuClick(no,qty,value){try{if(window.gtag)gtag('event','fuel_sku_click',{product_no:no,qty:qty,value:value});}catch(e){}rpFuelClick();}
+function _rpPack(P){var B=window.FUEL_BASKET||computeFuelBasketWeb({gels:P.gels,naTot:P.naTot,Th:isFinite(P.Th)?P.Th:(P.Tadj/3600),raceType:"trail",crampProne:false});return B.pack?{n:B.pack.en,p:moneyKrw(B.totalKrw)}:{n:"Olla items",p:moneyKrw(B.totalKrw)};}
 function _rpTier(P,ko){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var e=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";var k=pk<10?"쉬움":pk<25?"보통":pk<45?"하드":"브루탈";return (ko?k:e)+(ko?" 트레일 · ":" TRAIL · ")+Math.round(P.course.total/1000)+"K";}
 function _rpRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
