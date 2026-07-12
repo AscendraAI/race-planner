@@ -62,6 +62,9 @@
   .gcard .t .ic{font-size:18px}
   .gcard .d{font-size:13px;color:var(--sub);line-height:1.55}
   .gcard .go{font-size:12.5px;font-weight:700;color:var(--mint);margin-top:4px}
+  .relhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin:24px 0 8px}
+  .related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
   .gsoon{background:var(--panel);border:1px dashed var(--line2);border-radius:var(--radius);padding:18px 20px;font-size:13.5px;color:var(--sub);line-height:1.6}
   .gsoon a{color:var(--mint);font-weight:700}
   footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
@@ -87,6 +90,7 @@
     <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Race strategy guides</span></span>
     <h1 data-i18n="h1">Guides</h1>
     <p class="lead" data-i18n="lead">Pacing, fueling and tactics — grouped by sport. Start with the calculator for your sport, then read the matching guide.</p>
+    <p class="lead" data-i18n="intro">Each guide turns one race problem — pacing, fueling or station tactics — into concrete numbers you can act on. Pair them with the tools: the <a href="/">HYROX calculator</a>, the <a href="/gpx/">GPX race plan</a> and the <a href="/pace/">marathon pace predictor</a>.</p>
   </section>
 
   <div class="gsec">
@@ -120,6 +124,14 @@
     <div class="gsoon" data-i18n="mr_d">Marathon guides are on the way. Meanwhile, predict your splits with the <a href="/pace/">Marathon Pace &amp; Predictor</a> tool.</div>
   </div>
 
+  <div class="relhead" data-i18n="rel_head">Related tools</div>
+  <div class="related">
+    <a href="/guide/pacing/" data-i18n="rel_pacing">→ HYROX pacing guide</a>
+    <a href="/guide/nutrition/" data-i18n="rel_nutrition">→ HYROX nutrition guide</a>
+    <a href="/guide/stations/" data-i18n="rel_stations">→ 8-station breakdown</a>
+    <a href="/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
+  </div>
+
   <footer>
     <span data-i18n="foot1">Race Planner · free tools & guides for runners and HYROX athletes</span><br/>
     <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
@@ -131,6 +143,8 @@ var I18N={
  en:{title:"Guides — HYROX, Trail & Marathon Race Strategy | Race Planner",desc:"Race strategy guides for HYROX, trail and marathon — pacing, fueling and station tactics, grouped by sport. Free.",
   eyebrow:"Race strategy guides",h1:"Guides",lead:"Pacing, fueling and tactics — grouped by sport. Start with the calculator for your sport, then read the matching guide.",
   read:"Read →",s_trail:"Trail",s_mara:"Marathon",soon:"Coming soon",
+  intro:'Each guide turns one race problem — pacing, fueling or station tactics — into concrete numbers you can act on. Pair them with the tools: the <a href="/">HYROX calculator</a>, the <a href="/gpx/">GPX race plan</a> and the <a href="/pace/">marathon pace predictor</a>.',
+  rel_head:"Related tools",rel_pacing:"→ HYROX pacing guide",rel_nutrition:"→ HYROX nutrition guide",rel_stations:"→ 8-station breakdown",rel_hyrox:"→ HYROX finish-time calculator",
   hx1:"HYROX pacing guide",hx1d:"Run pace by goal finish, 8-run split strategy and how to avoid going out too fast.",
   hx2:"HYROX nutrition guide",hx2d:"What and when to fuel for a 60–90 min hybrid race, plus hydration and sodium.",
   hx3:"8-station breakdown",hx3d:"Station-by-station tactics and target times for all eight HYROX stations.",
@@ -140,6 +154,8 @@ var I18N={
  ko:{title:"가이드 — 하이록스·트레일·마라톤 레이스 전략 | 레이스 플래너",desc:"하이록스·트레일·마라톤 레이스 전략 가이드 — 페이싱·보급·스테이션 공략을 종목별로 정리. 무료.",
   eyebrow:"레이스 전략 가이드",h1:"가이드",lead:"페이싱·보급·전략을 종목별로 정리했습니다. 내 종목 계산기로 먼저 계획을 뽑고, 해당 가이드를 읽으세요.",
   read:"읽기 →",s_trail:"트레일",s_mara:"마라톤",soon:"준비중",
+  intro:'각 가이드는 페이싱·보급·스테이션 공략 같은 레이스 문제 하나를 바로 적용할 수 있는 구체적 숫자로 풀어줘요. <a href="/">하이록스 계산기</a>, <a href="/gpx/">GPX 레이스플랜</a>, <a href="/pace/">마라톤 페이스 예측</a> 도구와 함께 쓰세요.',
+  rel_head:"관련 도구",rel_pacing:"→ 하이록스 페이싱 가이드",rel_nutrition:"→ 하이록스 보급 가이드",rel_stations:"→ 8개 스테이션 공략",rel_hyrox:"→ 하이록스 완주 기록 계산기",
   hx1:"하이록스 페이싱 가이드",hx1d:"목표 완주별 런 페이스, 8개 런 스플릿 전략, 초반 과속을 피하는 법.",
   hx2:"하이록스 보급 가이드",hx2d:"60~90분 하이브리드 레이스의 보급 타이밍, 수분·나트륨까지.",
   hx3:"8개 스테이션 공략",hx3d:"8개 스테이션별 공략과 목표 시간.",

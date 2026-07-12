@@ -294,6 +294,8 @@
     border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
   .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
   .morelink .ic{color:var(--accent);font-size:16px}
+  .faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
+  .relhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin:20px 0 8px}
 
   footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
   footer a{color:var(--mint)}
@@ -314,6 +316,8 @@ header{display:block}
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPX Race Plan","url":"https://raceplanner.online/gpx/","description":"Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does this adjust pace for hills?", "acceptedAnswer": {"@type": "Answer", "text": "It scores every segment's slope with the Minetti energy-cost curve, so climbs are paced slower and descents faster while holding your target finish time. Climbs steeper than about 20% are capped to a power-hike pace."}}, {"@type": "Question", "name": "Does it account for heat?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. When the forecast or climate-normal apparent temperature is above 15°C it applies a progressive slowdown (larger past 25°C and 30°C) and raises fluid and sodium targets."}}, {"@type": "Question", "name": "Is my GPX file uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your file is parsed locally in your browser and never leaves your device."}}]}</script>
 </head>
 <body>
 <header><div class="wrap-h">
@@ -501,6 +505,16 @@ header{display:block}
           <li data-i18n="lim3">Heat tolerance is personal; the penalty is an average trend, not a guarantee.</li>
           <li data-i18n="lim4">Forecasts are reliable within ~16 days only — beyond that it's a seasonal normal, not a prediction.</li>
         </ul>
+        <h2 data-i18n="faq_h">FAQ</h2>
+        <dl class="faq">
+          <dt data-i18n="faq_q1">How does this adjust pace for hills?</dt>
+          <dd data-i18n="faq_a1">It scores every segment's slope with the Minetti energy-cost curve, so climbs are paced slower and descents faster while holding your target finish time. Climbs steeper than about 20% are capped to a power-hike pace.</dd>
+          <dt data-i18n="faq_q2">Does it account for heat?</dt>
+          <dd data-i18n="faq_a2">Yes. When the forecast or climate-normal apparent temperature is above 15°C it applies a progressive slowdown (larger past 25°C and 30°C) and raises fluid and sodium targets.</dd>
+          <dt data-i18n="faq_q3">Is my GPX file uploaded anywhere?</dt>
+          <dd data-i18n="faq_a3">No. Your file is parsed locally in your browser and never leaves your device.</dd>
+        </dl>
+        <div class="relhead" data-i18n="rel_head">Related tools</div>
         <div class="related">
           <a href="/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
           <a href="/pace/" data-i18n="rel_pace">→ Pace calculator</a>
@@ -556,6 +570,13 @@ var I18N={
   lim3:"Heat tolerance is personal; the penalty is an average trend, not a guarantee.",
   lim4:"Forecasts are reliable within ~16 days only — beyond that it's a seasonal normal, not a prediction.",
   rel_hyrox:"→ HYROX finish-time calculator", rel_pace:"→ Pace calculator", rel_guide:"→ Pacing guide",
+  faq_h:"FAQ", rel_head:"Related tools",
+  faq_q1:"How does this adjust pace for hills?",
+  faq_a1:"It scores every segment's slope with the Minetti energy-cost curve, so climbs are paced slower and descents faster while holding your target finish time. Climbs steeper than about 20% are capped to a power-hike pace.",
+  faq_q2:"Does it account for heat?",
+  faq_a2:"Yes. When the forecast or climate-normal apparent temperature is above 15°C it applies a progressive slowdown (larger past 25°C and 30°C) and raises fluid and sodium targets.",
+  faq_q3:"Is my GPX file uploaded anywhere?",
+  faq_a3:"No. Your file is parsed locally in your browser and never leaves your device.",
   foot1:"Race Planner · free tools for runners and HYROX athletes", foot_calc:"HYROX calculator",
   foot2:"Single-serve sports nutrition", foot3:"Weather data by Open-Meteo (CC-BY 4.0). Hill model after Minetti et al. (2002).",
   d_easy:"Easy", d_mod:"Moderate", d_hard:"Hard", d_vhard:"Very hard",
@@ -602,6 +623,13 @@ var I18N={
   lim3:"더위 내성은 개인차가 큽니다 — 페널티는 평균 경향이며 보장이 아닙니다.",
   lim4:"예보는 약 16일 이내만 신뢰할 수 있고, 그 이상은 평년값(예측 아님)입니다.",
   rel_hyrox:"→ 하이록스 완주 기록 계산기", rel_pace:"→ 페이스 계산기", rel_guide:"→ 페이싱 가이드",
+  faq_h:"자주 묻는 질문", rel_head:"관련 도구",
+  faq_q1:"언덕 페이스는 어떻게 보정하나요?",
+  faq_a1:"Minetti 에너지비용 곡선으로 구간마다 경사를 점수화해, 목표 완주 시간을 유지하면서 오르막은 더 느리게 내리막은 더 빠르게 페이싱해요. 약 20%보다 가파른 오르막은 파워하이킹 페이스로 제한해요.",
+  faq_q2:"더위도 반영하나요?",
+  faq_a2:"네. 예보나 평년값 체감온도가 15°C를 넘으면 누진 감속을 적용하고(25°C·30°C를 넘을수록 커짐) 수분·나트륨 목표를 높여요.",
+  faq_q3:"제 GPX 파일이 어딘가로 업로드되나요?",
+  faq_a3:"아니요. 파일은 브라우저에서 로컬로 분석되며 기기를 벗어나지 않아요.",
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구", foot_calc:"하이록스 계산기",
   foot2:"스포츠 뉴트리션 낱개 구매", foot3:"날씨 데이터 Open-Meteo (CC-BY 4.0). 경사 모델 Minetti et al. (2002).",
   d_easy:"쉬움", d_mod:"보통", d_hard:"어려움", d_vhard:"매우 어려움",
