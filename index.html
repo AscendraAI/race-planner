@@ -24,6 +24,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Race Planner — HYROX Calculator","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is my HYROX finish time estimated?", "acceptedAnswer": {"@type": "Answer", "text": "From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions."}}, {"@type": "Question", "name": "How do I get faster at HYROX?", "acceptedAnswer": {"@type": "Answer", "text": "The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost."}}, {"@type": "Question", "name": "Does it cover gender, division and age?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Station benchmarks and percentiles adjust by gender, division and age group."}}]}</script>
 <style>
   :root{
     --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
@@ -380,6 +381,10 @@ header{display:block}
 .pctl{margin-top:9px;font-size:14px;color:var(--mint);font-family:var(--mono);font-weight:600}
 .pctl b{color:var(--accent)}
 .pctl .pctsub{display:block;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;letter-spacing:0}
+.faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
+.relhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin:20px 0 8px}
+.related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
@@ -502,6 +507,22 @@ header{display:block}
       <a class="morelink" href="/guide/stations/"><span class="ic">🎯</span><span data-i18n="more_g3">8-station breakdown</span></a>
       <a class="morelink" href="/guide/"><span class="ic">📚</span><span data-i18n="more_all">All guides →</span></a>
     </div>
+    <h2 data-i18n="faq_h">FAQ</h2>
+    <dl class="faq">
+      <dt data-i18n="faq_q1">How is my HYROX finish time estimated?</dt>
+      <dd data-i18n="faq_a1">From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.</dd>
+      <dt data-i18n="faq_q2">How do I get faster at HYROX?</dt>
+      <dd data-i18n="faq_a2">The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.</dd>
+      <dt data-i18n="faq_q3">Does it cover gender, division and age?</dt>
+      <dd data-i18n="faq_a3">Yes. Station benchmarks and percentiles adjust by gender, division and age group.</dd>
+    </dl>
+    <div class="relhead" data-i18n="rel_head">Related tools</div>
+    <div class="related">
+      <a href="/guide/pacing/" data-i18n="rel_pacing">→ HYROX pacing guide</a>
+      <a href="/guide/nutrition/" data-i18n="rel_nutrition">→ HYROX nutrition guide</a>
+      <a href="/guide/stations/" data-i18n="rel_stations">→ 8-station breakdown</a>
+      <a href="/pace/" data-i18n="rel_pace">→ Marathon pace &amp; predictor</a>
+    </div>
   </div>
 
   <footer>
@@ -556,6 +577,13 @@ var I18N={
   i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
   i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
   more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"GPX race plan — trail & road · elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
+  faq_h:"FAQ",rel_head:"Related tools",rel_pacing:"→ HYROX pacing guide",rel_nutrition:"→ HYROX nutrition guide",rel_stations:"→ 8-station breakdown",rel_pace:"→ Marathon pace & predictor",
+  faq_q1:"How is my HYROX finish time estimated?",
+  faq_a1:"From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.",
+  faq_q2:"How do I get faster at HYROX?",
+  faq_a2:"The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.",
+  faq_q3:"Does it cover gender, division and age?",
+  faq_a3:"Yes. Station benchmarks and percentiles adjust by gender, division and age group.",
   foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
   disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
   err:"Please check your pace (2:30–12:00 /km).",run:"Run",
@@ -578,6 +606,13 @@ var I18N={
   i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
   i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
   more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"GPX 레이스플랜 — 트레일·로드 · 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
+  faq_h:"자주 묻는 질문",rel_head:"관련 도구",rel_pacing:"→ 하이록스 페이싱 가이드",rel_nutrition:"→ 하이록스 보급 가이드",rel_stations:"→ 8개 스테이션 공략",rel_pace:"→ 마라톤 페이스·기록예측",
+  faq_q1:"제 하이록스 완주 기록은 어떻게 예측하나요?",
+  faq_a1:"전력 5K 페이스에 8개 런 전반의 수준별 지친 다리 러닝 보정을 더하고, 40만+ 실제 결과로 만든 스테이션 시간과 록스존 전환을 합산해요.",
+  faq_q2:"하이록스에서 더 빨라지려면?",
+  faq_a2:"가장 큰 지렛대는 지친 다리 러닝 페이싱 — 매 스테이션 뒤에도 런 페이스를 유지하는 거예요. 스플릿 화면이 시간을 잃는 지점을 정확히 보여줘요.",
+  faq_q3:"성별·부문·연령도 반영하나요?",
+  faq_a3:"네. 스테이션 기준값과 백분위가 성별·부문·연령대에 맞춰 조정돼요.",
   foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
   disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
   err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
