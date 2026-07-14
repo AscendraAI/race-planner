@@ -368,6 +368,7 @@ header{display:block}
           <div class="stat"><div class="k" data-i18n="s_hi">High / Low</div><div class="v" id="s_hi" style="font-size:16px">—</div><div class="u">m</div></div>
         </div>
         <div style="margin-top:10px"><span class="badge" id="s_diff">—</span></div>
+        <p data-i18n="s_method" style="margin-top:10px;font-size:11px;line-height:1.55;color:var(--sub)">D+ is a smoothed estimate from your GPX's device elevation (sampled every 100 m). Organizer or DEM figures (e.g. ASTER) can differ by 10–30%.</p>
       </div>
 
       <div class="card out" id="in_card">
@@ -543,7 +544,7 @@ var I18N={
   lead:"Trail ultra or road marathon — drop in your race GPX and get a hill-adjusted pacing plan: elevation profile, per-kilometer target splits, heat correction from real weather, and fueling timing. Everything runs in your browser — your file never leaves your device.",
   up_title:"📂 1. Upload your course (GPX)", pz_or:"or start with a real race — no file needed",pz_uiit:"Ulleungdo Intl Trail 40K",pz_cool:"Cool Valley Trail Race 17K",pz_seoul:"Seoul Marathon 42K", up_drop:"Drag & drop a GPX file here", up_or:"or tap to choose a file",
   up_priv:"🔒 Parsed locally in your browser. Nothing is uploaded.",
-  sum_title:"🗻 Course summary", s_dist:"Distance", s_up:"Ascent D+", s_down:"Descent D−", s_hi:"High / Low",
+  sum_title:"🗻 Course summary", s_dist:"Distance", s_up:"Ascent D+", s_down:"Descent D−", s_hi:"High / Low", s_method:"D+ is a smoothed estimate from your GPX's device elevation (sampled every 100 m). Organizer or DEM figures (e.g. ASTER) can differ by 10–30%.",
   in_title:"🎯 2. Your plan", in_goal:"Goal finish time", in_type:"Terrain type", in_road:"Road", in_trail:"Trail (allow power-hiking)",
   in_date:"Race date", in_start:"Start time", in_lat:"Start latitude", in_lon:"Start longitude",
   in_level:"Fueling level (carbs)", in_lvl1:"Conservative · 30 g/h", in_lvl2:"Standard · 45 g/h", in_lvl3:"Aggressive · 60 g/h",
@@ -565,7 +566,7 @@ var I18N={
   info2_h:"How weather changes your plan",
   info2_p:"Using the start coordinates and date, we pull the apparent (\"feels-like\") temperature from Open-Meteo. Within ~16 days that's a real forecast; further out we fall back to a multi-year seasonal normal. Heat above ~15 °C adds a progressive pacing penalty and raises your fluid and sodium needs.",
   info3_h:"Limitations",
-  lim1:"GPS elevation is noisy — D+ is smoothed but still device-dependent.",
+  lim1:"GPS elevation is noisy — D+ is a smoothed estimate and can differ from organizer or DEM (e.g. ASTER) figures.",
   lim2:"Trail surface (rocks, mud, stairs) isn't in a GPX, so technical courses may be underestimated.",
   lim3:"Heat tolerance is personal; the penalty is an average trend, not a guarantee.",
   lim4:"Forecasts are reliable within ~16 days only — beyond that it's a seasonal normal, not a prediction.",
@@ -596,7 +597,7 @@ var I18N={
   lead:"트레일이든 로드 마라톤이든, GPX 파일을 올리면 경사 보정 페이싱 플랜을 만들어 드립니다 — 고도 프로파일, km별 목표 스플릿, 실제 날씨 기반 더위 보정, 보급 타이밍까지. 모든 처리는 브라우저 안에서 끝나며 파일은 어디로도 전송되지 않습니다.",
   up_title:"📂 1. 코스 업로드 (GPX)", pz_or:"GPX가 없어도 됩니다 — 인기 대회로 바로 체험",pz_uiit:"울릉도 국제 트레일 40K",pz_cool:"쿨밸리 트레일레이스 17K",pz_seoul:"서울 동아마라톤 풀코스", up_drop:"GPX 파일을 여기로 끌어다 놓으세요", up_or:"또는 탭하여 파일 선택",
   up_priv:"🔒 브라우저에서 직접 분석합니다. 업로드되지 않습니다.",
-  sum_title:"🗻 코스 요약", s_dist:"거리", s_up:"상승 D+", s_down:"하강 D−", s_hi:"최고 / 최저",
+  sum_title:"🗻 코스 요약", s_dist:"거리", s_up:"상승 D+", s_down:"하강 D−", s_hi:"최고 / 최저", s_method:"D+는 GPX 기기 고도를 100 m 간격으로 스무딩한 추정치예요. 주최측·DEM(예: ASTER) 값과는 10~30% 차이날 수 있어요.",
   in_title:"🎯 2. 플랜 설정", in_goal:"목표 완주 시간", in_type:"노면 유형", in_road:"로드", in_trail:"트레일 (파워하이킹 허용)",
   in_date:"레이스 날짜", in_start:"출발 시각", in_lat:"시작 위도", in_lon:"시작 경도",
   in_level:"보급 수준 (탄수)", in_lvl1:"안정형 · 30 g/h", in_lvl2:"표준형 · 45 g/h", in_lvl3:"공격형 · 60 g/h",
@@ -618,7 +619,7 @@ var I18N={
   info2_h:"날씨가 플랜을 어떻게 바꾸나요",
   info2_p:"시작 좌표와 날짜로 Open-Meteo에서 체감온도를 가져옵니다. 약 16일 이내는 실제 예보, 그 이상이면 다년 평년값으로 폴백합니다. 약 15°C 이상 더위는 페이스 페널티를 누진 적용하고 수분·나트륨 권장량을 높입니다.",
   info3_h:"한계",
-  lim1:"GPS 고도는 노이즈가 있어 D+는 스무딩해도 기기차가 남습니다.",
+  lim1:"GPS 고도는 노이즈가 있어 D+는 스무딩한 추정치예요 — 주최측·DEM(예: ASTER) 값과 다를 수 있어요.",
   lim2:"노면 기술도(바위·진흙·계단)는 GPX에 없어 테크니컬 코스는 과소평가될 수 있습니다.",
   lim3:"더위 내성은 개인차가 큽니다 — 페널티는 평균 경향이며 보장이 아닙니다.",
   lim4:"예보는 약 16일 이내만 신뢰할 수 있고, 그 이상은 평년값(예측 아님)입니다.",
