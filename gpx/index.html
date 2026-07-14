@@ -1125,7 +1125,6 @@ setTimeout(paint,0);
 function rpFuelClick(extra){try{if(window.gtag){var P=window.PLAN,B=window.FUEL_BASKET;gtag('event','fuel_click',{sport:'trail',pack:(B&&B.pack)?B.pack.no:'items',level:P?P.carbH:'',campaign:'trail'});}}catch(e){}}
 function rpFuelPackClick(no,value){try{if(window.gtag)gtag('event','fuel_pack_click',{pack_no:no,value:value});}catch(e){}rpFuelClick();}
 function rpFuelSkuClick(no,qty,value){try{if(window.gtag)gtag('event','fuel_sku_click',{product_no:no,qty:qty,value:value});}catch(e){}rpFuelClick();}
-function _rpPack(P){var B=window.FUEL_BASKET||computeFuelBasketWeb({gels:P.gels,naTot:P.naTot,Th:isFinite(P.Th)?P.Th:(P.Tadj/3600),raceType:"trail",crampProne:false});return B.pack?{n:B.pack.en,p:moneyKrw(B.totalKrw)}:{n:"Olla items",p:moneyKrw(B.totalKrw)};}
 function _rpTier(P,ko){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var e=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";var k=pk<10?"쉬움":pk<25?"보통":pk<45?"하드":"브루탈";return (ko?k:e)+(ko?" 트레일 · ":" TRAIL · ")+Math.round(P.course.total/1000)+"K";}
 function _rpRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
@@ -1133,8 +1132,8 @@ function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.onl
 function buildShareCard(P){
   var c=document.getElementById("rp_canvas"),x=c.getContext("2d"),W=1080,H=1920,M=90;
   var ko=window.LANG==="ko";
-  var L=ko?{plan:"GPX 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",pack:"매칭 보급 팩",f1:"무료 경사보정 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
-        :{plan:"GPX RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",pack:"MATCHED FUEL PACK",f1:"Free hill-adjusted race planner",f2:"Upload your GPX · get your plan free"};
+  var L=ko?{plan:"GPX 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",f1:"무료 경사보정 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
+        :{plan:"GPX RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",f1:"Free hill-adjusted race planner",f2:"Upload your GPX · get your plan free"};
   x.fillStyle="#0a0c10";x.fillRect(0,0,W,H);x.textBaseline="alphabetic";
   x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(L.plan,M,150);
   x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.textAlign="right";x.fillText("@athletespick",W-M,150);
@@ -1159,13 +1158,10 @@ function buildShareCard(P){
     x.fillStyle="#f3f6fa";x.font="800 66px 'Space Grotesk',system-ui,sans-serif";x.fillText(v,cx,by+218);
     x.fillStyle="#5a6573";x.font="600 24px system-ui,sans-serif";x.fillText(u,cx,by+256);}
   f3(M+150,L.carb,P.carbH+"","g");f3(W/2,L.na,P.naH+"","mg");f3(W-M-150,L.every,P.interval+"",L.umin);
-  var pk=_rpPack(P);
-  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 28px system-ui,sans-serif";x.fillText(L.pack,W/2,1460);
-  x.fillStyle="#c8ff43";x.font="800 58px 'Space Grotesk',system-ui,sans-serif";x.fillText(pk.n+"  ·  "+pk.p,W/2,1532);
-  x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,1660);x.lineTo(W-M,1660);x.stroke();
-  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText(L.f1,W/2,1740);
-  x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",W/2,1812);
-  x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1864);
+  x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,1470);x.lineTo(W-M,1470);x.stroke();
+  x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText(L.f1,W/2,1560);
+  x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",W/2,1632);
+  x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1684);
   return c;}
 function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
   return (window.LANG==="ko")
