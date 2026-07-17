@@ -127,6 +127,24 @@
   .gearblock .geargrid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .gearblock .geargrid iframe{border-radius:10px;overflow:hidden;background:var(--panel2);max-width:100%}
   .gearblock .geardisc{margin-top:12px;font-size:11px;color:var(--faint);line-height:1.5}
+  /* Strava connect */
+  .strava-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#fc4c02;color:#fff;font-weight:700;font-size:15px;padding:13px 16px;border-radius:12px;cursor:pointer;margin-bottom:8px;box-shadow:0 6px 20px rgba(252,76,2,.28)}
+  .strava-btn:hover{filter:brightness(1.06)}
+  .strava-btn svg{width:18px;height:18px;flex:none}
+  .or-div{display:flex;align-items:center;gap:10px;color:var(--faint);font-size:11.5px;margin:6px 0 8px;text-transform:uppercase;letter-spacing:.08em}
+  .or-div::before,.or-div::after{content:"";flex:1;height:1px;background:var(--line)}
+  .picker{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  .picker.on{display:flex}
+  .picker-box{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:440px;width:100%;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .picker-h{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .picker-h b{font-size:15px;color:var(--ink)}
+  .picker-h button{background:none;border:none;color:var(--sub);font-size:20px;cursor:pointer;line-height:1}
+  .picker-list{overflow:auto;padding:8px}
+  .pick-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;cursor:pointer}
+  .pick-item:hover{background:var(--panel2)}
+  .pick-item .pn{font-weight:600;font-size:14px;color:var(--ink)}
+  .pick-item .pm{font-size:12px;color:var(--sub);margin-top:2px}
+  .pick-item .pd{font-size:13px;color:var(--accent);font-weight:700;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -164,10 +182,15 @@
     </div>
     <!-- controls -->
     <div class="panel">
+      <a class="strava-btn" id="stravaBtn" href="/api/strava/login" style="display:none">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.4 16.97l-2.19-4.32h-3.2L15.4 24l5.4-11.35h-3.22M8.72 0L3.3 11.35h3.28L8.72 6.9l2.15 4.45h3.24"/></svg>
+        <span data-i18n="sv_connect">Connect with Strava</span>
+      </a>
+      <div class="or-div" id="orDiv" style="display:none"><span data-i18n="or_upload">or upload a file</span></div>
       <div class="drop" id="drop">
         <div class="di">⬆</div>
         <div class="dt" data-i18n="drop_t">Upload your .gpx</div>
-        <div class="ds" data-i18n="drop_s">drag &amp; drop · Strava · Garmin · Coros</div>
+        <div class="ds" data-i18n="drop_s">drag &amp; drop · Garmin · Coros · Apple</div>
         <input type="file" id="file" accept=".gpx,application/gpx+xml,text/xml" style="display:none" />
       </div>
       <div class="field"><label data-i18n="f_title">Title</label><input id="in_title" type="text" maxlength="32" placeholder="Morning Run" /></div>
@@ -196,6 +219,13 @@
           <span class="chip" data-bg="transparent" data-i18n="bg_trans">Transparent · for photos</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="picker" id="picker">
+    <div class="picker-box">
+      <div class="picker-h"><b data-i18n="pick_run">Pick a run</b><button id="pickClose" aria-label="close">✕</button></div>
+      <div class="picker-list" id="pickList"></div>
     </div>
   </div>
 
@@ -252,7 +282,8 @@ var I18N={
   p_build:"Build your poster",drop_t:"Drop a .gpx file",drop_s:"or tap to choose · from Strava, Garmin, Coros…",
   f_title:"Title",f_date:"Date",f_time:"Finish time",f_theme:"Theme",f_ratio:"Format",f_bg:"Background",
   r_port:"Portrait 4:5",r_sq:"Square 1:1",r_story:"Story 9:16",bg_solid:"Solid",bg_trans:"Transparent · for photos",
-  sample:"Sample — upload your GPX to make it yours",
+  sample:"Sample — connect Strava or upload a GPX to make it yours",
+  sv_connect:"Connect with Strava",or_upload:"or upload a file",pick_run:"Pick a run",no_runs:"No runs with a route found.",sv_err:"Strava connection failed. Please try again.",
   empty:"Your poster preview shows here",dl:"Download PNG",share:"Share",
   i1_h:"Your route, framed",i1_p:"Everything runs in your browser — your GPX never leaves your device. We read the track, draw the line, and lay your stats on a poster you can post or print. Works with running, trail, cycling and hiking files.",
   i2_h:"More tools",m_gpx:"GPX race plan — pacing, fueling & weather",m_pace:"Marathon pace & finish-time predictor",m_hx:"HYROX finish-time calculator",m_guide:"Training & race guides",
@@ -269,7 +300,8 @@ var I18N={
   p_build:"포스터 만들기",drop_t:".gpx 파일을 여기에",drop_s:"또는 눌러서 선택 · 스트라바·가민·코로스…",
   f_title:"제목",f_date:"날짜",f_time:"완주 시간",f_theme:"테마",f_ratio:"비율",f_bg:"배경",
   r_port:"세로 4:5",r_sq:"정사각 1:1",r_story:"스토리 9:16",bg_solid:"단색",bg_trans:"투명 · 사진 위에",
-  sample:"샘플 — 내 GPX를 올리면 내 것이 됩니다",
+  sample:"샘플 — 스트라바 연결 또는 GPX 업로드로 내 것 만들기",
+  sv_connect:"스트라바로 연결",or_upload:"또는 파일 업로드",pick_run:"활동 선택",no_runs:"코스가 있는 활동이 없어요.",sv_err:"스트라바 연결에 실패했어요. 다시 시도해 주세요.",
   empty:"포스터 미리보기가 여기 나와요",dl:"PNG 다운로드",share:"공유",
   i1_h:"내 코스를 액자에",i1_p:"모든 처리는 브라우저 안에서 — GPX는 기기를 벗어나지 않습니다. 트랙을 읽어 라인을 그리고 기록을 얹어 바로 올리거나 인쇄할 포스터를 만듭니다. 러닝·트레일·사이클·하이킹 파일 모두 지원.",
   i2_h:"다른 도구",m_gpx:"GPX 레이스 플랜 — 페이싱·보급·날씨",m_pace:"마라톤 페이스·완주기록 예측",m_hx:"하이록스 완주기록 계산기",m_guide:"훈련·레이스 가이드",
@@ -555,6 +587,31 @@ document.getElementById("share").addEventListener("click",function(){
     else download();},"image/png");}
   else download();
 });
+/* ---------------- Strava connect ---------------- */
+function decodePoly(str){var i=0,lat=0,lng=0,co=[];while(i<str.length){var b,sh=0,r=0;do{b=str.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5;}while(b>=32);lat+=(r&1)?~(r>>1):(r>>1);sh=0;r=0;do{b=str.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5;}while(b>=32);lng+=(r&1)?~(r>>1):(r>>1);co.push([lat/1e5,lng/1e5]);}return co;}
+function stravaToG(a){var p=decodePoly(a.polyline||"");if(p.length<2)return null;var lat=[],lon=[];for(var i=0;i<p.length;i++){lat.push(p[i][0]);lon.push(p[i][1]);}
+  var dd=new Date(a.start_date_local),ds="";if(!isNaN(dd.getTime()))ds=dd.getFullYear()+"."+String(dd.getMonth()+1).padStart(2,"0")+"."+String(dd.getDate()).padStart(2,"0");
+  return {lat:lat,lon:lon,ele:[],hasEle:false,dist:a.distance||0,gain:a.total_elevation_gain||0,dur:a.moving_time||NaN,name:(a.name||"").slice(0,32),dateStr:ds};}
+function pickActivity(a){var G=stravaToG(a);if(!G){alert(T("bad"));return;}window.G=G;
+  document.getElementById("in_title").value=G.name||"";document.getElementById("in_date").value=G.dateStr||"";document.getElementById("in_time").value=isFinite(G.dur)?fmtDur(G.dur):"";
+  showSample(false);render();document.getElementById("picker").classList.remove("on");if(window.gtag)gtag("event","poster_generate",{source:"strava"});}
+function openStrava(){var pl=document.getElementById("pickList");pl.innerHTML='<div style="padding:22px;text-align:center;color:var(--sub)">…</div>';document.getElementById("picker").classList.add("on");
+  fetch("/api/strava/activities").then(function(r){if(r.status===401){location.href="/api/strava/login";return null;}return r.json();}).then(function(d){if(!d)return;
+    if(!d.activities||!d.activities.length){pl.innerHTML='<div style="padding:22px;text-align:center;color:var(--sub)">'+T("no_runs")+'</div>';return;}
+    pl.innerHTML="";d.activities.forEach(function(a){var el=document.createElement("div");el.className="pick-item";
+      el.innerHTML='<div><div class="pn"></div><div class="pm"></div></div><div class="pd">'+(a.distance/1000).toFixed(2)+' km</div>';
+      el.querySelector(".pn").textContent=a.name||"Run";el.querySelector(".pm").textContent=(a.start_date_local||"").slice(0,10)+" · "+(a.type||"");
+      el.addEventListener("click",function(){pickActivity(a);});pl.appendChild(el);});
+  }).catch(function(){pl.innerHTML='<div style="padding:22px;text-align:center;color:var(--sub)">'+T("bad")+'</div>';});}
+document.getElementById("pickClose").addEventListener("click",function(){document.getElementById("picker").classList.remove("on");});
+document.getElementById("picker").addEventListener("click",function(e){if(e.target===this)this.classList.remove("on");});
+(function(){var q=new URLSearchParams(location.search);
+  fetch("/api/strava/status").then(function(r){return r.json();}).then(function(s){
+    if(s&&s.configured){document.getElementById("stravaBtn").style.display="flex";document.getElementById("orDiv").style.display="flex";}
+    if(s&&(s.connected||q.get("strava")==="1"))openStrava();
+  }).catch(function(){});
+  if(q.get("strava")==="error")setTimeout(function(){alert(T("sv_err"));},400);})();
+
 applyI18N();
 loadDemo();
 // canvas fonts (Bebas Neue) aren't referenced in the DOM, so force-load them then re-render,
