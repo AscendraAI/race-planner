@@ -392,8 +392,8 @@ header{display:block}
   .gearblock{margin:26px 0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--panel2),var(--panel))}
   .gearblock .gearhead{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
   .gearblock .gearhead::before{content:"🛒";font-size:16px}
-  .geargrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-  @media(min-width:560px){.geargrid{grid-template-columns:repeat(4,1fr)}}
+  .geargrid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .geargrid iframe{border-radius:10px;overflow:hidden;background:var(--panel2);max-width:100%}
   .gearcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .15s,transform .15s}
   .gearcard:hover{border-color:var(--accent);transform:translateY(-2px)}
   .gearcard .gic{font-size:24px;line-height:1}
@@ -509,14 +509,14 @@ header{display:block}
     </ul>
     <h2 data-i18n="i2_h">The 8 stations in order</h2>
     <p data-i18n="i2_p">SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100</p>
-    <!-- ===== monetization: affiliate gear + in-article ad (replace COUPANG_URL_* and ADSLOT_INARTICLE to activate) ===== -->
+    <!-- ===== affiliate: Coupang Partners dynamic banners ===== -->
     <div class="gearblock">
       <div class="gearhead" data-i18n="gear_h">Race-day gear</div>
       <div class="geargrid">
-        <a class="gearcard" href="COUPANG_URL_SHOES" target="_blank" rel="nofollow sponsored noopener"><span class="gic">👟</span><span class="gname" data-i18n="gear_shoe">Racing shoes</span></a>
-        <a class="gearcard" href="COUPANG_URL_GEL" target="_blank" rel="nofollow sponsored noopener"><span class="gic">⚡</span><span class="gname" data-i18n="gear_gel">Energy gels</span></a>
-        <a class="gearcard" href="COUPANG_URL_WATCH" target="_blank" rel="nofollow sponsored noopener"><span class="gic">⌚</span><span class="gname" data-i18n="gear_watch">GPS watch</span></a>
-        <a class="gearcard" href="COUPANG_URL_SOCKS" target="_blank" rel="nofollow sponsored noopener"><span class="gic">🧦</span><span class="gname" data-i18n="gear_socks">Compression socks</span></a>
+        <iframe src="https://coupa.ng/cn8zMK" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics loading="lazy" title="Coupang"></iframe>
+        <iframe src="https://coupa.ng/cn8zP9" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics loading="lazy" title="Coupang"></iframe>
+        <iframe src="https://coupa.ng/cn8zSz" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics loading="lazy" title="Coupang"></iframe>
+        <iframe src="https://coupa.ng/cn8zVY" width="120" height="240" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics loading="lazy" title="Coupang"></iframe>
       </div>
       <div class="geardisc" data-i18n="gear_disc">As a Coupang Partners member, this site may earn a commission from qualifying purchases.</div>
     </div>
