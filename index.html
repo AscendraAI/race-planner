@@ -540,6 +540,12 @@ document.getElementById("share").addEventListener("click",function(){
 });
 applyI18N();
 loadDemo();
+// canvas fonts (Bebas Neue) aren't referenced in the DOM, so force-load them then re-render,
+// otherwise the on-page canvas falls back to a system font (mismatch vs the downloaded PNG)
+if(document.fonts&&document.fonts.load){
+  Promise.all([document.fonts.load("400 80px 'Bebas Neue'"),document.fonts.load("400 300px 'Bebas Neue'")])
+    .then(function(){if(window.G)render();}).catch(function(){});
+}
 // collapse the ad slot if no ad fills it (keeps layout clean until real slot IDs are set)
 setTimeout(function(){var s=document.querySelectorAll(".adslot");for(var i=0;i<s.length;i++){var ins=s[i].querySelector("ins.adsbygoogle");if(!ins||ins.getAttribute("data-ad-status")!=="filled")s[i].style.display="none";}},2800);
 </script>
