@@ -134,11 +134,11 @@
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/">Route Poster</a>
-    <a class="navlink" href="/gpx/">GPX Race Plan</a>
-    <a class="navlink" href="/hyrox/">HYROX Calculator</a>
-    <a class="navlink" href="/pace/">Marathon Pace</a>
-    <a class="navlink" href="/guide/">Guides</a>
+    <a class="navlink active" href="/" data-i18n="nav_poster">Route Poster</a>
+    <a class="navlink" href="/gpx/" data-i18n="nav_gpx">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/" data-i18n="nav_hyrox">HYROX Calculator</a>
+    <a class="navlink" href="/pace/" data-i18n="nav_pace">Marathon Pace & Predictor</a>
+    <a class="navlink" href="/guide/" data-i18n="nav_guide">Guides</a>
   </nav>
   <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
 </div></header>
@@ -247,6 +247,7 @@
 var I18N={
  en:{title:"Route Poster — Turn your GPX into a framable running poster | Race Planner",
   eyebrow:"Free · no signup",h1:"Turn your run into a poster",
+  nav_poster:"Route Poster",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
   lead:"Drop your GPX file and get a clean, framable poster of your route — with distance, elevation, time and pace. Perfect for Instagram or the wall.",
   p_build:"Build your poster",drop_t:"Drop a .gpx file",drop_s:"or tap to choose · from Strava, Garmin, Coros…",
   f_title:"Title",f_date:"Date",f_time:"Finish time",f_theme:"Theme",f_ratio:"Format",f_bg:"Background",
@@ -263,6 +264,7 @@ var I18N={
   bad:"Couldn't read that GPX — try another export.",notrk:"No track points found in that file."},
  ko:{title:"코스 포스터 — GPX를 액자 같은 러닝 포스터로 | 레이스 플래너",
   eyebrow:"무료 · 가입 없음",h1:"내 러닝을 포스터로",
+  nav_poster:"코스 포스터",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
   lead:"GPX 파일을 올리면 코스 라인·거리·고도·시간·페이스가 담긴 액자 같은 포스터를 만들어드려요. 인스타그램이나 벽에 딱.",
   p_build:"포스터 만들기",drop_t:".gpx 파일을 여기에",drop_s:"또는 눌러서 선택 · 스트라바·가민·코로스…",
   f_title:"제목",f_date:"날짜",f_time:"완주 시간",f_theme:"테마",f_ratio:"비율",f_bg:"배경",
