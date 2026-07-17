@@ -246,7 +246,7 @@ header{display:block}
 
 </head>
 <body>
-<header><div class="wrap-h"><a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a><span class="spacer"></span><nav class="nav"><a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a><a class="navlink" href="/" data-nav="1">HYROX Calculator</a><a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a><a class="navlink" href="/guide/" data-nav="3">Guides</a></nav><span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span></div></header>
+<header><div class="wrap-h"><a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a><span class="spacer"></span><nav class="nav"><a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a><a class="navlink" href="/hyrox/" data-nav="1">HYROX Calculator</a><a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a><a class="navlink" href="/guide/" data-nav="3">Guides</a></nav><span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span></div></header>
 <div class="shell"><div class="layout"><main class="center">
 
 <section class="hero-top">
@@ -275,13 +275,13 @@ header{display:block}
   <p data-i18n="how_p">Your goal time divided by 42.195 km gives the pace you must average. The hard part is holding it evenly: banking time in the first half is the number-one cause of the late-race collapse known as "hitting the wall". Each goal page below shows your exact 5K, 10K, halfway and 30K checkpoints so you can pace by feel and by watch.</p>
   <div class="moregrid" style="margin-top:14px">
     <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
-    <a class="morelink" href="/"><span class="ic">🔥</span><span data-i18n="hyrox">HYROX finish-time calculator</span></a>
+    <a class="morelink" href="/hyrox/"><span class="ic">🔥</span><span data-i18n="hyrox">HYROX finish-time calculator</span></a>
   </div>
   <div class="relhead" data-i18n="rel_head">Related tools</div>
   <div class="related">
     <a href="/pace/" data-i18n="rel_pace">→ Pace calculator &amp; predictor</a>
     <a href="/gpx/" data-i18n="rel_gpx">→ GPX race plan</a>
-    <a href="/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
+    <a href="/hyrox/" data-i18n="rel_hyrox">→ HYROX finish-time calculator</a>
   </div>
 </div>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "2:45 marathon pace", "url": "https://raceplanner.online/pace/marathon/2-45/"}, {"@type": "ListItem", "position": 2, "name": "3:00 marathon pace", "url": "https://raceplanner.online/pace/marathon/3-00/"}, {"@type": "ListItem", "position": 3, "name": "3:15 marathon pace", "url": "https://raceplanner.online/pace/marathon/3-15/"}, {"@type": "ListItem", "position": 4, "name": "3:30 marathon pace", "url": "https://raceplanner.online/pace/marathon/3-30/"}, {"@type": "ListItem", "position": 5, "name": "3:45 marathon pace", "url": "https://raceplanner.online/pace/marathon/3-45/"}, {"@type": "ListItem", "position": 6, "name": "4:00 marathon pace", "url": "https://raceplanner.online/pace/marathon/4-00/"}, {"@type": "ListItem", "position": 7, "name": "4:15 marathon pace", "url": "https://raceplanner.online/pace/marathon/4-15/"}, {"@type": "ListItem", "position": 8, "name": "4:30 marathon pace", "url": "https://raceplanner.online/pace/marathon/4-30/"}, {"@type": "ListItem", "position": 9, "name": "5:00 marathon pace", "url": "https://raceplanner.online/pace/marathon/5-00/"}, {"@type": "ListItem", "position": 10, "name": "5:30 marathon pace", "url": "https://raceplanner.online/pace/marathon/5-30/"}]}</script>
@@ -322,7 +322,7 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
-var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/hyrox/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
 function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
 function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
  document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;

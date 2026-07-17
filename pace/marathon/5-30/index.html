@@ -245,7 +245,7 @@ header{display:block}
 
 </head>
 <body>
-<header><div class="wrap-h"><a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a><span class="spacer"></span><nav class="nav"><a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a><a class="navlink" href="/" data-nav="1">HYROX Calculator</a><a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a><a class="navlink" href="/guide/" data-nav="3">Guides</a></nav><span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span></div></header>
+<header><div class="wrap-h"><a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a><span class="spacer"></span><nav class="nav"><a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a><a class="navlink" href="/hyrox/" data-nav="1">HYROX Calculator</a><a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a><a class="navlink" href="/guide/" data-nav="3">Guides</a></nav><span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span></div></header>
 <div class="shell"><div class="layout"><main class="center">
 
 <section class="hero-top">
@@ -401,7 +401,7 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 LANG=detectLang();applyLang();
 </script>
 <script>(function(){
-var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/hyrox/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
 function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
 function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
  document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;

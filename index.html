@@ -2,734 +2,523 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
-<meta name="google-site-verification" content="qf1B9F239atE39TMm2w7QMfl8fSz_xDC546FEqJa-uc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-<title data-i18n="title">HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner</title>
-<meta name="description" data-i18n="desc" content="Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
-<meta name="keywords" content="hyrox calculator, hyrox time calculator, hyrox pace, hyrox finish time, roxzone, compromised running, 하이록스 계산기, 하이록스 페이스, 하이록스 완주 기록" />
+<title data-i18n="title">Route Poster — Turn your GPX into a framable running poster | Race Planner</title>
+<meta name="description" data-i18n="desc" content="Upload your GPX and get a beautiful, shareable route poster of your run, ride or trail — distance, elevation, time and pace, ready for Instagram or print. Free." />
+<meta name="keywords" content="route poster, gpx poster, strava art, running poster, race map poster, gpx to image, 러닝 포스터, gpx 포스터, 코스 지도, 완주 인증" />
 <link rel="canonical" href="https://raceplanner.online/" />
 <link rel="alternate" hreflang="en" href="https://raceplanner.online/?lang=en" />
 <link rel="alternate" hreflang="ko" href="https://raceplanner.online/?lang=ko" />
-<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="HYROX Time Calculator | Race Planner" />
+<meta property="og:title" content="Route Poster — your GPX as a framable poster | Race Planner" />
 <meta name="theme-color" content="#0a0c10" />
 <meta name="robots" content="index, follow" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Race Planner — HYROX Calculator","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Race Planner — Route Poster","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is my HYROX finish time estimated?", "acceptedAnswer": {"@type": "Answer", "text": "From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions."}}, {"@type": "Question", "name": "How do I get faster at HYROX?", "acceptedAnswer": {"@type": "Answer", "text": "The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost."}}, {"@type": "Question", "name": "Does it cover gender, division and age?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Station benchmarks and percentiles adjust by gender, division and age group."}}]}</script>
 <style>
   :root{
     --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
     --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
     --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;
-    --run:#6ee7a8;--sta:#c8ff43;--roxc:#ffb35c;
     --radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  body{
-    background:var(--bg);color:var(--ink);
+  body{background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
     -webkit-font-smoothing:antialiased;line-height:1.55;
     background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);
-    background-attachment:fixed;min-height:100vh;
-  }
+    background-attachment:fixed;min-height:100vh}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
-
-  /* header */
-  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
-    padding:14px 0;margin-bottom:8px;
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:14px 0;margin-bottom:8px;
     backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
-    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
-    border-bottom:1px solid var(--line)}
-  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
+    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));border-bottom:1px solid var(--line)}
+  .wrap-h{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
   .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
   .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
     display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
   .logo b{color:var(--accent);font-weight:800}
   .spacer{flex:1}
-  .nav{display:flex;gap:4px}
-  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 11px;border-radius:9px;transition:.15s}
-  .navlink:hover{background:var(--panel2);color:var(--ink)}
-  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
-  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
-  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
-  @media(max-width:560px){.nav .navlink{padding:7px 8px;font-size:12px}.logo span.full{display:none}}
+  .nav{display:flex;gap:4px;overflow:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .navlink{font-size:13px;color:var(--sub);padding:8px 10px;border-radius:9px;white-space:nowrap}
+  .navlink:hover{color:var(--ink);background:var(--panel2)}
+  .langtoggle{display:flex;gap:2px;margin-left:6px}
+  .langtoggle button{font-size:12px;color:var(--sub);background:transparent;border:1px solid var(--line);padding:6px 9px;border-radius:8px;cursor:pointer;font-weight:600}
+  .langtoggle button.on{color:var(--accentink);background:var(--accent);border-color:var(--accent)}
+  @media(max-width:640px){.logo span.full{display:none}}
 
-  /* hero */
-  .hero-top{padding:30px 0 10px;text-align:center}
-  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;
-    text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);
-    border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:18px}
-  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
-  h1{font-size:38px;line-height:1.12;letter-spacing:-1.2px;font-weight:800;margin:0 auto 14px;max-width:18ch}
-  h1 .g{color:var(--accent)}
-  .lead{color:var(--sub);font-size:16px;line-height:1.65;margin:0 auto;max-width:54ch}
-  .trust{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
-  .trust span{font-size:12px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
-    padding:7px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-  .trust b{color:var(--accent);font-weight:700;font-family:var(--mono)}
-  @media(max-width:560px){h1{font-size:30px}.lead{font-size:15px}}
+  .hero{margin-top:22px;margin-bottom:14px}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--accent);
+    background:rgba(200,255,67,.08);border:1px solid rgba(200,255,67,.2);padding:5px 11px;border-radius:99px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  h1{font-size:clamp(26px,5vw,40px);letter-spacing:-.5px;margin:14px 0 8px;line-height:1.1}
+  .lead{color:var(--ink2);font-size:15.5px;max-width:640px}
 
-  /* card base */
-  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
-    border-radius:var(--radius);padding:22px}
-  .console{margin-top:26px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);position:relative;overflow:hidden}
-  .console::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(200,255,67,.5),transparent)}
+  .studio{display:grid;grid-template-columns:1fr;gap:18px;margin-top:20px}
+  @media(min-width:820px){.studio{grid-template-columns:380px 1fr;align-items:start}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--sub);margin-bottom:14px;font-weight:700}
 
-  label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 8px;font-weight:600;letter-spacing:.2px}
-  .inputgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;align-items:end}
-  @media(max-width:560px){.inputgrid{grid-template-columns:1fr 1fr}.field-pace{grid-column:1 / -1}}
-  .field{margin:0}
-  .pace{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1.5px solid var(--line2);
-    border-radius:13px;padding:6px 12px;transition:.15s}
-  .pace:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .pace input{flex:1;width:100%;background:transparent;border:none;color:var(--ink);font-size:24px;font-weight:700;
-    padding:10px 0;outline:none;text-align:center;font-variant-numeric:tabular-nums;font-family:var(--mono);
-    -webkit-appearance:none;appearance:none}
-  .pace .sep{font-size:24px;font-weight:700;color:var(--faint);font-family:var(--mono)}
-  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap;font-weight:600}
-  select{width:100%;background:var(--panel2);border:1.5px solid var(--line2);color:var(--ink);font-size:15px;
-    font-weight:600;padding:15px 34px 15px 14px;border-radius:13px;outline:none;cursor:pointer;
-    -webkit-appearance:none;appearance:none;transition:.15s;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238b97a6' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
-    background-repeat:no-repeat;background-position:right 14px center}
-  select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .hint{font-size:12px;color:var(--faint);font-weight:400;margin-top:12px;line-height:1.5}
-  button.calc{width:100%;background:var(--accent);color:var(--accentink);font-weight:800;font-size:16.5px;
-    border:none;border-radius:14px;padding:17px;cursor:pointer;margin-top:16px;letter-spacing:-.2px;min-height:56px;
-    -webkit-tap-highlight-color:transparent;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
-    box-shadow:0 10px 30px -10px rgba(200,255,67,.5)}
-  button.calc:hover{filter:brightness(1.05)}
-  button.calc:active{transform:translateY(1px) scale(.995)}
-  button.calc .arr{transition:.2s}button.calc:hover .arr{transform:translateX(3px)}
+  .drop{border:2px dashed var(--line2);border-radius:14px;padding:26px 16px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+  .drop:hover,.drop.hot{border-color:var(--accent);background:rgba(200,255,67,.05)}
+  .drop .di{font-size:34px;line-height:1}
+  .drop .dt{font-weight:600;margin-top:8px}
+  .drop .ds{font-size:12.5px;color:var(--faint);margin-top:4px}
 
-  /* result */
-  .result{display:none;margin-top:18px}
-  .result.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .stack{display:flex;flex-direction:column;gap:14px}
+  .field{margin-top:14px}
+  .field label{display:block;font-size:12px;color:var(--sub);font-weight:600;margin-bottom:5px}
+  .field input{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);
+    padding:11px 12px;font-size:14px;font-family:inherit}
+  .field input:focus{outline:none;border-color:var(--accent)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-  .hero-card{position:relative;text-align:center;padding:30px 22px;overflow:hidden;
-    background:radial-gradient(120% 130% at 50% 0%,rgba(200,255,67,.13),transparent 60%),linear-gradient(180deg,var(--panelhi),var(--bg2));
-    border:1px solid var(--line2);border-radius:var(--radius)}
-  .hero-card .k{font-size:12px;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
-  .hero-card .v{font-size:68px;font-weight:700;letter-spacing:-2px;color:var(--accent);
-    font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 10px;
-    text-shadow:0 0 40px rgba(200,255,67,.3)}
-  .hero-card .s{font-size:13px;color:var(--sub)}.hero-card .s b{color:var(--mint);font-family:var(--mono);font-weight:600}
-  @media(max-width:560px){.hero-card .v{font-size:54px}}
-  .bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin:20px 0 10px;background:var(--panel2)}
-  .bar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .barleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--sub);flex-wrap:wrap}
-  .barleg span{display:inline-flex;align-items:center;gap:6px}
-  .barleg b{color:var(--ink);font-family:var(--mono);font-weight:600}
-  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+  .seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .chip{font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);
+    padding:8px 12px;border-radius:10px;cursor:pointer;transition:.12s}
+  .chip:hover{border-color:var(--line2)}
+  .chip.on{color:var(--accentink);background:var(--accent);border-color:var(--accent)}
+  .sw{width:16px;height:16px;border-radius:5px;display:inline-block;vertical-align:-3px;margin-right:6px;border:1px solid rgba(255,255,255,.15)}
 
-  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
-  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .mini .mv{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--mono);color:var(--ink)}
+  .stagewrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;
+    display:flex;flex-direction:column;align-items:center;min-height:340px;justify-content:center}
+  #stage{width:100%;max-width:420px;height:auto;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.5);display:none}
+  .empty{text-align:center;color:var(--faint)}
+  .empty .ei{font-size:46px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;width:100%;max-width:420px}
+  .btn{flex:1;min-width:140px;text-align:center;font-weight:700;font-size:15px;padding:14px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+  .btn.primary{background:var(--accent);color:var(--accentink);border-color:var(--accent);box-shadow:0 6px 22px rgba(200,255,67,.28)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
 
-  .sect{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin:0 0 14px;text-transform:uppercase;
-    display:flex;align-items:center;gap:8px}
-  .sect::after{content:"";flex:1;height:1px;background:var(--line)}
-  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-  th,td{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
-  tr:last-child td{border-bottom:none}
-  th{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-  td.t{text-align:right;font-weight:600;color:var(--mint);font-family:var(--mono)}
-  td .d{font-size:11.5px;color:var(--sub);display:block;margin-top:3px;font-weight:400}
-  .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
-    background:var(--panel2);border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--accent);
-    margin-right:10px;font-family:var(--mono);font-weight:600}
-  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 4px;text-align:center}
-  .runs .rk{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .runs .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px;font-family:var(--mono);color:var(--ink)}
-  @media(max-width:560px){.runs{grid-template-columns:repeat(4,1fr)}.runs .rv{font-size:13px}}
+  .adslot{margin:26px 0;padding:10px 12px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);text-align:center;overflow:hidden}
+  .adslot .adlabel{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .adslot ins{min-height:100px}
 
-  .fuel{background:linear-gradient(150deg,rgba(110,231,168,.1),var(--bg2));border:1px solid #2c3a30;border-radius:var(--radius);padding:22px}
-  .fuel h3{font-size:16px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
-  .fuel p{font-size:13.5px;color:var(--ink2);line-height:1.65}
-  .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
-    color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
-  .fuel .cta:hover{filter:brightness(1.05)}
-
-  /* explainer */
   .info{margin-top:34px}
-  .info h2{font-size:18px;margin:26px 0 10px;letter-spacing:-.3px}
-  .info p,.info li{font-size:14px;color:var(--sub);line-height:1.8}
-  .info ul{padding-left:20px;margin:8px 0}
-  .info li{margin-bottom:4px}
-  .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-  @media(max-width:560px){.moregrid{grid-template-columns:1fr}}
-  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
-    border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
-  .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
-  .morelink .ic{color:var(--accent);font-size:16px}
-
-  footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
-  footer a{color:var(--mint)}
-  .disc{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.65}
-
-/* ===== RP CANON design system (unified) ===== */
-
-  :root{
-    --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
-    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
-    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;
-    --run:#6ee7a8;--sta:#c8ff43;--roxc:#ffb35c;
-    --radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased;line-height:1.55;
-    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);
-    background-attachment:fixed;min-height:100vh;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
-
-  /* header */
-  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
-    padding:14px 0;margin-bottom:8px;
-    backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
-    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
-    border-bottom:1px solid var(--line)}
-  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
-  .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
-  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
-    display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
-  .logo b{color:var(--accent);font-weight:800}
-  .spacer{flex:1}
-  .nav{display:flex;gap:4px}
-  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 11px;border-radius:9px;transition:.15s}
-  .navlink:hover{background:var(--panel2);color:var(--ink)}
-  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
-  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
-  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
-  @media(max-width:560px){.nav .navlink{padding:7px 8px;font-size:12px}.logo span.full{display:none}}
-
-  /* hero */
-  .hero-top{padding:30px 0 10px;text-align:center}
-  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;
-    text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);
-    border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:18px}
-  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
-  h1{font-size:38px;line-height:1.12;letter-spacing:-1.2px;font-weight:800;margin:0 auto 14px;max-width:18ch}
-  h1 .g{color:var(--accent)}
-  .lead{color:var(--sub);font-size:16px;line-height:1.65;margin:0 auto;max-width:54ch}
-  .trust{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
-  .trust span{font-size:12px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
-    padding:7px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-  .trust b{color:var(--accent);font-weight:700;font-family:var(--mono)}
-  @media(max-width:560px){h1{font-size:30px}.lead{font-size:15px}}
-
-  /* card base */
-  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
-    border-radius:var(--radius);padding:22px}
-  .console{margin-top:26px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);position:relative;overflow:hidden}
-  .console::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(200,255,67,.5),transparent)}
-
-  label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 8px;font-weight:600;letter-spacing:.2px}
-  .inputgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;align-items:end}
-  @media(max-width:560px){.inputgrid{grid-template-columns:1fr 1fr}.field-pace{grid-column:1 / -1}}
-  .field{margin:0}
-  .pace{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1.5px solid var(--line2);
-    border-radius:13px;padding:6px 12px;transition:.15s}
-  .pace:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .pace input{flex:1;width:100%;background:transparent;border:none;color:var(--ink);font-size:24px;font-weight:700;
-    padding:10px 0;outline:none;text-align:center;font-variant-numeric:tabular-nums;font-family:var(--mono);
-    -webkit-appearance:none;appearance:none}
-  .pace .sep{font-size:24px;font-weight:700;color:var(--faint);font-family:var(--mono)}
-  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap;font-weight:600}
-  select{width:100%;background:var(--panel2);border:1.5px solid var(--line2);color:var(--ink);font-size:15px;
-    font-weight:600;padding:15px 34px 15px 14px;border-radius:13px;outline:none;cursor:pointer;
-    -webkit-appearance:none;appearance:none;transition:.15s;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238b97a6' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
-    background-repeat:no-repeat;background-position:right 14px center}
-  select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
-  .hint{font-size:12px;color:var(--faint);font-weight:400;margin-top:12px;line-height:1.5}
-  button.calc{width:100%;background:var(--accent);color:var(--accentink);font-weight:800;font-size:16.5px;
-    border:none;border-radius:14px;padding:17px;cursor:pointer;margin-top:16px;letter-spacing:-.2px;min-height:56px;
-    -webkit-tap-highlight-color:transparent;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
-    box-shadow:0 10px 30px -10px rgba(200,255,67,.5)}
-  button.calc:hover{filter:brightness(1.05)}
-  button.calc:active{transform:translateY(1px) scale(.995)}
-  button.calc .arr{transition:.2s}button.calc:hover .arr{transform:translateX(3px)}
-
-  /* result */
-  .result{display:none;margin-top:18px}
-  .result.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .stack{display:flex;flex-direction:column;gap:14px}
-
-  .hero-card{position:relative;text-align:center;padding:30px 22px;overflow:hidden;
-    background:radial-gradient(120% 130% at 50% 0%,rgba(200,255,67,.13),transparent 60%),linear-gradient(180deg,var(--panelhi),var(--bg2));
-    border:1px solid var(--line2);border-radius:var(--radius)}
-  .hero-card .k{font-size:12px;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
-  .hero-card .v{font-size:68px;font-weight:700;letter-spacing:-2px;color:var(--accent);
-    font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 10px;
-    text-shadow:0 0 40px rgba(200,255,67,.3)}
-  .hero-card .s{font-size:13px;color:var(--sub)}.hero-card .s b{color:var(--mint);font-family:var(--mono);font-weight:600}
-  @media(max-width:560px){.hero-card .v{font-size:54px}}
-  .bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin:20px 0 10px;background:var(--panel2)}
-  .bar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .barleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--sub);flex-wrap:wrap}
-  .barleg span{display:inline-flex;align-items:center;gap:6px}
-  .barleg b{color:var(--ink);font-family:var(--mono);font-weight:600}
-  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
-
-  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
-  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .mini .mv{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--mono);color:var(--ink)}
-
-  .sect{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin:0 0 14px;text-transform:uppercase;
-    display:flex;align-items:center;gap:8px}
-  .sect::after{content:"";flex:1;height:1px;background:var(--line)}
-  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-  th,td{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
-  tr:last-child td{border-bottom:none}
-  th{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-  td.t{text-align:right;font-weight:600;color:var(--mint);font-family:var(--mono)}
-  td .d{font-size:11.5px;color:var(--sub);display:block;margin-top:3px;font-weight:400}
-  .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
-    background:var(--panel2);border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--accent);
-    margin-right:10px;font-family:var(--mono);font-weight:600}
-  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 4px;text-align:center}
-  .runs .rk{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-  .runs .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px;font-family:var(--mono);color:var(--ink)}
-  @media(max-width:560px){.runs{grid-template-columns:repeat(4,1fr)}.runs .rv{font-size:13px}}
-
-  .fuel{background:linear-gradient(150deg,rgba(110,231,168,.1),var(--bg2));border:1px solid #2c3a30;border-radius:var(--radius);padding:22px}
-  .fuel h3{font-size:16px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
-  .fuel p{font-size:13.5px;color:var(--ink2);line-height:1.65}
-  .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
-    color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
-  .fuel .cta:hover{filter:brightness(1.05)}
-
-  /* explainer */
-  .info{margin-top:34px}
-  .info h2{font-size:18px;margin:26px 0 10px;letter-spacing:-.3px}
-  .info p,.info li{font-size:14px;color:var(--sub);line-height:1.8}
-  .info ul{padding-left:20px;margin:8px 0}
-  .info li{margin-bottom:4px}
-  .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-  @media(max-width:560px){.moregrid{grid-template-columns:1fr}}
-  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
-    border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
-  .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
-  .morelink .ic{color:var(--accent);font-size:16px}
-
-  footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
-  footer a{color:var(--mint)}
-  .disc{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.65}
-
-/* === bridges: subpage wrappers + nav UX === */
-header{display:block}
-.shell{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
-.layout{display:block!important}.center{min-width:0}
-.ad,.leader,.rail{display:none!important}
-.wrap-h{flex-wrap:wrap}
-.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-.nav::-webkit-scrollbar{display:none}
-.navlink{white-space:nowrap}
-.navlink.active{color:var(--accent);background:var(--panel2)}
-@media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
-@media(max-width:520px){.logo .full{display:none}}
-/* fuel schedule (MVP-0) */
-.fuelneed{display:flex;gap:10px;margin:2px 0 14px}
-.fuelneed>div{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center}
-.fuelneed .k{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px;font-weight:600;margin-bottom:5px}
-.fuelneed .v{font-size:19px;font-weight:700;color:var(--mint);font-family:var(--mono);font-variant-numeric:tabular-nums}
-.fuelneed .u{font-size:11px;color:var(--sub);font-weight:600;margin-left:1px}
-.fueltl{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 2px;padding:0}
-.fueltl li{font-size:13px;color:var(--ink2);line-height:1.5;padding-left:15px;position:relative}
-.fueltl li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
-.fueltl li b{color:var(--ink);font-weight:700}
-.fueltl li.warn{color:var(--rox)}.fueltl li.warn::before{background:var(--rox)}
-.kithead{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.4px;font-weight:700;margin:18px 0 9px}
-.kitlist{display:flex;flex-direction:column;gap:8px}
-.kititem{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 13px;transition:.15s}
-.kititem:hover{border-color:var(--mint);background:var(--panel2)}
-.kititem .ke{font-size:20px}
-.kititem .kt{flex:1;display:flex;flex-direction:column;line-height:1.32;min-width:0}
-.kititem .kt b{font-size:13.5px;color:var(--ink);font-weight:700}
-.kititem .ks{font-size:11.5px;color:var(--sub)}
-.kititem .kb{font-size:12.5px;font-weight:700;color:var(--mint);white-space:nowrap}
-.kitnote{font-size:12px;color:var(--sub);margin-top:9px}
-.kitnote a{color:var(--mint);font-weight:600}
-.pctl{margin-top:9px;font-size:14px;color:var(--mint);font-family:var(--mono);font-weight:600}
-.pctl b{color:var(--accent)}
-.pctl .pctsub{display:block;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;letter-spacing:0}
-.faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
-.relhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin:20px 0 8px}
-.related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+  .info h2{font-size:20px;margin:22px 0 8px;letter-spacing:-.3px}
+  .info p{color:var(--ink2);font-size:14.5px;margin-bottom:6px}
+  .info ul{color:var(--ink2);font-size:14.5px;padding-left:20px;margin:6px 0}
+  .moregrid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:8px}
+  @media(min-width:560px){.moregrid{grid-template-columns:1fr 1fr}}
+  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--ink2)}
+  .morelink:hover{border-color:var(--accent)}
+  .morelink .ic{font-size:18px}
+  .faq{margin-top:8px}
+  .faq dt{font-weight:700;margin-top:14px}
+  .faq dd{color:var(--ink2);font-size:14px;margin-top:4px}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--sub);font-size:13px;text-align:center}
+  footer a{color:var(--accent)}
+  .disc{color:var(--faint);font-size:11.5px;margin-top:10px;line-height:1.5}
 </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 </head>
 <body>
 <header><div class="wrap-h">
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a>
-    <a class="navlink" href="/" data-nav="1">HYROX Calculator</a>
-    <a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>
-    <a class="navlink" href="/guide/" data-nav="3">Guides</a>
+    <a class="navlink" href="/">Route Poster</a>
+    <a class="navlink" href="/gpx/">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/">HYROX Calculator</a>
+    <a class="navlink" href="/pace/">Marathon Pace</a>
+    <a class="navlink" href="/guide/">Guides</a>
   </nav>
   <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
 </div></header>
+
 <div class="wrap">
-  <section class="hero-top">
-    <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Real-data HYROX predictor</span></span>
-    <h1 data-i18n="h1">HYROX finish-time calculator</h1>
-    <p class="lead" data-i18n="lead">Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.</p>
-    <div class="trust">
-      <span><b>400K+</b> <span data-i18n="t_athletes">real HYROX results</span></span>
-      <span data-i18n="t_free">⚡ Free · no signup</span>
-      <span data-i18n="t_time">⏱ 1-second result</span>
-    </div>
+  <section class="hero">
+    <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Free · no signup</span></span>
+    <h1 data-i18n="h1">Turn your run into a poster</h1>
+    <p class="lead" data-i18n="lead">Drop your GPX file and get a clean, framable poster of your route — with distance, elevation, time and pace. Perfect for Instagram or the wall.</p>
   </section>
 
-  <div class="card console">
-    <div class="inputgrid">
-      <div class="field field-pace">
-        <label><span data-i18n="in_pace">Your all-out 5K pace</span> <span style="font-weight:400;color:var(--faint)">(/km)</span></label>
-        <div class="pace">
-          <input id="pmin" type="number" inputmode="numeric" min="2" max="9" value="5" aria-label="minutes" />
-          <span class="sep">:</span>
-          <input id="psec" type="number" inputmode="numeric" min="0" max="59" value="00" aria-label="seconds" />
-          <span class="unit">/km</span>
+  <div class="studio">
+    <div class="panel">
+      <h2 data-i18n="p_build">Build your poster</h2>
+      <div class="drop" id="drop">
+        <div class="di">⛰️</div>
+        <div class="dt" data-i18n="drop_t">Drop a .gpx file</div>
+        <div class="ds" data-i18n="drop_s">or tap to choose · from Strava, Garmin, Coros…</div>
+        <input type="file" id="file" accept=".gpx,application/gpx+xml,text/xml" style="display:none" />
+      </div>
+
+      <div class="field"><label data-i18n="f_title">Title</label><input id="in_title" type="text" maxlength="32" placeholder="Morning Run" /></div>
+      <div class="row2">
+        <div class="field"><label data-i18n="f_date">Date</label><input id="in_date" type="text" maxlength="18" placeholder="2026.07.17" /></div>
+        <div class="field"><label data-i18n="f_time">Finish time</label><input id="in_time" type="text" maxlength="9" placeholder="1:52:30" /></div>
+      </div>
+
+      <div class="field"><label data-i18n="f_theme">Theme</label>
+        <div class="seg" id="themes">
+          <span class="chip on" data-theme="midnight"><span class="sw" style="background:#c8ff43"></span>Midnight</span>
+          <span class="chip" data-theme="blueprint"><span class="sw" style="background:#38bdf8"></span>Blueprint</span>
+          <span class="chip" data-theme="paper"><span class="sw" style="background:#111"></span>Paper</span>
+          <span class="chip" data-theme="ember"><span class="sw" style="background:#ff6b3d"></span>Ember</span>
         </div>
       </div>
-      <div class="field">
-        <label data-i18n="in_sex">Gender</label>
-        <select id="sex"><option value="men" data-i18n="sex_m">Men</option><option value="women" data-i18n="sex_w">Women</option></select>
+      <div class="field"><label data-i18n="f_ratio">Format</label>
+        <div class="seg" id="ratios">
+          <span class="chip on" data-ratio="916" data-i18n="r_story">Story 9:16</span>
+          <span class="chip" data-ratio="45" data-i18n="r_port">Portrait 4:5</span>
+          <span class="chip" data-ratio="11" data-i18n="r_sq">Square 1:1</span>
+        </div>
       </div>
-      <div class="field">
-        <label data-i18n="in_lvl">Level</label>
-        <select id="lvl"><option value="beg" data-i18n="lv_b">Beginner</option><option value="int" selected data-i18n="lv_i">Intermediate</option><option value="adv" data-i18n="lv_a">Advanced</option></select>
-      </div>
-      <div class="field">
-        <label data-i18n="in_div">Division</label>
-        <select id="div"><option value="open" data-i18n="div_open">Open</option><option value="pro" data-i18n="div_pro">Pro</option></select>
-      </div>
-      <div class="field">
-        <label data-i18n="in_age">Age</label>
-        <select id="age"><option value="a3034" data-i18n="age_any">All ages</option><option value="a1624" data-i18n="age1">16–24</option><option value="a2529" data-i18n="age2">25–29</option><option value="a3034" data-i18n="age3">30–34</option><option value="a3539" data-i18n="age4">35–39</option><option value="a4044" data-i18n="age5">40–44</option><option value="a4549" data-i18n="age6">45–49</option><option value="a5054" data-i18n="age7">50–54</option><option value="a5559" data-i18n="age8">55–59</option><option value="a60" data-i18n="age9">60+</option></select>
+      <div class="field"><label data-i18n="f_bg">Background</label>
+        <div class="seg" id="bgs">
+          <span class="chip on" data-bg="solid" data-i18n="bg_solid">Solid</span>
+          <span class="chip" data-bg="transparent" data-i18n="bg_trans">Transparent · for photos</span>
+        </div>
       </div>
     </div>
-    <div class="hint" data-i18n="in_hint">The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.</div>
-    <button class="calc" id="go"><span data-i18n="btn">Predict finish time</span><span class="arr">→</span></button>
+
+    <div>
+      <div class="stagewrap">
+        <div class="empty" id="empty"><div class="ei">🗺️</div><div data-i18n="empty">Your poster preview shows here</div></div>
+        <canvas id="stage" width="1080" height="1350"></canvas>
+        <div class="actions">
+          <button class="btn primary" id="dl" disabled data-i18n="dl">Download PNG</button>
+          <button class="btn" id="share" disabled data-i18n="share">Share</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="result" id="result">
-    <div class="stack">
-      <div class="hero-card">
-        <div class="k" data-i18n="r_finish">Predicted finish</div>
-        <div class="v" id="finish">—</div>
-        <div class="s"><span data-i18n="r_inpace">In-race run pace</span> <b id="inpace">—</b> /km · +<span id="off">—</span>s <span data-i18n="r_adj">adjustment</span></div>
-        <div class="pctl" id="pctl"></div>
-        <div class="bar" id="bar"></div>
-        <div class="barleg">
-          <span><i class="dot" style="background:var(--run)"></i><span data-i18n="r_run">Run</span> <b id="pRun">—</b></span>
-          <span><i class="dot" style="background:var(--sta)"></i><span data-i18n="r_sta">Stations</span> <b id="pSta">—</b></span>
-          <span><i class="dot" style="background:var(--roxc)"></i><span data-i18n="r_rox">Roxzone</span> <b id="pRox">—</b></span>
-        </div>
-      </div>
-
-      <div class="mini">
-        <div><div class="mk" data-i18n="m_run">Total run (8km)</div><div class="mv" id="mRun">—</div></div>
-        <div><div class="mk" data-i18n="m_sta">Total stations</div><div class="mv" id="mSta">—</div></div>
-        <div><div class="mk" data-i18n="m_rox">Roxzone</div><div class="mv" id="mRox">—</div></div>
-      </div>
-
-      <div class="card">
-        <div class="sect" data-i18n="s_station">Per-station target</div>
-        <table><thead><tr><th data-i18n="th_station">Station (order)</th><th style="text-align:right" data-i18n="th_target">Target</th></tr></thead><tbody id="tbody"></tbody></table>
-      </div>
-
-      <div class="card">
-        <div class="sect" data-i18n="s_pacing">8-run pacing (even split)</div>
-        <div class="runs" id="runs"></div>
-        <div class="hint" data-i18n="pacing_hint">Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.</div>
-      </div>
-
-      <div class="fuel">
-        <h3 data-i18n="fuel_h">⚡ Your fueling plan for this race</h3>
-        <div id="fuelBody"></div>
-        <div id="fuelKit"></div>
-        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get your race-day fuel — Athlete's Pick →</a>
-      </div>
-    </div>
+  <div class="adslot">
+    <span class="adlabel">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6369966478235204" data-ad-slot="ADSLOT_POSTER" data-ad-format="fluid" data-ad-layout="in-article"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
   <div class="info">
-    <h2 data-i18n="i1_h">How this calculator predicts your time</h2>
-    <p data-i18n="i1_p">A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.</p>
-    <ul>
-      <li data-i18n="i1_l1">Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.</li>
-      <li data-i18n="i1_l2">Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.</li>
-      <li data-i18n="i1_l3">Stations: distributed by level & gender from real averages.</li>
-    </ul>
-    <h2 data-i18n="i2_h">The 8 stations in order</h2>
-    <p data-i18n="i2_p">SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100</p>
-    <h2 data-i18n="more_tools">Other tools</h2>
+    <h2 data-i18n="i1_h">Your route, framed</h2>
+    <p data-i18n="i1_p">Everything runs in your browser — your GPX never leaves your device. We read the track, draw the line, and lay your stats on a poster you can post or print. Works with running, trail, cycling and hiking files.</p>
+    <h2 data-i18n="i2_h">More tools</h2>
     <div class="moregrid">
-      <a class="morelink" href="/gpx/"><span class="ic">⛰</span><span data-i18n="more_gpx">GPX race plan — trail &amp; road · elevation &amp; weather</span></a>
-      <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="more_pace">Marathon pace &amp; race-time predictor</span></a>
-    </div>
-    <h2 data-i18n="more_hxg">HYROX guides</h2>
-    <div class="moregrid">
-      <a class="morelink" href="/guide/pacing/"><span class="ic">📋</span><span data-i18n="more_g1">HYROX pacing guide</span></a>
-      <a class="morelink" href="/guide/nutrition/"><span class="ic">🥤</span><span data-i18n="more_g2">HYROX nutrition guide</span></a>
-      <a class="morelink" href="/guide/stations/"><span class="ic">🎯</span><span data-i18n="more_g3">8-station breakdown</span></a>
-      <a class="morelink" href="/guide/"><span class="ic">📚</span><span data-i18n="more_all">All guides →</span></a>
+      <a class="morelink" href="/gpx/"><span class="ic">📋</span><span data-i18n="m_gpx">GPX race plan — pacing, fueling & weather</span></a>
+      <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="m_pace">Marathon pace & finish-time predictor</span></a>
+      <a class="morelink" href="/hyrox/"><span class="ic">🏋️</span><span data-i18n="m_hx">HYROX finish-time calculator</span></a>
+      <a class="morelink" href="/guide/"><span class="ic">📚</span><span data-i18n="m_guide">Training & race guides</span></a>
     </div>
     <h2 data-i18n="faq_h">FAQ</h2>
     <dl class="faq">
-      <dt data-i18n="faq_q1">How is my HYROX finish time estimated?</dt>
-      <dd data-i18n="faq_a1">From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.</dd>
-      <dt data-i18n="faq_q2">How do I get faster at HYROX?</dt>
-      <dd data-i18n="faq_a2">The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.</dd>
-      <dt data-i18n="faq_q3">Does it cover gender, division and age?</dt>
-      <dd data-i18n="faq_a3">Yes. Station benchmarks and percentiles adjust by gender, division and age group.</dd>
+      <dt data-i18n="faq_q1">Where do I get a GPX file?</dt>
+      <dd data-i18n="faq_a1">Export from Strava (a run → ⋯ → Export GPX), Garmin Connect, Coros, Apple Health apps, or any activity that records a track.</dd>
+      <dt data-i18n="faq_q2">Is my data uploaded anywhere?</dt>
+      <dd data-i18n="faq_a2">No. Parsing and rendering happen entirely in your browser. Nothing is sent to a server.</dd>
+      <dt data-i18n="faq_q3">Can I print it?</dt>
+      <dd data-i18n="faq_a3">Yes — the PNG is 1080px and looks great on social. High-resolution print files are coming soon.</dd>
     </dl>
-    <div class="relhead" data-i18n="rel_head">Related tools</div>
-    <div class="related">
-      <a href="/guide/pacing/" data-i18n="rel_pacing">→ HYROX pacing guide</a>
-      <a href="/guide/nutrition/" data-i18n="rel_nutrition">→ HYROX nutrition guide</a>
-      <a href="/guide/stations/" data-i18n="rel_stations">→ 8-station breakdown</a>
-      <a href="/pace/" data-i18n="rel_pace">→ Marathon pace &amp; predictor</a>
-    </div>
   </div>
 
   <footer>
-    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span><br/>
-    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
-    <div class="disc" data-i18n="disc">※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.</div>
+    <span data-i18n="foot">Race Planner · free tools for runners and endurance athletes</span>
+    <div class="disc" data-i18n="disc">Route lines are rendered from the coordinates in your GPX file. Distance and elevation are computed from those points and may differ slightly from your watch.</div>
   </footer>
 </div>
 
 <script>
-var STA_NAMES={
- en:[["SkiErg","1000m"],["Sled Push","50m"],["Sled Pull","50m"],["Burpee Broad Jump","80m"],["Row","1000m"],["Farmers Carry","200m"],["Sandbag Lunges","100m"],["Wall Balls","×100"]],
- ko:[["스키에르그","1000m"],["썰매 밀기","50m"],["썰매 끌기","50m"],["버피 브로드 점프","80m"],["로잉","1000m"],["파머스 캐리","200m"],["샌드백 런지","100m"],["월볼","100개"]]
-};
-/* Station times (sec) by gender x tier, from HyroxDataLab percentiles (N=395,452, S7-8).
-   adv=top25% / int=median / beg=bottom25%. Order: Ski,SledPush,SledPull,Burpee,Row,Farmers,Lunges,WallBalls */
-var STA={
- men:{adv:[256,155,255,262,273,110,263,335],int:[269,184,303,322,289,129,313,412],beg:[285,223,370,401,309,156,379,523]},
- women:{adv:[294,148,294,313,307,120,260,320],int:[311,175,346,384,325,137,307,390],beg:[331,212,416,479,348,164,372,494]}
-};
-var LV={beg:{off:45,rox:50},int:{off:35,rox:42},adv:{off:25,rox:32}};
-/* Percentile readout: cohort median (sec) = gender + division + age deltas. Overall S8 anchors p90/p50/p10. */
-var GMED={men:4920,women:5510};
-var DIVD={open:0,pro:-280};
-var AGED={a1624:-17,a2529:-83,a3034:0,a3539:77,a4044:167,a4549:332,a5054:475,a5559:731,a60:805};
-function pctileTop(fin,cmed){
- var sh=cmed-4964,fast=4041+sh,med=cmed,slow=6374+sh,beats;
- if(fin<=fast)beats=90+Math.min(8,(fast-fin)/45);
- else if(fin<=med)beats=50+(med-fin)/(med-fast)*40;
- else if(fin<=slow)beats=10+(slow-fin)/(slow-med)*40;
- else beats=Math.max(1,10-(fin-slow)/60);
- beats=Math.max(1,Math.min(99,beats));
- return Math.round(100-beats);
-}
-
+/* ---------------- i18n ---------------- */
 var I18N={
- en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
-  desc:"Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
-  nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",eyebrow:"Real-data HYROX predictor",h1:"HYROX finish-time calculator",
-  lead:"Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.",
-  t_athletes:"real HYROX results",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
-  in_pace:"Your all-out 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
-  in_div:"Division",div_open:"Open",div_pro:"Pro",in_age:"Age",age_any:"All ages",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
-  pctl_txt:function(t){return '≈ <b>Top '+t+'%</b> <span class="pctsub">vs same gender · division · age (approx.)</span>';},
-  in_hint:"The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.",btn:"Predict finish time",
-  r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
-  m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
-  s_pacing:"8-run pacing (even split)",pacing_hint:"Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.",
-  fuel_h:"⚡ Your fueling plan for this race",fuel_cta:"Get your race-day fuel — Athlete's Pick →",
-  i1_h:"How this calculator predicts your time",i1_p:"A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.",
-  i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
-  i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
-  i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
-  more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"GPX race plan — trail & road · elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
-  faq_h:"FAQ",rel_head:"Related tools",rel_pacing:"→ HYROX pacing guide",rel_nutrition:"→ HYROX nutrition guide",rel_stations:"→ 8-station breakdown",rel_pace:"→ Marathon pace & predictor",
-  faq_q1:"How is my HYROX finish time estimated?",
-  faq_a1:"From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.",
-  faq_q2:"How do I get faster at HYROX?",
-  faq_a2:"The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.",
-  faq_q3:"Does it cover gender, division and age?",
-  faq_a3:"Yes. Station benchmarks and percentiles adjust by gender, division and age group.",
-  foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
-  disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
-  err:"Please check your pace (2:30–12:00 /km).",run:"Run",
-  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
- ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
-  desc:"전력 5K 페이스만 넣으면 하이록스 예상 완주 기록, 레이스 중 런 페이스, 스테이션별 목표, 8개 런 페이싱까지 한 번에 계산합니다.",
-  nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
-  lead:"전력 5K 페이스를 넣으세요. 레이스에서 실제로 잃는 시간 — 지친 다리 러닝, 록스존, 8개 스테이션 — 을 더해 예상 완주 기록을 계산합니다.",
-  t_athletes:"건 공개 HYROX 결과",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
-  in_pace:"전력 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
-  in_div:"부문",div_open:"오픈",div_pro:"프로",in_age:"연령",age_any:"전체",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
-  pctl_txt:function(t){return '≈ <b>상위 '+t+'%</b> <span class="pctsub">동일 성별·부문·연령 기준 (근사)</span>';},
-  in_hint:"전력으로 5K를 달릴 때의 km당 페이스입니다. 레이스 중 페이스는 자동으로 보정해 드립니다.",btn:"완주 기록 예측",
-  r_finish:"예상 완주 기록",r_inpace:"레이스 중 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
-  m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
-  s_pacing:"8개 런 페이싱 (이븐 스플릿)",pacing_hint:"Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하세요. 최악 구간이 Run7~8이면 초반 과속입니다.",
-  fuel_h:"⚡ 이 레이스의 보급 플랜",fuel_cta:"레이스 보급 준비하기 — 애슬리츠픽 →",
-  i1_h:"이 계산기는 이렇게 예측합니다",i1_p:"하이록스 완주 기록은 런 + 스테이션 + 록스존의 합입니다. 공식 8km(8×1km)는 순수 러닝이고, 록스존이 여기에 약 6.5%를 더합니다.",
-  i1_l1:"지친 다리 러닝(compromised running): 레이스 중 런은 전력 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
-  i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
-  i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
-  more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"GPX 레이스플랜 — 트레일·로드 · 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
-  faq_h:"자주 묻는 질문",rel_head:"관련 도구",rel_pacing:"→ 하이록스 페이싱 가이드",rel_nutrition:"→ 하이록스 보급 가이드",rel_stations:"→ 8개 스테이션 공략",rel_pace:"→ 마라톤 페이스·기록예측",
-  faq_q1:"제 하이록스 완주 기록은 어떻게 예측하나요?",
-  faq_a1:"전력 5K 페이스에 8개 런 전반의 수준별 지친 다리 러닝 보정을 더하고, 40만+ 실제 결과로 만든 스테이션 시간과 록스존 전환을 합산해요.",
-  faq_q2:"하이록스에서 더 빨라지려면?",
-  faq_a2:"가장 큰 지렛대는 지친 다리 러닝 페이싱 — 매 스테이션 뒤에도 런 페이스를 유지하는 거예요. 스플릿 화면이 시간을 잃는 지점을 정확히 보여줘요.",
-  faq_q3:"성별·부문·연령도 반영하나요?",
-  faq_a3:"네. 스테이션 기준값과 백분위가 성별·부문·연령대에 맞춰 조정돼요.",
-  foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
-  disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
-  err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
-  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>경기 중</b> — 물·전해질 위주 (추가 탄수 불필요)":(m<=90?"<b>경기 중(테스트했다면)</b> — Run 4~5 전후 빠른 젤 1개":"<b>경기 중</b> — Run 3~4, Run 6 전후 젤 2개 분할");return '<div class="fuelneed"><div><span class="k">탄수</span><span class="v">~'+c+'g</span></div><div><span class="k">나트륨</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">수분</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>출발 30~45분 전</b> — 에너지젤 1개(~25g) + 전해질 음료</li><li>'+mid+'</li><li class="warn">⚠ 레이스 당일 새 제품 금지 — 2~3주 전부터 훈련에서 테스트</li></ul>';}}
+ en:{title:"Route Poster — Turn your GPX into a framable running poster | Race Planner",
+  eyebrow:"Free · no signup",h1:"Turn your run into a poster",
+  lead:"Drop your GPX file and get a clean, framable poster of your route — with distance, elevation, time and pace. Perfect for Instagram or the wall.",
+  p_build:"Build your poster",drop_t:"Drop a .gpx file",drop_s:"or tap to choose · from Strava, Garmin, Coros…",
+  f_title:"Title",f_date:"Date",f_time:"Finish time",f_theme:"Theme",f_ratio:"Format",f_bg:"Background",
+  r_port:"Portrait 4:5",r_sq:"Square 1:1",r_story:"Story 9:16",bg_solid:"Solid",bg_trans:"Transparent · for photos",
+  empty:"Your poster preview shows here",dl:"Download PNG",share:"Share",
+  i1_h:"Your route, framed",i1_p:"Everything runs in your browser — your GPX never leaves your device. We read the track, draw the line, and lay your stats on a poster you can post or print. Works with running, trail, cycling and hiking files.",
+  i2_h:"More tools",m_gpx:"GPX race plan — pacing, fueling & weather",m_pace:"Marathon pace & finish-time predictor",m_hx:"HYROX finish-time calculator",m_guide:"Training & race guides",
+  faq_h:"FAQ",faq_q1:"Where do I get a GPX file?",faq_a1:"Export from Strava (a run → ⋯ → Export GPX), Garmin Connect, Coros, Apple Health apps, or any activity that records a track.",
+  faq_q2:"Is my data uploaded anywhere?",faq_a2:"No. Parsing and rendering happen entirely in your browser. Nothing is sent to a server.",
+  faq_q3:"Can I print it?",faq_a3:"Yes — the PNG is 1080px and looks great on social. High-resolution print files are coming soon.",
+  foot:"Race Planner · free tools for runners and endurance athletes",
+  disc:"Route lines are rendered from the coordinates in your GPX file. Distance and elevation are computed from those points and may differ slightly from your watch.",
+  bad:"Couldn't read that GPX — try another export.",notrk:"No track points found in that file."},
+ ko:{title:"코스 포스터 — GPX를 액자 같은 러닝 포스터로 | 레이스 플래너",
+  eyebrow:"무료 · 가입 없음",h1:"내 러닝을 포스터로",
+  lead:"GPX 파일을 올리면 코스 라인·거리·고도·시간·페이스가 담긴 액자 같은 포스터를 만들어드려요. 인스타그램이나 벽에 딱.",
+  p_build:"포스터 만들기",drop_t:".gpx 파일을 여기에",drop_s:"또는 눌러서 선택 · 스트라바·가민·코로스…",
+  f_title:"제목",f_date:"날짜",f_time:"완주 시간",f_theme:"테마",f_ratio:"비율",f_bg:"배경",
+  r_port:"세로 4:5",r_sq:"정사각 1:1",r_story:"스토리 9:16",bg_solid:"단색",bg_trans:"투명 · 사진 위에",
+  empty:"포스터 미리보기가 여기 나와요",dl:"PNG 다운로드",share:"공유",
+  i1_h:"내 코스를 액자에",i1_p:"모든 처리는 브라우저 안에서 — GPX는 기기를 벗어나지 않습니다. 트랙을 읽어 라인을 그리고 기록을 얹어 바로 올리거나 인쇄할 포스터를 만듭니다. 러닝·트레일·사이클·하이킹 파일 모두 지원.",
+  i2_h:"다른 도구",m_gpx:"GPX 레이스 플랜 — 페이싱·보급·날씨",m_pace:"마라톤 페이스·완주기록 예측",m_hx:"하이록스 완주기록 계산기",m_guide:"훈련·레이스 가이드",
+  faq_h:"자주 묻는 질문",faq_q1:"GPX 파일은 어디서 받나요?",faq_a1:"스트라바(활동 → ⋯ → GPX 내보내기), 가민 커넥트, 코로스, 애플 건강 앱 등 트랙을 기록한 활동에서 내보내면 됩니다.",
+  faq_q2:"내 데이터가 서버로 올라가나요?",faq_a2:"아니요. 파싱과 렌더링 모두 브라우저 안에서만 이뤄지고 서버로 전송되지 않습니다.",
+  faq_q3:"인쇄할 수 있나요?",faq_a3:"네 — PNG는 1080px로 SNS에 딱 좋습니다. 고해상도 인쇄 파일은 곧 추가됩니다.",
+  foot:"레이스 플래너 · 러너와 지구력 선수를 위한 무료 도구",
+  disc:"코스 라인은 GPX 파일의 좌표로 그려집니다. 거리·고도는 해당 좌표로 계산되어 워치 값과 약간 다를 수 있습니다.",
+  bad:"GPX를 읽지 못했어요 — 다른 파일로 시도해 주세요.",notrk:"파일에서 트랙 포인트를 찾지 못했어요."}
 };
-var LANG="en";
-function detectLang(){
-  var u=new URLSearchParams(location.search).get("lang");
-  if(u==="ko"||u==="en")return u;
-  var s=localStorage.getItem("rp_lang"); if(s==="ko"||s==="en")return s;
-  var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
-  var nav=(navigator.language||navigator.userLanguage||"").toLowerCase();
-  if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";
-  return "en";
+window.LANG=(new URLSearchParams(location.search).get("lang")==="ko"||(!location.search.includes("lang")&&(navigator.language||"").slice(0,2)==="ko"))?"ko":"en";
+function T(k){return (I18N[window.LANG]||I18N.en)[k]||I18N.en[k]||k;}
+function applyI18N(){
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(I18N[window.LANG]&&I18N[window.LANG][k]!=null)el.textContent=I18N[window.LANG][k];});
+  document.title=T("title");
+  document.getElementById("lang-ko").classList.toggle("on",window.LANG==="ko");
+  document.getElementById("lang-en").classList.toggle("on",window.LANG==="en");
+  if(window.G)render();
 }
-function applyLang(){
-  var d=I18N[LANG];document.documentElement.lang=LANG;
-  document.querySelectorAll("[data-i18n]").forEach(function(el){
-    var k=el.getAttribute("data-i18n");if(d[k]==null)return;
-    if(el.tagName==="TITLE")document.title=d[k];
-    else if(el.tagName==="META")el.setAttribute("content",d[k]);
-    else el.textContent=d[k];
-  });
-  document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");
-  document.getElementById("lang-en").classList.toggle("on",LANG==="en");
-  if(document.getElementById("result").classList.contains("show"))calc();
+function setLang(l){window.LANG=l;var u=new URL(location);u.searchParams.set("lang",l);history.replaceState(0,"",u);applyI18N();}
+
+/* ---------------- GPX parse ---------------- */
+function toRad(d){return d*Math.PI/180;}
+function haversine(a1,o1,a2,o2){var R=6371000,dLa=toRad(a2-a1),dLo=toRad(o2-o1),
+  s=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(toRad(a1))*Math.cos(toRad(a2))*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return 2*R*Math.asin(Math.sqrt(s));}
+function fmtDur(sec){sec=Math.round(sec);var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;
+  return h>0?(h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")):(m+":"+String(s).padStart(2,"0"));}
+function fmtPace(sp){if(!isFinite(sp)||sp<=0)return "—";var m=Math.floor(sp/60),s=Math.round(sp%60);if(s===60){m++;s=0;}return m+":"+String(s).padStart(2,"0");}
+
+function movavg(arr,w){var n=arr.length,out=new Array(n),half=Math.floor(w/2);
+  for(var i=0;i<n;i++){var s=0,c=0;for(var k=i-half;k<=i+half;k++){if(k>=0&&k<n){s+=arr[k];c++;}}out[i]=s/c;}return out;}
+function parseGPX(text){
+  var xml=new DOMParser().parseFromString(text,"application/xml");
+  if(xml.getElementsByTagName("parsererror").length)throw new Error("parse");
+  var pts=xml.getElementsByTagName("trkpt");
+  if(!pts.length)pts=xml.getElementsByTagName("rtept");
+  if(!pts.length)pts=xml.getElementsByTagName("wpt");
+  if(!pts.length)throw new Error("notrk");
+  var lat=[],lon=[],ele=[],time=[],hasEle=false,hasTime=false;
+  for(var i=0;i<pts.length;i++){
+    var la=parseFloat(pts[i].getAttribute("lat")),lo=parseFloat(pts[i].getAttribute("lon"));
+    if(!isFinite(la)||!isFinite(lo))continue;
+    var e=pts[i].getElementsByTagName("ele")[0];var ev=e?parseFloat(e.textContent):NaN;if(isFinite(ev))hasEle=true;
+    var t=pts[i].getElementsByTagName("time")[0];var tv=t?Date.parse(t.textContent):NaN;if(isFinite(tv))hasTime=true;
+    lat.push(la);lon.push(lo);ele.push(isFinite(ev)?ev:0);time.push(isFinite(tv)?tv:NaN);
+  }
+  if(lat.length<2)throw new Error("notrk");
+  // stats — distance
+  var dist=0;
+  for(var j=1;j<lat.length;j++)dist+=haversine(lat[j-1],lon[j-1],lat[j],lon[j]);
+  // elevation gain: smooth (moving avg) then sum positive deltas, small noise floor
+  var gain=0;
+  if(hasEle){
+    var sm=movavg(ele,5),prevE=sm[0];
+    for(var g=1;g<sm.length;g++){var d=sm[g]-prevE;if(d>0.3){gain+=d;prevE=sm[g];}else if(d<0)prevE=sm[g];}
+  }
+  var dur=NaN;
+  if(hasTime){var t0=NaN,t1=NaN;for(var a=0;a<time.length;a++)if(isFinite(time[a])){t0=time[a];break;}
+    for(var b=time.length-1;b>=0;b--)if(isFinite(time[b])){t1=time[b];break;}
+    if(isFinite(t0)&&isFinite(t1)&&t1>t0)dur=(t1-t0)/1000;}
+  var name="";var nm=xml.getElementsByTagName("name")[0];if(nm)name=(nm.textContent||"").trim().slice(0,32);
+  var dateStr="";if(hasTime){for(var q=0;q<time.length;q++)if(isFinite(time[q])){var dd=new Date(time[q]);
+    dateStr=dd.getFullYear()+"."+String(dd.getMonth()+1).padStart(2,"0")+"."+String(dd.getDate()).padStart(2,"0");break;}}
+  return {lat:lat,lon:lon,ele:ele,hasEle:hasEle,dist:dist,gain:gain,dur:dur,name:name,dateStr:dateStr};
 }
-function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 
-function fmt(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),s=sec%60;if(m>=60){var h=Math.floor(m/60);m=m%60;return h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}return m+":"+String(s).padStart(2,"0");}
-function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+":"+String(s).padStart(2,"0");}
-function toSec(str){var p=str.split(":").map(Number);return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
-function v(id){return parseInt(document.getElementById(id).value,10);}
-
-var AP_KIT={
- gel:{no:103,en:"GU Liquid Energy",ko:"GU 리퀴드 에너지젤"},
- elec:{no:106,en:"Yohemite electrolyte tab",ko:"요헤미티 전해질 발포정"},
- cramp:{no:52,en:"Crampfix Quickshot",ko:"크램픽스 퀵샷"}
+/* ---------------- themes ---------------- */
+var THEMES={
+  midnight:{bg:"#0a0c10",bg2:"#0f1320",line:"#c8ff43",line2:"#6ee7a8",glow:"rgba(200,255,67,.5)",ink:"#f3f6fa",sub:"#8b97a6",faint:"#5a6573",dot:"#ffffff",accent:"#c8ff43"},
+  blueprint:{bg:"#071018",bg2:"#0b1a26",line:"#38bdf8",line2:"#a5f3fc",glow:"rgba(56,189,248,.45)",ink:"#eaf6ff",sub:"#7f9cb0",faint:"#4a6577",dot:"#eaf6ff",accent:"#7dd3fc"},
+  paper:{bg:"#f4f1e9",bg2:"#efeadd",line:"#c2410c",line2:"#ea580c",glow:"rgba(0,0,0,0)",ink:"#16130f",sub:"#6b6459",faint:"#9a9081",dot:"#16130f",accent:"#c2410c"},
+  ember:{bg:"#0d0906",bg2:"#1a0f08",line:"#ff6b3d",line2:"#ffd24a",glow:"rgba(255,107,61,.45)",ink:"#fff3ec",sub:"#b08a78",faint:"#6e5045",dot:"#ffe0d2",accent:"#ff8a5c"}
 };
-function apUrl(no){return "https://athletespick.com/product/detail.html?product_no="+no+"&utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=hyrox";}
-function buildKit(secs){
- var ko=LANG==="ko",m=Math.round(secs/60),gels=m<60?1:(m<=90?2:3);
- function row(emoji,label,prod,qty,spec){
-  return '<a class="kititem" href="'+apUrl(prod.no)+'" target="_blank" rel="noopener"><span class="ke">'+emoji+'</span><span class="kt"><b>'+label+' ×'+qty+'</b><span class="ks">'+(ko?prod.ko:prod.en)+' · '+spec+'</span></span><span class="kb">'+(ko?"담기":"Add")+' →</span></a>';
- }
- var head='<div class="kithead">'+(ko?"추천 낱개 키트 · 애슬리츠픽":"Single-serve kit · Athlete's Pick")+'</div>';
- var g=row("🥤",(ko?"에너지젤":"Energy gel"),AP_KIT.gel,gels,(ko?"탄수 ~20g":"~20g carb"));
- var e=row("💧",(ko?"전해질":"Electrolyte"),AP_KIT.elec,1,"Na 220mg");
- var cr='<div class="kitnote">'+(ko?"쥐가 잘 나면 ":"Prone to cramps? ")+'<a href="'+apUrl(AP_KIT.cramp.no)+'" target="_blank" rel="noopener">'+(ko?"크램픽스 퀵샷 →":"Crampfix Quickshot →")+'</a></div>';
- return head+'<div class="kitlist">'+g+e+'</div>'+cr;
-}
-function calc(){
-  var d=I18N[LANG],pm=v("pmin"),ps=v("psec");
-  if(isNaN(pm)||isNaN(ps)){alert(d.err);return;}
-  var fresh=pm*60+ps; if(fresh<150||fresh>720){alert(d.err);return;}
-  var sex=document.getElementById("sex").value,lvl=LV[document.getElementById("lvl").value];
-  var tier=document.getElementById("lvl").value;
-  var inPace=fresh+lvl.off,runTotal=inPace*8;
-  var staArr=STA[sex][tier];
-  var staTotal=staArr.reduce(function(a,b){return a+b;},0),roxTotal=lvl.rox*8;
-  var finish=runTotal+staTotal+roxTotal;
-  var cmed=GMED[sex]+DIVD[document.getElementById("div").value]+AGED[document.getElementById("age").value];
-  document.getElementById("pctl").innerHTML=d.pctl_txt(pctileTop(finish,cmed));
-  document.getElementById("finish").textContent=fmt(finish);
-  document.getElementById("inpace").textContent=pace(inPace);
-  document.getElementById("off").textContent=lvl.off;
-  document.getElementById("mRun").textContent=fmt(runTotal);
-  document.getElementById("mSta").textContent=fmt(staTotal);
-  document.getElementById("mRox").textContent=fmt(roxTotal);
-  var pr=Math.round(runTotal/finish*100),pst=Math.round(staTotal/finish*100),prx=100-pr-pst;
-  document.getElementById("bar").innerHTML='<i style="width:'+pr+'%;background:var(--run)"></i><i style="width:'+pst+'%;background:var(--sta)"></i><i style="width:'+prx+'%;background:var(--roxc)"></i>';
-  document.getElementById("pRun").textContent=pr+"%";document.getElementById("pSta").textContent=pst+"%";document.getElementById("pRox").textContent=prx+"%";
-  var names=STA_NAMES[LANG],tb=document.getElementById("tbody");tb.innerHTML="";
-  names.forEach(function(st,i){var tr=document.createElement("tr");
-    tr.innerHTML='<td><span class="num">'+(i+1)+'</span>'+st[0]+'<span class="d">'+st[1]+'</span></td><td class="t">'+fmt(staArr[i])+'</td>';tb.appendChild(tr);});
-  var runsEl=document.getElementById("runs");runsEl.innerHTML="";
-  for(var i=0;i<8;i++){var p=inPace-10+(20*i/7);var el=document.createElement("div");
-    el.innerHTML='<div class="rk">'+d.run+' '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(el);}
-  var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
-  document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
-  document.getElementById("fuelKit").innerHTML=buildKit(finish);
-  document.getElementById("result").classList.add("show");
-  try{if(window.gtag)gtag('event','plan_generated',{sport:'hyrox',sex:sex,tier:tier,division:document.getElementById("div").value,finish_sec:Math.round(finish)});}catch(e){}
-}
-document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
-document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();document.getElementById("go").click();}});});
-(function(){var fk=document.getElementById("fuelKit");if(fk)fk.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="athletespick"]');if(a&&window.gtag){var m=a.href.match(/product_no=(\d+)/);gtag('event','fuel_click',{sport:'hyrox',medium:'fuelkit',product_no:m?m[1]:''});}});
-var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",function(){if(window.gtag)gtag('event','fuel_click',{sport:'hyrox',medium:'fuelplan'});});})();
-LANG=detectLang();applyLang();
-</script>
-<script>(function(){
-var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
-function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
-function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
- document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;
-  el.textContent=(L==="ko")?it[2]:it[1];
-  var href=it[0],active;if(href==="/")active=(path==="/");else if(href==="/guide/")active=path.indexOf("/guide/")===0;else active=path.indexOf(href)===0;
-  el.classList.toggle("active",active);});}
-var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l);paint();};}
-if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
-setTimeout(paint,0);
-})();</script>
+var state={theme:"midnight",ratio:"916",bg:"solid"};
+// transparent overlay uses a light ink so text stays legible over photos
+function inkFor(t){return state.bg==="transparent"?"#ffffff":t.ink;}
+function subFor(t){return state.bg==="transparent"?"rgba(255,255,255,.82)":t.sub;}
+function faintFor(t){return state.bg==="transparent"?"rgba(255,255,255,.6)":t.faint;}
 
-<script>/* rp_profile: login-free personalization (local only) */
-(function(){try{
-var K="rp_profile",$=function(i){return document.getElementById(i)};
-var P=JSON.parse(localStorage.getItem(K)||"{}"),applied=false;
-if(P.p5k&&$("pmin")&&$("psec")&&!$("pmin").value){$("pmin").value=P.p5k.m||"";$("psec").value=P.p5k.s||"";applied=true;}
-["sex","lvl","div","age"].forEach(function(k){if(P[k]!=null&&$(k))$(k).value=P[k];});
-if(applied&&window.gtag)gtag('event','profile_prefill',{page:'hyrox'});
-var go=$("go");
-if(go)go.addEventListener("click",function(){try{
-var Q=JSON.parse(localStorage.getItem(K)||"{}");Q.v=1;
-Q.p5k={m:$("pmin").value,s:$("psec").value};
-["sex","lvl","div","age"].forEach(function(k){if($(k))Q[k]=$(k).value;});
-Q.updated=Date.now();localStorage.setItem(K,JSON.stringify(Q));}catch(e){}});
-}catch(e){}})();
+/* ---------------- render ---------------- */
+function render(){
+  var G=window.G;if(!G)return;
+  var cv=document.getElementById("stage"),x=cv.getContext("2d");
+  var W=1080,H=state.ratio==="11"?1080:state.ratio==="45"?1350:1920;
+  cv.width=W;cv.height=H;
+  var t=THEMES[state.theme];
+  var trans=state.bg==="transparent";
+  var story=H>=1900;
+  // background
+  if(trans){x.clearRect(0,0,W,H);}
+  else{var bgGrad=x.createLinearGradient(0,0,0,H);bgGrad.addColorStop(0,t.bg2);bgGrad.addColorStop(1,t.bg);x.fillStyle=bgGrad;x.fillRect(0,0,W,H);drawTopo(x,W,H,t);}
+  x.textBaseline="alphabetic";
+  // legibility shadow when overlaying on photos
+  function SH(on){if(trans&&on){x.shadowColor="rgba(0,0,0,.5)";x.shadowBlur=22;x.shadowOffsetY=2;}else{x.shadowColor="rgba(0,0,0,0)";x.shadowBlur=0;x.shadowOffsetY=0;}}
+
+  var padX=story?110:92, topY=story?214:150;
+  // title + date
+  var title=(document.getElementById("in_title").value||G.name||(window.LANG==="ko"?"내 러닝":"My Run")).trim();
+  var date=(document.getElementById("in_date").value||G.dateStr||"").trim();
+  SH(true);
+  x.textAlign="center";x.fillStyle=inkFor(t);x.font="800 "+(story?112:84)+"px "+FONT;
+  var nlines=wrapText(x,title.toUpperCase(),W/2,topY,W-2*padX,story?104:78,2);
+  if(date){x.fillStyle=subFor(t);x.font="500 "+(story?38:31)+"px "+FONT;
+    x.fillText(date,W/2,topY+(nlines>1?(story?192:150):(story?76:58)));}
+  SH(false);
+
+  // route (hero) — with a giant faint distance number behind it
+  var routeTop=topY+(story?256:150), routeBot=H-(story?452:328);
+  drawGhostNumber(x,W,t,String(Math.round(G.dist/1000))+"K",(routeTop+routeBot)/2);
+  drawRoute(x,G,padX,routeTop,W-padX,routeBot,t);
+
+  // stats — Distance / Pace / Time · Strava-style: unit right after a big number
+  var dist=(G.dist/1000);
+  var timeStr=(document.getElementById("in_time").value||"").trim()||(isFinite(G.dur)?fmtDur(G.dur):"—");
+  var durForPace=parseClock(timeStr); if(!isFinite(durForPace)&&isFinite(G.dur))durForPace=G.dur;
+  var paceStr=(isFinite(durForPace)&&dist>0)?fmtPace(durForPace/dist):"—";
+  var cells=[["DISTANCE",dist.toFixed(2),"km"],["TIME",timeStr,""],["PACE",paceStr,"/km"]];
+  var cw=(W-2*padX)/3;
+  var by=H-(story?372:280);                         // hairline above stats
+  SH(false);
+  x.strokeStyle=trans?"rgba(255,255,255,.24)":hexA(t.sub,.18);x.lineWidth=2;
+  x.beginPath();x.moveTo(padX,by);x.lineTo(W-padX,by);x.stroke();
+  var labF=story?26:22, baseVal=story?58:48, uScale=0.52;
+  var labY=by+(story?58:46), valY=by+(story?128:104);
+  SH(true);
+  for(var i=0;i<3;i++){
+    var cx=padX+cw*i+cw/2, val=cells[i][1], unit=cells[i][2];
+    x.textAlign="center";x.textBaseline="alphabetic";
+    x.fillStyle=subFor(t);x.font="600 "+labF+"px "+FONT;x.fillText(cells[i][0],cx,labY);
+    // auto-fit value(+unit) inside its column so nothing collides
+    var vf=baseVal,uf,vw,uw;
+    for(;;){uf=Math.round(vf*uScale);
+      x.font="700 "+vf+"px "+FONT;vw=x.measureText(val).width;
+      x.font="600 "+uf+"px "+FONT;uw=unit?x.measureText(unit).width+vf*0.08:0;
+      if(vw+uw<=cw-30||vf<=30)break;vf-=2;}
+    var gx=cx-(vw+uw)/2;
+    x.textAlign="left";
+    x.fillStyle=inkFor(t);x.font="700 "+vf+"px "+FONT;x.fillText(val,gx,valY);
+    if(unit){x.fillStyle=faintFor(t);x.font="600 "+uf+"px "+FONT;x.fillText(unit,gx+vw+vf*0.08,valY);}
+  }
+  SH(false);
+
+  // wordmark — raceplanner.online, pinned bottom, big & bold
+  SH(true);
+  x.textAlign="center";x.textBaseline="alphabetic";x.fillStyle=trans?"#ffffff":t.ink;
+  x.font="800 "+(story?54:46)+"px "+FONT;x.fillText("raceplanner.online",W/2,H-(story?92:66));
+  SH(false);
+
+  // show
+  cv.style.display="block";document.getElementById("empty").style.display="none";
+  document.getElementById("dl").disabled=false;document.getElementById("share").disabled=false;
+}
+var FONT="'Bebas Neue','Space Grotesk',system-ui,sans-serif";
+var GHOST_FONT="'Bebas Neue',sans-serif";
+function hexA(hex,a){var h=hex.replace("#","");if(h.length===3)h=h.split("").map(function(c){return c+c;}).join("");
+  var n=parseInt(h,16);return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";}
+// giant, very faint distance number behind the route — bold energy, restrained
+function drawGhostNumber(x,W,t,num,cy){
+  if(state.bg==="transparent"||!num)return;
+  x.save();x.textAlign="center";x.textBaseline="middle";
+  var fs=Math.round(num.length>=4?W*0.72:W*0.92);
+  x.font="700 "+fs+"px "+GHOST_FONT;
+  while(x.measureText(num).width>W*0.92&&fs>60){fs-=12;x.font="700 "+fs+"px "+GHOST_FONT;}
+  x.fillStyle=(t.bg==="#f4f1e9")?hexA(t.ink,.09):hexA(t.ink,.085);
+  x.fillText(num,W/2,cy);
+  x.restore();
+}
+// subtle topographic contour texture — turns a flat card into an art print
+function drawTopo(x,W,H,t){
+  x.save();
+  x.strokeStyle=(t.bg==="#f4f1e9")?hexA(t.sub,.16):hexA(t.line,.055);
+  x.lineWidth=1.4;
+  var peaks=[[W*0.52,H*0.4,1],[W*0.16,H*0.72,1.7]];
+  for(var pi=0;pi<peaks.length;pi++){var cxp=peaks[pi][0],cyp=peaks[pi][1],ph=peaks[pi][2];
+    for(var r=54;r<Math.max(W,H)*0.95;r+=44){
+      x.beginPath();
+      for(var a=0;a<=6.2832;a+=0.13){
+        var rr=r+Math.sin(a*3+ph)*r*0.11+Math.sin(a*6+r*0.02)*13;
+        var px=cxp+Math.cos(a)*rr, py=cyp+Math.sin(a)*rr*0.8;
+        if(a===0)x.moveTo(px,py);else x.lineTo(px,py);
+      }
+      x.closePath();x.stroke();
+    }
+  }
+  // fade the contours toward the top & bottom (concentrated in the middle band)
+  var mg=x.createLinearGradient(0,0,0,H);
+  mg.addColorStop(0,hexA(t.bg2,1));mg.addColorStop(.30,hexA(t.bg2,0));
+  mg.addColorStop(.70,hexA(t.bg,0));mg.addColorStop(1,hexA(t.bg,1));
+  x.fillStyle=mg;x.fillRect(0,0,W,H);
+  x.restore();
+}
+function parseClock(s){if(!s)return NaN;var p=s.split(":").map(Number);if(p.some(isNaN))return NaN;
+  if(p.length===3)return p[0]*3600+p[1]*60+p[2];if(p.length===2)return p[0]*60+p[1];return NaN;}
+function wrapText(x,text,px,py,maxw,lh,maxLines){
+  var words=text.split(" "),line="",lines=[];
+  for(var i=0;i<words.length;i++){var test=line?line+" "+words[i]:words[i];
+    if(x.measureText(test).width>maxw&&line){lines.push(line);line=words[i];}else line=test;}
+  if(line)lines.push(line);lines=lines.slice(0,maxLines);
+  for(var j=0;j<lines.length;j++)x.fillText(lines[j],px,py+j*lh);
+  return lines.length;
+}
+function drawRoute(x,G,x0,y0,x1,y1,t){
+  var n=G.lat.length;
+  // mercator
+  var mx=[],my=[];
+  for(var i=0;i<n;i++){mx.push(G.lon[i]*Math.PI/180);
+    var la=G.lat[i]*Math.PI/180;my.push(Math.log(Math.tan(Math.PI/4+la/2)));}
+  var minx=Math.min.apply(null,mx),maxx=Math.max.apply(null,mx),
+      miny=Math.min.apply(null,my),maxy=Math.max.apply(null,my);
+  var bw=maxx-minx||1e-6,bh=maxy-miny||1e-6;
+  var availW=x1-x0,availH=y1-y0,pad=40;
+  var scale=Math.min((availW-2*pad)/bw,(availH-2*pad)/bh);
+  var offx=x0+(availW-bw*scale)/2, offy=y0+(availH-bh*scale)/2;
+  function PX(i){return offx+(mx[i]-minx)*scale;}
+  function PY(i){return offy+(maxy-my[i])*scale;} // invert y
+  // draw
+  x.lineJoin="round";x.lineCap="round";
+  if(t.glow!=="rgba(0,0,0,0)"){x.shadowColor=t.glow;x.shadowBlur=22;}
+  // flowing gradient stroke across the route bbox (premium, non-Strava)
+  var grad=x.createLinearGradient(offx,offy,offx+bw*scale,offy+bh*scale);
+  grad.addColorStop(0,t.line2||t.line);grad.addColorStop(1,t.line);
+  x.strokeStyle=grad;x.lineWidth=state.ratio==="916"?12:11;
+  x.beginPath();x.moveTo(PX(0),PY(0));
+  var step=Math.max(1,Math.floor(n/4000));
+  for(var k=step;k<n;k+=step)x.lineTo(PX(k),PY(k));
+  x.lineTo(PX(n-1),PY(n-1));x.stroke();
+  x.shadowBlur=0;
+  // start / finish dots
+  x.fillStyle=t.dot;x.beginPath();x.arc(PX(0),PY(0),15,0,7);x.fill();
+  x.fillStyle=t.accent;x.beginPath();x.arc(PX(n-1),PY(n-1),15,0,7);x.fill();
+  x.lineWidth=5;x.strokeStyle=state.bg==="transparent"?"#ffffff":t.bg;x.beginPath();x.arc(PX(n-1),PY(n-1),15,0,7);x.stroke();
+}
+
+/* ---------------- wiring ---------------- */
+function loadText(text,fname){
+  try{window.G=parseGPX(text);}catch(e){alert(T(e.message==="notrk"?"notrk":"bad"));return;}
+  // title = GPX filename (fallback to <name> in the file); date & finish time pulled from GPX data
+  var base=(fname||"").replace(/\.gpx$/i,"").replace(/[_-]+/g," ").trim();
+  document.getElementById("in_title").value=base||window.G.name||"";
+  document.getElementById("in_date").value=window.G.dateStr||"";
+  document.getElementById("in_time").value=isFinite(window.G.dur)?fmtDur(window.G.dur):"";
+  render();
+  if(window.gtag)gtag("event","poster_generate",{ratio:state.ratio,theme:state.theme});
+}
+function handleFile(f){if(!f)return;var nm=f.name||"";var r=new FileReader();r.onload=function(){loadText(String(r.result),nm);};r.readAsText(f);}
+var drop=document.getElementById("drop"),file=document.getElementById("file");
+drop.addEventListener("click",function(){file.click();});
+file.addEventListener("change",function(){handleFile(file.files[0]);});
+["dragenter","dragover"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add("hot");});});
+["dragleave","drop"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove("hot");});});
+drop.addEventListener("drop",function(e){if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
+["in_title","in_date","in_time"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){if(window.G)render();});});
+document.getElementById("themes").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;
+  state.theme=c.getAttribute("data-theme");[].forEach.call(this.children,function(ch){ch.classList.toggle("on",ch===c);});if(window.G)render();});
+document.getElementById("ratios").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;
+  state.ratio=c.getAttribute("data-ratio");[].forEach.call(this.children,function(ch){ch.classList.toggle("on",ch===c);});if(window.G)render();});
+document.getElementById("bgs").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;
+  state.bg=c.getAttribute("data-bg");[].forEach.call(this.children,function(ch){ch.classList.toggle("on",ch===c);});if(window.G)render();});
+function download(cb){var c=document.getElementById("stage");var fn="raceplanner-poster.png";
+  if(c.toBlob){c.toBlob(function(b){if(!b){if(cb)cb();return;}var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);if(cb)cb();},"image/png");}
+  else{var a2=document.createElement("a");a2.href=c.toDataURL("image/png");a2.download=fn;document.body.appendChild(a2);a2.click();a2.remove();if(cb)cb();}}
+document.getElementById("dl").addEventListener("click",function(){download();if(window.gtag)gtag("event","poster_download",{theme:state.theme});});
+document.getElementById("share").addEventListener("click",function(){
+  var c=document.getElementById("stage");
+  if(navigator.canShare&&c.toBlob){c.toBlob(function(b){var f=new File([b],"raceplanner-poster.png",{type:"image/png"});
+    if(navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Race Planner",text:(window.LANG==="ko"?"내 코스 포스터 — raceplanner.online/poster":"My route poster — raceplanner.online/poster")}).catch(function(){});}
+    else download();},"image/png");}
+  else download();
+});
+applyI18N();
 </script>
 </body>
 </html>

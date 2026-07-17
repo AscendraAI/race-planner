@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
+<meta name="google-site-verification" content="qf1B9F239atE39TMm2w7QMfl8fSz_xDC546FEqJa-uc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title data-i18n="title">HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner</title>
+<meta name="description" data-i18n="desc" content="Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data." />
+<meta name="keywords" content="hyrox calculator, hyrox time calculator, hyrox pace, hyrox finish time, roxzone, compromised running, 하이록스 계산기, 하이록스 페이스, 하이록스 완주 기록" />
+<link rel="canonical" href="https://raceplanner.online/hyrox/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/hyrox/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/hyrox/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/hyrox/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="HYROX Time Calculator | Race Planner" />
+<meta name="theme-color" content="#0a0c10" />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Race Planner — HYROX Calculator","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is my HYROX finish time estimated?", "acceptedAnswer": {"@type": "Answer", "text": "From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions."}}, {"@type": "Question", "name": "How do I get faster at HYROX?", "acceptedAnswer": {"@type": "Answer", "text": "The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost."}}, {"@type": "Question", "name": "Does it cover gender, division and age?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Station benchmarks and percentiles adjust by gender, division and age group."}}]}</script>
+<style>
+  :root{
+    --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
+    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
+    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;
+    --run:#6ee7a8;--sta:#c8ff43;--roxc:#ffb35c;
+    --radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55;
+    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
+    padding:14px 0;margin-bottom:8px;
+    backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
+    border-bottom:1px solid var(--line)}
+  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
+    display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+  .logo b{color:var(--accent);font-weight:800}
+  .spacer{flex:1}
+  .nav{display:flex;gap:4px}
+  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 11px;border-radius:9px;transition:.15s}
+  .navlink:hover{background:var(--panel2);color:var(--ink)}
+  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
+  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
+  @media(max-width:560px){.nav .navlink{padding:7px 8px;font-size:12px}.logo span.full{display:none}}
+
+  /* hero */
+  .hero-top{padding:30px 0 10px;text-align:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;
+    text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);
+    border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:18px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
+  h1{font-size:38px;line-height:1.12;letter-spacing:-1.2px;font-weight:800;margin:0 auto 14px;max-width:18ch}
+  h1 .g{color:var(--accent)}
+  .lead{color:var(--sub);font-size:16px;line-height:1.65;margin:0 auto;max-width:54ch}
+  .trust{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .trust span{font-size:12px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
+    padding:7px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+  .trust b{color:var(--accent);font-weight:700;font-family:var(--mono)}
+  @media(max-width:560px){h1{font-size:30px}.lead{font-size:15px}}
+
+  /* card base */
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px}
+  .console{margin-top:26px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);position:relative;overflow:hidden}
+  .console::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(200,255,67,.5),transparent)}
+
+  label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 8px;font-weight:600;letter-spacing:.2px}
+  .inputgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;align-items:end}
+  @media(max-width:560px){.inputgrid{grid-template-columns:1fr 1fr}.field-pace{grid-column:1 / -1}}
+  .field{margin:0}
+  .pace{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1.5px solid var(--line2);
+    border-radius:13px;padding:6px 12px;transition:.15s}
+  .pace:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+  .pace input{flex:1;width:100%;background:transparent;border:none;color:var(--ink);font-size:24px;font-weight:700;
+    padding:10px 0;outline:none;text-align:center;font-variant-numeric:tabular-nums;font-family:var(--mono);
+    -webkit-appearance:none;appearance:none}
+  .pace .sep{font-size:24px;font-weight:700;color:var(--faint);font-family:var(--mono)}
+  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap;font-weight:600}
+  select{width:100%;background:var(--panel2);border:1.5px solid var(--line2);color:var(--ink);font-size:15px;
+    font-weight:600;padding:15px 34px 15px 14px;border-radius:13px;outline:none;cursor:pointer;
+    -webkit-appearance:none;appearance:none;transition:.15s;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238b97a6' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center}
+  select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+  .hint{font-size:12px;color:var(--faint);font-weight:400;margin-top:12px;line-height:1.5}
+  button.calc{width:100%;background:var(--accent);color:var(--accentink);font-weight:800;font-size:16.5px;
+    border:none;border-radius:14px;padding:17px;cursor:pointer;margin-top:16px;letter-spacing:-.2px;min-height:56px;
+    -webkit-tap-highlight-color:transparent;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
+    box-shadow:0 10px 30px -10px rgba(200,255,67,.5)}
+  button.calc:hover{filter:brightness(1.05)}
+  button.calc:active{transform:translateY(1px) scale(.995)}
+  button.calc .arr{transition:.2s}button.calc:hover .arr{transform:translateX(3px)}
+
+  /* result */
+  .result{display:none;margin-top:18px}
+  .result.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stack{display:flex;flex-direction:column;gap:14px}
+
+  .hero-card{position:relative;text-align:center;padding:30px 22px;overflow:hidden;
+    background:radial-gradient(120% 130% at 50% 0%,rgba(200,255,67,.13),transparent 60%),linear-gradient(180deg,var(--panelhi),var(--bg2));
+    border:1px solid var(--line2);border-radius:var(--radius)}
+  .hero-card .k{font-size:12px;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  .hero-card .v{font-size:68px;font-weight:700;letter-spacing:-2px;color:var(--accent);
+    font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 10px;
+    text-shadow:0 0 40px rgba(200,255,67,.3)}
+  .hero-card .s{font-size:13px;color:var(--sub)}.hero-card .s b{color:var(--mint);font-family:var(--mono);font-weight:600}
+  @media(max-width:560px){.hero-card .v{font-size:54px}}
+  .bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin:20px 0 10px;background:var(--panel2)}
+  .bar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .barleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--sub);flex-wrap:wrap}
+  .barleg span{display:inline-flex;align-items:center;gap:6px}
+  .barleg b{color:var(--ink);font-family:var(--mono);font-weight:600}
+  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
+  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
+  .mini .mv{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--mono);color:var(--ink)}
+
+  .sect{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin:0 0 14px;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px}
+  .sect::after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
+  tr:last-child td{border-bottom:none}
+  th{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  td.t{text-align:right;font-weight:600;color:var(--mint);font-family:var(--mono)}
+  td .d{font-size:11.5px;color:var(--sub);display:block;margin-top:3px;font-weight:400}
+  .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
+    background:var(--panel2);border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--accent);
+    margin-right:10px;font-family:var(--mono);font-weight:600}
+  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 4px;text-align:center}
+  .runs .rk{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.3px;font-weight:600}
+  .runs .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px;font-family:var(--mono);color:var(--ink)}
+  @media(max-width:560px){.runs{grid-template-columns:repeat(4,1fr)}.runs .rv{font-size:13px}}
+
+  .fuel{background:linear-gradient(150deg,rgba(110,231,168,.1),var(--bg2));border:1px solid #2c3a30;border-radius:var(--radius);padding:22px}
+  .fuel h3{font-size:16px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .fuel p{font-size:13.5px;color:var(--ink2);line-height:1.65}
+  .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
+    color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
+  .fuel .cta:hover{filter:brightness(1.05)}
+
+  /* explainer */
+  .info{margin-top:34px}
+  .info h2{font-size:18px;margin:26px 0 10px;letter-spacing:-.3px}
+  .info p,.info li{font-size:14px;color:var(--sub);line-height:1.8}
+  .info ul{padding-left:20px;margin:8px 0}
+  .info li{margin-bottom:4px}
+  .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  @media(max-width:560px){.moregrid{grid-template-columns:1fr}}
+  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+    border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
+  .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
+  .morelink .ic{color:var(--accent);font-size:16px}
+
+  footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
+  footer a{color:var(--mint)}
+  .disc{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.65}
+
+/* ===== RP CANON design system (unified) ===== */
+
+  :root{
+    --bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
+    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
+    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--rox:#ffb35c;
+    --run:#6ee7a8;--sta:#c8ff43;--roxc:#ffb35c;
+    --radius:18px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55;
+    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.07),transparent 55%),radial-gradient(90% 50% at 85% 0%,rgba(110,231,168,.05),transparent 50%);
+    background-attachment:fixed;min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;
+    padding:14px 0;margin-bottom:8px;
+    backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);
+    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));
+    border-bottom:1px solid var(--line)}
+  .wrap-h{max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);
+    display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+  .logo b{color:var(--accent);font-weight:800}
+  .spacer{flex:1}
+  .nav{display:flex;gap:4px}
+  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 11px;border-radius:9px;transition:.15s}
+  .navlink:hover{background:var(--panel2);color:var(--ink)}
+  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
+  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
+  @media(max-width:560px){.nav .navlink{padding:7px 8px;font-size:12px}.logo span.full{display:none}}
+
+  /* hero */
+  .hero-top{padding:30px 0 10px;text-align:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.6px;
+    text-transform:uppercase;color:var(--accent);background:rgba(200,255,67,.08);
+    border:1px solid rgba(200,255,67,.22);padding:6px 13px;border-radius:999px;margin-bottom:18px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(200,255,67,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,67,.5)}70%{box-shadow:0 0 0 7px rgba(200,255,67,0)}100%{box-shadow:0 0 0 0 rgba(200,255,67,0)}}
+  h1{font-size:38px;line-height:1.12;letter-spacing:-1.2px;font-weight:800;margin:0 auto 14px;max-width:18ch}
+  h1 .g{color:var(--accent)}
+  .lead{color:var(--sub);font-size:16px;line-height:1.65;margin:0 auto;max-width:54ch}
+  .trust{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .trust span{font-size:12px;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
+    padding:7px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+  .trust b{color:var(--accent);font-weight:700;font-family:var(--mono)}
+  @media(max-width:560px){h1{font-size:30px}.lead{font-size:15px}}
+
+  /* card base */
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px}
+  .console{margin-top:26px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);position:relative;overflow:hidden}
+  .console::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(200,255,67,.5),transparent)}
+
+  label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 8px;font-weight:600;letter-spacing:.2px}
+  .inputgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;align-items:end}
+  @media(max-width:560px){.inputgrid{grid-template-columns:1fr 1fr}.field-pace{grid-column:1 / -1}}
+  .field{margin:0}
+  .pace{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1.5px solid var(--line2);
+    border-radius:13px;padding:6px 12px;transition:.15s}
+  .pace:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+  .pace input{flex:1;width:100%;background:transparent;border:none;color:var(--ink);font-size:24px;font-weight:700;
+    padding:10px 0;outline:none;text-align:center;font-variant-numeric:tabular-nums;font-family:var(--mono);
+    -webkit-appearance:none;appearance:none}
+  .pace .sep{font-size:24px;font-weight:700;color:var(--faint);font-family:var(--mono)}
+  .pace .unit{font-size:13px;color:var(--sub);white-space:nowrap;font-weight:600}
+  select{width:100%;background:var(--panel2);border:1.5px solid var(--line2);color:var(--ink);font-size:15px;
+    font-weight:600;padding:15px 34px 15px 14px;border-radius:13px;outline:none;cursor:pointer;
+    -webkit-appearance:none;appearance:none;transition:.15s;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238b97a6' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center}
+  select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,67,.12)}
+  .hint{font-size:12px;color:var(--faint);font-weight:400;margin-top:12px;line-height:1.5}
+  button.calc{width:100%;background:var(--accent);color:var(--accentink);font-weight:800;font-size:16.5px;
+    border:none;border-radius:14px;padding:17px;cursor:pointer;margin-top:16px;letter-spacing:-.2px;min-height:56px;
+    -webkit-tap-highlight-color:transparent;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;
+    box-shadow:0 10px 30px -10px rgba(200,255,67,.5)}
+  button.calc:hover{filter:brightness(1.05)}
+  button.calc:active{transform:translateY(1px) scale(.995)}
+  button.calc .arr{transition:.2s}button.calc:hover .arr{transform:translateX(3px)}
+
+  /* result */
+  .result{display:none;margin-top:18px}
+  .result.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .stack{display:flex;flex-direction:column;gap:14px}
+
+  .hero-card{position:relative;text-align:center;padding:30px 22px;overflow:hidden;
+    background:radial-gradient(120% 130% at 50% 0%,rgba(200,255,67,.13),transparent 60%),linear-gradient(180deg,var(--panelhi),var(--bg2));
+    border:1px solid var(--line2);border-radius:var(--radius)}
+  .hero-card .k{font-size:12px;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  .hero-card .v{font-size:68px;font-weight:700;letter-spacing:-2px;color:var(--accent);
+    font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 10px;
+    text-shadow:0 0 40px rgba(200,255,67,.3)}
+  .hero-card .s{font-size:13px;color:var(--sub)}.hero-card .s b{color:var(--mint);font-family:var(--mono);font-weight:600}
+  @media(max-width:560px){.hero-card .v{font-size:54px}}
+  .bar{display:flex;height:13px;border-radius:7px;overflow:hidden;margin:20px 0 10px;background:var(--panel2)}
+  .bar i{display:block;height:100%;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .barleg{display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--sub);flex-wrap:wrap}
+  .barleg span{display:inline-flex;align-items:center;gap:6px}
+  .barleg b{color:var(--ink);font-family:var(--mono);font-weight:600}
+  .dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+  .mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .mini div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center}
+  .mini .mk{font-size:10.5px;color:var(--sub);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
+  .mini .mv{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--mono);color:var(--ink)}
+
+  .sect{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin:0 0 14px;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px}
+  .sect::after{content:"";flex:1;height:1px;background:var(--line)}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
+  tr:last-child td{border-bottom:none}
+  th{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  td.t{text-align:right;font-weight:600;color:var(--mint);font-family:var(--mono)}
+  td .d{font-size:11.5px;color:var(--sub);display:block;margin-top:3px;font-weight:400}
+  .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
+    background:var(--panel2);border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--accent);
+    margin-right:10px;font-family:var(--mono);font-weight:600}
+  .runs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+  .runs div{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 4px;text-align:center}
+  .runs .rk{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.3px;font-weight:600}
+  .runs .rv{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px;font-family:var(--mono);color:var(--ink)}
+  @media(max-width:560px){.runs{grid-template-columns:repeat(4,1fr)}.runs .rv{font-size:13px}}
+
+  .fuel{background:linear-gradient(150deg,rgba(110,231,168,.1),var(--bg2));border:1px solid #2c3a30;border-radius:var(--radius);padding:22px}
+  .fuel h3{font-size:16px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .fuel p{font-size:13.5px;color:var(--ink2);line-height:1.65}
+  .fuel .cta{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:16px;background:var(--mint);
+    color:#06140c;font-weight:800;padding:15px;border-radius:12px;font-size:14.5px;min-height:50px;transition:.15s}
+  .fuel .cta:hover{filter:brightness(1.05)}
+
+  /* explainer */
+  .info{margin-top:34px}
+  .info h2{font-size:18px;margin:26px 0 10px;letter-spacing:-.3px}
+  .info p,.info li{font-size:14px;color:var(--sub);line-height:1.8}
+  .info ul{padding-left:20px;margin:8px 0}
+  .info li{margin-bottom:4px}
+  .moregrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  @media(max-width:560px){.moregrid{grid-template-columns:1fr}}
+  .morelink{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+    border-radius:13px;padding:15px 16px;font-size:14px;font-weight:600;color:var(--ink2);transition:.15s}
+  .morelink:hover{border-color:var(--line2);background:var(--panel2);color:var(--ink);transform:translateY(-1px)}
+  .morelink .ic{color:var(--accent);font-size:16px}
+
+  footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.8}
+  footer a{color:var(--mint)}
+  .disc{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.65}
+
+/* === bridges: subpage wrappers + nav UX === */
+header{display:block}
+.shell{max-width:860px;margin:0 auto;padding:0 20px calc(56px + env(safe-area-inset-bottom))}
+.layout{display:block!important}.center{min-width:0}
+.ad,.leader,.rail{display:none!important}
+.wrap-h{flex-wrap:wrap}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.navlink{white-space:nowrap}
+.navlink.active{color:var(--accent);background:var(--panel2)}
+@media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+@media(max-width:520px){.logo .full{display:none}}
+/* fuel schedule (MVP-0) */
+.fuelneed{display:flex;gap:10px;margin:2px 0 14px}
+.fuelneed>div{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center}
+.fuelneed .k{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.3px;font-weight:600;margin-bottom:5px}
+.fuelneed .v{font-size:19px;font-weight:700;color:var(--mint);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.fuelneed .u{font-size:11px;color:var(--sub);font-weight:600;margin-left:1px}
+.fueltl{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 2px;padding:0}
+.fueltl li{font-size:13px;color:var(--ink2);line-height:1.5;padding-left:15px;position:relative}
+.fueltl li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--mint)}
+.fueltl li b{color:var(--ink);font-weight:700}
+.fueltl li.warn{color:var(--rox)}.fueltl li.warn::before{background:var(--rox)}
+.kithead{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.4px;font-weight:700;margin:18px 0 9px}
+.kitlist{display:flex;flex-direction:column;gap:8px}
+.kititem{display:flex;align-items:center;gap:11px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 13px;transition:.15s}
+.kititem:hover{border-color:var(--mint);background:var(--panel2)}
+.kititem .ke{font-size:20px}
+.kititem .kt{flex:1;display:flex;flex-direction:column;line-height:1.32;min-width:0}
+.kititem .kt b{font-size:13.5px;color:var(--ink);font-weight:700}
+.kititem .ks{font-size:11.5px;color:var(--sub)}
+.kititem .kb{font-size:12.5px;font-weight:700;color:var(--mint);white-space:nowrap}
+.kitnote{font-size:12px;color:var(--sub);margin-top:9px}
+.kitnote a{color:var(--mint);font-weight:600}
+.pctl{margin-top:9px;font-size:14px;color:var(--mint);font-family:var(--mono);font-weight:600}
+.pctl b{color:var(--accent)}
+.pctl .pctsub{display:block;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;letter-spacing:0}
+.faq dt{font-weight:750;margin-top:14px;font-size:15px}.faq dd{margin:5px 0 0;font-size:14.5px;color:#cdd4da}
+.relhead{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--sub);margin:20px 0 8px}
+.related{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.related a{font-size:13px;background:var(--panel2);border:1px solid var(--line);padding:8px 12px;border-radius:9px;text-decoration:none;color:var(--ink)}
+  /* ==== monetization: in-article ad + affiliate gear (added) ==== */
+  .adslot{margin:26px 0;padding:10px 12px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);text-align:center;overflow:hidden}
+  .adslot .adlabel{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .adslot ins{min-height:100px}
+  .gearblock{margin:26px 0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--panel2),var(--panel))}
+  .gearblock .gearhead{font-family:var(--mono);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .gearblock .gearhead::before{content:"🛒";font-size:16px}
+  .geargrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:560px){.geargrid{grid-template-columns:repeat(4,1fr)}}
+  .gearcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .15s,transform .15s}
+  .gearcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .gearcard .gic{font-size:24px;line-height:1}
+  .gearcard .gname{font-size:12.5px;color:var(--ink2);text-align:center;line-height:1.35}
+  .geardisc{margin-top:12px;font-size:11px;color:var(--faint);line-height:1.5}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+</head>
+<body>
+<header><div class="wrap-h">
+  <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
+  <span class="spacer"></span>
+  <nav class="nav">
+    <a class="navlink" href="/gpx/" data-nav="0">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/" data-nav="1">HYROX Calculator</a>
+    <a class="navlink" href="/pace/" data-nav="2">Marathon Pace &amp; Predictor</a>
+    <a class="navlink" href="/guide/" data-nav="3">Guides</a>
+  </nav>
+  <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
+</div></header>
+<div class="wrap">
+  <section class="hero-top">
+    <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Real-data HYROX predictor</span></span>
+    <h1 data-i18n="h1">HYROX finish-time calculator</h1>
+    <p class="lead" data-i18n="lead">Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.</p>
+    <div class="trust">
+      <span><b>400K+</b> <span data-i18n="t_athletes">real HYROX results</span></span>
+      <span data-i18n="t_free">⚡ Free · no signup</span>
+      <span data-i18n="t_time">⏱ 1-second result</span>
+    </div>
+  </section>
+
+  <div class="card console">
+    <div class="inputgrid">
+      <div class="field field-pace">
+        <label><span data-i18n="in_pace">Your all-out 5K pace</span> <span style="font-weight:400;color:var(--faint)">(/km)</span></label>
+        <div class="pace">
+          <input id="pmin" type="number" inputmode="numeric" min="2" max="9" value="5" aria-label="minutes" />
+          <span class="sep">:</span>
+          <input id="psec" type="number" inputmode="numeric" min="0" max="59" value="00" aria-label="seconds" />
+          <span class="unit">/km</span>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="in_sex">Gender</label>
+        <select id="sex"><option value="men" data-i18n="sex_m">Men</option><option value="women" data-i18n="sex_w">Women</option></select>
+      </div>
+      <div class="field">
+        <label data-i18n="in_lvl">Level</label>
+        <select id="lvl"><option value="beg" data-i18n="lv_b">Beginner</option><option value="int" selected data-i18n="lv_i">Intermediate</option><option value="adv" data-i18n="lv_a">Advanced</option></select>
+      </div>
+      <div class="field">
+        <label data-i18n="in_div">Division</label>
+        <select id="div"><option value="open" data-i18n="div_open">Open</option><option value="pro" data-i18n="div_pro">Pro</option></select>
+      </div>
+      <div class="field">
+        <label data-i18n="in_age">Age</label>
+        <select id="age"><option value="a3034" data-i18n="age_any">All ages</option><option value="a1624" data-i18n="age1">16–24</option><option value="a2529" data-i18n="age2">25–29</option><option value="a3034" data-i18n="age3">30–34</option><option value="a3539" data-i18n="age4">35–39</option><option value="a4044" data-i18n="age5">40–44</option><option value="a4549" data-i18n="age6">45–49</option><option value="a5054" data-i18n="age7">50–54</option><option value="a5559" data-i18n="age8">55–59</option><option value="a60" data-i18n="age9">60+</option></select>
+      </div>
+    </div>
+    <div class="hint" data-i18n="in_hint">The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.</div>
+    <button class="calc" id="go"><span data-i18n="btn">Predict finish time</span><span class="arr">→</span></button>
+  </div>
+
+  <div class="result" id="result">
+    <div class="stack">
+      <div class="hero-card">
+        <div class="k" data-i18n="r_finish">Predicted finish</div>
+        <div class="v" id="finish">—</div>
+        <div class="s"><span data-i18n="r_inpace">In-race run pace</span> <b id="inpace">—</b> /km · +<span id="off">—</span>s <span data-i18n="r_adj">adjustment</span></div>
+        <div class="pctl" id="pctl"></div>
+        <div class="bar" id="bar"></div>
+        <div class="barleg">
+          <span><i class="dot" style="background:var(--run)"></i><span data-i18n="r_run">Run</span> <b id="pRun">—</b></span>
+          <span><i class="dot" style="background:var(--sta)"></i><span data-i18n="r_sta">Stations</span> <b id="pSta">—</b></span>
+          <span><i class="dot" style="background:var(--roxc)"></i><span data-i18n="r_rox">Roxzone</span> <b id="pRox">—</b></span>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div><div class="mk" data-i18n="m_run">Total run (8km)</div><div class="mv" id="mRun">—</div></div>
+        <div><div class="mk" data-i18n="m_sta">Total stations</div><div class="mv" id="mSta">—</div></div>
+        <div><div class="mk" data-i18n="m_rox">Roxzone</div><div class="mv" id="mRox">—</div></div>
+      </div>
+
+      <div class="card">
+        <div class="sect" data-i18n="s_station">Per-station target</div>
+        <table><thead><tr><th data-i18n="th_station">Station (order)</th><th style="text-align:right" data-i18n="th_target">Target</th></tr></thead><tbody id="tbody"></tbody></table>
+      </div>
+
+      <div class="card">
+        <div class="sect" data-i18n="s_pacing">8-run pacing (even split)</div>
+        <div class="runs" id="runs"></div>
+        <div class="hint" data-i18n="pacing_hint">Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.</div>
+      </div>
+
+      <div class="fuel">
+        <h3 data-i18n="fuel_h">⚡ Your fueling plan for this race</h3>
+        <div id="fuelBody"></div>
+        <div id="fuelKit"></div>
+        <a class="cta" id="fuelcta" href="https://athletespick.com/?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=hyrox" target="_blank" rel="noopener" data-i18n="fuel_cta">Get your race-day fuel — Athlete's Pick →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info">
+    <h2 data-i18n="i1_h">How this calculator predicts your time</h2>
+    <p data-i18n="i1_p">A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.</p>
+    <ul>
+      <li data-i18n="i1_l1">Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.</li>
+      <li data-i18n="i1_l2">Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.</li>
+      <li data-i18n="i1_l3">Stations: distributed by level & gender from real averages.</li>
+    </ul>
+    <h2 data-i18n="i2_h">The 8 stations in order</h2>
+    <p data-i18n="i2_p">SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100</p>
+    <!-- ===== monetization: affiliate gear + in-article ad (replace COUPANG_URL_* and ADSLOT_INARTICLE to activate) ===== -->
+    <div class="gearblock">
+      <div class="gearhead" data-i18n="gear_h">Race-day gear</div>
+      <div class="geargrid">
+        <a class="gearcard" href="COUPANG_URL_SHOES" target="_blank" rel="nofollow sponsored noopener"><span class="gic">👟</span><span class="gname" data-i18n="gear_shoe">Racing shoes</span></a>
+        <a class="gearcard" href="COUPANG_URL_GEL" target="_blank" rel="nofollow sponsored noopener"><span class="gic">⚡</span><span class="gname" data-i18n="gear_gel">Energy gels</span></a>
+        <a class="gearcard" href="COUPANG_URL_WATCH" target="_blank" rel="nofollow sponsored noopener"><span class="gic">⌚</span><span class="gname" data-i18n="gear_watch">GPS watch</span></a>
+        <a class="gearcard" href="COUPANG_URL_SOCKS" target="_blank" rel="nofollow sponsored noopener"><span class="gic">🧦</span><span class="gname" data-i18n="gear_socks">Compression socks</span></a>
+      </div>
+      <div class="geardisc" data-i18n="gear_disc">As a Coupang Partners member, this site may earn a commission from qualifying purchases.</div>
+    </div>
+    <div class="adslot">
+      <span class="adlabel">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6369966478235204" data-ad-slot="ADSLOT_INARTICLE" data-ad-format="fluid" data-ad-layout="in-article"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+    <h2 data-i18n="more_tools">Other tools</h2>
+    <div class="moregrid">
+      <a class="morelink" href="/gpx/"><span class="ic">⛰</span><span data-i18n="more_gpx">GPX race plan — trail &amp; road · elevation &amp; weather</span></a>
+      <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="more_pace">Marathon pace &amp; race-time predictor</span></a>
+    </div>
+    <h2 data-i18n="more_hxg">HYROX guides</h2>
+    <div class="moregrid">
+      <a class="morelink" href="/guide/pacing/"><span class="ic">📋</span><span data-i18n="more_g1">HYROX pacing guide</span></a>
+      <a class="morelink" href="/guide/nutrition/"><span class="ic">🥤</span><span data-i18n="more_g2">HYROX nutrition guide</span></a>
+      <a class="morelink" href="/guide/stations/"><span class="ic">🎯</span><span data-i18n="more_g3">8-station breakdown</span></a>
+      <a class="morelink" href="/guide/"><span class="ic">📚</span><span data-i18n="more_all">All guides →</span></a>
+    </div>
+    <h2 data-i18n="faq_h">FAQ</h2>
+    <dl class="faq">
+      <dt data-i18n="faq_q1">How is my HYROX finish time estimated?</dt>
+      <dd data-i18n="faq_a1">From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.</dd>
+      <dt data-i18n="faq_q2">How do I get faster at HYROX?</dt>
+      <dd data-i18n="faq_a2">The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.</dd>
+      <dt data-i18n="faq_q3">Does it cover gender, division and age?</dt>
+      <dd data-i18n="faq_a3">Yes. Station benchmarks and percentiles adjust by gender, division and age group.</dd>
+    </dl>
+    <div class="relhead" data-i18n="rel_head">Related tools</div>
+    <div class="related">
+      <a href="/guide/pacing/" data-i18n="rel_pacing">→ HYROX pacing guide</a>
+      <a href="/guide/nutrition/" data-i18n="rel_nutrition">→ HYROX nutrition guide</a>
+      <a href="/guide/stations/" data-i18n="rel_stations">→ 8-station breakdown</a>
+      <a href="/pace/" data-i18n="rel_pace">→ Marathon pace &amp; predictor</a>
+    </div>
+  </div>
+
+  <footer>
+    <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span><br/>
+    <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com" target="_blank" rel="noopener">Athlete's Pick</a>
+    <div class="disc" data-i18n="disc">※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.</div>
+  </footer>
+</div>
+
+<script>
+var STA_NAMES={
+ en:[["SkiErg","1000m"],["Sled Push","50m"],["Sled Pull","50m"],["Burpee Broad Jump","80m"],["Row","1000m"],["Farmers Carry","200m"],["Sandbag Lunges","100m"],["Wall Balls","×100"]],
+ ko:[["스키에르그","1000m"],["썰매 밀기","50m"],["썰매 끌기","50m"],["버피 브로드 점프","80m"],["로잉","1000m"],["파머스 캐리","200m"],["샌드백 런지","100m"],["월볼","100개"]]
+};
+/* Station times (sec) by gender x tier, from HyroxDataLab percentiles (N=395,452, S7-8).
+   adv=top25% / int=median / beg=bottom25%. Order: Ski,SledPush,SledPull,Burpee,Row,Farmers,Lunges,WallBalls */
+var STA={
+ men:{adv:[256,155,255,262,273,110,263,335],int:[269,184,303,322,289,129,313,412],beg:[285,223,370,401,309,156,379,523]},
+ women:{adv:[294,148,294,313,307,120,260,320],int:[311,175,346,384,325,137,307,390],beg:[331,212,416,479,348,164,372,494]}
+};
+var LV={beg:{off:45,rox:50},int:{off:35,rox:42},adv:{off:25,rox:32}};
+/* Percentile readout: cohort median (sec) = gender + division + age deltas. Overall S8 anchors p90/p50/p10. */
+var GMED={men:4920,women:5510};
+var DIVD={open:0,pro:-280};
+var AGED={a1624:-17,a2529:-83,a3034:0,a3539:77,a4044:167,a4549:332,a5054:475,a5559:731,a60:805};
+function pctileTop(fin,cmed){
+ var sh=cmed-4964,fast=4041+sh,med=cmed,slow=6374+sh,beats;
+ if(fin<=fast)beats=90+Math.min(8,(fast-fin)/45);
+ else if(fin<=med)beats=50+(med-fin)/(med-fast)*40;
+ else if(fin<=slow)beats=10+(slow-fin)/(slow-med)*40;
+ else beats=Math.max(1,10-(fin-slow)/60);
+ beats=Math.max(1,Math.min(99,beats));
+ return Math.round(100-beats);
+}
+
+var I18N={
+ en:{title:"HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner",
+  desc:"Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan.",
+  nav_pace:"Pace",nav_gpx:"GPX",nav_guides:"Guides",eyebrow:"Real-data HYROX predictor",h1:"HYROX finish-time calculator",
+  lead:"Enter your all-out 5K pace. We add the real costs of race day — compromised running, the Roxzone and all eight stations — to predict your HYROX finish time.",
+  t_athletes:"real HYROX results",t_free:"⚡ Free · no signup",t_time:"⏱ 1-second result",
+  in_pace:"Your all-out 5K pace",in_sex:"Gender",sex_m:"Men",sex_w:"Women",in_lvl:"Level",lv_b:"Beginner",lv_i:"Intermediate",lv_a:"Advanced",
+  in_div:"Division",div_open:"Open",div_pro:"Pro",in_age:"Age",age_any:"All ages",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
+  pctl_txt:function(t){return '≈ <b>Top '+t+'%</b> <span class="pctsub">vs same gender · division · age (approx.)</span>';},
+  in_hint:"The pace you can hold for a single all-out 5K. We convert it to a realistic in-race pace for you.",btn:"Predict finish time",
+  r_finish:"Predicted finish",r_inpace:"In-race run pace",r_adj:"adjustment",r_run:"Run",r_sta:"Stations",r_rox:"Roxzone",
+  m_run:"Total run (8km)",m_sta:"Total stations",m_rox:"Roxzone",s_station:"Per-station target",th_station:"Station (order)",th_target:"Target",
+  s_pacing:"8-run pacing (even split)",pacing_hint:"Control Run 1 the most and keep the drift to Run 8 within 10–20 s/km. If your worst run is 7–8, you started too fast.",
+  fuel_h:"⚡ Your fueling plan for this race",fuel_cta:"Get your race-day fuel — Athlete's Pick →",
+  i1_h:"How this calculator predicts your time",i1_p:"A HYROX finish is run + stations + roxzone. The official 8 km (8×1 km) is pure running; the Roxzone adds roughly 6.5% on top.",
+  i1_l1:"Compromised running: in-race runs are 25–45 s/km slower than a fresh 5K (sled & lunge fatigue). We add a level-based offset.",
+  i1_l2:"Roxzone: 32–50 s per transition × 8. Time you can cut without extra fitness.",i1_l3:"Stations: per-station medians & percentiles by gender from ~400k public results.",
+  i2_h:"The 8 stations in order",i2_p:"SkiErg 1000m → Sled Push 50m → Sled Pull 50m → Burpee Broad Jump 80m → Row 1000m → Farmers Carry 200m → Sandbag Lunges 100m → Wall Balls ×100",
+  more_tools:"Other tools",more_hxg:"HYROX guides",more_all:"All guides →",more_pace:"Marathon pace & race-time predictor",more_gpx:"GPX race plan — trail & road · elevation & weather",more_g1:"HYROX pacing guide",more_g2:"HYROX nutrition guide",more_g3:"8-station breakdown",
+  gear_h:"Race-day gear",gear_shoe:"Racing shoes",gear_gel:"Energy gels",gear_watch:"GPS watch",gear_socks:"Compression socks",gear_disc:"As a Coupang Partners member, this site may earn a commission from qualifying purchases.",
+  faq_h:"FAQ",rel_head:"Related tools",rel_pacing:"→ HYROX pacing guide",rel_nutrition:"→ HYROX nutrition guide",rel_stations:"→ 8-station breakdown",rel_pace:"→ Marathon pace & predictor",
+  faq_q1:"How is my HYROX finish time estimated?",
+  faq_a1:"From your all-out 5K pace plus a level-based compromised-run offset across the 8 runs, station times from a lookup built on 400K+ real results, and the ROX-zone transitions.",
+  faq_q2:"How do I get faster at HYROX?",
+  faq_a2:"The biggest lever is compromised-run pacing — holding run pace after each station. The split view shows exactly where time is lost.",
+  faq_q3:"Does it cover gender, division and age?",
+  faq_a3:"Yes. Station benchmarks and percentiles adjust by gender, division and age group.",
+  foot1:"Race Planner · free tools for runners and HYROX athletes",foot_pace:"Pace calculator",foot2:"Single-serve sports nutrition",
+  disc:"※ Station benchmarks calibrated to ~400,000 public HYROX results (aggregated by HyroxDataLab, seasons 7–8). Run offset is a coaching heuristic, not measured; percentile is approximate. Real results vary with strength, weather and venue.",
+  err:"Please check your pace (2:30–12:00 /km).",run:"Run",
+  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>During</b> — water & electrolytes only (no extra carbs needed)":(m<=90?"<b>During (if trained)</b> — one fast gel around Run 4–5":"<b>During</b> — split 2 gels around Run 3–4 & Run 6");return '<div class="fuelneed"><div><span class="k">Carbs</span><span class="v">~'+c+'g</span></div><div><span class="k">Sodium</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">Fluid</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>30–45 min before start</b> — 1 energy gel (~25g) + electrolyte drink</li><li>'+mid+'</li><li class="warn">⚠ Never try anything new on race day — test it in training 2–3 weeks out</li></ul>';}},
+ ko:{title:"하이록스 계산기 — 내 러닝 페이스로 완주 기록 예측 | 레이스 플래너",
+  desc:"전력 5K 페이스만 넣으면 하이록스 예상 완주 기록, 레이스 중 런 페이스, 스테이션별 목표, 8개 런 페이싱까지 한 번에 계산합니다.",
+  nav_pace:"페이스",nav_gpx:"GPX",nav_guides:"가이드",eyebrow:"실데이터 기반 하이록스 예측기",h1:"하이록스 완주 기록 계산기",
+  lead:"전력 5K 페이스를 넣으세요. 레이스에서 실제로 잃는 시간 — 지친 다리 러닝, 록스존, 8개 스테이션 — 을 더해 예상 완주 기록을 계산합니다.",
+  t_athletes:"건 공개 HYROX 결과",t_free:"⚡ 무료 · 가입 없음",t_time:"⏱ 1초 결과",
+  in_pace:"전력 5K 페이스",in_sex:"성별",sex_m:"남자",sex_w:"여자",in_lvl:"수준",lv_b:"입문",lv_i:"중급",lv_a:"상급",
+  in_div:"부문",div_open:"오픈",div_pro:"프로",in_age:"연령",age_any:"전체",age1:"16–24",age2:"25–29",age3:"30–34",age4:"35–39",age5:"40–44",age6:"45–49",age7:"50–54",age8:"55–59",age9:"60+",
+  pctl_txt:function(t){return '≈ <b>상위 '+t+'%</b> <span class="pctsub">동일 성별·부문·연령 기준 (근사)</span>';},
+  in_hint:"전력으로 5K를 달릴 때의 km당 페이스입니다. 레이스 중 페이스는 자동으로 보정해 드립니다.",btn:"완주 기록 예측",
+  r_finish:"예상 완주 기록",r_inpace:"레이스 중 런 페이스",r_adj:"보정",r_run:"런",r_sta:"스테이션",r_rox:"록스존",
+  m_run:"총 런 (8km)",m_sta:"총 스테이션",m_rox:"록스존",s_station:"스테이션별 목표 시간",th_station:"스테이션 (순서)",th_target:"목표",
+  s_pacing:"8개 런 페이싱 (이븐 스플릿)",pacing_hint:"Run1을 가장 통제하고 Run8까지 10~20초/km 이내로 유지하세요. 최악 구간이 Run7~8이면 초반 과속입니다.",
+  fuel_h:"⚡ 이 레이스의 보급 플랜",fuel_cta:"레이스 보급 준비하기 — 애슬리츠픽 →",
+  i1_h:"이 계산기는 이렇게 예측합니다",i1_p:"하이록스 완주 기록은 런 + 스테이션 + 록스존의 합입니다. 공식 8km(8×1km)는 순수 러닝이고, 록스존이 여기에 약 6.5%를 더합니다.",
+  i1_l1:"지친 다리 러닝(compromised running): 레이스 중 런은 전력 5K보다 25~45초/km 느립니다(썰매·런지 피로). 수준별 보정을 더합니다.",
+  i1_l2:"록스존: 전환당 32~50초 × 8회. 추가 체력 없이 줄일 수 있는 구간.",i1_l3:"스테이션: 약 40만 공개 결과의 성별·백분위 스테이션 실측값을 사용합니다.",
+  i2_h:"8개 스테이션 순서",i2_p:"스키에르그 1000m → 썰매 밀기 50m → 썰매 끌기 50m → 버피 브로드 점프 80m → 로잉 1000m → 파머스 캐리 200m → 샌드백 런지 100m → 월볼 100개",
+  more_tools:"다른 도구",more_hxg:"하이록스 가이드",more_all:"전체 가이드 →",more_pace:"마라톤 페이스·기록예측",more_gpx:"GPX 레이스플랜 — 트레일·로드 · 고도·날씨",more_g1:"하이록스 페이싱 가이드",more_g2:"하이록스 보급 가이드",more_g3:"8개 스테이션 공략",
+  gear_h:"레이스 준비물",gear_shoe:"레이싱화·카본화",gear_gel:"에너지 젤",gear_watch:"GPS 워치",gear_socks:"컴프레션 삭스",gear_disc:"※ 이 사이트는 쿠팡 파트너스 활동의 일환으로 일정액의 수수료를 제공받을 수 있습니다.",
+  faq_h:"자주 묻는 질문",rel_head:"관련 도구",rel_pacing:"→ 하이록스 페이싱 가이드",rel_nutrition:"→ 하이록스 보급 가이드",rel_stations:"→ 8개 스테이션 공략",rel_pace:"→ 마라톤 페이스·기록예측",
+  faq_q1:"제 하이록스 완주 기록은 어떻게 예측하나요?",
+  faq_a1:"전력 5K 페이스에 8개 런 전반의 수준별 지친 다리 러닝 보정을 더하고, 40만+ 실제 결과로 만든 스테이션 시간과 록스존 전환을 합산해요.",
+  faq_q2:"하이록스에서 더 빨라지려면?",
+  faq_a2:"가장 큰 지렛대는 지친 다리 러닝 페이싱 — 매 스테이션 뒤에도 런 페이스를 유지하는 거예요. 스플릿 화면이 시간을 잃는 지점을 정확히 보여줘요.",
+  faq_q3:"성별·부문·연령도 반영하나요?",
+  faq_a3:"네. 스테이션 기준값과 백분위가 성별·부문·연령대에 맞춰 조정돼요.",
+  foot1:"레이스 플래너 · 러너·하이록스 선수를 위한 무료 도구",foot_pace:"페이스 계산기",foot2:"스포츠 뉴트리션 낱개 구매",
+  disc:"※ 스테이션 기준값은 약 40만 공개 HYROX 결과(HyroxDataLab 집계, 시즌7~8)에 보정했습니다. 런 보정폭은 측정값이 아닌 코칭 휴리스틱이며 백분위는 근사치입니다. 실제 기록은 강점·날씨·경기장에 따라 달라집니다.",
+  err:"페이스를 확인해 주세요 (2:30~12:00 /km).",run:"Run",
+  fuel_plan:function(secs){var m=Math.round(secs/60),g=m<60?0:(m<=90?1:2),c=25+g*25;var mid=m<60?"<b>경기 중</b> — 물·전해질 위주 (추가 탄수 불필요)":(m<=90?"<b>경기 중(테스트했다면)</b> — Run 4~5 전후 빠른 젤 1개":"<b>경기 중</b> — Run 3~4, Run 6 전후 젤 2개 분할");return '<div class="fuelneed"><div><span class="k">탄수</span><span class="v">~'+c+'g</span></div><div><span class="k">나트륨</span><span class="v">~300–600<span class="u">mg</span></span></div><div><span class="k">수분</span><span class="v">~0.5–0.75<span class="u">L</span></span></div></div><ul class="fueltl"><li><b>출발 30~45분 전</b> — 에너지젤 1개(~25g) + 전해질 음료</li><li>'+mid+'</li><li class="warn">⚠ 레이스 당일 새 제품 금지 — 2~3주 전부터 훈련에서 테스트</li></ul>';}}
+};
+var LANG="en";
+function detectLang(){
+  var u=new URLSearchParams(location.search).get("lang");
+  if(u==="ko"||u==="en")return u;
+  var s=localStorage.getItem("rp_lang"); if(s==="ko"||s==="en")return s;
+  var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
+  var nav=(navigator.language||navigator.userLanguage||"").toLowerCase();
+  if(nav.indexOf("ko")===0||tz==="Asia/Seoul")return "ko";
+  return "en";
+}
+function applyLang(){
+  var d=I18N[LANG];document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k=el.getAttribute("data-i18n");if(d[k]==null)return;
+    if(el.tagName==="TITLE")document.title=d[k];
+    else if(el.tagName==="META")el.setAttribute("content",d[k]);
+    else el.textContent=d[k];
+  });
+  document.getElementById("lang-ko").classList.toggle("on",LANG==="ko");
+  document.getElementById("lang-en").classList.toggle("on",LANG==="en");
+  if(document.getElementById("result").classList.contains("show"))calc();
+}
+function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
+
+function fmt(sec){sec=Math.max(0,Math.round(sec));var m=Math.floor(sec/60),s=sec%60;if(m>=60){var h=Math.floor(m/60);m=m%60;return h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}return m+":"+String(s).padStart(2,"0");}
+function pace(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+":"+String(s).padStart(2,"0");}
+function toSec(str){var p=str.split(":").map(Number);return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];}
+function v(id){return parseInt(document.getElementById(id).value,10);}
+
+var AP_KIT={
+ gel:{no:103,en:"GU Liquid Energy",ko:"GU 리퀴드 에너지젤"},
+ elec:{no:106,en:"Yohemite electrolyte tab",ko:"요헤미티 전해질 발포정"},
+ cramp:{no:52,en:"Crampfix Quickshot",ko:"크램픽스 퀵샷"}
+};
+function apUrl(no){return "https://athletespick.com/product/detail.html?product_no="+no+"&utm_source=raceplanner&utm_medium=fuelkit&utm_campaign=hyrox";}
+function buildKit(secs){
+ var ko=LANG==="ko",m=Math.round(secs/60),gels=m<60?1:(m<=90?2:3);
+ function row(emoji,label,prod,qty,spec){
+  return '<a class="kititem" href="'+apUrl(prod.no)+'" target="_blank" rel="noopener"><span class="ke">'+emoji+'</span><span class="kt"><b>'+label+' ×'+qty+'</b><span class="ks">'+(ko?prod.ko:prod.en)+' · '+spec+'</span></span><span class="kb">'+(ko?"담기":"Add")+' →</span></a>';
+ }
+ var head='<div class="kithead">'+(ko?"추천 낱개 키트 · 애슬리츠픽":"Single-serve kit · Athlete's Pick")+'</div>';
+ var g=row("🥤",(ko?"에너지젤":"Energy gel"),AP_KIT.gel,gels,(ko?"탄수 ~20g":"~20g carb"));
+ var e=row("💧",(ko?"전해질":"Electrolyte"),AP_KIT.elec,1,"Na 220mg");
+ var cr='<div class="kitnote">'+(ko?"쥐가 잘 나면 ":"Prone to cramps? ")+'<a href="'+apUrl(AP_KIT.cramp.no)+'" target="_blank" rel="noopener">'+(ko?"크램픽스 퀵샷 →":"Crampfix Quickshot →")+'</a></div>';
+ return head+'<div class="kitlist">'+g+e+'</div>'+cr;
+}
+function calc(){
+  var d=I18N[LANG],pm=v("pmin"),ps=v("psec");
+  if(isNaN(pm)||isNaN(ps)){alert(d.err);return;}
+  var fresh=pm*60+ps; if(fresh<150||fresh>720){alert(d.err);return;}
+  var sex=document.getElementById("sex").value,lvl=LV[document.getElementById("lvl").value];
+  var tier=document.getElementById("lvl").value;
+  var inPace=fresh+lvl.off,runTotal=inPace*8;
+  var staArr=STA[sex][tier];
+  var staTotal=staArr.reduce(function(a,b){return a+b;},0),roxTotal=lvl.rox*8;
+  var finish=runTotal+staTotal+roxTotal;
+  var cmed=GMED[sex]+DIVD[document.getElementById("div").value]+AGED[document.getElementById("age").value];
+  document.getElementById("pctl").innerHTML=d.pctl_txt(pctileTop(finish,cmed));
+  document.getElementById("finish").textContent=fmt(finish);
+  document.getElementById("inpace").textContent=pace(inPace);
+  document.getElementById("off").textContent=lvl.off;
+  document.getElementById("mRun").textContent=fmt(runTotal);
+  document.getElementById("mSta").textContent=fmt(staTotal);
+  document.getElementById("mRox").textContent=fmt(roxTotal);
+  var pr=Math.round(runTotal/finish*100),pst=Math.round(staTotal/finish*100),prx=100-pr-pst;
+  document.getElementById("bar").innerHTML='<i style="width:'+pr+'%;background:var(--run)"></i><i style="width:'+pst+'%;background:var(--sta)"></i><i style="width:'+prx+'%;background:var(--roxc)"></i>';
+  document.getElementById("pRun").textContent=pr+"%";document.getElementById("pSta").textContent=pst+"%";document.getElementById("pRox").textContent=prx+"%";
+  var names=STA_NAMES[LANG],tb=document.getElementById("tbody");tb.innerHTML="";
+  names.forEach(function(st,i){var tr=document.createElement("tr");
+    tr.innerHTML='<td><span class="num">'+(i+1)+'</span>'+st[0]+'<span class="d">'+st[1]+'</span></td><td class="t">'+fmt(staArr[i])+'</td>';tb.appendChild(tr);});
+  var runsEl=document.getElementById("runs");runsEl.innerHTML="";
+  for(var i=0;i<8;i++){var p=inPace-10+(20*i/7);var el=document.createElement("div");
+    el.innerHTML='<div class="rk">'+d.run+' '+(i+1)+'</div><div class="rv">'+pace(p)+'</div>';runsEl.appendChild(el);}
+  var hours=finish/3600,lo=Math.max(1,Math.round(hours)),hi=Math.max(lo+1,Math.ceil(hours*2));
+  document.getElementById("fuelBody").innerHTML=d.fuel_plan(finish);
+  document.getElementById("fuelKit").innerHTML=buildKit(finish);
+  document.getElementById("result").classList.add("show");
+  try{if(window.gtag)gtag('event','plan_generated',{sport:'hyrox',sex:sex,tier:tier,division:document.getElementById("div").value,finish_sec:Math.round(finish)});}catch(e){}
+}
+document.getElementById("go").addEventListener("click",function(){calc();document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});});
+document.querySelectorAll("input").forEach(function(el){el.addEventListener("keydown",function(e){if(e.key==="Enter"){el.blur();document.getElementById("go").click();}});});
+(function(){var fk=document.getElementById("fuelKit");if(fk)fk.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="athletespick"]');if(a&&window.gtag){var m=a.href.match(/product_no=(\d+)/);gtag('event','fuel_click',{sport:'hyrox',medium:'fuelkit',product_no:m?m[1]:''});}});
+var fc=document.getElementById("fuelcta");if(fc)fc.addEventListener("click",function(){if(window.gtag)gtag('event','fuel_click',{sport:'hyrox',medium:'fuelplan'});});})();
+LANG=detectLang();applyLang();
+</script>
+<script>(function(){
+var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/hyrox/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
+function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
+function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
+ document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;
+  el.textContent=(L==="ko")?it[2]:it[1];
+  var href=it[0],active;if(href==="/")active=(path==="/");else if(href==="/guide/")active=path.indexOf("/guide/")===0;else active=path.indexOf(href)===0;
+  el.classList.toggle("active",active);});}
+var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l);paint();};}
+if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
+setTimeout(paint,0);
+})();</script>
+
+<script>/* rp_profile: login-free personalization (local only) */
+(function(){try{
+var K="rp_profile",$=function(i){return document.getElementById(i)};
+var P=JSON.parse(localStorage.getItem(K)||"{}"),applied=false;
+if(P.p5k&&$("pmin")&&$("psec")&&!$("pmin").value){$("pmin").value=P.p5k.m||"";$("psec").value=P.p5k.s||"";applied=true;}
+["sex","lvl","div","age"].forEach(function(k){if(P[k]!=null&&$(k))$(k).value=P[k];});
+if(applied&&window.gtag)gtag('event','profile_prefill',{page:'hyrox'});
+var go=$("go");
+if(go)go.addEventListener("click",function(){try{
+var Q=JSON.parse(localStorage.getItem(K)||"{}");Q.v=1;
+Q.p5k={m:$("pmin").value,s:$("psec").value};
+["sex","lvl","div","age"].forEach(function(k){if($(k))Q[k]=$(k).value;});
+Q.updated=Date.now();localStorage.setItem(K,JSON.stringify(Q));}catch(e){}});
+}catch(e){}})();
+</script>
+</body>
+</html>
