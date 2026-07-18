@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title data-i18n="title">한국 트레일·등산 코스 — 100대명산·둘레길 GPX·코스 포스터 | Race Planner</title>
+<meta name="description" data-i18n="desc" content="한국의 트레일·등산 코스를 지역·거리별로 둘러보세요. 산림청 100대명산, 국가숲길, 둘레길 코스의 지도와 거리·고도, 그리고 코스 포스터를 무료로." />
+<meta name="keywords" content="등산코스, 트레일러닝, 100대명산, 국가숲길, 둘레길, 지리산둘레길, 서울둘레길, 등산 gpx, 트레일 코스, 코스 포스터" />
+<link rel="canonical" href="https://raceplanner.online/courses/" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.online/courses/?lang=ko" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.online/courses/?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/courses/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="한국 트레일·등산 코스 라이브러리 | Race Planner" />
+<meta name="theme-color" content="#0a0c10" />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
+    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
+    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--radius:16px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;
+    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.06),transparent 55%);background-attachment:fixed;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px calc(56px + env(safe-area-inset-bottom))}
+  header{position:sticky;top:0;z-index:50;padding:13px 0;margin-bottom:6px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
+  .wrap-h{max-width:1080px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:10px;width:100%;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink);display:inline-flex;align-items:center;gap:9px}
+  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+  .logo b{color:var(--accent)}
+  .spacer{flex:1}
+  .nav{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 10px;border-radius:9px;white-space:nowrap}
+  .navlink:hover{background:var(--panel2);color:var(--ink)}.navlink.active{color:var(--accent);background:var(--panel2)}
+  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
+  @media(max-width:900px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+  @media(max-width:520px){.logo .full{display:none}}
+
+  .hero{padding:26px 0 8px}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.5px;color:var(--accent);background:rgba(200,255,67,.08);border:1px solid rgba(200,255,67,.2);padding:5px 12px;border-radius:99px}
+  h1{font-size:clamp(26px,5vw,36px);letter-spacing:-.6px;margin:14px 0 8px;line-height:1.12}
+  .lead{color:var(--ink2);font-size:15px;max-width:70ch}
+  .lead b{color:var(--accent);font-weight:700}
+
+  .filters{position:sticky;top:56px;z-index:40;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    padding:14px 0 12px;margin:14px 0 4px;border-bottom:1px solid var(--line)}
+  .fsearch{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:11px;color:var(--ink);padding:12px 14px;font-size:14.5px;font-family:inherit;margin-bottom:10px}
+  .fsearch:focus{outline:none;border-color:var(--accent)}
+  .frow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .fsel{background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:8px 11px;font-size:13px;font-family:inherit;cursor:pointer}
+  .chip{font-size:12.5px;font-weight:600;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);padding:7px 12px;border-radius:9px;cursor:pointer;transition:.12s;white-space:nowrap}
+  .chip:hover{border-color:var(--line2)}
+  .chip.on{color:var(--accentink);background:var(--accent);border-color:var(--accent)}
+  .fdiv{width:1px;height:20px;background:var(--line);margin:0 3px}
+  .count{font-size:12.5px;color:var(--sub);margin:12px 2px 10px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:920px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;transition:.15s;display:flex;flex-direction:column;gap:9px}
+  .card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .thumb{position:relative;width:100%;aspect-ratio:1/1;background:radial-gradient(120% 120% at 50% 0%,#12161e,#0c0f15);border-radius:10px;overflow:hidden}
+  .thumb canvas{width:100%;height:100%;display:block}
+  .badge-ds{position:absolute;top:7px;left:7px;font-size:9.5px;font-weight:700;color:var(--accent);background:rgba(10,12,16,.72);border:1px solid rgba(200,255,67,.25);padding:2px 7px;border-radius:99px}
+  .cname{font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.25;letter-spacing:-.2px}
+  .cmeta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:11.5px;color:var(--sub)}
+  .cmeta .rg{color:var(--mint);font-weight:600}
+  .cmeta .d{color:var(--ink2);font-weight:700;font-variant-numeric:tabular-nums}
+  .cmeta .sep{opacity:.4}
+  .cgo{font-size:11.5px;font-weight:700;color:var(--accent);opacity:0;transition:.15s;margin-top:-2px}
+  .card:hover .cgo{opacity:1}
+  .empty{text-align:center;color:var(--sub);padding:50px 20px}
+  .loading{text-align:center;color:var(--sub);padding:50px 20px}
+
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px;text-align:center;line-height:1.8}
+  footer a{color:var(--mint)}
+  .attr{color:var(--faint);font-size:11.5px;margin-top:8px}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+</head>
+<body>
+<header><div class="wrap-h">
+  <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
+  <span class="spacer"></span>
+  <nav class="nav">
+    <a class="navlink" href="/">Route Poster</a>
+    <a class="navlink active" href="/courses/" data-i18n="nav_courses">Courses</a>
+    <a class="navlink" href="/gpx/">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/">HYROX Calculator</a>
+    <a class="navlink" href="/pace/">Marathon Pace</a>
+    <a class="navlink" href="/guide/">Guides</a>
+  </nav>
+  <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span data-i18n="eyebrow">공공데이터 · 무료</span></span>
+    <h1 data-i18n="h1">한국 트레일·등산 코스</h1>
+    <p class="lead" data-i18n="lead">산림청 <b>100대명산</b>, 국가숲길, 둘레길 코스를 지역·거리별로 둘러보세요. 코스 지도와 거리·고도를 보고, 클릭 한 번으로 <b>코스 포스터</b>를 만들 수 있습니다.</p>
+  </section>
+
+  <div class="filters">
+    <input class="fsearch" id="q" type="search" data-i18n-ph="search" placeholder="코스·산 이름 검색 (예: 북한산, 지리산둘레길)" />
+    <div class="frow">
+      <select class="fsel" id="region"><option value="">전 지역</option></select>
+      <span class="fdiv"></span>
+      <span class="chip on" data-dist="">전체 거리</span>
+      <span class="chip" data-dist="s">~8km</span>
+      <span class="chip" data-dist="m">8–15km</span>
+      <span class="chip" data-dist="l">15km+</span>
+      <span class="fdiv"></span>
+      <span class="chip on" data-ds="">전체</span>
+      <span class="chip" data-ds="산림청 100대명산">100대명산</span>
+      <span class="chip" data-ds="국가숲길 코스">국가숲길</span>
+      <span class="chip" data-ds="오감만족 숲길">둘레길</span>
+    </div>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"><div class="loading" data-i18n="loading">코스 불러오는 중…</div></div>
+
+  <footer>
+    <span data-i18n="foot">Race Planner · 러너·하이커를 위한 무료 도구</span>
+    <div class="attr" data-i18n="attr">코스 데이터 출처: 공공데이터포털(data.go.kr) — 산림청 100대명산·국가숲길·오감만족 숲길. 공공누리 이용약관에 따름.</div>
+  </footer>
+</div>
+
+<script>
+var I18N={
+ ko:{title:"한국 트레일·등산 코스 — 100대명산·둘레길 GPX·코스 포스터 | Race Planner",eyebrow:"공공데이터 · 무료",
+   h1:"한국 트레일·등산 코스",lead:"산림청 100대명산, 국가숲길, 둘레길 코스를 지역·거리별로 둘러보세요. 코스 지도와 거리·고도를 보고, 클릭 한 번으로 코스 포스터를 만들 수 있습니다.",
+   search:"코스·산 이름 검색 (예: 북한산, 지리산둘레길)",loading:"코스 불러오는 중…",nav_courses:"코스",
+   foot:"Race Planner · 러너·하이커를 위한 무료 도구",attr:"코스 데이터 출처: 공공데이터포털(data.go.kr) — 산림청 100대명산·국가숲길·오감만족 숲길. 공공누리 이용약관에 따름.",
+   go:"포스터 만들기 →",none:"조건에 맞는 코스가 없어요."},
+ en:{title:"Korea Trail & Hiking Courses — 100 Famous Mountains, GPX & Posters | Race Planner",eyebrow:"Open data · Free",
+   h1:"Korea Trail & Hiking Courses",lead:"Browse Korea's 100 Famous Mountains, national forest trails and dulle-gil loops by region and distance. See the route, distance and elevation — and make a course poster in one click.",
+   search:"Search a course or mountain (e.g. Bukhansan)",loading:"Loading courses…",nav_courses:"Courses",
+   foot:"Race Planner · free tools for runners and hikers",attr:"Course data: data.go.kr open data (Korea Forest Service). Used under the KOGL public license.",
+   go:"Make a poster →",none:"No courses match."}};
+window.LANG=(new URLSearchParams(location.search).get("lang")==="en"||(!location.search.includes("lang")&&(navigator.language||"").slice(0,2)!=="ko"))?"en":"ko";
+function T(k){return (I18N[window.LANG]||I18N.ko)[k]||k;}
+function applyI18N(){document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(I18N[window.LANG]&&I18N[window.LANG][k]!=null)el.textContent=I18N[window.LANG][k];});
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){var k=el.getAttribute("data-i18n-ph");if(I18N[window.LANG]&&I18N[window.LANG][k]!=null)el.setAttribute("placeholder",I18N[window.LANG][k]);});
+  document.title=T("title");document.getElementById("lang-ko").classList.toggle("on",window.LANG==="ko");document.getElementById("lang-en").classList.toggle("on",window.LANG==="en");
+  if(window.ALL)render();}
+function setLang(l){window.LANG=l;var u=new URL(location);u.searchParams.set("lang",l);history.replaceState(0,"",u);applyI18N();}
+
+var state={q:"",region:"",dist:"",ds:""};
+function drawThumb(cv,pts){var x=cv.getContext("2d"),W=cv.width=160,H=cv.height=160;
+  var mx=[],my=[];for(var i=0;i<pts.length;i++){mx.push(pts[i][1]*Math.PI/180);var la=pts[i][0]*Math.PI/180;my.push(Math.log(Math.tan(Math.PI/4+la/2)));}
+  var mnx=Math.min.apply(null,mx),mxx=Math.max.apply(null,mx),mny=Math.min.apply(null,my),mxy=Math.max.apply(null,my);
+  var bw=mxx-mnx||1e-6,bh=mxy-mny||1e-6,pad=22,s=Math.min((W-2*pad)/bw,(H-2*pad)/bh),ox=(W-bw*s)/2,oy=(H-bh*s)/2;
+  x.lineJoin=x.lineCap="round";x.shadowColor="rgba(200,255,67,.5)";x.shadowBlur=6;x.strokeStyle="#c8ff43";x.lineWidth=2.4;
+  x.beginPath();for(var k=0;k<pts.length;k++){var px=ox+(mx[k]-mnx)*s,py=oy+(mxy-my[k])*s;k?x.lineTo(px,py):x.moveTo(px,py);}x.stroke();}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var c=e.target,t=window.BYID[c.dataset.id];if(t&&!c.dataset.drawn){drawThumb(c,t.pts);c.dataset.drawn="1";}io.unobserve(c);}});},{rootMargin:"200px"});
+function render(){var g=document.getElementById("grid");var A=window.ALL||[];
+  var f=A.filter(function(t){
+    if(state.region&&t.region!==state.region)return false;
+    if(state.ds&&t.ds!==state.ds)return false;
+    if(state.dist==="s"&&!(t.dist<8000))return false;
+    if(state.dist==="m"&&!(t.dist>=8000&&t.dist<15000))return false;
+    if(state.dist==="l"&&!(t.dist>=15000))return false;
+    if(state.q&&t.name.toLowerCase().indexOf(state.q.toLowerCase())<0)return false;
+    return true;});
+  document.getElementById("count").textContent=(window.LANG==="ko"?f.length+"개 코스":f.length+" courses");
+  if(!f.length){g.innerHTML='<div class="empty">'+T("none")+'</div>';return;}
+  g.innerHTML="";var frag=document.createDocumentFragment();
+  f.forEach(function(t){var a=document.createElement("a");a.className="card";a.href="/?course="+encodeURIComponent(t.id);
+    var dsl=t.ds.indexOf("100대명산")>=0?(window.LANG==="ko"?"명산":"Peak"):t.ds.indexOf("국가숲길")>=0?(window.LANG==="ko"?"숲길":"Trail"):(window.LANG==="ko"?"둘레길":"Loop");
+    var el=t.gain>50?' <span class="sep">·</span> ↑'+t.gain+'m':'';
+    a.innerHTML='<div class="thumb"><span class="badge-ds">'+dsl+'</span><canvas data-id="'+t.id+'"></canvas></div>'
+      +'<div class="cname"></div><div class="cmeta"><span class="rg"></span><span class="sep">·</span><span class="d">'+(t.dist/1000).toFixed(1)+'km</span>'+el+'</div>'
+      +'<div class="cgo">'+T("go")+'</div>';
+    a.querySelector(".cname").textContent=t.name;a.querySelector(".rg").textContent=t.region;
+    frag.appendChild(a);io.observe(a.querySelector("canvas"));});
+  g.appendChild(frag);}
+
+document.getElementById("q").addEventListener("input",function(){state.q=this.value.trim();render();});
+document.getElementById("region").addEventListener("change",function(){state.region=this.value;render();});
+document.querySelector(".filters").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;
+  var grp=c.hasAttribute("data-dist")?"dist":c.hasAttribute("data-ds")?"ds":null;if(!grp)return;
+  state[grp]=c.getAttribute("data-"+grp);
+  c.parentElement.querySelectorAll(".chip["+"data-"+grp+"]").forEach(function(x){x.classList.toggle("on",x===c);});render();});
+
+fetch("/trails.json").then(function(r){return r.json();}).then(function(d){window.ALL=d.trails||[];window.BYID={};
+  window.ALL.forEach(function(t){window.BYID[t.id]=t;});
+  var rs={};window.ALL.forEach(function(t){rs[t.region]=(rs[t.region]||0)+1;});
+  var sel=document.getElementById("region");Object.keys(rs).sort().forEach(function(r){var o=document.createElement("option");o.value=r;o.textContent=r+" ("+rs[r]+")";sel.appendChild(o);});
+  render();}).catch(function(){document.getElementById("grid").innerHTML='<div class="empty">불러오기 실패</div>';});
+applyI18N();
+</script>
+</body>
+</html>
