@@ -177,7 +177,7 @@ function render(){var g=document.getElementById("grid");var A=window.ALL||[];
   document.getElementById("count").textContent=(window.LANG==="ko"?f.length+"개 코스":f.length+" courses");
   if(!f.length){g.innerHTML='<div class="empty">'+T("none")+'</div>';return;}
   g.innerHTML="";var frag=document.createDocumentFragment();
-  f.forEach(function(t){var a=document.createElement("a");a.className="card";a.href="/?course="+encodeURIComponent(t.id);
+  f.forEach(function(t){var a=document.createElement("a");a.className="card";a.href="/course/?id="+encodeURIComponent(t.id)+(window.LANG==="en"?"&lang=en":"");
     var dsl=t.ds.indexOf("100대명산")>=0?(window.LANG==="ko"?"명산":"Peak"):t.ds.indexOf("국가숲길")>=0?(window.LANG==="ko"?"숲길":"Trail"):(window.LANG==="ko"?"둘레길":"Loop");
     var el=t.gain>50?' <span class="sep">·</span> ↑'+t.gain+'m':'';
     a.innerHTML='<div class="thumb"><span class="badge-ds">'+dsl+'</span><canvas data-id="'+t.id+'"></canvas></div>'
@@ -198,6 +198,7 @@ fetch("/trails.json").then(function(r){return r.json();}).then(function(d){windo
   window.ALL.forEach(function(t){window.BYID[t.id]=t;});
   var rs={};window.ALL.forEach(function(t){rs[t.region]=(rs[t.region]||0)+1;});
   var sel=document.getElementById("region");Object.keys(rs).sort().forEach(function(r){var o=document.createElement("option");o.value=r;o.textContent=r+" ("+rs[r]+")";sel.appendChild(o);});
+  var qr=new URLSearchParams(location.search).get("region");if(qr&&rs[qr]){state.region=qr;sel.value=qr;}
   render();}).catch(function(){document.getElementById("grid").innerHTML='<div class="empty">불러오기 실패</div>';});
 applyI18N();
 </script>

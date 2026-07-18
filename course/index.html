@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<title>코스 상세 | Race Planner</title>
+<meta name="description" id="metadesc" content="한국 트레일·등산 코스의 지도, 거리·고도, 예상 소요시간과 GPX 다운로드. 무료 코스 포스터도 만들 수 있습니다." />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0a0c10" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--panelhi:#1f2630;
+    --line:#262d39;--line2:#323b49;--ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;
+    --accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--radius:16px;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;
+    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.06),transparent 55%);background-attachment:fixed;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px calc(96px + env(safe-area-inset-bottom))}
+  header{position:sticky;top:0;z-index:1200;padding:13px 0;margin-bottom:6px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
+  .wrap-h{max-width:1080px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:10px;width:100%;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink);display:inline-flex;align-items:center;gap:9px}
+  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}
+  .logo b{color:var(--accent)}
+  .spacer{flex:1}
+  .nav{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 10px;border-radius:9px;white-space:nowrap}
+  .navlink:hover{background:var(--panel2);color:var(--ink)}.navlink.active{color:var(--accent);background:var(--panel2)}
+  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
+  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
+  @media(max-width:900px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+  @media(max-width:520px){.logo .full{display:none}}
+
+  .crumb{font-size:12.5px;color:var(--sub);padding:16px 0 2px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .crumb a:hover{color:var(--ink2)}.crumb .sep{opacity:.5}
+  .chero{padding:6px 0 14px}
+  .badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.3px;color:var(--accent);background:rgba(200,255,67,.08);border:1px solid rgba(200,255,67,.2);padding:5px 11px;border-radius:99px}
+  .badge.reg{color:var(--mint);background:rgba(110,231,168,.08);border-color:rgba(110,231,168,.22)}
+  h1{font-size:clamp(24px,5vw,34px);letter-spacing:-.6px;line-height:1.12}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:16px 0 4px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+  .stat .k{font-size:11.5px;color:var(--sub);font-weight:600;margin-bottom:5px;letter-spacing:.2px}
+  .stat .v{font-family:var(--mono);font-size:21px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.5px}
+  .stat .v small{font-size:12px;color:var(--sub);font-weight:600;margin-left:2px}
+  .stat .v.diff{font-size:17px}
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  .cols{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
+  @media(min-width:900px){.cols{grid-template-columns:1.55fr 1fr;align-items:start}
+    .rightcol{position:sticky;top:76px}}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card+.card{margin-top:16px}
+  .card .ct{font-size:13px;font-weight:700;color:var(--ink2);padding:13px 15px 0;letter-spacing:.2px;display:flex;align-items:center;gap:7px}
+  #map{width:100%;height:56vh;min-height:340px;background:var(--bg2);border-radius:var(--radius)}
+  @media(min-width:900px){#map{height:440px}}
+  .leaflet-container{background:var(--bg2);font-family:inherit}
+  .maplbl{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:12px;color:var(--sub)}
+  .maplbl .attr{font-size:10.5px;color:var(--faint);text-align:right;line-height:1.35}
+  .maplbl .attr a{color:var(--sub);text-decoration:underline}
+
+  .elev{padding:6px 8px 12px}
+  .elevhead{display:flex;justify-content:space-between;align-items:baseline;padding:8px 8px 6px;font-size:12px;color:var(--sub)}
+  .elevhead b{font-family:var(--mono);color:var(--ink2);font-weight:700}
+  #elevsvg{width:100%;height:150px;display:block;touch-action:none;cursor:crosshair}
+  .elevtip{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:700;min-height:16px;padding:2px 8px 0;text-align:center}
+  .noele{padding:22px 15px;color:var(--sub);font-size:13px;text-align:center}
+
+  .info{padding:15px}
+  .info .desc{color:var(--ink2);font-size:14.5px;line-height:1.65}
+  .facts{list-style:none;margin:14px 0 0;display:grid;gap:9px}
+  .facts li{display:flex;gap:10px;font-size:13.5px;color:var(--ink2)}
+  .facts .fk{color:var(--sub);min-width:78px;font-weight:600}
+
+  .acts{display:grid;gap:9px;padding:15px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 15px;border-radius:12px;font-size:14.5px;font-weight:700;cursor:pointer;border:1px solid var(--line2);background:var(--panel2);color:var(--ink);font-family:inherit;width:100%;transition:.12s}
+  .btn:hover{border-color:var(--faint);background:var(--panelhi)}
+  .btn.primary{background:var(--accent);color:var(--accentink);border-color:var(--accent);box-shadow:0 0 22px rgba(200,255,67,.22)}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn.poster{background:linear-gradient(135deg,rgba(200,255,67,.14),rgba(110,231,168,.08));border-color:rgba(200,255,67,.35);color:var(--accent)}
+  .btn .em{font-size:16px}
+  .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+
+  .rel{margin-top:26px}
+  .rel h2{font-size:16px;letter-spacing:-.3px;margin-bottom:12px}
+  .relgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .relcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 12px;transition:.12s}
+  .relcard:hover{border-color:var(--line2);transform:translateY(-2px)}
+  .relcard .rn{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3}
+  .relcard .rm{font-size:11.5px;color:var(--sub);font-family:var(--mono)}
+
+  .foot{margin-top:30px;padding:16px 0;border-top:1px solid var(--line);font-size:11.5px;color:var(--faint);line-height:1.6}
+  .foot a{color:var(--sub);text-decoration:underline}
+
+  /* mobile sticky action bar */
+  .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:1100;display:none;gap:9px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,rgba(10,12,16,.4),rgba(10,12,16,.96) 40%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+  .stickybar .btn{margin:0}
+  @media(max-width:899px){.stickybar{display:grid;grid-template-columns:1fr 1fr}}
+
+  .loadscr{padding:80px 20px;text-align:center;color:var(--sub)}
+  .marker-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2.5px solid #0b0f06;box-shadow:0 0 0 2px var(--accent),0 0 14px rgba(200,255,67,.7)}
+  .hovmark{width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--accent);box-shadow:0 0 10px rgba(255,255,255,.7)}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+</head>
+<body>
+<header><div class="wrap-h">
+  <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
+  <span class="spacer"></span>
+  <nav class="nav">
+    <a class="navlink" href="/" data-i18n="nav_poster">Route Poster</a>
+    <a class="navlink active" href="/courses/" data-i18n="nav_courses">Courses</a>
+    <a class="navlink" href="/gpx/" data-i18n="nav_gpx">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/" data-i18n="nav_hyrox">HYROX Calculator</a>
+    <a class="navlink" href="/pace/" data-i18n="nav_pace">Marathon Pace & Predictor</a>
+    <a class="navlink" href="/guide/" data-i18n="nav_guide">Guides</a>
+  </nav>
+  <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
+</div></header>
+
+<div class="wrap" id="app">
+  <div class="loadscr" id="load">코스를 불러오는 중…</div>
+</div>
+
+<div class="stickybar" id="stickybar"></div>
+
+<script>
+var I18N={
+ ko:{nav_poster:"코스 포스터",nav_courses:"코스",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
+   home:"홈",courses:"코스",distance:"거리",gain:"누적고도",time:"예상 소요시간",diff:"난이도",elevation:"고도 프로파일",
+   info:"코스 정보",start:"들머리",season:"추천 시기",type:"코스 유형",noele:"이 코스는 고도 데이터가 제공되지 않습니다.",
+   gpx:"GPX 다운로드",poster:"코스 포스터 만들기",share:"공유",dir:"길찾기",related:"같은 지역 코스",
+   easy:"쉬움",moderate:"보통",hard:"어려움",veryhard:"매우 어려움",
+   season_all:"봄·가을 권장 (여름 무더위·겨울 결빙 주의)",
+   attr_map:"지도데이터 © OpenStreetMap 기여자, SRTM · 표현 © OpenTopoMap (CC-BY-SA)",
+   copied:"링크가 복사되었습니다",gained:"상승",lost:"하강",atkm:"km 지점",notfound:"코스를 찾을 수 없습니다.",
+   terrain:"지형도",general:"일반지도",elev_hint:"차트 위에 마우스를 올리면 지도에 위치가 표시됩니다"},
+ en:{nav_poster:"Route Poster",nav_courses:"Courses",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
+   home:"Home",courses:"Courses",distance:"Distance",gain:"Elev. gain",time:"Est. time",diff:"Difficulty",elevation:"Elevation profile",
+   info:"Course info",start:"Trailhead",season:"Best season",type:"Route type",noele:"Elevation data is not available for this course.",
+   gpx:"Download GPX",poster:"Make a poster",share:"Share",dir:"Directions",related:"Nearby courses",
+   easy:"Easy",moderate:"Moderate",hard:"Hard",veryhard:"Very hard",
+   season_all:"Spring & autumn recommended (avoid summer heat / winter ice)",
+   attr_map:"Map data © OpenStreetMap contributors, SRTM · Style © OpenTopoMap (CC-BY-SA)",
+   copied:"Link copied",gained:"gain",lost:"loss",atkm:"km",notfound:"Course not found.",
+   terrain:"Terrain",general:"Street",elev_hint:"Hover the chart to see the point on the map"}
+};
+window.LANG=(new URLSearchParams(location.search).get("lang")==="en"||(!location.search.includes("lang")&&(navigator.language||"").slice(0,2)!=="ko"))?"en":"ko";
+function T(k){return (I18N[window.LANG]||I18N.ko)[k]||k;}
+function applyNav(){document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(I18N[window.LANG]&&I18N[window.LANG][k]!=null)el.textContent=I18N[window.LANG][k];});
+  document.getElementById("lang-ko").classList.toggle("on",window.LANG==="ko");document.getElementById("lang-en").classList.toggle("on",window.LANG==="en");}
+function setLang(l){window.LANG=l;var u=new URL(location);u.searchParams.set("lang",l);history.replaceState(0,"",u);location.reload();}
+
+function hav(a1,o1,a2,o2){var R=6371000,d1=(a2-a1)*Math.PI/180,d2=(o2-o1)*Math.PI/180,
+  s=Math.sin(d1/2)*Math.sin(d1/2)+Math.cos(a1*Math.PI/180)*Math.cos(a2*Math.PI/180)*Math.sin(d2/2)*Math.sin(d2/2);
+  return 2*R*Math.asin(Math.sqrt(s));}
+function dsLabel(ds){var ko=window.LANG==="ko";
+  if(ds.indexOf("100대명산")>=0)return ko?"산림청 100대명산":"100 Famous Mountains";
+  if(ds.indexOf("국가숲길")>=0)return ko?"국가숲길":"National Forest Trail";
+  return ko?"오감만족 둘레길":"Dulle-gil Loop";}
+function fmtTime(mins){var h=Math.floor(mins/60),m=Math.round(mins%60);
+  if(window.LANG==="ko")return (h?h+"시간 ":"")+m+"분";return (h?h+"h ":"")+m+"m";}
+// Naismith: 5km/h + 30min per 300m gain  => minutes = km*12 + gain*0.1
+function estTime(distM,gain){return distM/1000*12 + (gain||0)*0.1;}
+function difficulty(distM,gain){var s=distM/1000 + (gain||0)/100;
+  var lvl=s<10?"easy":s<20?"moderate":s<35?"hard":"veryhard";return {lvl:lvl,score:s};}
+
+var CUR=null,MAP=null,HOVM=null,ROUTE=null;
+
+function boot(){
+  applyNav();
+  var id=new URLSearchParams(location.search).get("id");
+  if(!id){fail();return;}
+  fetch("/course-data/"+encodeURIComponent(id)+".json").then(function(r){if(!r.ok)throw 0;return r.json();})
+    .then(function(d){CUR=d;build(d);}).catch(fail);
+}
+function fail(){document.getElementById("app").innerHTML='<div class="loadscr">'+T("notfound")+' · <a href="/courses/" style="color:var(--accent);text-decoration:underline">'+T("courses")+'</a></div>';}
+
+function build(d){
+  var ko=window.LANG==="ko", dif=difficulty(d.dist,d.gain), tmin=estTime(d.dist,d.gain);
+  var difTxt=T(dif.lvl);
+  var distKm=(d.dist/1000).toFixed(1);
+  // auto description (unique per course)
+  var desc = ko
+    ? d.region+" 지역의 "+dsLabel(d.ds)+" 코스입니다. 총 거리 "+distKm+"km"
+      +(d.hasEle?", 누적 상승고도 "+d.gain+"m(최고 "+Math.round(d.emax)+"m)":"")
+      +", 도보 예상 소요시간은 약 "+fmtTime(tmin)+"이며 난이도는 "+difTxt+"입니다. "
+      +"아래 지형도에서 코스 전체를 확인하고, GPX를 내려받거나 나만의 코스 포스터를 만들어 보세요."
+    : "A "+dsLabel(d.ds)+" course in "+d.region+", Korea. It runs "+distKm+" km"
+      +(d.hasEle?" with "+d.gain+" m of elevation gain (peak "+Math.round(d.emax)+" m)":"")
+      +", takes roughly "+fmtTime(tmin)+" on foot, and is rated "+difTxt+". "
+      +"View the full route on the terrain map below, download the GPX, or create your own course poster.";
+  document.title=d.name+" — "+(ko?"코스 지도·GPX·고도":"map, GPX & elevation")+" | "+distKm+"km "+d.region+" | Race Planner";
+  document.getElementById("metadesc").setAttribute("content",desc.replace(/\s+아래[\s\S]*$|\s+View the full[\s\S]*$/,""));
+
+  var gainStat = d.hasEle ? '<div class="v">'+d.gain+'<small>m</small></div>'
+                          : '<div class="v" style="color:var(--faint)">—</div>';
+  var app=document.getElementById("app");
+  app.innerHTML=''
+   +'<nav class="crumb"><a href="/">'+T("home")+'</a><span class="sep">›</span>'
+     +'<a href="/courses/">'+T("courses")+'</a><span class="sep">›</span>'
+     +'<a href="/courses/?region='+encodeURIComponent(d.region)+'">'+d.region+'</a><span class="sep">›</span>'
+     +'<span style="color:var(--ink2)">'+esc(d.name)+'</span></nav>'
+   +'<section class="chero">'
+     +'<div class="badges"><span class="badge reg">📍 '+d.region+'</span><span class="badge">'+dsLabel(d.ds)+'</span></div>'
+     +'<h1>'+esc(d.name)+'</h1></section>'
+   +'<div class="stats">'
+     +'<div class="stat"><div class="k">'+T("distance")+'</div><div class="v">'+distKm+'<small>km</small></div></div>'
+     +'<div class="stat"><div class="k">'+T("gain")+'</div>'+gainStat+'</div>'
+     +'<div class="stat"><div class="k">'+T("time")+'</div><div class="v" style="font-size:17px">'+fmtTime(tmin)+'</div></div>'
+     +'<div class="stat"><div class="k">'+T("diff")+'</div><div class="v diff" style="color:'+difColor(dif.lvl)+'">'+difTxt+'</div></div>'
+   +'</div>'
+   +'<div class="cols">'
+     +'<div class="leftcol">'
+       +'<div class="card"><div id="map"></div>'
+         +'<div class="maplbl"><span id="maptoggle"></span><span class="attr">'+T("attr_map")+'</span></div></div>'
+       +'<div class="card" id="elevcard"></div>'
+     +'</div>'
+     +'<div class="rightcol">'
+       +'<div class="card"><div class="ct">ℹ️ '+T("info")+'</div><div class="info">'
+         +'<p class="desc">'+desc+'</p>'
+         +'<ul class="facts">'
+           +'<li><span class="fk">'+T("type")+'</span><span>'+dsLabel(d.ds)+'</span></li>'
+           +'<li><span class="fk">'+T("start")+'</span><span>'+d.start[0].toFixed(4)+', '+d.start[1].toFixed(4)+'</span></li>'
+           +'<li><span class="fk">'+T("season")+'</span><span>'+T("season_all")+'</span></li>'
+         +'</ul></div></div>'
+       +'<div class="card"><div class="acts desk">'+actionsHTML(d)+'</div></div>'
+     +'</div>'
+   +'</div>'
+   +'<section class="rel"><h2>'+T("related")+'</h2><div class="relgrid" id="rel"></div></section>'
+   +'<div class="foot">'+(ko
+      ?'코스 데이터 출처: <a href="https://www.data.go.kr" target="_blank" rel="noopener">공공데이터포털(data.go.kr)</a> · 산림청 등 · <a href="https://www.kogl.or.kr" target="_blank" rel="noopener">공공누리</a> 제1유형. 지도 © OpenStreetMap 기여자·SRTM, 표현 © OpenTopoMap (CC-BY-SA). 예상 시간은 Naismith 규칙 기반 추정치입니다.'
+      :'Course data: <a href="https://www.data.go.kr" target="_blank" rel="noopener">data.go.kr</a> (Korea Forest Service et al.), KOGL Type 1. Map © OpenStreetMap/SRTM, style © OpenTopoMap (CC-BY-SA). Times estimated via Naismith\'s rule.')
+   +'</div>';
+
+  // sticky mobile bar
+  document.getElementById("stickybar").innerHTML=
+    '<button class="btn" onclick="dlGPX()">⬇︎ GPX</button>'+
+    '<a class="btn poster" href="/?course='+encodeURIComponent(d.id)+'">🎨 '+T("poster")+'</a>';
+
+  initMap(d); initElev(d); loadRelated(d); injectSchema(d,desc,dif,tmin);
+}
+
+function difColor(l){return l==="easy"?"#6ee7a8":l==="moderate"?"#c8ff43":l==="hard"?"#ffb454":"#ff6b6b";}
+function esc(s){return (s+"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+
+function actionsHTML(d){
+  return '<a class="btn poster" href="/?course='+encodeURIComponent(d.id)+'"><span class="em">🎨</span> '+T("poster")+'</a>'
+    +'<button class="btn primary" onclick="dlGPX()"><span class="em">⬇︎</span> '+T("gpx")+'</button>'
+    +'<div class="btnrow">'
+      +'<button class="btn" onclick="shareC()">↗ '+T("share")+'</button>'
+      +'<a class="btn" href="https://map.kakao.com/link/to/'+encodeURIComponent(d.name)+','+d.start[0]+','+d.start[1]+'" target="_blank" rel="noopener">🧭 '+T("dir")+'</a>'
+    +'</div>';
+}
+
+function initMap(d){
+  var terrain=L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",{maxZoom:17,subdomains:"abc",crossOrigin:true,
+    attribution:'© OpenTopoMap (CC-BY-SA)'});
+  var street=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,subdomains:"abc",crossOrigin:true,
+    attribution:'© OpenStreetMap'});
+  MAP=L.map("map",{layers:[terrain],attributionControl:false,scrollWheelZoom:true,zoomControl:true});
+  var latlngs=d.pts.map(function(p){return [p[0],p[1]];});
+  L.polyline(latlngs,{color:"#0b0f06",weight:7,opacity:.35,lineJoin:"round"}).addTo(MAP);
+  ROUTE=L.polyline(latlngs,{color:"#c8ff43",weight:4,opacity:1,lineJoin:"round",lineCap:"round"}).addTo(MAP);
+  MAP.fitBounds(ROUTE.getBounds(),{padding:[28,28]});
+  L.marker(latlngs[0],{icon:L.divIcon({className:"",html:'<div class="marker-dot"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(MAP);
+  var end=latlngs[latlngs.length-1];
+  if(hav(latlngs[0][0],latlngs[0][1],end[0],end[1])>250)
+    L.marker(end,{icon:L.divIcon({className:"",html:'<div class="hovmark" style="background:#0b0f06;border-color:#fff"></div>',iconSize:[11,11],iconAnchor:[5,5]})}).addTo(MAP);
+  HOVM=L.marker(latlngs[0],{icon:L.divIcon({className:"",html:'<div class="hovmark"></div>',iconSize:[11,11],iconAnchor:[5,5]}),opacity:0,interactive:false}).addTo(MAP);
+  // layer toggle
+  var mt=document.getElementById("maptoggle");
+  function setBtn(){mt.innerHTML='<button class="tgl" data-l="t">'+T("terrain")+'</button> <button class="tgl" data-l="s">'+T("general")+'</button>';
+    mt.querySelectorAll(".tgl").forEach(function(b){b.style.cssText="background:transparent;border:1px solid var(--line2);color:var(--sub);border-radius:8px;padding:4px 9px;font:600 11.5px inherit;cursor:pointer;margin-right:4px";});
+    mark();}
+  function mark(){var cur=MAP.hasLayer(terrain)?"t":"s";mt.querySelectorAll(".tgl").forEach(function(b){var on=b.dataset.l===cur;b.style.background=on?"var(--accent)":"transparent";b.style.color=on?"var(--accentink)":"var(--sub)";});}
+  setBtn();
+  mt.addEventListener("click",function(e){var b=e.target.closest(".tgl");if(!b)return;
+    if(b.dataset.l==="t"){MAP.addLayer(terrain);MAP.removeLayer(street);}else{MAP.addLayer(street);MAP.removeLayer(terrain);}mark();});
+}
+
+function initElev(d){
+  var card=document.getElementById("elevcard");
+  if(!d.hasEle){card.innerHTML='<div class="ct">⛰ '+T("elevation")+'</div><div class="noele">'+T("noele")+'</div>';return;}
+  // cumulative distance
+  var pts=d.pts, n=pts.length, cum=[0];
+  for(var i=1;i<n;i++)cum.push(cum[i-1]+hav(pts[i-1][0],pts[i-1][1],pts[i][0],pts[i][1]));
+  var total=cum[n-1]||1;
+  var eles=pts.map(function(p){return p[2];});
+  var lo=Math.min.apply(null,eles),hi=Math.max.apply(null,eles),rng=(hi-lo)||1;
+  var W=1000,H=150,padB=16,padT=10;
+  function X(i){return cum[i]/total*W;}
+  function Y(e){return padT+(1-(e-lo)/rng)*(H-padB-padT);}
+  var line="",area="M0 "+H;
+  for(var j=0;j<n;j++){var x=X(j),y=Y(eles[j]);line+=(j?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);area+="L"+x.toFixed(1)+" "+y.toFixed(1);}
+  area+="L"+W+" "+H+"Z";
+  card.innerHTML='<div class="ct">⛰ '+T("elevation")+'</div>'
+   +'<div class="elevhead"><span>'+(window.LANG==="ko"?"고도":"Elev")+' <b>'+Math.round(lo)+'–'+Math.round(hi)+'m</b></span>'
+     +'<span>↑<b>'+d.gain+'m</b> ↓<b>'+d.loss+'m</b></span></div>'
+   +'<div class="elev"><svg id="elevsvg" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">'
+     +'<defs><linearGradient id="eg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgba(200,255,67,.35)"/><stop offset="1" stop-color="rgba(200,255,67,.02)"/></linearGradient></defs>'
+     +'<path d="'+area+'" fill="url(#eg)"/><path d="'+line+'" fill="none" stroke="#c8ff43" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'
+     +'<line id="elvln" x1="0" y1="0" x2="0" y2="'+H+'" stroke="#fff" stroke-width="1" opacity="0" vector-effect="non-scaling-stroke"/>'
+     +'<circle id="elvdot" r="3.5" fill="#fff" stroke="#c8ff43" stroke-width="2" opacity="0"/></svg></div>'
+   +'<div class="elevtip" id="elevtip">'+T("elev_hint")+'</div>';
+
+  var svg=document.getElementById("elevsvg"),ln=document.getElementById("elvln"),dot=document.getElementById("elvdot"),tip=document.getElementById("elevtip");
+  function at(clientX){
+    var rc=svg.getBoundingClientRect(),ratio=Math.max(0,Math.min(1,(clientX-rc.left)/rc.width));
+    var target=ratio*total, idx=0; // find nearest cum
+    while(idx<n-1 && cum[idx+1]<target)idx++;
+    var x=X(idx),y=Y(eles[idx]);
+    ln.setAttribute("x1",x);ln.setAttribute("x2",x);ln.setAttribute("opacity",".55");
+    dot.setAttribute("cx",x);dot.setAttribute("cy",y);dot.setAttribute("opacity","1");
+    tip.textContent=(cum[idx]/1000).toFixed(1)+T("atkm")+" · "+Math.round(eles[idx])+"m";
+    if(HOVM){HOVM.setLatLng([pts[idx][0],pts[idx][1]]);HOVM.setOpacity(1);}
+  }
+  function clear(){ln.setAttribute("opacity","0");dot.setAttribute("opacity","0");tip.textContent=T("elev_hint");if(HOVM)HOVM.setOpacity(0);}
+  svg.addEventListener("mousemove",function(e){at(e.clientX);});
+  svg.addEventListener("mouseleave",clear);
+  svg.addEventListener("touchstart",function(e){at(e.touches[0].clientX);},{passive:true});
+  svg.addEventListener("touchmove",function(e){at(e.touches[0].clientX);},{passive:true});
+  svg.addEventListener("touchend",clear);
+}
+
+function loadRelated(d){
+  fetch("/trails.json").then(function(r){return r.json();}).then(function(all){
+    var list=(all.trails||[]).filter(function(t){return t.region===d.region&&t.id!==d.id;});
+    if(list.length<3)list=list.concat((all.trails||[]).filter(function(t){return t.ds===d.ds&&t.id!==d.id&&t.region!==d.region;}));
+    list=list.slice(0,6);
+    var g=document.getElementById("rel");if(!list.length){g.parentElement.style.display="none";return;}
+    g.innerHTML=list.map(function(t){return '<a class="relcard" href="/course/?id='+encodeURIComponent(t.id)+(window.LANG==="en"?"&lang=en":"")+'">'
+      +'<div class="rn">'+esc(t.name)+'</div><div class="rm">'+(t.dist/1000).toFixed(1)+'km'+(t.gain>50?' · ↑'+t.gain+'m':'')+' · '+t.region+'</div></a>';}).join("");
+  }).catch(function(){});
+}
+
+function dlGPX(){
+  var d=CUR;if(!d)return;
+  var seg=d.pts.map(function(p){return '<trkpt lat="'+p[0]+'" lon="'+p[1]+'">'+(p.length>2?'<ele>'+p[2]+'</ele>':'')+'</trkpt>';}).join("");
+  var gpx='<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="raceplanner.online" xmlns="http://www.topografix.com/GPX/1/1">'
+    +'<metadata><name>'+esc(d.name)+'</name><link href="https://raceplanner.online/course/?id='+d.id+'"></link></metadata>'
+    +'<trk><name>'+esc(d.name)+'</name><trkseg>'+seg+'</trkseg></trk></gpx>';
+  var b=new Blob([gpx],{type:"application/gpx+xml"}),u=URL.createObjectURL(b),a=document.createElement("a");
+  a.href=u;a.download=d.name.replace(/[\/\\?%*:|"<>]/g,"_")+".gpx";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);
+  gtag&&gtag("event","gpx_download",{course:d.id});
+}
+function shareC(){
+  var url=location.href, title=(CUR?CUR.name:"")+" | Race Planner";
+  if(navigator.share){navigator.share({title:title,url:url}).catch(function(){});}
+  else{navigator.clipboard&&navigator.clipboard.writeText(url);var t=document.getElementById("elevtip");alert(T("copied"));}
+}
+
+function injectSchema(d,desc,dif,tmin){
+  var j={"@context":"https://schema.org","@type":"TouristAttraction","name":d.name,
+    "description":desc.replace(/\s+아래[\s\S]*$|\s+View the full[\s\S]*$/,""),
+    "url":"https://raceplanner.online/course/?id="+d.id,
+    "touristType":["Hiking","Trail running"],
+    "geo":{"@type":"GeoCoordinates","latitude":d.start[0],"longitude":d.start[1]},
+    "isAccessibleForFree":true,
+    "additionalProperty":[
+      {"@type":"PropertyValue","name":"Distance","value":(d.dist/1000).toFixed(1),"unitCode":"KMT"}
+    ]};
+  if(d.hasEle)j.additionalProperty.push({"@type":"PropertyValue","name":"Elevation gain","value":d.gain,"unitCode":"MTR"});
+  var bc={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":T("home"),"item":"https://raceplanner.online/"},
+    {"@type":"ListItem","position":2,"name":T("courses"),"item":"https://raceplanner.online/courses/"},
+    {"@type":"ListItem","position":3,"name":d.name,"item":"https://raceplanner.online/course/?id="+d.id}]};
+  [j,bc].forEach(function(o){var s=document.createElement("script");s.type="application/ld+json";s.textContent=JSON.stringify(o);document.head.appendChild(s);});
+}
+
+boot();
+</script>
+</body>
+</html>
