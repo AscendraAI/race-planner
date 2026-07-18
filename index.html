@@ -93,8 +93,8 @@
   .stagewrap{position:relative;width:100%;display:flex;justify-content:center;align-items:flex-start}
   #stage{display:block;max-width:100%;max-height:74vh;width:auto;height:auto;border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
   @media(min-width:860px){#stage{max-height:80vh}}
-  .samplebadge{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:2;white-space:nowrap;
-    font-size:11.5px;font-weight:600;color:var(--accentink);background:var(--accent);padding:6px 13px;border-radius:99px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+  .samplebadge{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;white-space:nowrap;max-width:94%;overflow:hidden;text-overflow:ellipsis;
+    font-size:9.5px;font-weight:600;color:var(--accentink);background:var(--accent);padding:4px 9px;border-radius:99px;box-shadow:0 3px 12px rgba(0,0,0,.35)}
   .samplebadge.hide{display:none}
   .empty{text-align:center;color:var(--faint)}
   .empty .ei{font-size:46px}
@@ -282,7 +282,7 @@ var I18N={
   p_build:"Build your poster",drop_t:"Drop a .gpx file",drop_s:"or tap to choose · from Strava, Garmin, Coros…",
   f_title:"Title",f_date:"Date",f_time:"Finish time",f_theme:"Theme",f_ratio:"Format",f_bg:"Background",
   r_port:"Portrait 4:5",r_sq:"Square 1:1",r_story:"Story 9:16",bg_solid:"Solid",bg_trans:"Transparent · for photos",
-  sample:"Sample — connect Strava or upload a GPX to make it yours",
+  sample:"Sample — connect Strava or upload a GPX to make your poster",
   sv_connect:"Connect with Strava",or_upload:"or upload a file",pick_run:"Pick a run",no_runs:"No runs with a route found.",sv_err:"Strava connection failed. Please try again.",
   empty:"Your poster preview shows here",dl:"Download PNG",share:"Share",
   i1_h:"Your route, framed",i1_p:"Everything runs in your browser — your GPX never leaves your device. We read the track, draw the line, and lay your stats on a poster you can post or print. Works with running, trail, cycling and hiking files.",
@@ -300,7 +300,7 @@ var I18N={
   p_build:"포스터 만들기",drop_t:".gpx 파일을 여기에",drop_s:"또는 눌러서 선택 · 스트라바·가민·코로스…",
   f_title:"제목",f_date:"날짜",f_time:"완주 시간",f_theme:"테마",f_ratio:"비율",f_bg:"배경",
   r_port:"세로 4:5",r_sq:"정사각 1:1",r_story:"스토리 9:16",bg_solid:"단색",bg_trans:"투명 · 사진 위에",
-  sample:"샘플 — 스트라바 연결 또는 GPX 업로드로 내 것 만들기",
+  sample:"샘플 — 스트라바 연결 또는 GPX 업로드로 내 포스터 만들기",
   sv_connect:"스트라바로 연결",or_upload:"또는 파일 업로드",pick_run:"활동 선택",no_runs:"코스가 있는 활동이 없어요.",sv_err:"스트라바 연결에 실패했어요. 다시 시도해 주세요.",
   empty:"포스터 미리보기가 여기 나와요",dl:"PNG 다운로드",share:"공유",
   i1_h:"내 코스를 액자에",i1_p:"모든 처리는 브라우저 안에서 — GPX는 기기를 벗어나지 않습니다. 트랙을 읽어 라인을 그리고 기록을 얹어 바로 올리거나 인쇄할 포스터를 만듭니다. 러닝·트레일·사이클·하이킹 파일 모두 지원.",
