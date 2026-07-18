@@ -92,12 +92,12 @@
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/">Route Poster</a>
+    <a class="navlink" href="/" data-i18n="nav_poster">Route Poster</a>
     <a class="navlink active" href="/courses/" data-i18n="nav_courses">Courses</a>
-    <a class="navlink" href="/gpx/">GPX Race Plan</a>
-    <a class="navlink" href="/hyrox/">HYROX Calculator</a>
-    <a class="navlink" href="/pace/">Marathon Pace</a>
-    <a class="navlink" href="/guide/">Guides</a>
+    <a class="navlink" href="/gpx/" data-i18n="nav_gpx">GPX Race Plan</a>
+    <a class="navlink" href="/hyrox/" data-i18n="nav_hyrox">HYROX Calculator</a>
+    <a class="navlink" href="/pace/" data-i18n="nav_pace">Marathon Pace & Predictor</a>
+    <a class="navlink" href="/guide/" data-i18n="nav_guide">Guides</a>
   </nav>
   <span class="langtoggle"><button id="lang-ko" onclick="setLang('ko')">한국어</button><button id="lang-en" onclick="setLang('en')">EN</button></span>
 </div></header>
@@ -140,11 +140,13 @@ var I18N={
  ko:{title:"한국 트레일·등산 코스 — 100대명산·둘레길 GPX·코스 포스터 | Race Planner",eyebrow:"공공데이터 · 무료",
    h1:"한국 트레일·등산 코스",lead:"산림청 100대명산, 국가숲길, 둘레길 코스를 지역·거리별로 둘러보세요. 코스 지도와 거리·고도를 보고, 클릭 한 번으로 코스 포스터를 만들 수 있습니다.",
    search:"코스·산 이름 검색 (예: 북한산, 지리산둘레길)",loading:"코스 불러오는 중…",nav_courses:"코스",
+   nav_poster:"코스 포스터",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
    foot:"Race Planner · 러너·하이커를 위한 무료 도구",attr:"코스 데이터 출처: 공공데이터포털(data.go.kr) — 산림청 100대명산·국가숲길·오감만족 숲길. 공공누리 이용약관에 따름.",
    go:"포스터 만들기 →",none:"조건에 맞는 코스가 없어요."},
  en:{title:"Korea Trail & Hiking Courses — 100 Famous Mountains, GPX & Posters | Race Planner",eyebrow:"Open data · Free",
    h1:"Korea Trail & Hiking Courses",lead:"Browse Korea's 100 Famous Mountains, national forest trails and dulle-gil loops by region and distance. See the route, distance and elevation — and make a course poster in one click.",
    search:"Search a course or mountain (e.g. Bukhansan)",loading:"Loading courses…",nav_courses:"Courses",
+   nav_poster:"Route Poster",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
    foot:"Race Planner · free tools for runners and hikers",attr:"Course data: data.go.kr open data (Korea Forest Service). Used under the KOGL public license.",
    go:"Make a poster →",none:"No courses match."}};
 window.LANG=(new URLSearchParams(location.search).get("lang")==="en"||(!location.search.includes("lang")&&(navigator.language||"").slice(0,2)!=="ko"))?"en":"ko";
