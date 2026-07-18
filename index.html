@@ -615,9 +615,8 @@ document.getElementById("picker").addEventListener("click",function(e){if(e.targ
   }).catch(function(){});
   if(q.get("strava")==="error")setTimeout(function(){alert(T("sv_err"));},400);})();
 
-/* ---------------- course presets (no file needed) ---------------- */
-function demoCoords(){var c=[];for(var i=0;i<=80;i++){var t=i/80*6.2832;c.push([37.53+0.0105*Math.sin(t)+0.004*Math.sin(3*t),126.96+0.017*Math.cos(t)+0.006*Math.cos(2*t)]);}return c;}
-var PRESETS=[{id:"demo",name:"한강 데모 루프",nameEn:"Hangang demo loop",dist:10140,coords:demoCoords()}];
+/* ---------------- course presets (no file needed, lazy-loaded) ---------------- */
+var PRESETS=null;
 function presetG(p){var lat=[],lon=[];for(var i=0;i<p.coords.length;i++){lat.push(p.coords[i][0]);lon.push(p.coords[i][1]);}
   return {lat:lat,lon:lon,ele:[],hasEle:false,dist:p.dist||0,gain:p.gain||0,dur:p.dur||NaN,name:(window.LANG==="ko"?p.name:(p.nameEn||p.name)),dateStr:""};}
 function loadPreset(p){window.G=presetG(p);
@@ -625,13 +624,16 @@ function loadPreset(p){window.G=presetG(p);
   document.getElementById("in_date").value="";document.getElementById("in_time").value="";
   showSample(false);render();document.getElementById("picker").classList.remove("on");
   if(window.gtag)gtag("event","poster_generate",{source:"preset",course:p.id});}
-function openPresets(){var pl=document.getElementById("pickList");document.getElementById("pickTitle").textContent=T("pick_course");pl.innerHTML="";
-  PRESETS.forEach(function(p){var el=document.createElement("div");el.className="pick-item";
+function renderPresets(){var pl=document.getElementById("pickList");pl.innerHTML="";
+  (PRESETS||[]).forEach(function(p){var el=document.createElement("div");el.className="pick-item";
     el.innerHTML='<div><div class="pn"></div><div class="pm"></div></div><div class="pd">'+(p.dist/1000).toFixed(1)+' km</div>';
     el.querySelector(".pn").textContent=(window.LANG==="ko"?p.name:(p.nameEn||p.name));
-    el.querySelector(".pm").textContent=(window.LANG==="ko"?"코스 프리셋":"Course preset");
-    el.addEventListener("click",function(){loadPreset(p);});pl.appendChild(el);});
-  document.getElementById("picker").classList.add("on");}
+    el.querySelector(".pm").textContent=(window.LANG==="ko"?"대회 코스":"Race course");
+    el.addEventListener("click",function(){loadPreset(p);});pl.appendChild(el);});}
+function openPresets(){document.getElementById("pickTitle").textContent=T("pick_course");document.getElementById("picker").classList.add("on");
+  if(PRESETS){renderPresets();return;}
+  var pl=document.getElementById("pickList");pl.innerHTML='<div style="padding:22px;text-align:center;color:var(--sub)">…</div>';
+  fetch("/courses.json").then(function(r){return r.json();}).then(function(d){PRESETS=(d&&d.courses)||[];renderPresets();}).catch(function(){pl.innerHTML='<div style="padding:22px;text-align:center;color:var(--sub)">'+T("bad")+'</div>';});}
 document.getElementById("presetBtn").addEventListener("click",openPresets);
 
 applyI18N();
