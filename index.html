@@ -613,7 +613,8 @@ document.getElementById("picker").addEventListener("click",function(e){if(e.targ
 (function(){var q=new URLSearchParams(location.search);
   fetch("/api/strava/status").then(function(r){return r.json();}).then(function(s){
     if(s&&s.configured){document.getElementById("stravaBtn").style.display="flex";document.getElementById("orDiv").style.display="flex";}
-    if(s&&(s.connected||q.get("strava")==="1"))openStrava();
+    if(s&&s.connected){var b=document.getElementById("stravaBtn");b.addEventListener("click",function(e){e.preventDefault();openStrava();});}
+    if(s&&q.get("strava")==="1")openStrava();
   }).catch(function(){});
   if(q.get("strava")==="error")setTimeout(function(){alert(T("sv_err"));},400);})();
 
