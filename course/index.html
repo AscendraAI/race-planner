@@ -170,6 +170,7 @@ function hav(a1,o1,a2,o2){var R=6371000,d1=(a2-a1)*Math.PI/180,d2=(o2-o1)*Math.P
 function dsLabel(ds){var ko=window.LANG==="ko";
   if(ds.indexOf("100대명산")>=0)return ko?"산림청 100대명산":"100 Famous Mountains";
   if(ds.indexOf("국가숲길")>=0)return ko?"국가숲길":"National Forest Trail";
+  if(ds.indexOf("코리아둘레길")>=0)return ko?"코리아둘레길":"Korea Round Trail";
   return ko?"오감만족 둘레길":"Dulle-gil Loop";}
 function fmtTime(mins){var h=Math.floor(mins/60),m=Math.round(mins%60);
   if(window.LANG==="ko")return (h?h+"시간 ":"")+m+"분";return (h?h+"h ":"")+m+"m";}
@@ -193,18 +194,20 @@ function build(d){
   var ko=window.LANG==="ko", dif=difficulty(d.dist,d.gain), tmin=estTime(d.dist,d.gain);
   var difTxt=T(dif.lvl);
   var distKm=(d.dist/1000).toFixed(1);
-  // auto description (unique per course)
-  var desc = ko
-    ? d.region+" 지역의 "+dsLabel(d.ds)+" 코스입니다. 총 거리 "+distKm+"km"
+  // auto description (unique per course) — used for SEO meta/schema
+  var autodesc = ko
+    ? d.region+" 지역의 "+dsLabel(d.ds)+(d.fam?" · "+d.fam:"")+" 코스입니다. 총 거리 "+distKm+"km"
       +(d.hasEle?", 누적 상승고도 "+d.gain+"m(최고 "+Math.round(d.emax)+"m)":"")
-      +", 도보 예상 소요시간은 약 "+fmtTime(tmin)+"이며 난이도는 "+difTxt+"입니다. "
-      +"아래 지형도에서 코스 전체를 확인하고, GPX를 내려받거나 나만의 코스 포스터를 만들어 보세요."
+      +", 도보 예상 소요시간은 약 "+fmtTime(tmin)+"이며 난이도는 "+difTxt+"입니다."
     : "A "+dsLabel(d.ds)+" course in "+d.region+", Korea. It runs "+distKm+" km"
       +(d.hasEle?" with "+d.gain+" m of elevation gain (peak "+Math.round(d.emax)+" m)":"")
-      +", takes roughly "+fmtTime(tmin)+" on foot, and is rated "+difTxt+". "
-      +"View the full route on the terrain map below, download the GPX, or create your own course poster.";
+      +", takes roughly "+fmtTime(tmin)+" on foot, and is rated "+difTxt+".";
+  // display: prefer the official course description when available (Durunubi)
+  var desc = (d.desc && d.desc.length>30) ? d.desc : autodesc+(ko
+      ?" 아래 지형도에서 코스 전체를 확인하고, GPX를 내려받거나 나만의 코스 포스터를 만들어 보세요."
+      :" View the full route on the terrain map below, download the GPX, or create your own course poster.");
   document.title=d.name+" — "+(ko?"코스 지도·GPX·고도":"map, GPX & elevation")+" | "+distKm+"km "+d.region+" | Race Planner";
-  document.getElementById("metadesc").setAttribute("content",desc.replace(/\s+아래[\s\S]*$|\s+View the full[\s\S]*$/,""));
+  document.getElementById("metadesc").setAttribute("content",autodesc);
 
   var gainStat = d.hasEle ? '<div class="v">'+d.gain+'<small>m</small></div>'
                           : '<div class="v" style="color:var(--faint)">—</div>';
@@ -215,7 +218,7 @@ function build(d){
      +'<a href="/courses/?region='+encodeURIComponent(d.region)+'">'+d.region+'</a><span class="sep">›</span>'
      +'<span style="color:var(--ink2)">'+esc(d.name)+'</span></nav>'
    +'<section class="chero">'
-     +'<div class="badges"><span class="badge reg">📍 '+d.region+'</span><span class="badge">'+dsLabel(d.ds)+'</span></div>'
+     +'<div class="badges"><span class="badge reg">📍 '+d.region+'</span><span class="badge">'+dsLabel(d.ds)+'</span>'+(d.fam?'<span class="badge">'+esc(d.fam)+'</span>':'')+'</div>'
      +'<h1>'+esc(d.name)+'</h1></section>'
    +'<div class="stats">'
      +'<div class="stat"><div class="k">'+T("distance")+'</div><div class="v">'+distKm+'<small>km</small></div></div>'
@@ -241,9 +244,12 @@ function build(d){
      +'</div>'
    +'</div>'
    +'<section class="rel"><h2>'+T("related")+'</h2><div class="relgrid" id="rel"></div></section>'
-   +'<div class="foot">'+(ko
+   +'<div class="foot">'+(d.src==="durunubi"?(ko
+      ?'코스 데이터 출처: <a href="https://www.durunubi.kr" target="_blank" rel="noopener">한국관광공사 두루누비</a> 코리아둘레길(공공데이터포털 오픈API, 이용허락범위 제한 없음). 지도 © OpenStreetMap 기여자·SRTM, 표현 © OpenTopoMap (CC-BY-SA). 예상 시간은 Naismith 규칙 기반 추정치입니다.'
+      :'Course data: <a href="https://www.durunubi.kr" target="_blank" rel="noopener">Korea Tourism Organization — Durunubi</a> (Korea Round Trail, data.go.kr open API, no usage restriction). Map © OpenStreetMap/SRTM, style © OpenTopoMap (CC-BY-SA). Times estimated via Naismith\'s rule.')
+      :(ko
       ?'코스 데이터 출처: <a href="https://www.data.go.kr" target="_blank" rel="noopener">공공데이터포털(data.go.kr)</a> · 산림청 등 · <a href="https://www.kogl.or.kr" target="_blank" rel="noopener">공공누리</a> 제1유형. 지도 © OpenStreetMap 기여자·SRTM, 표현 © OpenTopoMap (CC-BY-SA). 예상 시간은 Naismith 규칙 기반 추정치입니다.'
-      :'Course data: <a href="https://www.data.go.kr" target="_blank" rel="noopener">data.go.kr</a> (Korea Forest Service et al.), KOGL Type 1. Map © OpenStreetMap/SRTM, style © OpenTopoMap (CC-BY-SA). Times estimated via Naismith\'s rule.')
+      :'Course data: <a href="https://www.data.go.kr" target="_blank" rel="noopener">data.go.kr</a> (Korea Forest Service et al.), KOGL Type 1. Map © OpenStreetMap/SRTM, style © OpenTopoMap (CC-BY-SA). Times estimated via Naismith\'s rule.'))
      +'<div style="margin-top:9px"><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></div>'
    +'</div>';
 
@@ -252,7 +258,7 @@ function build(d){
     '<button class="btn" onclick="dlGPX()">⬇︎ GPX</button>'+
     '<a class="btn poster" href="/?course='+encodeURIComponent(d.id)+'">🎨 '+T("poster")+'</a>';
 
-  initMap(d); initElev(d); loadRelated(d); injectSchema(d,desc,dif,tmin);
+  initMap(d); initElev(d); loadRelated(d); injectSchema(d,autodesc,dif,tmin);
 }
 
 function difColor(l){return l==="easy"?"#6ee7a8":l==="moderate"?"#c8ff43":l==="hard"?"#ffb454":"#ff6b6b";}

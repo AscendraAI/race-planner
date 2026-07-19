@@ -120,6 +120,7 @@
       <span class="chip" data-dist="l">15km+</span>
       <span class="fdiv"></span>
       <span class="chip on" data-ds="">전체</span>
+      <span class="chip" data-ds="코리아둘레길">코리아둘레길</span>
       <span class="chip" data-ds="산림청 100대명산">100대명산</span>
       <span class="chip" data-ds="국가숲길 코스">국가숲길</span>
       <span class="chip" data-ds="오감만족 숲길">둘레길</span>
@@ -139,16 +140,16 @@
 <script>
 var I18N={
  ko:{title:"한국 트레일·등산 코스 — 100대명산·둘레길 GPX·코스 포스터 | Race Planner",eyebrow:"공공데이터 · 무료",
-   h1:"한국 트레일·등산 코스",lead:"산림청 100대명산, 국가숲길, 둘레길 코스를 지역·거리별로 둘러보세요. 코스 지도와 거리·고도를 보고, 클릭 한 번으로 코스 포스터를 만들 수 있습니다.",
+   h1:"한국 트레일·등산 코스",lead:"코리아둘레길(해파랑길·남파랑길·서해랑길·DMZ), 산림청 100대명산, 국가숲길, 둘레길 코스를 지역·거리별로 둘러보세요. 코스 지도와 거리·고도를 보고, 클릭 한 번으로 코스 포스터를 만들 수 있습니다.",
    search:"코스·산 이름 검색 (예: 북한산, 지리산둘레길)",loading:"코스 불러오는 중…",nav_courses:"코스찾기",
    nav_poster:"러닝인증샷",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
-   foot:"Race Planner · 러너·하이커를 위한 무료 도구",attr:"코스 데이터 출처: 공공데이터포털(data.go.kr) — 산림청 100대명산·국가숲길·오감만족 숲길. 공공누리 이용약관에 따름.",
+   foot:"Race Planner · 러너·하이커를 위한 무료 도구",attr:"코스 데이터 출처: 공공데이터포털(data.go.kr) — 산림청 100대명산·국가숲길·오감만족 숲길, 한국관광공사 두루누비 코리아둘레길(해파랑길·남파랑길·서해랑길·DMZ 평화의 길). 공공누리·이용허락범위에 따름.",
    go:"포스터 만들기 →",none:"조건에 맞는 코스가 없어요."},
  en:{title:"Korea Trail & Hiking Courses — 100 Famous Mountains, GPX & Posters | Race Planner",eyebrow:"Open data · Free",
-   h1:"Korea Trail & Hiking Courses",lead:"Browse Korea's 100 Famous Mountains, national forest trails and dulle-gil loops by region and distance. See the route, distance and elevation — and make a course poster in one click.",
+   h1:"Korea Trail & Hiking Courses",lead:"Browse the Korea Round Trail (Haeparang·Namparang·Seohaerang·DMZ), 100 Famous Mountains, national forest trails and dulle-gil loops by region and distance. See the route, distance and elevation — and make a course poster in one click.",
    search:"Search a course or mountain (e.g. Bukhansan)",loading:"Loading courses…",nav_courses:"Find Courses",
    nav_poster:"Run Snapshot",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
-   foot:"Race Planner · free tools for runners and hikers",attr:"Course data: data.go.kr open data (Korea Forest Service). Used under the KOGL public license.",
+   foot:"Race Planner · free tools for runners and hikers",attr:"Course data: data.go.kr open data (Korea Forest Service) + Korea Tourism Organization Durunubi (Korea Round Trail: Haeparang·Namparang·Seohaerang·DMZ Peace Trail). Used under KOGL / open-data terms.",
    go:"Make a poster →",none:"No courses match."}};
 window.LANG=(function(){var u=new URLSearchParams(location.search).get("lang");if(u==="ko"||u==="en")return u;var s=localStorage.getItem("rp_lang");if(s==="ko"||s==="en")return s;return (navigator.language||"").slice(0,2)==="ko"?"ko":"en";})();
 function T(k){return (I18N[window.LANG]||I18N.ko)[k]||k;}
@@ -179,7 +180,7 @@ function render(){var g=document.getElementById("grid");var A=window.ALL||[];
   if(!f.length){g.innerHTML='<div class="empty">'+T("none")+'</div>';return;}
   g.innerHTML="";var frag=document.createDocumentFragment();
   f.forEach(function(t){var a=document.createElement("a");a.className="card";a.href="/course/?id="+encodeURIComponent(t.id)+(window.LANG==="en"?"&lang=en":"");
-    var dsl=t.ds.indexOf("100대명산")>=0?(window.LANG==="ko"?"명산":"Peak"):t.ds.indexOf("국가숲길")>=0?(window.LANG==="ko"?"숲길":"Trail"):(window.LANG==="ko"?"둘레길":"Loop");
+    var dsl=t.ds.indexOf("100대명산")>=0?(window.LANG==="ko"?"명산":"Peak"):t.ds.indexOf("국가숲길")>=0?(window.LANG==="ko"?"숲길":"Trail"):t.ds.indexOf("코리아둘레길")>=0?(window.LANG==="ko"?"둘레길":"K-Trail"):(window.LANG==="ko"?"둘레길":"Loop");
     var el=t.gain>50?' <span class="sep">·</span> ↑'+t.gain+'m':'';
     a.innerHTML='<div class="thumb"><span class="badge-ds">'+dsl+'</span><canvas data-id="'+t.id+'"></canvas></div>'
       +'<div class="cname"></div><div class="cmeta"><span class="rg"></span><span class="sep">·</span><span class="d">'+(t.dist/1000).toFixed(1)+'km</span>'+el+'</div>'
