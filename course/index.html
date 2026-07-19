@@ -121,8 +121,8 @@
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
   <nav class="nav">
-    <a class="navlink" href="/" data-i18n="nav_poster">Route Poster</a>
-    <a class="navlink active" href="/courses/" data-i18n="nav_courses">Courses</a>
+    <a class="navlink" href="/" data-i18n="nav_poster">Run Snapshot</a>
+    <a class="navlink active" href="/courses/" data-i18n="nav_courses">Find Courses</a>
     <a class="navlink" href="/gpx/" data-i18n="nav_gpx">GPX Race Plan</a>
     <a class="navlink" href="/hyrox/" data-i18n="nav_hyrox">HYROX Calculator</a>
     <a class="navlink" href="/pace/" data-i18n="nav_pace">Marathon Pace & Predictor</a>
@@ -139,7 +139,7 @@
 
 <script>
 var I18N={
- ko:{nav_poster:"코스 포스터",nav_courses:"코스",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
+ ko:{nav_poster:"러닝인증샷",nav_courses:"코스찾기",nav_gpx:"GPX 레이스플랜",nav_hyrox:"하이록스 완주 계산기",nav_pace:"마라톤 페이스·기록예측",nav_guide:"가이드",
    home:"홈",courses:"코스",distance:"거리",gain:"누적고도",time:"예상 소요시간",diff:"난이도",elevation:"고도 프로파일",
    info:"코스 정보",start:"들머리",season:"추천 시기",type:"코스 유형",noele:"이 코스는 고도 데이터가 제공되지 않습니다.",
    gpx:"GPX 다운로드",poster:"코스 포스터 만들기",share:"공유",dir:"길찾기",related:"같은 지역 코스",
@@ -148,7 +148,7 @@ var I18N={
    attr_map:"지도데이터 © OpenStreetMap 기여자, SRTM · 표현 © OpenTopoMap (CC-BY-SA)",
    copied:"링크가 복사되었습니다",gained:"상승",lost:"하강",atkm:"km 지점",notfound:"코스를 찾을 수 없습니다.",
    terrain:"지형도",general:"일반지도",elev_hint:"차트 위에 마우스를 올리면 지도에 위치가 표시됩니다"},
- en:{nav_poster:"Route Poster",nav_courses:"Courses",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
+ en:{nav_poster:"Run Snapshot",nav_courses:"Find Courses",nav_gpx:"GPX Race Plan",nav_hyrox:"HYROX Calculator",nav_pace:"Marathon Pace & Predictor",nav_guide:"Guides",
    home:"Home",courses:"Courses",distance:"Distance",gain:"Elev. gain",time:"Est. time",diff:"Difficulty",elevation:"Elevation profile",
    info:"Course info",start:"Trailhead",season:"Best season",type:"Route type",noele:"Elevation data is not available for this course.",
    gpx:"Download GPX",poster:"Make a poster",share:"Share",dir:"Directions",related:"Nearby courses",
@@ -158,11 +158,11 @@ var I18N={
    copied:"Link copied",gained:"gain",lost:"loss",atkm:"km",notfound:"Course not found.",
    terrain:"Terrain",general:"Street",elev_hint:"Hover the chart to see the point on the map"}
 };
-window.LANG=(new URLSearchParams(location.search).get("lang")==="en"||(!location.search.includes("lang")&&(navigator.language||"").slice(0,2)!=="ko"))?"en":"ko";
+window.LANG=(function(){var u=new URLSearchParams(location.search).get("lang");if(u==="ko"||u==="en")return u;var s=localStorage.getItem("rp_lang");if(s==="ko"||s==="en")return s;return (navigator.language||"").slice(0,2)==="ko"?"ko":"en";})();
 function T(k){return (I18N[window.LANG]||I18N.ko)[k]||k;}
 function applyNav(){document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(I18N[window.LANG]&&I18N[window.LANG][k]!=null)el.textContent=I18N[window.LANG][k];});
   document.getElementById("lang-ko").classList.toggle("on",window.LANG==="ko");document.getElementById("lang-en").classList.toggle("on",window.LANG==="en");}
-function setLang(l){window.LANG=l;var u=new URL(location);u.searchParams.set("lang",l);history.replaceState(0,"",u);location.reload();}
+function setLang(l){window.LANG=l;try{localStorage.setItem("rp_lang",l);}catch(e){}var u=new URL(location);u.searchParams.set("lang",l);history.replaceState(0,"",u);location.reload();}
 
 function hav(a1,o1,a2,o2){var R=6371000,d1=(a2-a1)*Math.PI/180,d2=(o2-o1)*Math.PI/180,
   s=Math.sin(d1/2)*Math.sin(d1/2)+Math.cos(a1*Math.PI/180)*Math.cos(a2*Math.PI/180)*Math.sin(d2/2)*Math.sin(d2/2);
