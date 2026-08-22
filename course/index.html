@@ -358,8 +358,8 @@ function loadRelated(d){
 function dlGPX(){
   var d=CUR;if(!d)return;
   var seg=d.pts.map(function(p){return '<trkpt lat="'+p[0]+'" lon="'+p[1]+'">'+(p.length>2?'<ele>'+p[2]+'</ele>':'')+'</trkpt>';}).join("");
-  var gpx='<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="raceplanner.online" xmlns="http://www.topografix.com/GPX/1/1">'
-    +'<metadata><name>'+esc(d.name)+'</name><link href="https://raceplanner.online/course/?id='+d.id+'"></link></metadata>'
+  var gpx='<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="raceplanner.athletespick.com" xmlns="http://www.topografix.com/GPX/1/1">'
+    +'<metadata><name>'+esc(d.name)+'</name><link href="https://raceplanner.athletespick.com/course/?id='+d.id+'"></link></metadata>'
     +'<trk><name>'+esc(d.name)+'</name><trkseg>'+seg+'</trkseg></trk></gpx>';
   var b=new Blob([gpx],{type:"application/gpx+xml"}),u=URL.createObjectURL(b),a=document.createElement("a");
   a.href=u;a.download=d.name.replace(/[\/\\?%*:|"<>]/g,"_")+".gpx";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);
@@ -374,7 +374,7 @@ function shareC(){
 function injectSchema(d,desc,dif,tmin){
   var j={"@context":"https://schema.org","@type":"TouristAttraction","name":d.name,
     "description":desc.replace(/\s+아래[\s\S]*$|\s+View the full[\s\S]*$/,""),
-    "url":"https://raceplanner.online/course/?id="+d.id,
+    "url":"https://raceplanner.athletespick.com/course/?id="+d.id,
     "touristType":["Hiking","Trail running"],
     "geo":{"@type":"GeoCoordinates","latitude":d.start[0],"longitude":d.start[1]},
     "isAccessibleForFree":true,
@@ -383,9 +383,9 @@ function injectSchema(d,desc,dif,tmin){
     ]};
   if(d.hasEle)j.additionalProperty.push({"@type":"PropertyValue","name":"Elevation gain","value":d.gain,"unitCode":"MTR"});
   var bc={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":T("home"),"item":"https://raceplanner.online/"},
-    {"@type":"ListItem","position":2,"name":T("courses"),"item":"https://raceplanner.online/courses/"},
-    {"@type":"ListItem","position":3,"name":d.name,"item":"https://raceplanner.online/course/?id="+d.id}]};
+    {"@type":"ListItem","position":1,"name":T("home"),"item":"https://raceplanner.athletespick.com/"},
+    {"@type":"ListItem","position":2,"name":T("courses"),"item":"https://raceplanner.athletespick.com/courses/"},
+    {"@type":"ListItem","position":3,"name":d.name,"item":"https://raceplanner.athletespick.com/course/?id="+d.id}]};
   [j,bc].forEach(function(o){var s=document.createElement("script");s.type="application/ld+json";s.textContent=JSON.stringify(o);document.head.appendChild(s);});
 }
 

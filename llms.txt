@@ -1,11 +1,11 @@
-# Race Planner (raceplanner.online)
+# Race Planner (raceplanner.athletespick.com)
 > Free Korean-first race-day planning tools: trail/ultra GPX pacing+fueling, marathon pace, HYROX predictor.
 
 ## Tools
-- [Trail GPX Race Plan](https://raceplanner.online/gpx/): upload GPX -> hill/heat-adjusted pacing + fueling plan. Params: goal, temp, level, race
-- [Marathon Pace](https://raceplanner.online/pace/): pace calculator and Riegel predictor. Params: distance, time
-- [HYROX Calculator](https://raceplanner.online/)
+- [Trail GPX Race Plan](https://raceplanner.athletespick.com/gpx/): upload GPX -> hill/heat-adjusted pacing + fueling plan. Params: goal, temp, level, race
+- [Marathon Pace](https://raceplanner.athletespick.com/pace/): pace calculator and Riegel predictor. Params: distance, time
+- [HYROX Calculator](https://raceplanner.athletespick.com/)
 
 ## Docs
-- [AI integration guide](https://raceplanner.online/ai/)
-- [URL parameters](https://raceplanner.online/api-docs/)
+- [AI integration guide](https://raceplanner.athletespick.com/ai/)
+- [URL parameters](https://raceplanner.athletespick.com/api-docs/)

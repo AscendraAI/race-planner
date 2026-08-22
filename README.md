@@ -2,7 +2,7 @@
 
 러너·하이록스 선수를 위한 무료 웹 도구. 순수 정적 사이트(빌드 불필요).
 
-- 라이브: https://raceplanner.online
+- 라이브: https://raceplanner.athletespick.com
 - 계산기: 평소 러닝 페이스 → 하이록스 완주 기록 예측
 - 가이드: 페이싱 / 보급 / 스테이션
 

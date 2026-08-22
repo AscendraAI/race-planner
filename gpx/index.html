@@ -9,10 +9,10 @@
 <title data-i18n="title">GPX Race Plan — Trail & Road Pacing & Fueling | Race Planner</title>
 <meta name="description" data-i18n="desc" content="Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser." />
 <meta name="keywords" content="gpx pacing, gpx race plan, elevation pacing, trail running pace, marathon pacing plan, gpx 페이스, 트레일 페이싱, 고도 페이싱, 마라톤 페이스 플랜" />
-<link rel="canonical" href="https://raceplanner.online/gpx/" />
-<link rel="alternate" hreflang="en" href="https://raceplanner.online/gpx/?lang=en" />
-<link rel="alternate" hreflang="ko" href="https://raceplanner.online/gpx/?lang=ko" />
-<link rel="alternate" hreflang="x-default" href="https://raceplanner.online/gpx/" />
+<link rel="canonical" href="https://raceplanner.athletespick.com/gpx/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.athletespick.com/gpx/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.athletespick.com/gpx/?lang=ko" />
+<link rel="alternate" hreflang="x-default" href="https://raceplanner.athletespick.com/gpx/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="GPX Race Plan — Hill-Adjusted Pacing & Fueling" />
 <meta name="theme-color" content="#0a0c10" />
@@ -316,7 +316,7 @@ header{display:block}
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPX Race Plan","url":"https://raceplanner.online/gpx/","description":"Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPX Race Plan","url":"https://raceplanner.athletespick.com/gpx/","description":"Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does this adjust pace for hills?", "acceptedAnswer": {"@type": "Answer", "text": "It scores every segment's slope with the Minetti energy-cost curve, so climbs are paced slower and descents faster while holding your target finish time. Climbs steeper than about 20% are capped to a power-hike pace."}}, {"@type": "Question", "name": "Does it account for heat?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. When the forecast or climate-normal apparent temperature is above 15°C it applies a progressive slowdown (larger past 25°C and 30°C) and raises fluid and sodium targets."}}, {"@type": "Question", "name": "Is my GPX file uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your file is parsed locally in your browser and never leaves your device."}}]}</script>
 <script src="/nav.js"></script>
 </head>
@@ -1129,8 +1129,8 @@ function rpFuelPackClick(no,value){try{if(window.gtag)gtag('event','fuel_pack_cl
 function rpFuelSkuClick(no,qty,value){try{if(window.gtag)gtag('event','fuel_sku_click',{product_no:no,qty:qty,value:value});}catch(e){}rpFuelClick();}
 function _rpTier(P,ko){var pk=P.course.hasEle?P.course.dPlus/(P.course.total/1000):0;var e=pk<10?"EASY":pk<25?"MODERATE":pk<45?"HARD":"BRUTAL";var k=pk<10?"쉬움":pk<25?"보통":pk<45?"하드":"브루탈";return (ko?k:e)+(ko?" 트레일 · ":" TRAIL · ")+Math.round(P.course.total/1000)+"K";}
 function _rpRR(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
-function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.online/gpx/";
-  return "https://raceplanner.online/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
+function buildShareURL(){var P=window.PLAN;if(!P)return "https://raceplanner.athletespick.com/gpx/";
+  return "https://raceplanner.athletespick.com/gpx/?s=1&d="+(P.course.total/1000).toFixed(1)+"&up="+Math.round(P.course.dPlus)+"&dn="+Math.round(P.course.dMinus)+"&goal="+P.goalSec+"&lvl="+P.carbH;}
 function buildShareCard(P){
   var c=document.getElementById("rp_canvas"),x=c.getContext("2d"),W=1080,H=1920,M=90;
   var ko=window.LANG==="ko";
@@ -1162,13 +1162,13 @@ function buildShareCard(P){
   f3(M+150,L.carb,P.carbH+"","g");f3(W/2,L.na,P.naH+"","mg");f3(W-M-150,L.every,P.interval+"",L.umin);
   x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,1470);x.lineTo(W-M,1470);x.stroke();
   x.textAlign="center";x.fillStyle="#8b97a6";x.font="600 34px system-ui,sans-serif";x.fillText(L.f1,W/2,1560);
-  x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.online/gpx",W/2,1632);
+  x.fillStyle="#c8ff43";x.font="800 54px system-ui,sans-serif";x.fillText("raceplanner.athletespick.com/gpx",W/2,1632);
   x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1684);
   return c;}
 function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
   return (window.LANG==="ko")
-    ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.online/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
-    :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.online/gpx #raceplanner #trailrunning @athletespick";}
+    ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.athletespick.com/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
+    :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.athletespick.com/gpx #raceplanner #trailrunning @athletespick";}
 function rpToast(id,key){var b=document.getElementById(id);if(!b)return;var s=b.querySelector("span");if(!s)return;var d=(window.I18N&&I18N[window.LANG])||{};var k=s.getAttribute("data-i18n");var orig=(k&&d[k])?d[k]:s.textContent;s.textContent=d[key]||"✓";setTimeout(function(){s.textContent=orig;},2200);}
 function _rpDownload(cb){var c=document.getElementById("rp_canvas");
   if(c.toBlob){c.toBlob(function(b){if(!b){if(cb)cb();return;}var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="raceplanner-trail-plan.png";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);if(cb)cb();},"image/png");}

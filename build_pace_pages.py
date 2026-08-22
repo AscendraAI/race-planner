@@ -11,7 +11,7 @@ import os, re, html, sys
 
 SRC   = os.environ.get("SRC",  "pace/index.html")
 OUT   = os.environ.get("OUT",  ".")
-BASE  = "https://raceplanner.online"
+BASE  = "https://raceplanner.athletespick.com"
 GA    = "G-B0C2N8Q89V"
 ADS   = "ca-pub-6369966478235204"
 

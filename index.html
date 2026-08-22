@@ -8,9 +8,9 @@
 <title data-i18n="title">Route Poster — Turn your GPX into a framable running poster | Race Planner</title>
 <meta name="description" data-i18n="desc" content="Upload your GPX and get a beautiful, shareable route poster of your run, ride or trail — distance, elevation, time and pace, ready for Instagram or print. Free." />
 <meta name="keywords" content="route poster, gpx poster, strava art, running poster, race map poster, gpx to image, 러닝 포스터, gpx 포스터, 코스 지도, 완주 인증" />
-<link rel="canonical" href="https://raceplanner.online/" />
-<link rel="alternate" hreflang="en" href="https://raceplanner.online/?lang=en" />
-<link rel="alternate" hreflang="ko" href="https://raceplanner.online/?lang=ko" />
+<link rel="canonical" href="https://raceplanner.athletespick.com/" />
+<link rel="alternate" hreflang="en" href="https://raceplanner.athletespick.com/?lang=en" />
+<link rel="alternate" hreflang="ko" href="https://raceplanner.athletespick.com/?lang=ko" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Route Poster — your GPX as a framable poster | Race Planner" />
 <meta name="theme-color" content="#0a0c10" />
@@ -451,10 +451,10 @@ function render(){
   }
   SH(false);
 
-  // wordmark — raceplanner.online, pinned bottom, big & bold
+  // wordmark — raceplanner.athletespick.com, pinned bottom, big & bold
   SH(true);
   x.textAlign="center";x.textBaseline="alphabetic";x.fillStyle=trans?"#ffffff":t.ink;
-  x.font="800 "+(story?54:46)+"px "+FONT;x.fillText("raceplanner.online",W/2,H-(story?92:66));
+  x.font="800 "+(story?54:46)+"px "+FONT;x.fillText("raceplanner.athletespick.com",W/2,H-(story?92:66));
   SH(false);
 
   // show
@@ -589,7 +589,7 @@ document.getElementById("dl").addEventListener("click",function(){download();if(
 document.getElementById("share").addEventListener("click",function(){
   var c=document.getElementById("stage");
   if(navigator.canShare&&c.toBlob){c.toBlob(function(b){var f=new File([b],"raceplanner-poster.png",{type:"image/png"});
-    if(navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Race Planner",text:(window.LANG==="ko"?"내 코스 포스터 — raceplanner.online/poster":"My route poster — raceplanner.online/poster")}).catch(function(){});}
+    if(navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Race Planner",text:(window.LANG==="ko"?"내 코스 포스터 — raceplanner.athletespick.com/poster":"My route poster — raceplanner.athletespick.com/poster")}).catch(function(){});}
     else download();},"image/png");}
   else download();
 });
