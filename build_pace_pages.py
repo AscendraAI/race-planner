@@ -429,7 +429,12 @@ def update_sitemap():
         print("!! sitemap.xml not found, skipping sitemap update"); return
     s = open(sp, encoding="utf-8").read()
     # remove any existing /pace/marathon/ url blocks (idempotent)
-    s = re.sub(r'\s*<url>\s*<loc>https://raceplanner\.online/pace/marathon/[^<]*</loc>.*?</url>', '', s, flags=re.S)
+    #
+    # 호스트를 패턴에 박지 않는다. 예전에는 raceplanner.online을 하드코딩하고
+    # 있었는데, 도메인을 옮긴 뒤 이 정규식만 옛 호스트를 가리키게 되어 기존
+    # 블록을 못 지우고 매 실행마다 같은 URL을 덧붙였다. 실행 5번에 sitemap이
+    # 고유 28개 / <loc> 72개가 됐다. 어느 호스트든 경로로만 판단한다.
+    s = re.sub(r'\s*<url>\s*<loc>[^<]*/pace/marathon/[^<]*</loc>.*?</url>', '', s, flags=re.S)
     def blk(loc, pri, cf):
         return ("  <url>\n    <loc>"+loc+"</loc>\n"
                 '    <xhtml:link rel="alternate" hreflang="en" href="'+loc+'?lang=en"/>\n'
