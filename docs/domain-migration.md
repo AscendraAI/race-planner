@@ -1,6 +1,17 @@
 # 도메인 이전 — raceplanner.online → raceplanner.athletespick.com
 
-상태: **이전 완료** (2026-08-22). 남은 것은 §6 검색·광고 재등록뿐
+상태: **완료** (2026-08-22). Search Console 주소 변경까지 제출됨
+
+> ### 180일 동안 건드리면 안 되는 것
+> 구글은 주소 변경 제출 후 **180일간** 이전 신호를 처리한다. 그동안 아래를 유지한다.
+>
+> - **Vercel 도메인 레벨 301** (`raceplanner.online`, `www.raceplanner.online`)
+> - **GoDaddy의 A 레코드 `76.76.21.21`** — 이게 살아 있어야 301이 작동한다
+> - **`raceplanner.online` 도메인 갱신** — 구글 권고는 최소 1년
+> - **`/google4c031413acbacfd7.html`** — 구 속성 소유권 인증 유지용.
+>   용도를 모르고 지우기 쉬운 파일이라 특히 주의한다
+>
+> 실수했다면 180일 안에는 주소 변경을 취소할 수 있다.
 방식: **완전 이전 + 301 리다이렉트** (구 주소는 영구 리다이렉트로만 남긴다)
 
 ---
@@ -297,7 +308,18 @@ curl -sI https://raceplanner.online/pace/marathon/3-30/ | grep -iE "^(HTTP|locat
 
 ---
 
-## 6. 검색·광고 재등록
+## 6. 검색·광고 재등록 — 완료 상태
+
+- [x] 새 속성 `raceplanner.athletespick.com` 소유권 확인 (카페24 DNS TXT)
+- [x] 구 속성 `https://raceplanner.online/` 소유권 확인 (HTML 파일 — 301을 넘어 동작했다)
+- [x] **주소 변경 제출** — 유효성 검사 3개 항목 전부 통과
+      (홈페이지 301 / 두 사이트 인증 / 샘플 페이지 301, 쿼리스트링까지 보존 확인)
+- [ ] 새 sitemap 제출
+- [ ] 애널리틱스 측정 도메인 갱신 (GA4 `G-B0C2N8Q89V`)
+- [ ] AdSense 사이트 목록에 새 도메인 추가 (루트 ads.txt 부재로 경고는 남는다 — §1)
+- [ ] (별건) `athletespick.com` SPF 레코드 — 구글 워크스페이스를 쓰는데 TXT가 없다
+
+### 원래 절차
 
 1. **Search Console** — 새 속성(`raceplanner.athletespick.com`)을 추가·소유권 확인한 뒤,
    구 속성에서 **주소 변경(Change of Address)** 을 실행한다. 두 속성 모두 확인된
