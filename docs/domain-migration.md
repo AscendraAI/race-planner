@@ -1,6 +1,6 @@
 # 도메인 이전 — raceplanner.online → raceplanner.athletespick.com
 
-상태: **진행** — §1은 해소가 아니라 **감수**로 통과 (2026-08-22)
+상태: **이전 완료** (2026-08-22). 남은 것은 §6 검색·광고 재등록뿐
 방식: **완전 이전 + 301 리다이렉트** (구 주소는 영구 리다이렉트로만 남긴다)
 
 ---
@@ -267,24 +267,25 @@ git diff --stat        # 생성 결과가 치환 결과와 같아야 한다
 `raceplanner.online`을 **같은 Vercel 프로젝트에 남겨 둔 채** 새 도메인으로 리다이렉트한다.
 GoDaddy DNS는 **건드리지 않는다** — A 레코드가 Vercel을 계속 향해야 리다이렉트가 작동한다.
 
-**방법 A (권장) — 대시보드**
-Settings → Domains에서 `raceplanner.athletespick.com`을 Primary로 지정하고,
-`raceplanner.online`에 "Redirect to" → 새 도메인, 상태코드 **301**.
+> ### `vercel.json`으로는 안 된다 (2026-08-22 실측)
+>
+> 처음에 `vercel.json`의 `redirects`에 호스트 조건을 걸었더니 **존재하는 정적 파일이
+> 리다이렉트보다 우선**했다. `/nonexistent-…`는 301이 되는데 `/` `/pace/`
+> `/pace/marathon/3-30/` 같은 실제 페이지는 200으로 그대로 서빙됐다.
+> **색인된 페이지가 하나도 리다이렉트되지 않으므로 이전의 목적을 달성하지 못한다.**
+> 이 방식은 폐기하고 아래 도메인 레벨로 갔다.
 
-**방법 B — 코드**
-```json
-// vercel.json
-{
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "raceplanner.online" }],
-      "destination": "https://raceplanner.athletespick.com/:path*",
-      "permanent": true
-    }
-  ]
-}
+**도메인 레벨 리다이렉트 (이걸 쓴다)**
+
+대시보드: Settings → Domains → `raceplanner.online`의 "Redirect to" → 새 도메인, **301**.
+
+API로도 된다 (실제로 쓴 방법):
+```bash
+curl -X PATCH "https://api.vercel.com/v9/projects/<projectId>/domains/raceplanner.online" \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"redirect":"raceplanner.athletespick.com","redirectStatusCode":301}'
 ```
+`www.raceplanner.online`도 살아 있었으므로 **둘 다** 걸어야 한다.
 
 **확인 — 경로가 보존되는지가 핵심이다:**
 ```bash
