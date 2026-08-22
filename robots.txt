@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://raceplanner.online/sitemap.xml
+Sitemap: https://raceplanner.athletespick.com/sitemap.xml
