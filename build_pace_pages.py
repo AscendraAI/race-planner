@@ -52,7 +52,10 @@ STYLE = extract_style(open(SRC, encoding="utf-8").read())
 HEAD_FONTS_ADS = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">'
+    # RP Design Guide 1.0 — Pretendard(한글) · Jost(수치/라벨) · JetBrains(표) · Hanken(영문 본문)
+    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">'
+    '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">'
+    '<link rel="stylesheet" href="/rp.css">'
     f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADS}" crossorigin="anonymous"></script>'
 )
 
@@ -130,7 +133,7 @@ def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
 <link rel="alternate" hreflang="x-default" href="{canon}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{html.escape(title)}" />
-<meta name="theme-color" content="#0a0c10" />
+<meta name="theme-color" content="#0B0B09" />
 <meta name="robots" content="index, follow" />
 {STYLE}
 {HEAD_FONTS_ADS}
