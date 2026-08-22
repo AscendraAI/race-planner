@@ -87,24 +87,43 @@ Vercel 대시보드 → 해당 프로젝트 → Settings → Domains → `racepl
 
 DNS가 아직 안 바뀐 상태이므로 "Invalid Configuration"으로 표시된다. 정상이다.
 
-CLI로도 가능하다:
+**이 단계는 2026-08-22에 실행 완료했다.**
 ```bash
-cd ~/race-planner-web
-vercel link          # 로컬에 .vercel 링크가 없으므로 최초 1회
-vercel domains add raceplanner.athletespick.com
+vercel domains add raceplanner.athletespick.com race-planner
+# → {"status":"success","reason":"domain_added"}
+
+vercel domains inspect raceplanner.athletespick.com   # 필요한 레코드 확인 (§3)
 ```
+Vercel 계정 `dongyoonnoi-2732`, 프로젝트 `race-planner`(현 프로덕션 `raceplanner.online`).
+도메인만 등록한 상태이며 **DNS가 향하지 않으므로 트래픽에는 아무 영향이 없다.**
+되돌리려면 `vercel domains rm raceplanner.athletespick.com`.
 
 ---
 
 ## 3. 카페24 DNS에 CNAME 추가
 
-카페24 DNS 관리 → 레코드 추가:
+**§2를 실행해 Vercel이 요구하는 실제 값을 받았다 (2026-08-22):**
 
 | 호스트 | 타입 | 값 |
 |---|---|---|
-| `raceplanner` | CNAME | (§2에서 Vercel이 표시한 값) |
+| `raceplanner` | **A** | `76.76.21.21` |
+
+CNAME이 아니라 A다. (카페24 패널이 서브도메인 A를 거부하면 `cname.vercel-dns.com`을
+향하는 CNAME이 표준 대안이지만, 먼저 위 값을 그대로 시도한다.)
 
 명시적 레코드는 와일드카드보다 우선하므로, 현재 쇼핑몰로 가는 동작을 덮어쓴다.
+
+> ### ⚠️ 네임서버는 절대 바꾸지 말 것
+>
+> `vercel domains inspect`는 두 가지 방법을 제시한다:
+> **(a) A 레코드 추가** ← 이것만 한다
+> **(b) 네임서버를 `ns1/ns2.vercel-dns.com`으로 변경**
+>
+> **(b)를 하면 `athletespick.com` 전체 DNS가 카페24에서 Vercel로 넘어간다.**
+> 쇼핑몰 A 레코드 4개와 구글 워크스페이스 MX 5개가 함께 사라지므로, **쇼핑몰이 죽고
+> 회사 메일이 끊긴다.** 우리가 옮기려는 것은 서브도메인 하나뿐이다.
+>
+> Vercel도 (a)를 recommended로 표시하지만, (b)가 나란히 제시되므로 명시해 둔다.
 
 **확인** (전파에 수 분~수 시간):
 ```bash
