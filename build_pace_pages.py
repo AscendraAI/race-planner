@@ -52,7 +52,14 @@ STYLE = extract_style(open(SRC, encoding="utf-8").read())
 HEAD_FONTS_ADS = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">'
+    # RP Design Guide 1.0 — Pretendard(한글) · Jost(수치/라벨) · JetBrains(표) · Hanken(영문 본문)
+    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">'
+    '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">'
+    '<link rel="stylesheet" href="/rp.css">'
+    '<link rel="stylesheet" href="/rp-app.css">'
+    # nav.js 를 실어 손으로 쓴 18페이지와 같은 셸을 쓴다. 이걸로 HEADER 상수와
+    # NAV_PAINT 로 굴러가던 두 번째 내비게이션 로직이 사라진다.
+    '<script src="/nav.js" defer></script>'
     f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADS}" crossorigin="anonymous"></script>'
 )
 
@@ -117,7 +124,7 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 
 def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-page="pace-marathon">
 <head>
 <meta charset="UTF-8" />
 {GTAG}
@@ -130,7 +137,18 @@ def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
 <link rel="alternate" hreflang="x-default" href="{canon}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{html.escape(title)}" />
-<meta name="theme-color" content="#0a0c10" />
+<meta property="og:site_name" content="Race Planner" />
+<meta property="og:url" content="{canon}" />
+<meta property="og:image" content="{BASE}/og/rp-og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{BASE}/og/rp-og-default.png" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0B0B09" />
 <meta name="robots" content="index, follow" />
 {STYLE}
 {HEAD_FONTS_ADS}
@@ -144,6 +162,14 @@ def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
 <footer>
   <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/pace/" data-i18n="foot_calc">Pace calculator</a><br/>
   <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com?utm_source=raceplanner&utm_medium=footer" target="_blank" rel="noopener">Athlete's Pick</a>
+<!-- rp-foot:start -->
+<nav class="rp-foot__legal">
+<a href="/about/">About</a>
+<a href="/privacy/">Privacy</a>
+<a href="/terms/">Terms</a>
+<a href="/contact/">Contact</a>
+</nav>
+<!-- rp-foot:end -->
 </footer>
 </div>
 <script>
@@ -152,7 +178,6 @@ var LANG="en";
 {I18N_CORE}
 LANG=detectLang();applyLang();
 </script>
-{NAV_PAINT}
 </body>
 </html>"""
 
@@ -426,7 +451,12 @@ def update_sitemap():
         print("!! sitemap.xml not found, skipping sitemap update"); return
     s = open(sp, encoding="utf-8").read()
     # remove any existing /pace/marathon/ url blocks (idempotent)
-    s = re.sub(r'\s*<url>\s*<loc>https://raceplanner\.online/pace/marathon/[^<]*</loc>.*?</url>', '', s, flags=re.S)
+    #
+    # 호스트를 패턴에 박지 않는다. 예전에는 raceplanner.online을 하드코딩하고
+    # 있었는데, 도메인을 옮긴 뒤 이 정규식만 옛 호스트를 가리키게 되어 기존
+    # 블록을 못 지우고 매 실행마다 같은 URL을 덧붙였다. 실행 5번에 sitemap이
+    # 고유 28개 / <loc> 72개가 됐다. 어느 호스트든 경로로만 판단한다.
+    s = re.sub(r'\s*<url>\s*<loc>[^<]*/pace/marathon/[^<]*</loc>.*?</url>', '', s, flags=re.S)
     def blk(loc, pri, cf):
         return ("  <url>\n    <loc>"+loc+"</loc>\n"
                 '    <xhtml:link rel="alternate" hreflang="en" href="'+loc+'?lang=en"/>\n'
@@ -441,10 +471,27 @@ def update_sitemap():
     print("sitemap updated:", s.count("<loc>"), "urls")
 
 # ---------------- WRITE ----------------
+DRIFT = []
+
+
 def wr(path, content):
+    """
+    --check 모드에서는 쓰지 않고 비교만 한다.
+
+    pace/marathon/ 11개는 생성물이다. 누가 직접 편집하면 다음 빌드에 날아가므로,
+    이 검사가 이 저장소에서 가장 중요한 회귀 방어선이다.
+    """
+    if CHECK:
+        cur = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+        if cur != content:
+            DRIFT.append(path)
+        return len(content)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf-8").write(content)
     return len(content)
+
+CHECK = "--check" in sys.argv   # 파일을 쓰지 않고 드리프트만 보고한다
+
 
 def main():
     total = 0; n = 0
@@ -455,6 +502,14 @@ def main():
         nextg = (GOALS[i+1][0], GOALS[i+1][1]) if i<len(GOALS)-1 else None
         p = f"{OUT}/pace/marathon/{slug}/index.html"
         total += wr(p, build_spoke(slug, label, T, prevg, nextg)); n += 1
+    if CHECK:
+        if DRIFT:
+            print(f"DRIFT  생성물 {len(DRIFT)}개가 소스와 어긋납니다 — 직접 편집했습니까?")
+            for d in DRIFT:
+                print("  " + d)
+            sys.exit(1)
+        print(f"OK  생성물 {n}개가 소스와 일치합니다 (드리프트 없음)")
+        return
     update_sitemap()
     print(f"OK  wrote {n} pages, {total} bytes  -> {OUT}/pace/marathon/")
     # quick self-check on one page's math

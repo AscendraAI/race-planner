@@ -1,0 +1,1599 @@
+{
+ "about/index.html": {
+  "body": "ac787c4b09a738d9",
+  "canonical": "https://raceplanner.athletespick.com/about/",
+  "description": "Race Planner(raceplanner.athletespick.com)는 러너·트레일러너·하이록스 선수를 위한 무료 도구 모음입니다 — 코스 포스터, 한국 트레일 코스 라이브러리, 하이록스 계산기, 마라톤 페이스 예측, 가이드.",
+  "h1": [
+   "사이트 소개About Race Planner"
+  ],
+  "hreflang": [],
+  "i18n_count": 0,
+  "i18n_keys": [],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": null,
+  "og_type": null,
+  "title": "사이트 소개 | Race Planner"
+ },
+ "ai/index.html": {
+  "body": "b100bea802a611da",
+  "canonical": "https://raceplanner.athletespick.com/ai/",
+  "description": "How AI assistants can link users to Race Planner tools with URL prefill parameters for Korean trail races, marathon pacing, and race fueling.",
+  "h1": [
+   "Race Planner links for AI assistants"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/ai/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/ai/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/ai/"
+   ]
+  ],
+  "i18n_count": 22,
+  "i18n_keys": [
+   "desc",
+   "ex1_t",
+   "ex2_t",
+   "ex3_t",
+   "ex_h",
+   "foot",
+   "gpx_note",
+   "h1",
+   "lang_note",
+   "lead",
+   "note",
+   "pace_note",
+   "param",
+   "param_h",
+   "sc1",
+   "sc2",
+   "sc3",
+   "sc_h",
+   "sc_l",
+   "sc_q",
+   "title",
+   "tool"
+  ],
+  "jsonld": [
+   "7aff97b7bb397c4d"
+  ],
+  "jsonld_count": 1,
+  "og_title": null,
+  "og_type": null,
+  "title": "AI Integration Guide | Race Planner"
+ },
+ "api-docs/index.html": {
+  "body": "7c7a692e70547eab",
+  "canonical": "https://raceplanner.athletespick.com/api-docs/",
+  "description": "URL parameter reference for Race Planner GPX race planning and marathon pace tools.",
+  "h1": [
+   "Race Planner parameter reference"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/api-docs/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/api-docs/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/api-docs/"
+   ]
+  ],
+  "i18n_count": 20,
+  "i18n_keys": [
+   "behavior",
+   "behavior",
+   "desc",
+   "distance",
+   "foot",
+   "format",
+   "format",
+   "goal",
+   "h1",
+   "lang",
+   "lang",
+   "lang_note",
+   "lead",
+   "level",
+   "param",
+   "param",
+   "race",
+   "temp",
+   "time",
+   "title"
+  ],
+  "jsonld": [
+   "732eb426f2ee9d9e"
+  ],
+  "jsonld_count": 1,
+  "og_title": null,
+  "og_type": null,
+  "title": "URL Parameters | Race Planner"
+ },
+ "contact/index.html": {
+  "body": "d424bc126a371d04",
+  "canonical": "https://raceplanner.athletespick.com/contact/",
+  "description": "Race Planner(raceplanner.athletespick.com) 문의 — 오류 제보, 코스 추가 요청, 제휴·광고 문의는 이메일로 연락해 주세요.",
+  "h1": [
+   "문의하기Contact"
+  ],
+  "hreflang": [],
+  "i18n_count": 0,
+  "i18n_keys": [],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": null,
+  "og_type": null,
+  "title": "문의하기 | Race Planner"
+ },
+ "course/index.html": {
+  "body": "0389d3cd4c899b93",
+  "canonical": null,
+  "description": "한국 트레일·등산 코스의 지도, 거리·고도, 예상 소요시간과 GPX 다운로드. 무료 코스 포스터도 만들 수 있습니다.",
+  "h1": [
+   "'+esc(d.name)+'"
+  ],
+  "hreflang": [],
+  "i18n_count": 6,
+  "i18n_keys": [
+   "nav_courses",
+   "nav_gpx",
+   "nav_guide",
+   "nav_hyrox",
+   "nav_pace",
+   "nav_poster"
+  ],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": null,
+  "og_type": "website",
+  "title": "코스 상세 | Race Planner"
+ },
+ "courses/index.html": {
+  "body": "3d984a70173630ff",
+  "canonical": "https://raceplanner.athletespick.com/courses/",
+  "description": "한국의 트레일·등산 코스를 지역·거리별로 둘러보세요. 산림청 100대명산, 국가숲길, 둘레길 코스의 지도와 거리·고도, 그리고 코스 포스터를 무료로.",
+  "h1": [
+   "한국 트레일·등산 코스"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/courses/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/courses/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/courses/"
+   ]
+  ],
+  "i18n_count": 14,
+  "i18n_keys": [
+   "attr",
+   "desc",
+   "eyebrow",
+   "foot",
+   "h1",
+   "lead",
+   "loading",
+   "nav_courses",
+   "nav_gpx",
+   "nav_guide",
+   "nav_hyrox",
+   "nav_pace",
+   "nav_poster",
+   "title"
+  ],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": "한국 트레일·등산 코스 라이브러리 | Race Planner",
+  "og_type": "website",
+  "title": "한국 트레일·등산 코스 — 100대명산·둘레길 GPX·코스 포스터 | Race Planner"
+ },
+ "gpx/index.html": {
+  "body": "8ffaef6721f7c7bf",
+  "canonical": "https://raceplanner.athletespick.com/gpx/",
+  "description": "Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.",
+  "h1": [
+   "GPX Race Plan — Hill-Adjusted Pacing &amp; Fueling"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/gpx/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/gpx/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/gpx/"
+   ]
+  ],
+  "i18n_count": 92,
+  "i18n_keys": [
+   "cap_t",
+   "desc",
+   "faq_a1",
+   "faq_a2",
+   "faq_a3",
+   "faq_h",
+   "faq_q1",
+   "faq_q2",
+   "faq_q3",
+   "foot1",
+   "foot2",
+   "foot3",
+   "foot_calc",
+   "fu_at",
+   "fu_carb",
+   "fu_int",
+   "fu_na",
+   "fu_pt",
+   "fu_take",
+   "fu_title",
+   "fu_water",
+   "gen_load",
+   "h1",
+   "in_btn",
+   "in_date",
+   "in_goal",
+   "in_lat",
+   "in_level",
+   "in_lon",
+   "in_lvl1",
+   "in_lvl2",
+   "in_lvl3",
+   "in_road",
+   "in_start",
+   "in_title",
+   "in_trail",
+   "in_type",
+   "in_weather",
+   "in_woff",
+   "in_won",
+   "info1_h",
+   "info1_p",
+   "info2_h",
+   "info2_p",
+   "info3_h",
+   "lead",
+   "lim1",
+   "lim2",
+   "lim3",
+   "lim4",
+   "prev_h",
+   "pz_cool",
+   "pz_or",
+   "pz_seoul",
+   "pz_uiit",
+   "rel_guide",
+   "rel_head",
+   "rel_hyrox",
+   "rel_pace",
+   "res_avg",
+   "res_finish",
+   "res_finishu",
+   "res_fluid",
+   "res_fluidu",
+   "res_gels",
+   "res_gelsu",
+   "res_title",
+   "s_dist",
+   "s_down",
+   "s_hi",
+   "s_method",
+   "s_up",
+   "save_t",
+   "share_hint",
+   "share_t",
+   "sp_cum",
+   "sp_fuel",
+   "sp_grade",
+   "sp_km",
+   "sp_pace",
+   "sp_title",
+   "sum_title",
+   "title",
+   "up_drop",
+   "up_or",
+   "up_priv",
+   "up_title",
+   "w_feel",
+   "w_hum",
+   "w_temp",
+   "w_title",
+   "w_wind"
+  ],
+  "jsonld": [
+   "8615842830bcc1bf",
+   "eed63d6bceadfefb"
+  ],
+  "jsonld_count": 2,
+  "og_title": "GPX Race Plan — Hill-Adjusted Pacing & Fueling",
+  "og_type": "website",
+  "title": "GPX Race Plan — Trail & Road Pacing & Fueling | Race Planner"
+ },
+ "guide/index.html": {
+  "body": "28aa0ec1db887070",
+  "canonical": "https://raceplanner.athletespick.com/guide/",
+  "description": "Race strategy guides for HYROX, trail and marathon — pacing, fueling and station tactics, grouped by sport. Free.",
+  "h1": [
+   "Guides"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/"
+   ]
+  ],
+  "i18n_count": 33,
+  "i18n_keys": [
+   "desc",
+   "eyebrow",
+   "foot1",
+   "foot2",
+   "gr1",
+   "gr1d",
+   "h1",
+   "hx1",
+   "hx1d",
+   "hx2",
+   "hx2d",
+   "hx3",
+   "hx3d",
+   "intro",
+   "lead",
+   "mr1",
+   "mr1d",
+   "read",
+   "read",
+   "read",
+   "read",
+   "read",
+   "rel_head",
+   "rel_hyrox",
+   "rel_nutrition",
+   "rel_pacing",
+   "rel_stations",
+   "s_gear",
+   "s_mara",
+   "s_trail",
+   "soon",
+   "title",
+   "tr_d"
+  ],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": "Guides — Race Planner",
+  "og_type": "website",
+  "title": "Guides — HYROX, Trail & Marathon Race Strategy | Race Planner"
+ },
+ "guide/nutrition/index.html": {
+  "body": "a38a2041205c2beb",
+  "canonical": "https://raceplanner.athletespick.com/guide/nutrition/",
+  "description": "HYROX fueling strategy: carbohydrate intake and gel count by race time, electrolytes and cramp prevention, how hydrogels work, and recovery — explained simply.",
+  "h1": [
+   "HYROX Nutrition Guide:Gels & Electrolytes by Race Time",
+   "하이록스 보급 가이드레이스 시간별 에너지젤·전해질 전략"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/nutrition/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/nutrition/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/nutrition/"
+   ]
+  ],
+  "i18n_count": 6,
+  "i18n_keys": [
+   "desc",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "src",
+   "title"
+  ],
+  "jsonld": [
+   "27a2f9b6902ac7a9"
+  ],
+  "jsonld_count": 1,
+  "og_title": null,
+  "og_type": "article",
+  "title": "HYROX Nutrition Guide — Gels & Electrolytes by Race Time | Race Planner"
+ },
+ "guide/pacing/index.html": {
+  "body": "2450a3b9ac9c468f",
+  "canonical": "https://raceplanner.athletespick.com/guide/pacing/",
+  "description": "A data-backed HYROX pacing guide: why in-race running is slower than your 5K, target run pace by goal finish time, the hidden 6.5% roxzone, and how to split the 8 runs.",
+  "h1": [
+   "HYROX Pacing Guide:Run Pace by Goal Finish Time",
+   "하이록스 페이싱 가이드목표 기록별 1km 런 페이스 완전 정리"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/pacing/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/pacing/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/pacing/"
+   ]
+  ],
+  "i18n_count": 5,
+  "i18n_keys": [
+   "desc",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "title"
+  ],
+  "jsonld": [
+   "1b6e79fd907a9eb6"
+  ],
+  "jsonld_count": 1,
+  "og_title": null,
+  "og_type": "article",
+  "title": "HYROX Pacing Guide — Run Pace by Goal Finish Time | Race Planner"
+ },
+ "guide/running-shoes/index.html": {
+  "body": "bbd4b28e3f9df5b3",
+  "canonical": "https://raceplanner.athletespick.com/guide/running-shoes/",
+  "description": "How to pick running shoes that fit — daily trainer vs tempo vs carbon race shoes, sizing and fit rules, what drop and cushioning actually change, and when to replace them.",
+  "h1": [
+   "How to Choose Running Shoes:A Simple, No-Hype Guide",
+   "러닝화 고르는 법과장 없는 실전 가이드"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/running-shoes/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/running-shoes/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/running-shoes/"
+   ]
+  ],
+  "i18n_count": 3,
+  "i18n_keys": [
+   "foot1",
+   "foot2",
+   "foot_calc"
+  ],
+  "jsonld": [
+   "1b6e79fd907a9eb6",
+   "2537e790feab55b5",
+   "ed259f8cbaeb75c1"
+  ],
+  "jsonld_count": 3,
+  "og_title": "How to Choose Running Shoes: A Simple, No-Hype Guide",
+  "og_type": "article",
+  "title": "How to Choose Running Shoes: A Simple, No-Hype Guide | Race Planner"
+ },
+ "guide/stations/index.html": {
+  "body": "ff24a88ebbf963c0",
+  "canonical": "https://raceplanner.athletespick.com/guide/stations/",
+  "description": "All 8 HYROX stations: order, weights, average times (Open men/women) and station-by-station tips. See where you lose and save the most time.",
+  "h1": [
+   "HYROX 8 Stations Explained:Average Times, Order & Tips",
+   "하이록스 8개 스테이션 완전 공략순서·중량·평균 시간·팁"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/stations/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/stations/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/stations/"
+   ]
+  ],
+  "i18n_count": 5,
+  "i18n_keys": [
+   "desc",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "title"
+  ],
+  "jsonld": [
+   "a4db14512227ee7a"
+  ],
+  "jsonld_count": 1,
+  "og_title": null,
+  "og_type": "article",
+  "title": "HYROX 8 Stations Explained — Average Times, Order & Tips | Race Planner"
+ },
+ "guide/sub4-marathon/index.html": {
+  "body": "2e6b8dc976cf5300",
+  "canonical": "https://raceplanner.athletespick.com/guide/sub4-marathon/",
+  "description": "How to break 4 hours in the marathon — the 5:41/km target pace, a full split table, a 16-week training outline, race-day fueling, and how to avoid the wall at 30K.",
+  "h1": [
+   "Sub-4 Marathon:Pace, Training &amp; Race-Day Strategy",
+   "서브4 마라톤 완주 전략페이스·훈련·레이스 당일 총정리"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/guide/sub4-marathon/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/guide/sub4-marathon/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/guide/sub4-marathon/"
+   ]
+  ],
+  "i18n_count": 3,
+  "i18n_keys": [
+   "foot1",
+   "foot2",
+   "foot_calc"
+  ],
+  "jsonld": [
+   "1b6e79fd907a9eb6",
+   "aa9ab88c4c568bea",
+   "ac01c82ada6d9214"
+  ],
+  "jsonld_count": 3,
+  "og_title": "Sub-4 Marathon: Pace, Training & Race-Day Strategy",
+  "og_type": "article",
+  "title": "Sub-4 Marathon: Pace, Training Plan & Race-Day Strategy | Race Planner"
+ },
+ "hyrox/index.html": {
+  "body": "e5d332d1799b45c8",
+  "canonical": "https://raceplanner.athletespick.com/hyrox/",
+  "description": "Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data.",
+  "h1": [
+   "HYROX finish-time calculator"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/hyrox/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/hyrox/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/hyrox/"
+   ]
+  ],
+  "i18n_count": 80,
+  "i18n_keys": [
+   "age1",
+   "age2",
+   "age3",
+   "age4",
+   "age5",
+   "age6",
+   "age7",
+   "age8",
+   "age9",
+   "age_any",
+   "btn",
+   "desc",
+   "disc",
+   "div_open",
+   "div_pro",
+   "eyebrow",
+   "faq_a1",
+   "faq_a2",
+   "faq_a3",
+   "faq_h",
+   "faq_q1",
+   "faq_q2",
+   "faq_q3",
+   "foot1",
+   "foot2",
+   "fuel_cta",
+   "fuel_h",
+   "gear_disc",
+   "gear_h",
+   "h1",
+   "i1_h",
+   "i1_l1",
+   "i1_l2",
+   "i1_l3",
+   "i1_p",
+   "i2_h",
+   "i2_p",
+   "in_age",
+   "in_div",
+   "in_hint",
+   "in_lvl",
+   "in_pace",
+   "in_sex",
+   "lead",
+   "lv_a",
+   "lv_b",
+   "lv_i",
+   "m_rox",
+   "m_run",
+   "m_sta",
+   "more_all",
+   "more_g1",
+   "more_g2",
+   "more_g3",
+   "more_gpx",
+   "more_hxg",
+   "more_pace",
+   "more_tools",
+   "pacing_hint",
+   "r_adj",
+   "r_finish",
+   "r_inpace",
+   "r_rox",
+   "r_run",
+   "r_sta",
+   "rel_head",
+   "rel_nutrition",
+   "rel_pace",
+   "rel_pacing",
+   "rel_stations",
+   "s_pacing",
+   "s_station",
+   "sex_m",
+   "sex_w",
+   "t_athletes",
+   "t_free",
+   "t_time",
+   "th_station",
+   "th_target",
+   "title"
+  ],
+  "jsonld": [
+   "11ac34e24135c019",
+   "b67770211b0b4f36"
+  ],
+  "jsonld_count": 2,
+  "og_title": "HYROX Time Calculator | Race Planner",
+  "og_type": "website",
+  "title": "HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner"
+ },
+ "index.html": {
+  "body": "1e9cdb8ad64ee7a9",
+  "canonical": "https://raceplanner.athletespick.com/",
+  "description": "Upload your GPX and get a beautiful, shareable route poster of your run, ride or trail — distance, elevation, time and pace, ready for Instagram or print. Free.",
+  "h1": [
+   "Turn your run into a poster"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/?lang=ko"
+   ]
+  ],
+  "i18n_count": 47,
+  "i18n_keys": [
+   "bg_solid",
+   "bg_trans",
+   "desc",
+   "disc",
+   "dl",
+   "drop_s",
+   "drop_t",
+   "eyebrow",
+   "f_bg",
+   "f_date",
+   "f_ratio",
+   "f_theme",
+   "f_time",
+   "f_title",
+   "faq_a1",
+   "faq_a2",
+   "faq_a3",
+   "faq_h",
+   "faq_q1",
+   "faq_q2",
+   "faq_q3",
+   "foot",
+   "h1",
+   "i1_h",
+   "i1_p",
+   "i2_h",
+   "lead",
+   "m_gpx",
+   "m_guide",
+   "m_hx",
+   "m_pace",
+   "nav_courses",
+   "nav_gpx",
+   "nav_guide",
+   "nav_hyrox",
+   "nav_pace",
+   "nav_poster",
+   "or_upload",
+   "pick_course",
+   "pick_run",
+   "r_port",
+   "r_sq",
+   "r_story",
+   "sample",
+   "share",
+   "sv_connect",
+   "title"
+  ],
+  "jsonld": [
+   "fa345e0b4809f9d4"
+  ],
+  "jsonld_count": 1,
+  "og_title": "Route Poster — your GPX as a framable poster | Race Planner",
+  "og_type": "website",
+  "title": "Route Poster — Turn your GPX into a framable running poster | Race Planner"
+ },
+ "pace/index.html": {
+  "body": "2a92d9c3a8fd8629",
+  "canonical": "https://raceplanner.athletespick.com/pace/",
+  "description": "Free running pace calculator and race time predictor. Enter distance and time to get pace, speed and split times, or predict your 5K, 10K, half and full marathon times.",
+  "h1": [
+   "Marathon Pace &amp; Race-Time Predictor"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/"
+   ]
+  ],
+  "i18n_count": 46,
+  "i18n_keys": [
+   "desc",
+   "faq_a1",
+   "faq_a2",
+   "faq_a3",
+   "faq_h",
+   "faq_q1",
+   "faq_q2",
+   "faq_q3",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "h1",
+   "info1_h",
+   "info1_p",
+   "info2_h",
+   "info2_p",
+   "lead",
+   "pc_btn",
+   "pc_cumul",
+   "pc_custom",
+   "pc_custom",
+   "pc_dist",
+   "pc_distkm",
+   "pc_distkm",
+   "pc_pacekm",
+   "pc_pacemi",
+   "pc_speed",
+   "pc_split",
+   "pc_time",
+   "pc_title",
+   "rel_fuel",
+   "rel_gpx",
+   "rel_head",
+   "rel_hyrox",
+   "rel_hyrox",
+   "rel_mara",
+   "rp_btn",
+   "rp_dist",
+   "rp_note",
+   "rp_pace",
+   "rp_pred",
+   "rp_race",
+   "rp_sub",
+   "rp_time",
+   "rp_title",
+   "title"
+  ],
+  "jsonld": [
+   "688805fd96c49506",
+   "6c851ce0e16a759d"
+  ],
+  "jsonld_count": 2,
+  "og_title": "Marathon Pace Calculator & Race Time Predictor",
+  "og_type": "website",
+  "title": "Marathon Pace Calculator & Race Time Predictor | Race Planner"
+ },
+ "pace/marathon/2-45/index.html": {
+  "body": "b027de74ee5bc6fa",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/2-45/",
+  "description": "Exact pace for a 2:45 marathon: 3:55/km (6:18/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "2:45 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/2-45/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/2-45/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/2-45/"
+   ]
+  ],
+  "i18n_count": 33,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "298de1c743c3ab5a",
+   "4a068e322cad7846"
+  ],
+  "jsonld_count": 2,
+  "og_title": "2:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "2:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/3-00/index.html": {
+  "body": "bbaf2923769a2200",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-00/",
+  "description": "Exact pace for a 3:00 marathon: 4:16/km (6:52/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "3:00 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/3-00/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/3-00/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/3-00/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "5f8d1feeb062e30c",
+   "ea8dcd76b3bc130e"
+  ],
+  "jsonld_count": 2,
+  "og_title": "3:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "3:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/3-15/index.html": {
+  "body": "5a7a7c92b30df53f",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-15/",
+  "description": "Exact pace for a 3:15 marathon: 4:37/km (7:26/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "3:15 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/3-15/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/3-15/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/3-15/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "18f865da253cdb19",
+   "5304c28bb8b93d9f"
+  ],
+  "jsonld_count": 2,
+  "og_title": "3:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "3:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/3-30/index.html": {
+  "body": "6c8bba8a56f7b688",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-30/",
+  "description": "Exact pace for a 3:30 marathon: 4:59/km (8:01/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "3:30 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/3-30/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/3-30/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/3-30/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "0a2e443a869e026f",
+   "e16d11f2e84487e8"
+  ],
+  "jsonld_count": 2,
+  "og_title": "3:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "3:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/3-45/index.html": {
+  "body": "f095e712a67f5641",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-45/",
+  "description": "Exact pace for a 3:45 marathon: 5:20/km (8:35/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "3:45 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/3-45/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/3-45/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/3-45/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "289ce062e6a35c84",
+   "fa57d6268ffbe12b"
+  ],
+  "jsonld_count": 2,
+  "og_title": "3:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "3:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/4-00/index.html": {
+  "body": "7659eac3e0bd8131",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-00/",
+  "description": "Exact pace for a 4:00 marathon: 5:41/km (9:09/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "4:00 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/4-00/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/4-00/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/4-00/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "2bfa756980124149",
+   "b3c7d9667c6840cb"
+  ],
+  "jsonld_count": 2,
+  "og_title": "4:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "4:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/4-15/index.html": {
+  "body": "3cc56b0aaed5acb0",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-15/",
+  "description": "Exact pace for a 4:15 marathon: 6:03/km (9:44/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "4:15 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/4-15/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/4-15/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/4-15/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "ce0e7b4926137f09",
+   "ff01871c92bfc79d"
+  ],
+  "jsonld_count": 2,
+  "og_title": "4:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "4:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/4-30/index.html": {
+  "body": "7d67b30e1b96abfe",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-30/",
+  "description": "Exact pace for a 4:30 marathon: 6:24/km (10:18/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "4:30 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/4-30/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/4-30/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/4-30/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "452770d950bbab08",
+   "d1cfa6a89e38824d"
+  ],
+  "jsonld_count": 2,
+  "og_title": "4:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "4:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/5-00/index.html": {
+  "body": "20d8c527607c044e",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/5-00/",
+  "description": "Exact pace for a 5:00 marathon: 7:07/km (11:27/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "5:00 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/5-00/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/5-00/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/5-00/"
+   ]
+  ],
+  "i18n_count": 34,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "next",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "bd1111217daee347",
+   "c830414af0c0793a"
+  ],
+  "jsonld_count": 2,
+  "og_title": "5:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "5:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/5-30/index.html": {
+  "body": "0a254a97491808e4",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/5-30/",
+  "description": "Exact pace for a 5:30 marathon: 7:49/km (12:35/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
+  "h1": [
+   "5:30 Marathon Pace"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/5-30/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/5-30/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/5-30/"
+   ]
+  ],
+  "i18n_count": 33,
+  "i18n_keys": [
+   "adjust",
+   "allgoals",
+   "cp_dist",
+   "cp_sect",
+   "cp_time",
+   "desc",
+   "disc",
+   "eq_note",
+   "eq_sect",
+   "eyebrow",
+   "finish",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "fuel_cta",
+   "fuel_h",
+   "fuel_p",
+   "full_split",
+   "h1",
+   "lead",
+   "m21",
+   "m30",
+   "m5",
+   "need",
+   "pc_cumul",
+   "pc_pacekm",
+   "permi",
+   "prev",
+   "speed",
+   "title",
+   "tool",
+   "why_h",
+   "why_p"
+  ],
+  "jsonld": [
+   "19add3d976b30d2a",
+   "4f6c4d2d3c865be8"
+  ],
+  "jsonld_count": 2,
+  "og_title": "5:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "5:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
+ },
+ "pace/marathon/index.html": {
+  "body": "ffedd7ae4b62eb80",
+  "canonical": "https://raceplanner.athletespick.com/pace/marathon/",
+  "description": "Free marathon pace chart. Pick a goal time (2:45 to 5:30) for exact even pace, per-km splits, 5K/10K/halfway checkpoints and carb &amp; sodium fueling.",
+  "h1": [
+   "Marathon Pace Chart by Goal Time"
+  ],
+  "hreflang": [
+   [
+    "en",
+    "https://raceplanner.athletespick.com/pace/marathon/?lang=en"
+   ],
+   [
+    "ko",
+    "https://raceplanner.athletespick.com/pace/marathon/?lang=ko"
+   ],
+   [
+    "x-default",
+    "https://raceplanner.athletespick.com/pace/marathon/"
+   ]
+  ],
+  "i18n_count": 14,
+  "i18n_keys": [
+   "custom",
+   "desc",
+   "eyebrow",
+   "foot1",
+   "foot2",
+   "foot_calc",
+   "h1",
+   "how_h",
+   "how_p",
+   "hyrox",
+   "lead",
+   "pick",
+   "title",
+   "tool"
+  ],
+  "jsonld": [
+   "860a268c7a061ff3"
+  ],
+  "jsonld_count": 1,
+  "og_title": "Marathon Pace Chart by Goal Time — Splits &amp; Fueling | Race Planner",
+  "og_type": "website",
+  "title": "Marathon Pace Chart by Goal Time — Splits &amp; Fueling | Race Planner"
+ },
+ "privacy/index.html": {
+  "body": "6fae2690898477f1",
+  "canonical": "https://raceplanner.athletespick.com/privacy/",
+  "description": "raceplanner.athletespick.com 개인정보처리방침 — 쿠키, Google AdSense·Analytics, 쿠팡 파트너스 제휴, Strava 연동 시 데이터 처리 방식을 안내합니다.",
+  "h1": [
+   "개인정보처리방침Privacy Policy"
+  ],
+  "hreflang": [],
+  "i18n_count": 0,
+  "i18n_keys": [],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": null,
+  "og_type": null,
+  "title": "개인정보처리방침 | Race Planner"
+ },
+ "terms/index.html": {
+  "body": "dc766a86179599ea",
+  "canonical": "https://raceplanner.athletespick.com/terms/",
+  "description": "Race Planner(raceplanner.athletespick.com) 이용약관 — 무료 도구 제공 조건, 데이터 정확성 고지, 광고·제휴 안내, 책임의 한계.",
+  "h1": [
+   "이용약관Terms of Service"
+  ],
+  "hreflang": [],
+  "i18n_count": 0,
+  "i18n_keys": [],
+  "jsonld": [],
+  "jsonld_count": 0,
+  "og_title": null,
+  "og_type": null,
+  "title": "이용약관 | Race Planner"
+ }
+}

@@ -1,0 +1,11 @@
+{
+  "files": {
+    "icons.svg": "174b55c97008dcf3",
+    "rp/svg/AP-RP-colockup-dark.svg": "9aa0871abd8d93df",
+    "rp/svg/RP-h-dark.svg": "d04e46d14ac05b89",
+    "rp/svg/RP-h-light.svg": "42a75963bd2828c5",
+    "rp/svg/RP-mark-dark.svg": "4d9fbbad5c585463"
+  },
+  "guide": "RP Design Guide 1.0 (standalone).html",
+  "manifest_sha256": "0926bc63c5457c5f0514bd61dd4c68f88d6406a1900e8e5cffacde305b28095d"
+}

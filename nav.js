@@ -27,7 +27,8 @@
   // 2) model
   var W={planner:{ko:"레이스플래너",en:"Planners"},poster:{ko:"러닝인증샷",en:"Run Snapshot"},
     courses:{ko:"코스찾기",en:"Find Courses"},guide:{ko:"가이드",en:"Guides"},
-    browse:{ko:"둘러보기",en:"Explore"},lang:{ko:"언어",en:"Language"}};
+    browse:{ko:"둘러보기",en:"Explore"},lang:{ko:"언어",en:"Language"},
+    apservice:{ko:"Athlete's Pick의 서비스",en:"An Athlete's Pick service"}};
   var TOOLS=[
     {href:"/gpx/",ic:"🗺️",ko:"GPX 레이스플랜",en:"GPX Race Plan",dko:"GPX로 구간별 페이스·완주 계획",den:"Split pace & finish plan from a GPX"},
     {href:"/hyrox/",ic:"🏋️",ko:"하이록스 완주 계산기",en:"HYROX Calculator",dko:"목표 완주시간별 러닝 페이스·록스존",den:"Run pace & roxzone by goal time"},
@@ -43,66 +44,13 @@
   var curTool = st("/gpx")?"/gpx/":st("/hyrox")?"/hyrox/":st("/pace")?"/pace/":"";
   function q(en){return LANG==="en"?"?lang=en":"";}
 
-  var CSS=[
-"[data-rpn] *{box-sizing:border-box}",
-".rpn-hdr{position:sticky;top:0;z-index:1200;margin:0;border-bottom:1px solid var(--line,#262d39);",
-  "background:linear-gradient(180deg,rgba(10,12,16,.94),rgba(10,12,16,.62));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}",
-".rpn-bar{max-width:1080px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:13px;min-height:60px;font-family:var(--rpn-sans)}",
-".rpn-logo{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink,#f3f6fa);display:inline-flex;align-items:center;gap:9px;flex:none}",
-".rpn-mark{width:26px;height:26px;border-radius:7px;background:var(--accent,#c8ff43);color:var(--accentink,#0b0f06);display:grid;place-items:center;font-weight:800;font-size:15px;box-shadow:0 0 18px rgba(200,255,67,.35)}",
-".rpn-logo b{color:var(--accent,#c8ff43)}",
-".rpn-grow{flex:1}",
-".rpn-nav{display:flex;align-items:center;gap:2px}",
-".rpn-nav>a,.rpn-gbtn{font:600 14px/1 var(--rpn-sans);color:var(--ink2,#cbd3dd);background:none;border:none;cursor:pointer;padding:9px 12px;border-radius:10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;text-decoration:none}",
-".rpn-nav>a:hover,.rpn-gbtn:hover{background:var(--panel2,#1a1f29);color:var(--ink,#f3f6fa)}",
-".rpn-nav>a.rpn-on,.rpn-grp.rpn-o .rpn-gbtn{color:var(--accent,#c8ff43);background:var(--panel2,#1a1f29)}",
-".rpn-grp.rpn-o .rpn-gbtn{color:var(--ink,#f3f6fa)}",
-".rpn-caret{width:9px;height:9px;fill:none;stroke:currentColor;stroke-width:2.2;transition:transform .16s}",
-".rpn-grp.rpn-o .rpn-caret{transform:rotate(180deg)}",
-".rpn-grp{position:relative}",
-".rpn-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:250px;background:var(--panel,#13171f);border:1px solid var(--line2,#323b49);border-radius:14px;padding:7px;box-shadow:0 18px 44px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.16s;z-index:60}",
-".rpn-grp.rpn-o .rpn-menu,.rpn-lang.rpn-o .rpn-menu{opacity:1;visibility:visible;transform:translateY(0)}",
-".rpn-menu>a{display:flex;align-items:flex-start;gap:11px;padding:10px 11px;border-radius:10px;color:var(--ink2,#cbd3dd);text-decoration:none}",
-".rpn-menu>a:hover{background:var(--panel2,#1a1f29);color:var(--ink,#f3f6fa)}",
-".rpn-menu>a.rpn-cur{background:var(--panel2,#1a1f29)}",
-".rpn-mi{width:30px;height:30px;border-radius:8px;background:var(--panel2,#1a1f29);display:grid;place-items:center;font-size:15px;flex:none;margin-top:1px}",
-".rpn-mtx{display:flex;flex-direction:column}",
-".rpn-mt{font-weight:700;font-size:13.5px;color:var(--ink,#f3f6fa)}",
-".rpn-md{font-size:11.5px;color:var(--sub,#8b97a6);font-weight:500;margin-top:2px;line-height:1.3}",
-".rpn-lang{position:relative;flex:none}",
-".rpn-lbtn{display:inline-flex;align-items:center;gap:6px;font:700 12.5px/1 var(--rpn-mono);color:var(--ink2,#cbd3dd);background:var(--panel2,#1a1f29);border:1px solid var(--line2,#323b49);padding:8px 11px;border-radius:999px;cursor:pointer}",
-".rpn-lbtn:hover{border-color:var(--faint,#5a6573);color:var(--ink,#f3f6fa)}",
-".rpn-globe{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}",
-".rpn-lmenu{left:auto;right:0;min-width:150px}",
-".rpn-lmenu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:9px;color:var(--ink2,#cbd3dd);background:none;border:none;cursor:pointer;font:600 13.5px var(--rpn-sans)}",
-".rpn-lmenu button:hover{background:var(--panel2,#1a1f29);color:var(--ink,#f3f6fa)}",
-".rpn-lmenu button.rpn-on{color:var(--accent,#c8ff43)}",
-".rpn-lmenu button.rpn-on::after{content:'\\2713'}",
-".rpn-hamb{display:none;flex:none;width:42px;height:42px;border-radius:11px;border:1px solid var(--line2,#323b49);background:var(--panel2,#1a1f29);color:var(--ink,#f3f6fa);align-items:center;justify-content:center;cursor:pointer}",
-".rpn-hamb svg{width:20px;height:20px;stroke:currentColor;stroke-width:2.2;fill:none}",
-".rpn-scrim{position:fixed;inset:0;background:rgba(5,7,10,.55);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:.2s;z-index:1250}",
-".rpn-scrim.rpn-open{opacity:1;visibility:visible}",
-".rpn-drawer{position:fixed;top:0;right:0;height:100dvh;height:100vh;width:min(86vw,340px);background:var(--bg2,#0f1218);border-left:1px solid var(--line2,#323b49);z-index:1300;transform:translateX(100%);transition:transform .24s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:16px 16px calc(18px + env(safe-area-inset-bottom));font-family:var(--rpn-sans)}",
-".rpn-drawer.rpn-open{transform:translateX(0)}",
-".rpn-dhead{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;margin-bottom:4px;border-bottom:1px solid var(--line,#262d39)}",
-".rpn-dhead .rpn-logo{font-size:16px}.rpn-dhead .rpn-mark{width:23px;height:23px;font-size:13px}",
-".rpn-dclose{width:38px;height:38px;border-radius:10px;border:1px solid var(--line2,#323b49);background:var(--panel,#13171f);color:var(--ink,#f3f6fa);display:grid;place-items:center;cursor:pointer}",
-".rpn-dclose svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.2;fill:none}",
-".rpn-dnav{display:flex;flex-direction:column;gap:1px;overflow-y:auto;flex:1;padding-top:6px}",
-".rpn-dnav a{display:flex;align-items:center;gap:12px;padding:13px 12px;border-radius:12px;color:var(--ink,#f3f6fa);font-weight:700;font-size:15.5px;text-decoration:none}",
-".rpn-dnav a:hover,.rpn-dnav a:active{background:var(--panel2,#1a1f29)}",
-".rpn-dnav a.rpn-on{color:var(--accent,#c8ff43);background:var(--panel2,#1a1f29)}",
-".rpn-dnav a.rpn-sub{font-size:14.5px;font-weight:600;color:var(--ink2,#cbd3dd)}",
-".rpn-dnav a .rpn-mi{width:29px;height:29px;border-radius:8px;background:var(--panel,#13171f);font-size:15px;margin-top:0}",
-".rpn-dsec{font:700 11px/1 var(--rpn-mono);letter-spacing:.13em;color:var(--faint,#5a6573);text-transform:uppercase;padding:15px 12px 6px}",
-".rpn-dlang{border-top:1px solid var(--line,#262d39);padding-top:14px;margin-top:8px}",
-".rpn-dlbl{font:700 11px/1 var(--rpn-mono);letter-spacing:.12em;color:var(--faint,#5a6573);text-transform:uppercase;padding:0 4px 9px}",
-".rpn-seg{display:flex;gap:8px}",
-".rpn-seg button{flex:1;padding:13px;border-radius:12px;border:1px solid var(--line2,#323b49);background:var(--panel,#13171f);color:var(--ink2,#cbd3dd);font-weight:700;font-size:14.5px;cursor:pointer;font-family:var(--rpn-sans)}",
-".rpn-seg button.rpn-on{background:var(--accent,#c8ff43);color:var(--accentink,#0b0f06);border-color:var(--accent,#c8ff43)}",
-"@media(max-width:820px){.rpn-nav,.rpn-lang{display:none}.rpn-hamb{display:inline-flex}}"
-].join("");
 
+  /* RP-LOCKUP-START — tools/extract_brand.py 로 뽑은 원본에서 생성. 손으로 고치지 마세요.
+     링·글자는 currentColor, 아크만 --brand-arc. 라이트 테마에서 --acc-line 을 재사용하면
+     아크가 Ink 가 되어 링과 같은 색이 되므로 전용 토큰을 쓴다. */
+  var LOCKUP="<svg class=\"rpn-lockup\" viewBox=\"0 0 1128.095 146\" aria-hidden=\"true\" focusable=\"false\"><g transform=\"translate(0 0) scale(1.5) translate(-2 -2)\"><path d=\"M93.5 50A43.5 43.5 0 1 1 49.9957 6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"9\"></path><path d=\"M49.7722 6.5006A43.5 43.5 0 0 1 93.4994 50.2278\" fill=\"none\" stroke=\"var(--brand-arc,#FBD32C)\" stroke-width=\"9\"></path><g transform=\"translate(25.0014 32.5) scale(0.0496)\" fill=\"currentColor\"><path d=\"M189 391L373 700L599 700L389 391ZM0 0L0 700L194 700L194 0ZM124 164L259 164Q290 164 311 173Q332 182 343.5 199.5Q355 217 355 242Q355 267 343.5 285Q332 303 311 312Q290 321 259 321L124 321L124 468L275 468Q371 468 433.5 438.5Q496 409 526.5 355.5Q557 302 557 234Q557 165 526.5 112.5Q496 60 433.5 30Q371 0 275 0L124 0Z\"></path></g><g transform=\"translate(19.7393 32.5) scale(0.0496)\" fill=\"currentColor\"><path d=\"M693 0L693 700L887 700L887 0ZM817 157L952 157Q998 157 1023 177Q1048 197 1048 234Q1048 272 1023 292Q998 312 952 312L817 312L817 468L952 468Q1048 468 1110.5 440Q1173 412 1203.5 359Q1234 306 1234 234Q1234 161 1203.5 109Q1173 57 1110.5 28.5Q1048 0 952 0L817 0Z\"></path></g></g><g transform=\"translate(168 22) scale(0.12787724)\"><path d=\"M189 438L373 747L599 747L389 438ZM0 47L0 747L194 747L194 47ZM124 211L259 211Q290 211 311 220Q332 229 343.5 246.5Q355 264 355 289Q355 314 343.5 332Q332 350 311 359Q290 368 259 368L124 368L124 515L275 515Q371 515 433.5 485.5Q496 456 526.5 402.5Q557 349 557 281Q557 212 526.5 159.5Q496 107 433.5 77Q371 47 275 47L124 47ZM766 634L1136 634L1131 491L772 491ZM949 334L1042 544L1031 594L1111 747L1331 747L949 0L568 747L788 747L869 587L857 544ZM1512.9 397Q1512.9 338 1539.4 296.5Q1565.9 255 1609.9 233.5Q1653.9 212 1706.9 212Q1756.9 212 1793.9 225Q1830.9 238 1859.9 258.5Q1888.9 279 1910.9 302L1910.9 98Q1869.9 67 1820.4 48Q1770.9 29 1693.9 29Q1606.9 29 1533.9 55Q1460.9 81 1408.9 130Q1356.9 179 1328.4 246.5Q1299.9 314 1299.9 397Q1299.9 480 1328.4 547.5Q1356.9 615 1408.9 664Q1460.9 713 1533.9 739Q1606.9 765 1693.9 765Q1770.9 765 1820.4 745.5Q1869.9 726 1910.9 696L1910.9 492Q1888.9 515 1859.9 535.5Q1830.9 556 1793.9 569Q1756.9 582 1706.9 582Q1653.9 582 1609.9 560.5Q1565.9 539 1539.4 497.5Q1512.9 456 1512.9 397ZM2147 747L2500 747L2500 590L2147 590ZM2147 204L2500 204L2500 47L2147 47ZM2147 459L2480 459L2480 307L2147 307ZM2015 47L2015 747L2201 747L2201 47ZM2873.6 47L2873.6 747L3067.6 747L3067.6 47ZM2997.6 204L3132.6 204Q3178.6 204 3203.6 224Q3228.6 244 3228.6 281Q3228.6 319 3203.6 339Q3178.6 359 3132.6 359L2997.6 359L2997.6 515L3132.6 515Q3228.6 515 3291.1 487Q3353.6 459 3384.1 406Q3414.6 353 3414.6 281Q3414.6 208 3384.1 156Q3353.6 104 3291.1 75.5Q3228.6 47 3132.6 47L2997.6 47ZM3488.5 47L3488.5 747L3965.5 747L3965.5 582L3682.5 582L3682.5 47ZM4162.4 634L4532.4 634L4527.4 491L4168.4 491ZM4345.4 334L4438.4 544L4427.4 594L4507.4 747L4727.4 747L4345.4 0L3964.4 747L4184.4 747L4265.4 587L4253.4 544ZM5235.2 47L5235.2 403L4766.2 12L4766.2 747L4952.2 747L4952.2 391L5421.2 782L5421.2 47ZM6004.5 47L6004.5 403L5535.5 12L5535.5 747L5721.5 747L5721.5 391L6190.5 782L6190.5 47ZM6436.7 747L6789.7 747L6789.7 590L6436.7 590ZM6436.7 204L6789.7 204L6789.7 47L6436.7 47ZM6436.7 459L6769.7 459L6769.7 307L6436.7 307ZM6304.7 47L6304.7 747L6490.7 747L6490.7 47ZM7082.3 438L7266.3 747L7492.3 747L7282.3 438ZM6893.3 47L6893.3 747L7087.3 747L7087.3 47ZM7017.3 211L7152.3 211Q7183.3 211 7204.3 220Q7225.3 229 7236.8 246.5Q7248.3 264 7248.3 289Q7248.3 314 7236.8 332Q7225.3 350 7204.3 359Q7183.3 368 7152.3 368L7017.3 368L7017.3 515L7168.3 515Q7264.3 515 7326.8 485.5Q7389.3 456 7419.8 402.5Q7450.3 349 7450.3 281Q7450.3 212 7419.8 159.5Q7389.3 107 7326.8 77Q7264.3 47 7168.3 47L7017.3 47Z\" fill=\"currentColor\"></path></g></svg>";
+  var MARKONLY="<svg class=\"rpn-markonly\" viewBox=\"0 0 100 100\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M93.5 50A43.5 43.5 0 1 1 49.9957 6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"9\"></path><path d=\"M49.7722 6.5006A43.5 43.5 0 0 1 93.4994 50.2278\" fill=\"none\" stroke=\"var(--brand-arc,#FBD32C)\" stroke-width=\"9\"></path><g transform=\"translate(25.0014 32.5) scale(0.0496)\" fill=\"currentColor\"><path d=\"M189 391L373 700L599 700L389 391ZM0 0L0 700L194 700L194 0ZM124 164L259 164Q290 164 311 173Q332 182 343.5 199.5Q355 217 355 242Q355 267 343.5 285Q332 303 311 312Q290 321 259 321L124 321L124 468L275 468Q371 468 433.5 438.5Q496 409 526.5 355.5Q557 302 557 234Q557 165 526.5 112.5Q496 60 433.5 30Q371 0 275 0L124 0Z\"></path></g><g transform=\"translate(19.7393 32.5) scale(0.0496)\" fill=\"currentColor\"><path d=\"M693 0L693 700L887 700L887 0ZM817 157L952 157Q998 157 1023 177Q1048 197 1048 234Q1048 272 1023 292Q998 312 952 312L817 312L817 468L952 468Q1048 468 1110.5 440Q1173 412 1203.5 359Q1234 306 1234 234Q1234 161 1203.5 109Q1173 57 1110.5 28.5Q1048 0 952 0L817 0Z\"></path></g></svg>";
+  /* RP-LOCKUP-END */
   var CARET='<svg class="rpn-caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>';
   var GLOBE='<svg class="rpn-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>';
   function onc(k){return active===k?" rpn-on":"";}
@@ -113,7 +61,7 @@
 
   function headerHTML(){
     return '<div class="rpn-hdr" data-rpn><div class="rpn-bar">'+
-      '<a class="rpn-logo" href="/'+q()+'"><span class="rpn-mark">R</span><span class="rpn-full">Race&nbsp;<b>Planner</b></span></a>'+
+      '<a class="rpn-logo" href="/'+q()+'" aria-label="Race Planner">'+LOCKUP+MARKONLY+'</a>'+
       '<span class="rpn-grow"></span>'+
       '<nav class="rpn-nav">'+
         '<div class="rpn-grp" id="rpn-grp"><button type="button" class="rpn-gbtn'+(active==="planner"?" rpn-on":"")+'">'+L(W.planner)+' '+CARET+'</button>'+
@@ -130,7 +78,7 @@
   function drawerHTML(){
     return '<div class="rpn-scrim" id="rpn-scrim" data-rpn></div>'+
       '<aside class="rpn-drawer" id="rpn-drawer" data-rpn>'+
-      '<div class="rpn-dhead"><a class="rpn-logo" href="/'+q()+'"><span class="rpn-mark">R</span><span>Race <b>Planner</b></span></a>'+
+      '<div class="rpn-dhead"><a class="rpn-logo" href="/'+q()+'" aria-label="Race Planner">'+LOCKUP+'</a>'+
         '<button class="rpn-dclose" id="rpn-dclose" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
       '<nav class="rpn-dnav">'+
         '<div class="rpn-dsec">'+L(W.planner)+'</div>'+toolsDrawer()+
@@ -144,10 +92,25 @@
       '</aside>';
   }
 
+
+  /* 푸터 AP 배지 (가이드 §02 — 가로 락업 18px + "Athlete's Pick의 서비스").
+     계열 인지는 푸터가 담당한다. 문면이 언어에 따라 바뀌므로 정적 HTML 이
+     아니라 여기서 그린다. 락업은 외부 브랜드라 currentColor 로 바꾸지 않고
+     원본 파일을 <img> 로 그대로 쓴다.
+
+     loading="lazy" 를 쓰지 않는다 — JS 로 나중에 삽입한 <img> 에서는 lazy 가
+     트리거되지 않아 영영 로드되지 않는 것을 확인했다(naturalWidth 0). 4KB 라
+     lazy 의 이득도 없다. */
+  function apBadge(){
+    if(document.querySelector(".rp-apbadge")) return;
+    var f=document.querySelector("footer"); if(!f) return;
+    var d=document.createElement("div"); d.className="rp-apbadge";
+    d.innerHTML='<img src="/brand/ap/AP-h-arc-perf.svg" alt="Athlete\'s Pick" width="109" height="18">'+
+      '<span>'+L(W.apservice)+'</span>';
+    var legal=f.querySelector(".rp-foot__legal");
+    if(legal) f.insertBefore(d, legal); else f.appendChild(d);
+  }
   function build(){
-    var s=document.createElement("style"); s.textContent=CSS; document.head.appendChild(s);
-    document.documentElement.style.setProperty("--rpn-sans",'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif');
-    document.documentElement.style.setProperty("--rpn-mono",'"Space Grotesk",ui-monospace,Menlo,monospace');
     // header: replace existing <header> or prepend to body
     var box=document.createElement("div"); box.innerHTML=headerHTML();
     var hdr=box.firstChild;
@@ -172,6 +135,7 @@
     document.getElementById("rpn-hamb").addEventListener("click",openDrawer);
     document.getElementById("rpn-dclose").addEventListener("click",closeDrawer);
     scrim.addEventListener("click",closeDrawer);
+    apBadge();
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",build); else build();
 })();

@@ -1,0 +1,14 @@
+{
+  "name": "Race Planner",
+  "short_name": "RacePlanner",
+  "description": "GPX 한 개와 목표 시간 하나로 레이스 당일의 실행 계획을 만듭니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B09",
+  "theme_color": "#0B0B09",
+  "icons": [
+    { "src": "/brand/rp/png/RP-appicon-180.png",  "sizes": "180x180",   "type": "image/png" },
+    { "src": "/brand/rp/png/RP-appicon-1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
