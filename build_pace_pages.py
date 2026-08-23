@@ -288,7 +288,7 @@ def build_spoke(slug, label, T, prevg, nextg):
 </div>
 
 <div class="fuel">
-  <h3>⚡ <span data-i18n="fuel_h">Fueling for a {label} marathon</span></h3>
+  <h3><svg class="rp-i" aria-hidden="true" focusable="false"><use href="#rp-gel"></use></svg><span data-i18n="fuel_h">Fueling for a {label} marathon</span></h3>
   <p data-i18n="fuel_p">At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fueling in training — never race on something new.</p>
   <a class="cta" href="https://athletespick.com?utm_source=raceplanner&utm_medium=fuelplan&utm_campaign=marathon_{slug}" target="_blank" rel="noopener" onclick="rpFuel()"><span data-i18n="fuel_cta">Build your race-day fuel →</span></a>
 </div>
@@ -316,7 +316,7 @@ def build_spoke(slug, label, T, prevg, nextg):
   <div class="moregrid" style="margin-top:16px">
 {adj_html}
     <a class="morelink" href="/pace/marathon/"><span class="ic">≡</span><span data-i18n="allgoals">All marathon goal times</span></a>
-    <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
+    <a class="morelink" href="/pace/"><span class="ic"><svg class="rp-i" aria-hidden="true" focusable="false"><use href="#rp-time"></use></svg></span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
   </div>
   <p class="disc" data-i18n="disc">Times are mathematical even-pace targets, not a guarantee. Real results vary with course, weather, fitness and fueling. Nutrition guidance is general — consult a professional for individual needs.</p>
 </div>
@@ -386,7 +386,7 @@ def build_hub():
     for i,(slug,label,T) in enumerate(GOALS):
         pk = T/MARATHON
         cards.append(
-          f'<a class="morelink" href="/pace/marathon/{slug}/"><span class="ic">🏁</span>'
+          f'<a class="morelink" href="/pace/marathon/{slug}/"><span class="ic"><svg class="rp-i" aria-hidden="true" focusable="false"><use href="#rp-finish"></use></svg></span>'
           f'<span><b>{label}</b> · <span style="color:var(--text-3)">{msec(pk)}/km</span></span></a>')
         ld_items.append({"@type":"ListItem","position":i+1,"name":f"{label} marathon pace","url":f"{BASE}/pace/marathon/{slug}/"})
     cards_html = "\n".join(cards)
@@ -411,8 +411,8 @@ def build_hub():
   <h2 data-i18n="how_h">How to use a marathon pace chart</h2>
   <p data-i18n="how_p">Your goal time divided by 42.195 km gives the pace you must average. The hard part is holding it evenly: banking time in the first half is the number-one cause of the late-race collapse known as "hitting the wall". Each goal page below shows your exact 5K, 10K, halfway and 30K checkpoints so you can pace by feel and by watch.</p>
   <div class="moregrid" style="margin-top:14px">
-    <a class="morelink" href="/pace/"><span class="ic">⏱</span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
-    <a class="morelink" href="/"><span class="ic">🔥</span><span data-i18n="hyrox">HYROX finish-time calculator</span></a>
+    <a class="morelink" href="/pace/"><span class="ic"><svg class="rp-i" aria-hidden="true" focusable="false"><use href="#rp-time"></use></svg></span><span data-i18n="tool">Pace calculator &amp; predictor</span></a>
+    <a class="morelink" href="/"><span class="ic"><svg class="rp-i" aria-hidden="true" focusable="false"><use href="#rp-effort"></use></svg></span><span data-i18n="hyrox">HYROX finish-time calculator</span></a>
   </div>
 </div>
 {ld}

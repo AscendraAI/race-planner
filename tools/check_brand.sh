@@ -15,6 +15,27 @@ n=$(grep -c 'sc-camel-view-box' brand/icons.svg || true)
 n=$(grep -c '<symbol' brand/icons.svg || true)
 [ "$n" = "16" ] && ok "아이콘 16종" || no "아이콘 $n종 (16 기대)"
 
+echo "== 스프라이트 =="
+if python3 tools/sync_sprite.py --check >/dev/null 2>&1; then
+  n=$(grep -c '<symbol' brand/icons.svg brand/icons-ext.svg | awk -F: '{s+=$2} END{print s}')
+  ok "nav.js 스프라이트가 원본과 일치 (아이콘 ${n}종)"
+else
+  no "nav.js 스프라이트가 원본과 어긋남 — tools/sync_sprite.py 실행 필요"
+fi
+# 참조는 두 갈래다 — nav.js 는 icon("time") / ic:"time" 으로 이름만 넘기고
+# href 를 실행 시점에 조립한다. 페이지 HTML 은 <use href="#rp-time"> 을 직접 쓴다.
+# 문자열 `href="#rp-` 만 찾으면 nav.js 쪽이 통째로 안 잡힌다.
+refs=$(
+  { grep -o 'icon("[a-z-]*"' nav.js | sed 's/icon("//;s/"//'
+    grep -o 'ic:"[a-z-]*"' nav.js | sed 's/ic:"//;s/"//'
+    grep -rho 'href="#rp-[a-z-]*"' --include='*.html' . 2>/dev/null | sed 's/.*#rp-//;s/"//'
+  } | sort -u )
+m=0
+for id in $refs; do
+  grep -q "id=\"rp-$id\"" brand/icons.svg brand/icons-ext.svg || { no "없는 아이콘을 참조: rp-$id"; m=1; }
+done
+[ "$m" = "0" ] && ok "아이콘 참조 $(echo "$refs" | wc -w | tr -d ' ')종 전부 존재 ($(echo $refs | tr '\n' ' '))"
+
 echo "== 지오메트리 =="
 w=$(grep -oh 'stroke-width="[0-9.]*"' brand/rp/svg/RP-mark-dark.svg brand/rp/svg/RP-h-dark.svg brand/ap/*.svg | sort -u | tr '\n' ' ')
 [ "$w" = 'stroke-width="9" ' ] && ok "링 굵기 9 단일 (가이드 규격)" || no "링 굵기가 섞였다: $w"

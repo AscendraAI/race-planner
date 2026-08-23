@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<!-- RP 아이콘 확장 — 가이드에 없어서 직접 그린 것들.
+
+     brand/icons.svg 는 tools/extract_brand.py 가 디자인가이드에서 뽑아 다시 쓴다.
+     거기에 손으로 그린 것을 넣으면 다음 추출에 조용히 날아간다. 그래서 분리한다.
+
+     가이드 §08 규격을 그대로 따른다 — 24 박스 · stroke 2 · butt · miter ·
+     fill 없음 · currentColor. 검사는 tools/sync_sprite.py 가 한다.
+
+     러닝화(👟)도 그려 봤지만 뺐다. 24 박스에 직선으로 옮기면 20px 에서
+     신발이 아니라 언덕으로 읽힌다 — 후보 5안을 그려 확인했다. 쓰이는 자리가
+     가이드 문서 한 곳뿐이라 억지로 넣지 않는다.
+
+     이 4종은 가이드가 정한 자산이 아니다. 디자인 승인을 받으면 가이드 1.1 에
+     넣고 이 파일을 비우는 것이 맞다. -->
+
+  <symbol id="rp-poster" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- 액자 안의 능선 — 코스 포스터 -->
+    <rect x="3" y="4" width="18" height="16"></rect>
+    <path d="M3 16 L9 11 L13 14 L17 10 L21 14"></path>
+  </symbol>
+
+  <symbol id="rp-guide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- 펼친 책 -->
+    <path d="M4 4 L10 4 L12 6 L14 4 L20 4 L20 18 L14 18 L12 20 L10 18 L4 18 Z"></path>
+    <path d="M12 6 L12 20"></path>
+  </symbol>
+
+  <symbol id="rp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- 자물쇠 — "브라우저 안에서만 처리됩니다" 신뢰 표시에 쓴다 -->
+    <rect x="4" y="10" width="16" height="11"></rect>
+    <path d="M8 10 L8 7 A4 4 0 0 1 16 7 L16 10"></path>
+  </symbol>
+
+
+  <symbol id="rp-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter">
+    <!-- 장바구니 — 제휴 링크 표시 -->
+    <path d="M2 3 L5 3 L7 15 L19 15 L21 7 L6 7"></path>
+    <circle cx="9" cy="19.5" r="1.5"></circle>
+    <circle cx="18" cy="19.5" r="1.5"></circle>
+  </symbol>
+</svg>
