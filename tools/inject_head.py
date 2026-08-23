@@ -21,7 +21,27 @@ MARK = "<!-- rp-head:start -->"
 END = "<!-- rp-head:end -->"
 
 
-def block(canonical):
+# 섹션 공용 CSS. 인라인 <style> 을 걷어낸 페이지가 대신 싣는다.
+#
+# 블록 **맨 앞**에 넣는 것이 중요하다. 원래 인라인 <style> 이 rp.css 보다
+# 앞에 있었으므로 body·h1·p 처럼 특이도가 같은 선언은 rp.css 가 이기고 있었다.
+# 이 링크를 rp.css 뒤에 두면 그 승패가 조용히 뒤집힌다.
+#
+# guide/index.html(허브)은 서브페이지와 CSS 계보가 달라 제외한다.
+SECTION_CSS = [
+    (os.path.join("guide", ""), "/rp-guide.css", {os.path.join("guide", "index.html")}),
+]
+
+
+def section_links(rel):
+    out = []
+    for prefix, href, exclude in SECTION_CSS:
+        if rel.startswith(prefix) and rel not in exclude:
+            out.append(f'<link rel="stylesheet" href="{href}" />')
+    return ("\n".join(out) + "\n") if out else ""
+
+
+def block(canonical, extra_css=""):
     """
     og:url 은 페이지의 canonical 을 그대로 쓴다 — 둘이 어긋나면 크롤러가 혼란한다.
 
@@ -31,7 +51,7 @@ def block(canonical):
     """
     og_url_line = f'<meta property="og:url" content="{canonical}" />\n' if canonical else ""
     return f"""{MARK}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+{extra_css}<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -73,7 +93,7 @@ def main():
         rel = os.path.relpath(path, ROOT)
 
         canon = re.search(r'<link\s+rel="canonical"\s+href="([^"]*)"', html, re.I)
-        new_block = block(canon.group(1) if canon else None)
+        new_block = block(canon.group(1) if canon else None, section_links(rel))
 
         if MARK in html:
             # 이미 있으면 통째로 교체 (멱등)
