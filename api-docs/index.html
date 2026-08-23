@@ -53,7 +53,16 @@
 <tr><td><code>time</code></td><td><code>H:MM:SS</code></td><td data-i18n="time">Prefills finish time.</td></tr>
 <tr><td><code>lang</code></td><td><code>ko</code> or <code>en</code></td><td data-i18n="lang">Forces page language.</td></tr>
 </tbody></table><a class="example" href="/pace/?distance=42.195&time=4:00:00">https://raceplanner.athletespick.com/pace/?distance=42.195&amp;time=4:00:00</a><p class="muted" data-i18n="lang_note">If lang is omitted, language is detected from browser language and timezone.</p></section>
-<footer><span data-i18n="foot">Race Planner · free race-day planning tools</span> · <a href="/ai/">AI guide</a> · <a href="/llms.txt">llms.txt</a></footer>
+<footer><span data-i18n="foot">Race Planner · free race-day planning tools</span> · <a href="/ai/">AI guide</a> · <a href="/llms.txt">llms.txt</a>
+<!-- rp-foot:start -->
+<nav class="rp-foot__legal">
+<a href="/about/">About</a>
+<a href="/privacy/">Privacy</a>
+<a href="/terms/">Terms</a>
+<a href="/contact/">Contact</a>
+</nav>
+<!-- rp-foot:end -->
+</footer>
 </main>
 <script>
 var I18N={en:{title:"URL Parameters | Race Planner",desc:"URL parameter reference for Race Planner GPX race planning and marathon pace tools.",h1:"Race Planner parameter reference",lead:"These URLs prefill tool inputs. They never auto-run calculations, so analytics stay tied to user clicks.",param:"Param",format:"Format",behavior:"Behavior",goal:"Prefills goal finish time.",temp:"Parsed as Celsius for AI links; invalid values are ignored.",level:"Prefills fueling level.",race:"Reserved for future race presets. Parsed but unused.",lang:"Forces page language.",distance:"Prefills preset race distance or custom kilometers.",time:"Prefills finish time.",lang_note:"If lang is omitted, language is detected from browser language and timezone.",foot:"Race Planner · free race-day planning tools"},ko:{title:"URL 파라미터 | 레이스 플래너",desc:"레이스 플래너 GPX 레이스 플랜과 마라톤 페이스 도구의 URL 파라미터 안내.",h1:"레이스 플래너 파라미터 안내",lead:"이 URL은 도구 입력값만 프리필합니다. 계산은 자동 실행하지 않아 분석 이벤트가 사용자 클릭에만 연결됩니다.",param:"파라미터",format:"형식",behavior:"동작",goal:"목표 완주 시간을 프리필합니다.",temp:"AI 링크용 섭씨 값으로 파싱합니다. 유효하지 않은 값은 무시합니다.",level:"보급 수준을 프리필합니다.",race:"향후 대회 프리셋용 예약값입니다. 파싱만 하고 사용하지 않습니다.",lang:"페이지 언어를 고정합니다.",distance:"기본 대회 거리 또는 직접 입력 km를 프리필합니다.",time:"완주 시간을 프리필합니다.",lang_note:"lang이 없으면 브라우저 언어와 시간대로 언어를 감지합니다.",foot:"레이스 플래너 · 무료 레이스 당일 플래닝 도구"}};

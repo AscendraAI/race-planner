@@ -27,7 +27,8 @@
   // 2) model
   var W={planner:{ko:"레이스플래너",en:"Planners"},poster:{ko:"러닝인증샷",en:"Run Snapshot"},
     courses:{ko:"코스찾기",en:"Find Courses"},guide:{ko:"가이드",en:"Guides"},
-    browse:{ko:"둘러보기",en:"Explore"},lang:{ko:"언어",en:"Language"}};
+    browse:{ko:"둘러보기",en:"Explore"},lang:{ko:"언어",en:"Language"},
+    apservice:{ko:"Athlete's Pick의 서비스",en:"An Athlete's Pick service"}};
   var TOOLS=[
     {href:"/gpx/",ic:"🗺️",ko:"GPX 레이스플랜",en:"GPX Race Plan",dko:"GPX로 구간별 페이스·완주 계획",den:"Split pace & finish plan from a GPX"},
     {href:"/hyrox/",ic:"🏋️",ko:"하이록스 완주 계산기",en:"HYROX Calculator",dko:"목표 완주시간별 러닝 페이스·록스존",den:"Run pace & roxzone by goal time"},
@@ -91,6 +92,24 @@
       '</aside>';
   }
 
+
+  /* 푸터 AP 배지 (가이드 §02 — 가로 락업 18px + "Athlete's Pick의 서비스").
+     계열 인지는 푸터가 담당한다. 문면이 언어에 따라 바뀌므로 정적 HTML 이
+     아니라 여기서 그린다. 락업은 외부 브랜드라 currentColor 로 바꾸지 않고
+     원본 파일을 <img> 로 그대로 쓴다.
+
+     loading="lazy" 를 쓰지 않는다 — JS 로 나중에 삽입한 <img> 에서는 lazy 가
+     트리거되지 않아 영영 로드되지 않는 것을 확인했다(naturalWidth 0). 4KB 라
+     lazy 의 이득도 없다. */
+  function apBadge(){
+    if(document.querySelector(".rp-apbadge")) return;
+    var f=document.querySelector("footer"); if(!f) return;
+    var d=document.createElement("div"); d.className="rp-apbadge";
+    d.innerHTML='<img src="/brand/ap/AP-h-arc-perf.svg" alt="Athlete\'s Pick" width="109" height="18">'+
+      '<span>'+L(W.apservice)+'</span>';
+    var legal=f.querySelector(".rp-foot__legal");
+    if(legal) f.insertBefore(d, legal); else f.appendChild(d);
+  }
   function build(){
     // header: replace existing <header> or prepend to body
     var box=document.createElement("div"); box.innerHTML=headerHTML();
@@ -116,6 +135,7 @@
     document.getElementById("rpn-hamb").addEventListener("click",openDrawer);
     document.getElementById("rpn-dclose").addEventListener("click",closeDrawer);
     scrim.addEventListener("click",closeDrawer);
+    apBadge();
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",build); else build();
 })();

@@ -162,6 +162,14 @@ def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
 <footer>
   <span data-i18n="foot1">Race Planner · free tools for runners and HYROX athletes</span> — <a href="/pace/" data-i18n="foot_calc">Pace calculator</a><br/>
   <span data-i18n="foot2">Single-serve sports nutrition</span> — <a href="https://athletespick.com?utm_source=raceplanner&utm_medium=footer" target="_blank" rel="noopener">Athlete's Pick</a>
+<!-- rp-foot:start -->
+<nav class="rp-foot__legal">
+<a href="/about/">About</a>
+<a href="/privacy/">Privacy</a>
+<a href="/terms/">Terms</a>
+<a href="/contact/">Contact</a>
+</nav>
+<!-- rp-foot:end -->
 </footer>
 </div>
 <script>
