@@ -120,7 +120,7 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 
 def page_shell(title, desc, canon, body, i18n_js, extra_head=""):
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-page="pace-marathon">
 <head>
 <meta charset="UTF-8" />
 {GTAG}
@@ -449,10 +449,27 @@ def update_sitemap():
     print("sitemap updated:", s.count("<loc>"), "urls")
 
 # ---------------- WRITE ----------------
+DRIFT = []
+
+
 def wr(path, content):
+    """
+    --check 모드에서는 쓰지 않고 비교만 한다.
+
+    pace/marathon/ 11개는 생성물이다. 누가 직접 편집하면 다음 빌드에 날아가므로,
+    이 검사가 이 저장소에서 가장 중요한 회귀 방어선이다.
+    """
+    if CHECK:
+        cur = open(path, encoding="utf-8").read() if os.path.exists(path) else None
+        if cur != content:
+            DRIFT.append(path)
+        return len(content)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf-8").write(content)
     return len(content)
+
+CHECK = "--check" in sys.argv   # 파일을 쓰지 않고 드리프트만 보고한다
+
 
 def main():
     total = 0; n = 0
@@ -463,6 +480,14 @@ def main():
         nextg = (GOALS[i+1][0], GOALS[i+1][1]) if i<len(GOALS)-1 else None
         p = f"{OUT}/pace/marathon/{slug}/index.html"
         total += wr(p, build_spoke(slug, label, T, prevg, nextg)); n += 1
+    if CHECK:
+        if DRIFT:
+            print(f"DRIFT  생성물 {len(DRIFT)}개가 소스와 어긋납니다 — 직접 편집했습니까?")
+            for d in DRIFT:
+                print("  " + d)
+            sys.exit(1)
+        print(f"OK  생성물 {n}개가 소스와 일치합니다 (드리프트 없음)")
+        return
     update_sitemap()
     print(f"OK  wrote {n} pages, {total} bytes  -> {OUT}/pace/marathon/")
     # quick self-check on one page's math
