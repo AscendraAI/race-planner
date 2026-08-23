@@ -31,6 +31,13 @@ def block(canonical):
     """
     og_url_line = f'<meta property="og:url" content="{canonical}" />\n' if canonical else ""
     return f"""{MARK}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/rp.css" />
+<link rel="stylesheet" href="/rp-app.css" />
+<script src="/nav.js" defer></script>
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

@@ -1,0 +1,275 @@
+/* ==========================================================================
+ RP 셸 — 헤더 · 로고 · 드로어 · 푸터
+ --------------------------------------------------------------------------
+ nav.js 가 CSS 문자열로 들고 있던 것을 옮겼다. JS 안에 있으면 (a) 스타일이
+ 스크립트 실행 뒤에야 적용되고 (b) 하드코딩 폴백이 토큰을 이긴다. 실제로
+ `var(--accent,#c8ff43)` 의 폴백 때문에 18페이지 로고가 폐기색으로 떠 있었다.
+
+ 클래스 접두는 rpn-* 를 유지한다. 이름을 바꾸면 JS 와 CSS 를 동시에 고쳐야
+ 하는데 이 단계에서 얻는 게 없다.
+
+ 레이어에 넣지 않는다 — 이게 중요하다.
+
+ 페이지 인라인 CSS 는 거의 모두 `*{margin:0;padding:0}` 리셋으로 시작한다.
+ 레이어 밖(unlayered) 선언은 특이도와 무관하게 레이어 안 선언을 이기므로,
+ 셸을 @layer components 에 넣으면 그 리셋 하나에 헤더 정렬이 무너진다.
+ 실제로 그렇게 만들었다가 .rpn-bar 의 margin:0 auto 가 죽어 헤더가 좌측에
+ 붙는 것을 확인했다.
+
+ 페이지를 @layer page 로 감싸도 해결되지 않는다. page 가 components 보다
+ 나중 레이어라 여전히 페이지 리셋이 이긴다. 레이어는 이 문제를 못 푼다.
+
+ 그래서 셸은 레이어 밖에 두고 특이도로 이긴다 — .rpn-bar(0,1,0) 가
+ *(0,0,0) 를 이긴다. 페이지들이 각자의 리셋을 버리고 공통 베이스로 옮겨온
+ 뒤에(P5~P11) 다시 레이어로 정리한다.
+ ========================================================================== */
+
+
+/* --- 헤더 ------------------------------------------------------------- */
+
+[data-rpn] * { box-sizing: border-box; }
+
+.rpn-hdr {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  /* 가이드 §07 — 그림자 없음. backdrop-filter 도 층위를 흐리므로 쓰지 않는다.
+     층위는 1px 선과 면 밝기로만 만든다. */
+}
+
+.rpn-bar {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 60px;
+}
+
+/* --- 로고 ------------------------------------------------------------- */
+/* 가이드 §02 — RP 락업 nosub · 높이 22px · 좌측 정렬.
+   서브라인은 헤더에서 쓰지 않는다(22px 에서 캡 5.9px 가 되어 무너진다). */
+
+.rpn-logo {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  color: var(--text);
+  text-decoration: none;
+}
+.rpn-lockup { height: 22px; width: auto; display: block; }
+.rpn-markonly { display: none; height: 22px; width: 22px; }
+
+/* 좁은 화면에서는 마크 단독. 락업 비율 7.727:1 이라 22px 높이에 폭 170px 인데,
+   햄버거 42 + 패딩 36 을 더하면 248px — 360px 뷰포트에는 들어가지만
+   420px 미만에서 네비 여백이 빠듯해진다. */
+@media (max-width: 420px) {
+  .rpn-lockup { display: none; }
+  .rpn-markonly { display: block; }
+}
+
+.rpn-grow { flex: 1; }
+
+/* --- 데스크톱 네비 ----------------------------------------------------- */
+
+.rpn-nav { display: flex; align-items: center; gap: 2px; }
+
+.rpn-nav > a,
+.rpn-gbtn {
+  font: 600 14px/1 var(--font-kr);
+  color: var(--text-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
+.rpn-nav > a:hover,
+.rpn-gbtn:hover { background: var(--surface-3); color: var(--text); }
+.rpn-nav > a.rpn-on,
+.rpn-grp.rpn-o .rpn-gbtn { color: var(--acc-line); background: var(--surface-3); }
+.rpn-grp.rpn-o .rpn-gbtn { color: var(--text); }
+
+.rpn-caret { width: 9px; height: 9px; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform var(--t-fast); }
+.rpn-grp.rpn-o .rpn-caret { transform: rotate(180deg); }
+.rpn-grp { position: relative; }
+
+.rpn-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 250px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  padding: 7px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: var(--t-base) var(--ease);
+  z-index: 60;
+}
+.rpn-grp.rpn-o .rpn-menu,
+.rpn-lang.rpn-o .rpn-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.rpn-menu > a {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 10px 11px; border-radius: var(--radius);
+  color: var(--text-2); text-decoration: none;
+}
+.rpn-menu > a:hover { background: var(--surface-3); color: var(--text); }
+.rpn-menu > a.rpn-cur { background: var(--surface-3); }
+
+.rpn-mi {
+  width: 30px; height: 30px; border-radius: var(--radius);
+  background: var(--surface-3);
+  display: grid; place-items: center;
+  font-size: 15px; flex: none; margin-top: 1px;
+}
+.rpn-mi .rp-i { width: 18px; height: 18px; }
+.rpn-mtx { display: flex; flex-direction: column; }
+.rpn-mt { font-weight: 700; font-size: 13.5px; color: var(--text); }
+.rpn-md { font-size: 11.5px; color: var(--text-3); font-weight: 500; margin-top: 2px; line-height: 1.3; }
+
+/* --- 언어 ------------------------------------------------------------- */
+
+.rpn-lang { position: relative; flex: none; }
+.rpn-lbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 700 12.5px/1 var(--font-mono);
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  padding: 8px 11px;
+  border-radius: var(--radius-pill);   /* 칩류 — 완전한 원만 예외 (§07) */
+  cursor: pointer;
+}
+.rpn-lbtn:hover { border-color: var(--text-3); color: var(--text); }
+.rpn-globe { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.rpn-lmenu { left: auto; right: 0; min-width: 150px; }
+.rpn-lmenu button {
+  display: flex; width: 100%; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 10px 12px; border-radius: var(--radius);
+  color: var(--text-2); background: none; border: none; cursor: pointer;
+  font: 600 13.5px var(--font-kr);
+}
+.rpn-lmenu button:hover { background: var(--surface-3); color: var(--text); }
+.rpn-lmenu button.rpn-on { color: var(--acc-line); }
+.rpn-lmenu button.rpn-on::after { content: '\2713'; }
+
+/* --- 햄버거 · 드로어 --------------------------------------------------- */
+
+.rpn-hamb {
+  display: none; flex: none; width: 42px; height: 42px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: var(--surface-2);
+  color: var(--text);
+  align-items: center; justify-content: center; cursor: pointer;
+}
+.rpn-hamb svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+
+.rpn-scrim {
+  position: fixed; inset: 0;
+  background: var(--scrim);
+  opacity: 0; visibility: hidden;
+  transition: var(--t-base) var(--ease);
+  z-index: 1250;
+}
+.rpn-scrim.rpn-open { opacity: 1; visibility: visible; }
+
+.rpn-drawer {
+  position: fixed; top: 0; right: 0;
+  height: 100dvh; width: min(86vw, 340px);
+  background: var(--surface-2);
+  border-left: 1px solid var(--line-2);
+  z-index: 1300;
+  transform: translateX(100%);
+  transition: transform var(--t-slow) var(--ease);
+  display: flex; flex-direction: column;
+  padding: 16px 16px calc(18px + env(safe-area-inset-bottom));
+}
+.rpn-drawer.rpn-open { transform: translateX(0); }
+
+.rpn-dhead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 14px; margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.rpn-dhead .rpn-lockup { height: 20px; }
+.rpn-dclose {
+  width: 38px; height: 38px; border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: var(--surface-3);
+  color: var(--text);
+  display: grid; place-items: center; cursor: pointer;
+}
+.rpn-dclose svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+
+.rpn-dnav { display: flex; flex-direction: column; gap: 1px; overflow-y: auto; flex: 1; padding-top: 6px; }
+.rpn-dnav a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 12px; border-radius: var(--radius);
+  color: var(--text); font-weight: 700; font-size: 15.5px; text-decoration: none;
+}
+.rpn-dnav a:hover, .rpn-dnav a:active { background: var(--surface-3); }
+.rpn-dnav a.rpn-on { color: var(--acc-line); background: var(--surface-3); }
+.rpn-dnav a.rpn-sub { font-size: 14.5px; font-weight: 600; color: var(--text-2); }
+.rpn-dnav a .rpn-mi { width: 29px; height: 29px; background: var(--surface); margin-top: 0; }
+
+.rpn-dsec {
+  font: 600 11px/1 var(--font-display);
+  letter-spacing: .13em; color: var(--text-3);
+  text-transform: uppercase; padding: 15px 12px 6px;
+}
+.rpn-dlang { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 8px; }
+.rpn-dlbl {
+  font: 600 11px/1 var(--font-display);
+  letter-spacing: .12em; color: var(--text-3);
+  text-transform: uppercase; padding: 0 4px 9px;
+}
+.rpn-seg { display: flex; gap: 8px; }
+.rpn-seg button {
+  flex: 1; padding: 13px; border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: var(--surface-3); color: var(--text-2);
+  font-weight: 700; font-size: 14.5px; cursor: pointer;
+  font-family: var(--font-kr);
+}
+/* 면에는 브랜드 색 그대로, 그 위 글자는 언제나 Ink (§03) */
+.rpn-seg button.rpn-on {
+  background: var(--acc-fill); color: var(--acc-on); border-color: var(--acc-fill);
+}
+
+@media (max-width: 820px) {
+  .rpn-nav, .rpn-lang { display: none; }
+  .rpn-hamb { display: inline-flex; }
+}
+
+/* --- 푸터 AP 배지 (§02 — 높이 18px + "Athlete's Pick의 서비스") --------- */
+
+.rp-apbadge {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: var(--sp-4);
+  font-size: 12px; color: var(--text-3);
+}
+.rp-apbadge img { height: 18px; width: auto; display: block; }
+
+/* --- 푸터 법적 링크 ---------------------------------------------------- */
+
+.rp-foot__legal {
+  display: flex; flex-wrap: wrap; gap: 4px 10px;
+  margin-top: var(--sp-3);
+  font-size: 12px;
+}
+.rp-foot__legal a { color: var(--text-3); text-decoration: none; }
+.rp-foot__legal a:hover { color: var(--text-2); text-decoration: underline; }

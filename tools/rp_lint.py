@@ -70,6 +70,9 @@ def check_hardcoded_color(path, text):
     pat = re.compile(r"#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(")
     chunks = style_blocks(text) if path.endswith(".html") else [(text, 0)]
     for chunk, base in chunks:
+        # 주석을 먼저 걷어낸다 — 설명문에 든 색상값(#FBD32C 같은)까지 세면
+        # 문서화를 잘 할수록 위반이 늘어나는 이상한 유인이 생긴다
+        chunk = re.sub(r"/\*.*?\*/", " ", chunk, flags=re.S)
         for line in chunk.split(";"):
             if any(tok in line for tok in COLOR_EXEMPT_TOKENS):
                 continue

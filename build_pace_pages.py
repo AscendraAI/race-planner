@@ -56,6 +56,10 @@ HEAD_FONTS_ADS = (
     '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">'
     '<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">'
     '<link rel="stylesheet" href="/rp.css">'
+    '<link rel="stylesheet" href="/rp-app.css">'
+    # nav.js 를 실어 손으로 쓴 18페이지와 같은 셸을 쓴다. 이걸로 HEADER 상수와
+    # NAV_PAINT 로 굴러가던 두 번째 내비게이션 로직이 사라진다.
+    '<script src="/nav.js" defer></script>'
     f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADS}" crossorigin="anonymous"></script>'
 )
 
@@ -166,7 +170,6 @@ var LANG="en";
 {I18N_CORE}
 LANG=detectLang();applyLang();
 </script>
-{NAV_PAINT}
 </body>
 </html>"""
 

@@ -289,7 +289,7 @@ body{font-family:var(--font-kr);}
 /* 수치는 tabular. 자릿수가 흔들리면 비교가 불가능하다 (§06) */
 table td,table th,.num,.mono{font-variant-numeric:tabular-nums;}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"><link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/rp.css"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"><link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/rp.css"><link rel="stylesheet" href="/rp-app.css"><script src="/nav.js" defer></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -449,18 +449,6 @@ function setLang(l){LANG=l;localStorage.setItem("rp_lang",l);applyLang();}
 
 LANG=detectLang();applyLang();
 </script>
-<script>(function(){
-var NAV=[["/gpx/","GPX Race Plan","GPX 레이스플랜"],["/hyrox/","HYROX Calculator","하이록스 완주 계산기"],["/pace/","Marathon Pace & Predictor","마라톤 페이스·기록예측"],["/guide/","Guides","가이드"]];
-function lang(){return (window.LANG==="ko"||document.documentElement.lang==="ko")?"ko":"en";}
-function paint(){var L=lang();var path=location.pathname.replace(/index\.html$/,"");if(path.length>1)path=path.replace(/\/$/,"")+"/";
- document.querySelectorAll(".navlink[data-nav]").forEach(function(el){var it=NAV[+el.getAttribute("data-nav")];if(!it)return;
-  el.textContent=(L==="ko")?it[2]:it[1];
-  var href=it[0],active;if(href==="/")active=(path==="/");else if(href==="/guide/")active=path.indexOf("/guide/")===0;else active=path.indexOf(href)===0;
-  el.classList.toggle("active",active);});}
-var _s=window.setLang;if(typeof _s==="function"){window.setLang=function(l){_s(l);paint();};}
-if(document.readyState!=="loading")paint();else document.addEventListener("DOMContentLoaded",paint);
-setTimeout(paint,0);
-})();</script>
 <script>
 function rpFuel(){try{gtag('event','fuel_click',{sport:'run',pack:'marathon',medium:'fuelplan',campaign:'marathon_5-00'});}catch(e){}}
 try{gtag('event','plan_generated',{sport:'run',level:'5:00',medium:'seo_pace',dist_km:42.195});}catch(e){}
