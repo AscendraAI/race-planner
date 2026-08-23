@@ -52,7 +52,11 @@
      아크가 링과 같은 색이 되어 사라진다. 가이드 라이트판 락업이 아크에
      정확히 Blaze 를 쓰는 것이 근거다. */
   --brand-arc: #FBD32C;
-  --scrim: rgba(11, 11, 9, .55);   /* 드로어 뒤 암막 */
+  /* 제3자 브랜드가 강제하는 색. 우리 팔레트로 바꿀 수 없다 —
+     "Connect with Strava" 버튼은 브랜드 가이드가 색을 지정한다. */
+  --brand-strava: #FC4C02;
+  --brand-strava-on: #FFFFFF;
+  --scrim: rgba(11, 11, 9, .55);   /* 드로어 뒤 암막 · 모달 암막 */
 }
 
 [data-theme="light"] {
