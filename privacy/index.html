@@ -12,37 +12,34 @@
 <meta name="theme-color" content="#0B0B09" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0a0c10;--bg2:#0f1218;--panel:#13171f;--panel2:#1a1f29;--line:#262d39;--line2:#323b49;
-    --ink:#f3f6fa;--ink2:#cbd3dd;--sub:#8b97a6;--faint:#5a6573;--accent:#c8ff43;--accentink:#0b0f06;--mint:#6ee7a8;--mono:"Space Grotesk",ui-sans-serif,system-ui,sans-serif}
+  
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;
-    background-image:radial-gradient(120% 70% at 50% -10%,rgba(200,255,67,.06),transparent 55%);background-attachment:fixed;min-height:100vh}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-kr);-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:820px;margin:0 auto;padding:0 20px 60px}
-  header{position:sticky;top:0;z-index:50;padding:13px 0;border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg,rgba(10,12,16,.92),rgba(10,12,16,.55));backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px)}
-  .wrap-h{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;width:100%;flex-wrap:wrap}
-  .logo{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink);display:inline-flex;align-items:center;gap:9px}
-  .logo .mark{width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--accentink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:15px}
-  .logo b{color:var(--accent)}.spacer{flex:1}
-  .nav{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
-  .navlink{font-size:13px;color:var(--ink2);font-weight:600;padding:7px 10px;border-radius:9px;white-space:nowrap}
-  .navlink:hover{background:var(--panel2);color:var(--ink)}
-  .langtoggle{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden;margin-left:6px}
-  .langtoggle button{background:transparent;color:var(--sub);border:none;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
-  .langtoggle button.on{background:var(--accent);color:var(--accentink)}
-  @media(max-width:900px){.nav{order:3;flex-basis:100%;margin-top:8px}}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   h1{font-size:clamp(24px,5vw,32px);letter-spacing:-.5px;margin:30px 0 6px}
-  .updated{color:var(--faint);font-size:13px;margin-bottom:22px}
-  h2{font-size:18px;margin:28px 0 10px;color:var(--ink);letter-spacing:-.2px}
-  p,li{color:var(--ink2);font-size:15px;line-height:1.75;margin-bottom:10px}
+  .updated{color:var(--text-3);font-size:13px;margin-bottom:22px}
+  h2{font-size:18px;margin:28px 0 10px;color:var(--text);letter-spacing:-.2px}
+  p,li{color:var(--text-2);font-size:15px;line-height:1.75;margin-bottom:10px}
   ul{margin:0 0 10px 20px}
-  a.inl{color:var(--mint);text-decoration:underline}
-  .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
-  .box b{color:var(--ink)}
-  strong{color:var(--ink)}
-  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.9;text-align:center}
-  footer a{color:var(--sub)}footer a:hover{color:var(--mint)}
+  a.inl{color:var(--acc-line);text-decoration:underline}
+  .box{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0}
+  .box b{color:var(--text)}
+  strong{color:var(--text)}
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--text-3);line-height:1.9;text-align:center}
+  footer a{color:var(--text-3)}footer a:hover{color:var(--acc-line)}
   .ko,.en{display:none}
   html[data-l="ko"] .ko{display:block}html[data-l="en"] .en{display:block}
   li.ko,li.en{display:none}html[data-l="ko"] li.ko{display:list-item}html[data-l="en"] li.en{display:list-item}
