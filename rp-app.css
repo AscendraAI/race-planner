@@ -255,6 +255,67 @@
   .rpn-hamb { display: inline-flex; }
 }
 
+/* --- 레거시 헤더 · no-JS 폴백 ------------------------------------------
+ nav.js 는 로드되면 원본 <header> 를 제거하고 .rpn-hdr 로 갈아 끼운다. 그래서
+ 자바스크립트가 켜진 브라우저에서 아래 규칙은 단 하나의 요소도 잡지 못한다
+ (29페이지에서 실측 확인).
+
+ 그렇다고 지울 수는 없다. JS 가 꺼져 있으면 원본 헤더가 그대로 남아 사이트의
+ 유일한 내비게이션이 되기 때문이다. 원본 마크업을 HTML 에 남겨 두는 이유도
+ 같다 — 내부 링크가 정적 HTML 에 있어야 크롤링이 JS 실행에 의존하지 않는다.
+
+ 문제는 이 헤더 CSS 가 29페이지에 각자 한 벌씩, 폐기된 라임색으로 박혀 있었다는
+ 점이다. 마크업은 29페이지가 완전히 같은 구조라서(실측), 여기 한 벌로 합친다.
+ ---------------------------------------------------------------------- */
+
+body > header {
+  position: sticky; top: 0; z-index: 50;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+body > header .wrap-h {
+  max-width: 1080px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; gap: 10px; width: 100%;
+}
+body > header .logo {
+  font: 800 18px/1 var(--font-display);
+  letter-spacing: -.4px; color: var(--text);
+  display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+}
+body > header .logo .mark {
+  width: 24px; height: 24px; border-radius: var(--radius);
+  background: var(--acc-fill); color: var(--acc-on);
+  display: grid; place-items: center;
+  font: 700 15px/1 var(--font-mono);
+}
+body > header .logo b { color: var(--acc-line); }
+body > header .spacer { flex: 1; }
+body > header .nav { display: flex; gap: 3px; overflow-x: auto; scrollbar-width: none; }
+body > header .nav::-webkit-scrollbar { display: none; }
+body > header .navlink {
+  font: 600 13.5px/1 var(--font-kr);
+  color: var(--text-2); text-decoration: none;
+  padding: 9px 11px; border-radius: var(--radius); white-space: nowrap;
+}
+body > header .navlink:hover { background: var(--surface-3); color: var(--text); }
+body > header .navlink.active { color: var(--acc-line); background: var(--surface-3); }
+body > header .langtoggle { display: flex; gap: 4px; flex: none; }
+body > header .langtoggle button {
+  font: 700 12px/1 var(--font-mono);
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  padding: 8px 10px; border-radius: var(--radius-pill); cursor: pointer;
+}
+body > header .langtoggle button.on {
+  background: var(--acc-fill); color: var(--acc-on); border-color: var(--acc-fill);
+}
+
+@media (max-width: 900px) {
+  body > header .nav { display: none; }
+}
+
 /* --- 푸터 AP 배지 (§02 — 높이 18px + "Athlete's Pick의 서비스") --------- */
 
 .rp-apbadge {

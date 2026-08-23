@@ -276,7 +276,7 @@ def build_spoke(slug, label, T, prevg, nextg):
     <div><div class="mk" data-i18n="m21">Halfway</div><div class="mv">{half_t}</div></div>
     <div><div class="mk" data-i18n="m30">30K split</div><div class="mv">{hms(pk*30)}</div></div>
   </div>
-  <div class="hint" data-i18n="adjust">Want a different target? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.</div>
+  <div class="hint" data-i18n="adjust">Want a different target? Use the full <a href="/pace/" style="color:var(--acc-line)">pace calculator &amp; race predictor</a>.</div>
 </div>
 
 <div class="card">
@@ -331,7 +331,7 @@ def build_spoke(slug, label, T, prevg, nextg):
       "lead": f"The exact even pace, per-kilometer splits and checkpoint times you need to run a {label} marathon — plus fueling and equivalent race times. Free.",
       "need":"Required even pace","permi":"per mile","speed":"speed","finish":"finish",
       "m5":"5K split","m21":"Halfway","m30":"30K split",
-      "adjust":'Want a different target? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.',
+      "adjust":'Want a different target? Use the full <a href="/pace/" style="color:var(--acc-line)">pace calculator &amp; race predictor</a>.',
       "cp_sect":"CHECKPOINT SPLITS","cp_dist":"Distance","cp_time":"Time at even pace",
       "fuel_h": f"Fueling for a {label} marathon",
       "fuel_p": f"At roughly {hours:.1f} hours of running, aim for about <b>{lo_gph}–{hi_gph} g of carbohydrate per hour</b> (≈ {carb_lo}–{carb_hi} g total) and <b>{na_lo}–{na_hi} mg sodium per hour</b>. Test your exact fueling in training — never race on something new.",
@@ -354,7 +354,7 @@ def build_spoke(slug, label, T, prevg, nextg):
       "lead": f"{label} 마라톤 완주에 필요한 이븐 페이스·km별 구간·체크포인트 기록에 보급과 등가기록까지. 모두 무료.",
       "need":"필요 이븐 페이스","permi":"마일당","speed":"속도","finish":"완주",
       "m5":"5K 구간","m21":"중간지점","m30":"30K 구간",
-      "adjust":'다른 목표가 필요하세요? 전체 <a href="/pace/" style="color:var(--mint)">페이스 계산기·기록예측</a>을 쓰세요.',
+      "adjust":'다른 목표가 필요하세요? 전체 <a href="/pace/" style="color:var(--acc-line)">페이스 계산기·기록예측</a>을 쓰세요.',
       "cp_sect":"체크포인트 구간","cp_dist":"거리","cp_time":"이븐 페이스 기준 통과 기록",
       "fuel_h": f"{label} 마라톤 보급 전략",
       "fuel_p": f"약 {hours:.1f}시간 달리는 레이스라면 시간당 <b>탄수 {lo_gph}–{hi_gph} g</b>(총 {carb_lo}–{carb_hi} g)와 <b>나트륨 {na_lo}–{na_hi} mg</b>을 목표로 하세요. 정확한 보급은 반드시 훈련에서 테스트하고, 레이스 당일 새 제품은 금물입니다.",
@@ -387,7 +387,7 @@ def build_hub():
         pk = T/MARATHON
         cards.append(
           f'<a class="morelink" href="/pace/marathon/{slug}/"><span class="ic">🏁</span>'
-          f'<span><b>{label}</b> · <span style="color:var(--sub)">{msec(pk)}/km</span></span></a>')
+          f'<span><b>{label}</b> · <span style="color:var(--text-3)">{msec(pk)}/km</span></span></a>')
         ld_items.append({"@type":"ListItem","position":i+1,"name":f"{label} marathon pace","url":f"{BASE}/pace/marathon/{slug}/"})
     cards_html = "\n".join(cards)
     import json
@@ -405,7 +405,7 @@ def build_hub():
   <div class="moregrid">
 {cards_html}
   </div>
-  <div class="hint" data-i18n="custom">Need a time not listed, or another distance? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.</div>
+  <div class="hint" data-i18n="custom">Need a time not listed, or another distance? Use the full <a href="/pace/" style="color:var(--acc-line)">pace calculator &amp; race predictor</a>.</div>
 </div>
 <div class="info">
   <h2 data-i18n="how_h">How to use a marathon pace chart</h2>
@@ -423,7 +423,7 @@ def build_hub():
       "eyebrow":"MARATHON PACE CHART","h1":"Marathon Pace Chart by Goal Time",
       "lead":"Pick your target finish time to get the exact even pace, per-kilometer splits, checkpoint times and fueling for your marathon. Free, no sign-up.",
       "pick":"PICK YOUR GOAL",
-      "custom":'Need a time not listed, or another distance? Use the full <a href="/pace/" style="color:var(--mint)">pace calculator &amp; race predictor</a>.',
+      "custom":'Need a time not listed, or another distance? Use the full <a href="/pace/" style="color:var(--acc-line)">pace calculator &amp; race predictor</a>.',
       "how_h":"How to use a marathon pace chart",
       "how_p":'Your goal time divided by 42.195 km gives the pace you must average. The hard part is holding it evenly: banking time in the first half is the number-one cause of the late-race collapse known as "hitting the wall". Each goal page shows your exact 5K, 10K, halfway and 30K checkpoints so you can pace by feel and by watch.',
       "tool":"Pace calculator &amp; predictor","hyrox":"HYROX finish-time calculator",
@@ -435,7 +435,7 @@ def build_hub():
       "eyebrow":"마라톤 페이스표","h1":"목표시간별 마라톤 페이스표",
       "lead":"목표 완주시간을 고르면 이븐 페이스·km별 구간·체크포인트·보급까지 제공합니다. 무료, 가입 없음.",
       "pick":"목표를 고르세요",
-      "custom":'원하는 시간이 없거나 다른 거리가 필요하세요? 전체 <a href="/pace/" style="color:var(--mint)">페이스 계산기·기록예측</a>을 쓰세요.',
+      "custom":'원하는 시간이 없거나 다른 거리가 필요하세요? 전체 <a href="/pace/" style="color:var(--acc-line)">페이스 계산기·기록예측</a>을 쓰세요.',
       "how_h":"마라톤 페이스표 사용법",
       "how_p":'목표시간을 42.195 km로 나누면 평균 유지해야 할 페이스가 나옵니다. 어려운 건 이를 고르게 유지하는 것 — 전반에 시간을 벌어두면 후반 "벽"의 1순위 원인이 됩니다. 각 목표 페이지가 5K·10K·중간·30K 체크포인트를 정확히 보여주어 감과 시계로 페이싱할 수 있게 합니다.',
       "tool":"페이스 계산기·기록예측","hyrox":"하이록스 완주 기록 계산기",
