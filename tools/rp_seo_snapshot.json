@@ -1,6 +1,6 @@
 {
  "about/index.html": {
-  "body": "ac787c4b09a738d9",
+  "body": "9713b1a1229c639b",
   "canonical": "https://raceplanner.athletespick.com/about/",
   "description": "Race Planner(raceplanner.athletespick.com)는 러너·트레일러너·하이록스 선수를 위한 무료 도구 모음입니다 — 코스 포스터, 한국 트레일 코스 라이브러리, 하이록스 계산기, 마라톤 페이스 예측, 가이드.",
   "h1": [
@@ -393,7 +393,7 @@
   "title": "Guides — HYROX, Trail & Marathon Race Strategy | Race Planner"
  },
  "guide/nutrition/index.html": {
-  "body": "a38a2041205c2beb",
+  "body": "e3a8d352b649ddf3",
   "canonical": "https://raceplanner.athletespick.com/guide/nutrition/",
   "description": "HYROX fueling strategy: carbohydrate intake and gel count by race time, electrolytes and cramp prevention, how hydrogels work, and recovery — explained simply.",
   "h1": [
@@ -432,7 +432,7 @@
   "title": "HYROX Nutrition Guide — Gels & Electrolytes by Race Time | Race Planner"
  },
  "guide/pacing/index.html": {
-  "body": "2450a3b9ac9c468f",
+  "body": "0bbeb352957656a9",
   "canonical": "https://raceplanner.athletespick.com/guide/pacing/",
   "description": "A data-backed HYROX pacing guide: why in-race running is slower than your 5K, target run pace by goal finish time, the hidden 6.5% roxzone, and how to split the 8 runs.",
   "h1": [
@@ -470,7 +470,7 @@
   "title": "HYROX Pacing Guide — Run Pace by Goal Finish Time | Race Planner"
  },
  "guide/running-shoes/index.html": {
-  "body": "bbd4b28e3f9df5b3",
+  "body": "631ddeba6eb5144c",
   "canonical": "https://raceplanner.athletespick.com/guide/running-shoes/",
   "description": "How to pick running shoes that fit — daily trainer vs tempo vs carbon race shoes, sizing and fit rules, what drop and cushioning actually change, and when to replace them.",
   "h1": [
@@ -508,7 +508,7 @@
   "title": "How to Choose Running Shoes: A Simple, No-Hype Guide | Race Planner"
  },
  "guide/stations/index.html": {
-  "body": "ff24a88ebbf963c0",
+  "body": "a0dfcaec198b93fa",
   "canonical": "https://raceplanner.athletespick.com/guide/stations/",
   "description": "All 8 HYROX stations: order, weights, average times (Open men/women) and station-by-station tips. See where you lose and save the most time.",
   "h1": [
@@ -546,7 +546,7 @@
   "title": "HYROX 8 Stations Explained — Average Times, Order & Tips | Race Planner"
  },
  "guide/sub4-marathon/index.html": {
-  "body": "2e6b8dc976cf5300",
+  "body": "c8cd9b956e94a909",
   "canonical": "https://raceplanner.athletespick.com/guide/sub4-marathon/",
   "description": "How to break 4 hours in the marathon — the 5:41/km target pace, a full split table, a 16-week training outline, race-day fueling, and how to avoid the wall at 30K.",
   "h1": [
@@ -584,7 +584,7 @@
   "title": "Sub-4 Marathon: Pace, Training Plan & Race-Day Strategy | Race Planner"
  },
  "hyrox/index.html": {
-  "body": "e5d332d1799b45c8",
+  "body": "f6f3f9965e1293ac",
   "canonical": "https://raceplanner.athletespick.com/hyrox/",
   "description": "Enter your all-out 5K pace and get your predicted HYROX finish time, in-race run pace, per-station targets and an 8-run pacing plan. Based on real race data.",
   "h1": [
@@ -604,7 +604,7 @@
     "https://raceplanner.athletespick.com/hyrox/"
    ]
   ],
-  "i18n_count": 80,
+  "i18n_count": 78,
   "i18n_keys": [
    "age1",
    "age2",
@@ -633,8 +633,6 @@
    "foot2",
    "fuel_cta",
    "fuel_h",
-   "gear_disc",
-   "gear_h",
    "h1",
    "i1_h",
    "i1_l1",
@@ -697,7 +695,7 @@
   "title": "HYROX Time Calculator — Predict Your Finish from Your Run Pace | Race Planner"
  },
  "index.html": {
-  "body": "1e9cdb8ad64ee7a9",
+  "body": "e0014066a4791152",
   "canonical": "https://raceplanner.athletespick.com/",
   "description": "Upload your GPX and get a beautiful, shareable route poster of your run, ride or trail — distance, elevation, time and pace, ready for Instagram or print. Free.",
   "h1": [
@@ -772,7 +770,7 @@
   "title": "Route Poster — Turn your GPX into a framable running poster | Race Planner"
  },
  "pace/index.html": {
-  "body": "2a92d9c3a8fd8629",
+  "body": "72a8331dee7a1e95",
   "canonical": "https://raceplanner.athletespick.com/pace/",
   "description": "Free running pace calculator and race time predictor. Enter distance and time to get pace, speed and split times, or predict your 5K, 10K, half and full marathon times.",
   "h1": [
@@ -851,7 +849,7 @@
   "title": "Marathon Pace Calculator & Race Time Predictor | Race Planner"
  },
  "pace/marathon/2-45/index.html": {
-  "body": "b027de74ee5bc6fa",
+  "body": "ae5f5dd81e77c419",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/2-45/",
   "description": "Exact pace for a 2:45 marathon: 3:55/km (6:18/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -917,7 +915,7 @@
   "title": "2:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/3-00/index.html": {
-  "body": "bbaf2923769a2200",
+  "body": "31b9ce873120c897",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-00/",
   "description": "Exact pace for a 3:00 marathon: 4:16/km (6:52/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -984,7 +982,7 @@
   "title": "3:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/3-15/index.html": {
-  "body": "5a7a7c92b30df53f",
+  "body": "3877a0f3d162a462",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-15/",
   "description": "Exact pace for a 3:15 marathon: 4:37/km (7:26/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1051,7 +1049,7 @@
   "title": "3:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/3-30/index.html": {
-  "body": "6c8bba8a56f7b688",
+  "body": "b635019fdaf8de3d",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-30/",
   "description": "Exact pace for a 3:30 marathon: 4:59/km (8:01/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1118,7 +1116,7 @@
   "title": "3:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/3-45/index.html": {
-  "body": "f095e712a67f5641",
+  "body": "6453a20ea0071e00",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/3-45/",
   "description": "Exact pace for a 3:45 marathon: 5:20/km (8:35/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1185,7 +1183,7 @@
   "title": "3:45 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/4-00/index.html": {
-  "body": "7659eac3e0bd8131",
+  "body": "1cfecfa693880154",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-00/",
   "description": "Exact pace for a 4:00 marathon: 5:41/km (9:09/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1252,7 +1250,7 @@
   "title": "4:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/4-15/index.html": {
-  "body": "3cc56b0aaed5acb0",
+  "body": "41a4a17871d0626b",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-15/",
   "description": "Exact pace for a 4:15 marathon: 6:03/km (9:44/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1319,7 +1317,7 @@
   "title": "4:15 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/4-30/index.html": {
-  "body": "7d67b30e1b96abfe",
+  "body": "9b5b6500dee70d9d",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/4-30/",
   "description": "Exact pace for a 4:30 marathon: 6:24/km (10:18/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1386,7 +1384,7 @@
   "title": "4:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/5-00/index.html": {
-  "body": "20d8c527607c044e",
+  "body": "256637fb1de053d7",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/5-00/",
   "description": "Exact pace for a 5:00 marathon: 7:07/km (11:27/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1453,7 +1451,7 @@
   "title": "5:00 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/5-30/index.html": {
-  "body": "0a254a97491808e4",
+  "body": "7589a90d7c926498",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/5-30/",
   "description": "Exact pace for a 5:30 marathon: 7:49/km (12:35/mi). Full km splits, 5K/10K/halfway checkpoints, carb &amp; sodium fueling, and equivalent 5K/10K/half times. Free.",
   "h1": [
@@ -1519,7 +1517,7 @@
   "title": "5:30 Marathon Pace — Splits, Pace Chart &amp; Fueling | Race Planner"
  },
  "pace/marathon/index.html": {
-  "body": "ffedd7ae4b62eb80",
+  "body": "90e459ad45201417",
   "canonical": "https://raceplanner.athletespick.com/pace/marathon/",
   "description": "Free marathon pace chart. Pick a goal time (2:45 to 5:30) for exact even pace, per-km splits, 5K/10K/halfway checkpoints and carb &amp; sodium fueling.",
   "h1": [
@@ -1565,9 +1563,9 @@
   "title": "Marathon Pace Chart by Goal Time — Splits &amp; Fueling | Race Planner"
  },
  "privacy/index.html": {
-  "body": "6fae2690898477f1",
+  "body": "61858b787687257e",
   "canonical": "https://raceplanner.athletespick.com/privacy/",
-  "description": "raceplanner.athletespick.com 개인정보처리방침 — 쿠키, Google AdSense·Analytics, 쿠팡 파트너스 제휴, Strava 연동 시 데이터 처리 방식을 안내합니다.",
+  "description": "raceplanner.athletespick.com 개인정보처리방침 — 쿠키, Google AdSense·Analytics, Strava 연동 시 데이터 처리 방식을 안내합니다.",
   "h1": [
    "개인정보처리방침Privacy Policy"
   ],
@@ -1581,7 +1579,7 @@
   "title": "개인정보처리방침 | Race Planner"
  },
  "terms/index.html": {
-  "body": "dc766a86179599ea",
+  "body": "2b8cd19b2957c5ee",
   "canonical": "https://raceplanner.athletespick.com/terms/",
   "description": "Race Planner(raceplanner.athletespick.com) 이용약관 — 무료 도구 제공 조건, 데이터 정확성 고지, 광고·제휴 안내, 책임의 한계.",
   "h1": [

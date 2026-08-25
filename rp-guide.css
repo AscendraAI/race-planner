@@ -191,12 +191,11 @@
 .layout{display:block!important}
 .ad,.leader,.rail{display:none!important}
 
-  /* Coupang affiliate gear block */
-  .gearblock{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface-2)}
-  .gearblock .gearhead{font-weight:700;font-size:15px;color:var(--text);margin-bottom:12px}
-  .gearblock .geargrid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-  .gearblock .geargrid iframe{border-radius:var(--radius);overflow:hidden;background:var(--surface-3);max-width:100%}
-  .gearblock .geardisc{margin-top:12px;font-size:11px;color:var(--text-3);line-height:1.5}
+  
+  
+  
+  
+  
 
 /* --- stations 전용 ------------------------------------------------------
    급수대 가이드는 항목이 많아 본문 여백을 1~2px 씩 좁혀 두었다. 통합하면서
