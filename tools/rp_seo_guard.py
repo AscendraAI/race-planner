@@ -95,7 +95,8 @@ def meta(html, name=None, prop=None):
 def fingerprint(html):
     title = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
     canon = re.search(r'<link\s+rel="canonical"\s+href="([^"]*)"', html, re.I)
-    hrefl = sorted(re.findall(r'<link\s+rel="alternate"\s+hreflang="([^"]*)"\s+href="([^"]*)"', html, re.I))
+    # JSON snapshot stores pairs as arrays; compare the same type in memory.
+    hrefl = [list(pair) for pair in sorted(re.findall(r'<link\s+rel="alternate"\s+hreflang="([^"]*)"\s+href="([^"]*)"', html, re.I))]
     ld = [norm_jsonld(b) for b in re.findall(
         r'<script[^>]+type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S | re.I)]
     h1 = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).strip()

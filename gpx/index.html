@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+<script>if(new URLSearchParams(location.search).get('race')==='utnp'){document.documentElement.classList.add('utnp');document.write('<link rel="stylesheet" href="/assets/utnp.css">');}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
@@ -314,7 +315,7 @@ header{display:block}
 @media(max-width:880px){.nav{order:3;flex-basis:100%;margin-top:8px}}
 @media(max-width:520px){.logo .full{display:none}}
 </style><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204" crossorigin="anonymous"></script>
+  <script>if(!document.documentElement.classList.contains('utnp')){var ad=document.createElement('script');ad.async=true;ad.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6369966478235204';ad.crossOrigin='anonymous';document.head.appendChild(ad);}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GPX Race Plan","url":"https://raceplanner.athletespick.com/gpx/","description":"Upload any trail or road-race GPX to get a hill-adjusted pacing plan with elevation profile, per-kilometer splits, weather heat correction and fueling timing. Free, runs in your browser.","applicationCategory":"SportsApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does this adjust pace for hills?", "acceptedAnswer": {"@type": "Answer", "text": "It scores every segment's slope with the Minetti energy-cost curve, so climbs are paced slower and descents faster while holding your target finish time. Climbs steeper than about 20% are capped to a power-hike pace."}}, {"@type": "Question", "name": "Does it account for heat?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. When the forecast or climate-normal apparent temperature is above 15°C it applies a progressive slowdown (larger past 25°C and 30°C) and raises fluid and sodium targets."}}, {"@type": "Question", "name": "Is my GPX file uploaded anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your file is parsed locally in your browser and never leaves your device."}}]}</script>
 <!-- rp-head:start -->
@@ -339,6 +340,7 @@ header{display:block}
 <!-- rp-head:end -->
 </head>
 <body>
+<div id="utnp-app" aria-live="polite"></div>
 <header><div class="wrap-h">
   <a class="logo" href="/"><span class="mark">R</span><span class="full">Race&nbsp;<b>Planner</b></span></a>
   <span class="spacer"></span>
@@ -560,7 +562,7 @@ header{display:block}
 </footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>if(!document.documentElement.classList.contains('utnp'))document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');</script>
 <script>
 /* ================= i18n ================= */
 var I18N={
@@ -1163,8 +1165,9 @@ function buildShareCard(P){
   var ko=window.LANG==="ko";
   var L=ko?{plan:"GPX 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",f1:"무료 경사보정 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
         :{plan:"GPX RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",f1:"Free hill-adjusted race planner",f2:"Upload your GPX · get your plan free"};
+  if(document.documentElement.classList.contains('utnp')){L.f1='내 UTNP 레이스 플랜';L.f2='코스·목표 기록으로 만든 보급 계획';}
   x.fillStyle="#0a0c10";x.fillRect(0,0,W,H);x.textBaseline="alphabetic";
-  x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(L.plan,M,150);
+  x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(document.documentElement.classList.contains('utnp')?'#UTNP · '+(window.UTNP_DISCIPLINE||''):L.plan,M,150);
   x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.textAlign="right";x.fillText("@athletespick",W-M,150);
   x.strokeStyle="#262d39";x.lineWidth=2;x.beginPath();x.moveTo(M,192);x.lineTo(W-M,192);x.stroke();
   var tier=_rpTier(P,ko);
@@ -1193,6 +1196,7 @@ function buildShareCard(P){
   x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1684);
   return c;}
 function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
+  if(document.documentElement.classList.contains('utnp'))return '내 UTNP 플랜 ⛰️ '+(window.UTNP_DISCIPLINE||'')+' · 목표 '+fmt(P.goalSec)+' · 시간당 탄수화물 '+P.carbH+'g #UTNP @athletespick';
   return (window.LANG==="ko")
     ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.athletespick.com/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
     :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.athletespick.com/gpx #raceplanner #trailrunning @athletespick";}
@@ -1232,6 +1236,7 @@ function rpAfterRender(){var cp=document.getElementById("cardprev");if(cp)cp.sty
   t.style.display="";
 }catch(e){}})();
 </script>
+<script>if(document.documentElement.classList.contains('utnp'))document.write('<script src="/assets/event-config.js"><\/script><script src="/assets/utnp.js"><\/script>');</script>
 
 <script>/* rp_profile: login-free personalization (local only) */
 (function(){try{
