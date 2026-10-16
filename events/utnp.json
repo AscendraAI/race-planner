@@ -293,13 +293,14 @@
     }
   ],
   "participatingBrands": [
-    "GU 에너지 랩스",
+    "GU Energy Labs",
     "메달리스트",
     "바이탈솔루션",
     "올라 뉴트리션",
     "요헤미티"
   ],
   "copy": {
+    "opens": "UTNP 부스는 10/30에 열립니다. 플랜은 계속 볼 수 있습니다.",
     "closed": "UTNP 부스는 11/1에 끝났습니다. 플랜은 계속 볼 수 있습니다.",
     "disclaimer": "증상이 잦으면 전문가와 상담하세요",
     "headline": "UTNP 보급 플랜",
@@ -308,11 +309,12 @@
   },
   "indexFactors": {
     "ITRA": 1.0,
-    "UTMB": 1.05
+    "UTMB": 1.0
   },
-  "indexNote": "임시 근사 계수: ITRA 1.00, UTMB 1.05. 두 지수의 검증된 환산식이 없어 과거 우승 기록 대비 참고값으로만 사용.",
+  "indexNote": "인덱스 기반 추정치 · 검증된 환산식이 아닙니다",
+  "maxPerHour": 300,
   "brandAnswerKeys": {
-    "GU 에너지 랩스": "brand_gu",
+    "GU Energy Labs": "brand_gu",
     "메달리스트": "brand_medalist",
     "바이탈솔루션": "brand_vital",
     "올라 뉴트리션": "brand_olla",

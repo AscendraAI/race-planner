@@ -193,11 +193,19 @@ def check_i18n_nesting(path, text):
 
 def check_event_banned(path, text):
     """UTNP first-party runner copy must not contain efficacy or sales words."""
-    if rel(path) not in {"assets/utnp.js", "events/utnp.json"}:
+    file = rel(path)
+    if file not in {"assets/utnp.js", "events/utnp.json", "gpx/index.html"}:
         return []
-    return [(line_of(text, m.start()), m.group())
+    if file == "gpx/index.html":
+        # Only event-specific share card and caption copy belongs to this rule.
+        chunks = [(m.group(), m.start()) for m in re.finditer(
+            r"if\(document\.documentElement\.classList\.contains\('utnp'\)\)(?:\{[^}]*\}|[^\n]*)", text)]
+    else:
+        chunks = [(text, 0)]
+    return [(line_of(text, base + m.start()), m.group())
+            for chunk, base in chunks
             for word in BANNED_WORDS
-            for m in re.finditer(re.escape(word), text)]
+            for m in re.finditer(re.escape(word), chunk)]
 
 
 CHECKS = {
@@ -217,7 +225,7 @@ MUST_BE_ZERO = {"cycle", "i18n", "banned"}
 
 def run(selected):
     targets = html_files() + css_files()
-    event_targets = [os.path.join(ROOT, p) for p in ("assets/utnp.js", "events/utnp.json") if os.path.exists(os.path.join(ROOT, p))]
+    event_targets = [os.path.join(ROOT, p) for p in ("assets/utnp.js", "events/utnp.json", "gpx/index.html") if os.path.exists(os.path.join(ROOT, p))]
     results = {}
     for key in selected:
         label, fn = CHECKS[key]

@@ -875,7 +875,7 @@ function getWeather(lat,lon,dateStr,startH){
 }
 
 /* ================= plan builder ================= */
-function buildPlan(course,goalSec,type,level,weather){
+function buildPlan(course,goalSec,type,level,weather,sweatPerHour){
   var pen=weather?heatPenaltyPct(weather.feel):0;
   var Tadj=goalSec*(1+pen/100);
   var W=0,wseg=[];
@@ -899,6 +899,7 @@ function buildPlan(course,goalSec,type,level,weather){
   var feel=weather?weather.feel:15;
   var waterH=clamp(450+Math.max(0,feel-15)*30,400,1000);
   var naH=clamp(350+Math.max(0,feel-15)*35,300,1200);
+  if(sweatPerHour){waterH=sweatPerHour[0];naH=sweatPerHour[1];}
   var gels=Math.max(0,Math.round(Th*carbH/25));
   var fluidTot=Math.round(Th*waterH);
   var naTot=Math.round(Th*naH);
@@ -1165,7 +1166,10 @@ function buildShareCard(P){
   var ko=window.LANG==="ko";
   var L=ko?{plan:"GPX 레이스 플랜",goal:"목표 시간",dist:"거리",asc:"누적 상승",pace:"평균 페이스",fuel:"보급 플랜",carb:"탄수/h",na:"나트륨/h",every:"보급 간격",umin:"분",f1:"무료 경사보정 레이스 플래너",f2:"GPX 올리면 무료로 플랜 생성"}
         :{plan:"GPX RACE PLAN",goal:"GOAL TIME",dist:"DISTANCE",asc:"ASCENT D+",pace:"AVG PACE",fuel:"FUELING PLAN",carb:"CARBS/H",na:"SODIUM/H",every:"FUEL EVERY",umin:"min",f1:"Free hill-adjusted race planner",f2:"Upload your GPX · get your plan free"};
-  if(document.documentElement.classList.contains('utnp')){L.f1='내 UTNP 레이스 플랜';L.f2='코스·목표 기록으로 만든 보급 계획';}
+  if(document.documentElement.classList.contains('utnp')){
+    L.f1='내 UTNP 레이스 플랜';L.f2=P.indexBased?'인덱스 기반 예상치 · 검증된 환산식이 아닙니다':'코스·목표 기록으로 만든 보급 계획';
+    if(P.indexBased)L.goal='예상 기록(인덱스)';
+  }
   x.fillStyle="#0a0c10";x.fillRect(0,0,W,H);x.textBaseline="alphabetic";
   x.fillStyle="#c8ff43";x.font="700 34px system-ui,sans-serif";x.textAlign="left";x.fillText(document.documentElement.classList.contains('utnp')?'#UTNP · '+(window.UTNP_DISCIPLINE||''):L.plan,M,150);
   x.fillStyle="#8b97a6";x.font="600 30px system-ui,sans-serif";x.textAlign="right";x.fillText("@athletespick",W-M,150);
@@ -1196,7 +1200,7 @@ function buildShareCard(P){
   x.fillStyle="#5a6573";x.font="600 28px system-ui,sans-serif";x.fillText(L.f2,W/2,1684);
   return c;}
 function rpCaption(P){var dist=(P.course.total/1000).toFixed(1);
-  if(document.documentElement.classList.contains('utnp'))return '내 UTNP 플랜 ⛰️ '+(window.UTNP_DISCIPLINE||'')+' · 목표 '+fmt(P.goalSec)+' · 시간당 탄수화물 '+P.carbH+'g #UTNP @athletespick';
+  if(document.documentElement.classList.contains('utnp'))return '내 UTNP 플랜 ⛰️ '+(window.UTNP_DISCIPLINE||'')+(P.indexBased?' · 인덱스 기반 예상치 · 예상 기록 ':' · 목표 ')+fmt(P.goalSec)+' · 시간당 탄수화물 '+P.carbH+'g #UTNP @athletespick';
   return (window.LANG==="ko")
     ?"내 트레일 플랜 ⛰️ "+dist+"km · 목표 "+fmt(P.goalSec)+" · 보급 "+P.carbH+"g/h — 나도 만들기 raceplanner.athletespick.com/gpx #레이스플래너챌린지 #트레일러닝 @athletespick"
     :"My trail plan ⛰️ "+dist+"km · goal "+fmt(P.goalSec)+" · fuel "+P.carbH+"g/h — build yours at raceplanner.athletespick.com/gpx #raceplanner #trailrunning @athletespick";}
