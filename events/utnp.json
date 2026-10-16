@@ -1,0 +1,418 @@
+{
+  "slug": "utnp",
+  "name": "2026 UTNP",
+  "startsAtKst": "2026-10-30T00:00:00+09:00",
+  "endsAtKst": "2026-11-02T00:00:00+09:00",
+  "contactPurgeOn": "2026-11-30",
+  "disciplines": [
+    {
+      "id": "9",
+      "name": "9PEAKS",
+      "course": "/course-data/utnp-9.json",
+      "distanceKm": 121.7,
+      "ascentM": 8349,
+      "estimated": false,
+      "aidStations": [
+        {
+          "code": "A1",
+          "name": "양등리",
+          "km": 15.9,
+          "lat": 35.60204,
+          "lon": 129.07383,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A2",
+          "name": "대현리",
+          "km": 32.0,
+          "lat": 35.65406,
+          "lon": 129.06486,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A3",
+          "name": "천문사",
+          "km": 42.1,
+          "lat": 35.66807,
+          "lon": 129.00234,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A4",
+          "name": "상운산",
+          "km": 48.6,
+          "lat": 35.63344,
+          "lon": 129.01921,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A5",
+          "name": "얼음골",
+          "km": 62.6,
+          "lat": 35.60655,
+          "lon": 128.92394,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A6",
+          "name": "도래재",
+          "km": 73.0,
+          "lat": 35.56164,
+          "lon": 128.94172,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A8",
+          "name": "철구소",
+          "km": 83.8,
+          "lat": 35.54669,
+          "lon": 129.01167,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A10",
+          "name": "배내천",
+          "km": 99.8,
+          "lat": 35.46716,
+          "lon": 128.97657,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A11",
+          "name": "도라지고개",
+          "km": 104.6,
+          "lat": 35.47473,
+          "lon": 129.00626,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        }
+      ],
+      "indexReference": {
+        "male": "20:52:50",
+        "female": "27:00:58",
+        "year": "2025",
+        "source": "https://smartlive.smartchip.co.kr/id=202550000223",
+        "maleName": "Anton Svensson",
+        "femaleName": "이순연"
+      },
+      "cutoffHours": 40,
+      "officialSource": "https://www.utnp.kr/utnp9peaks",
+      "raceDate": "2026-10-30",
+      "startHour": 13
+    },
+    {
+      "id": "7",
+      "name": "7PEAKS",
+      "course": "/course-data/utnp-7.json",
+      "distanceKm": 95.6,
+      "ascentM": 6817,
+      "estimated": false,
+      "aidStations": [
+        {
+          "code": "A1",
+          "name": "양등리",
+          "km": 15.9,
+          "lat": 35.60217,
+          "lon": 129.07408,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A2",
+          "name": "대현리",
+          "km": 32.0,
+          "lat": 35.65406,
+          "lon": 129.06486,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A3",
+          "name": "천문사",
+          "km": 42.1,
+          "lat": 35.6682,
+          "lon": 129.00233,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A4",
+          "name": "상운산",
+          "km": 48.6,
+          "lat": 35.63344,
+          "lon": 129.01921,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A5",
+          "name": "얼음골",
+          "km": 62.6,
+          "lat": 35.6066,
+          "lon": 128.92412,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A6",
+          "name": "도래재",
+          "km": 73.0,
+          "lat": 35.56164,
+          "lon": 128.94173,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A8",
+          "name": "철구소",
+          "km": 83.8,
+          "lat": 35.54669,
+          "lon": 129.01167,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        }
+      ],
+      "indexReference": {
+        "male": "12:50:29",
+        "female": "17:46:40",
+        "year": "2023",
+        "source": "https://utnp.livetrail.run/",
+        "maleName": "Gediminas Grinius",
+        "femaleName": "박나래"
+      },
+      "cutoffHours": 31,
+      "officialSource": "https://www.utnp.kr/utnp7peaks",
+      "raceDate": "2026-10-30",
+      "startHour": 13
+    },
+    {
+      "id": "5",
+      "name": "5PEAKS",
+      "course": "/course-data/utnp-5.json",
+      "distanceKm": 44.9,
+      "ascentM": 3180,
+      "estimated": false,
+      "aidStations": [
+        {
+          "code": "A7",
+          "name": "배내고개",
+          "km": 9.7,
+          "lat": 35.58012,
+          "lon": 129.02813,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A8",
+          "name": "철구소",
+          "km": 24.2,
+          "lat": 35.54665,
+          "lon": 129.01209,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "A9",
+          "name": "청수골",
+          "km": 30.7,
+          "lat": 35.52171,
+          "lon": 129.01726,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        }
+      ],
+      "indexReference": {
+        "male": "05:48:07",
+        "female": "06:46:29",
+        "year": "2025",
+        "source": "https://smartlive.smartchip.co.kr/id=202550000223",
+        "maleName": "임정현",
+        "femaleName": "TERADA MINA"
+      },
+      "cutoffHours": 13,
+      "officialSource": "https://www.utnp.kr/utnp5peaks",
+      "raceDate": "2026-10-31",
+      "startHour": 6
+    },
+    {
+      "id": "2",
+      "name": "2PEAKS",
+      "course": "/course-data/utnp-2.json",
+      "distanceKm": 26.0,
+      "ascentM": 1874,
+      "estimated": false,
+      "aidStations": [
+        {
+          "code": "A9",
+          "name": "청수골",
+          "km": 11.8,
+          "lat": 35.52152,
+          "lon": 129.01733,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        }
+      ],
+      "indexReference": {
+        "male": "03:22:25",
+        "female": "04:02:05",
+        "year": "2025",
+        "source": "https://smartlive.smartchip.co.kr/id=202550000223",
+        "maleName": "백민혁",
+        "femaleName": "김리라"
+      },
+      "cutoffHours": 8,
+      "officialSource": "https://www.utnp.kr/utnp2peaks",
+      "raceDate": "2026-10-31",
+      "startHour": 9
+    },
+    {
+      "id": "1",
+      "name": "1PEAK",
+      "course": "/course-data/utnp-1.json",
+      "distanceKm": 12.2,
+      "ascentM": 1090,
+      "estimated": false,
+      "aidStations": [
+        {
+          "code": "CP",
+          "name": "신불산",
+          "km": 6.0,
+          "lat": 35.53907,
+          "lon": 129.05438,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        },
+        {
+          "code": "WP",
+          "name": "간월재",
+          "km": 7.4,
+          "lat": 35.54792,
+          "lon": 129.04511,
+          "source": "2026 official discipline page (name, km); 2026-10-12 GPX waypoint (coordinates)"
+        }
+      ],
+      "indexReference": {
+        "male": "01:25:51",
+        "female": "01:48:37",
+        "year": "2025",
+        "source": "https://smartlive.smartchip.co.kr/id=202550000223",
+        "maleName": "장재후",
+        "femaleName": "이영신"
+      },
+      "cutoffHours": 4,
+      "officialSource": "https://www.utnp.kr/utnp1peak",
+      "raceDate": "2026-11-01",
+      "startHour": 10
+    }
+  ],
+  "participatingBrands": [
+    "GU Energy Labs",
+    "메달리스트",
+    "바이탈솔루션",
+    "올라 뉴트리션",
+    "요헤미티"
+  ],
+  "copy": {
+    "opens": "UTNP 부스는 10/30에 열립니다. 플랜은 계속 볼 수 있습니다.",
+    "closed": "UTNP 부스는 11/1에 끝났습니다. 플랜은 계속 볼 수 있습니다.",
+    "disclaimer": "증상이 잦으면 전문가와 상담하세요",
+    "headline": "UTNP 보급 플랜",
+    "intro": "종목과 목표를 고르면 고도, 구간 페이스, 보급 시점을 한눈에 볼 수 있습니다.",
+    "surveyCta": "부스에서 내 몸에 맞는 조합 받기 · 40초"
+  },
+  "indexFactors": {
+    "ITRA": 1.0,
+    "UTMB": 1.0
+  },
+  "indexNote": "인덱스 기반 추정치 · 검증된 환산식이 아닙니다",
+  "maxPerHour": 300,
+  "brandAnswerKeys": {
+    "GU Energy Labs": "brand_gu",
+    "메달리스트": "brand_medalist",
+    "바이탈솔루션": "brand_vital",
+    "올라 뉴트리션": "brand_olla",
+    "요헤미티": "brand_yohemitea"
+  },
+  "questions": {
+    "discipline": [
+      "9",
+      "7",
+      "5",
+      "2",
+      "1"
+    ],
+    "gender": [
+      "남성",
+      "여성"
+    ],
+    "age": [
+      "20대",
+      "30대",
+      "40대",
+      "50대",
+      "60대 이상"
+    ],
+    "race_plan": [
+      "완주",
+      "기록",
+      "경쟁"
+    ],
+    "sweat": [
+      "적음",
+      "보통",
+      "많음"
+    ],
+    "hunger": [
+      "늦게",
+      "보통",
+      "빨리"
+    ],
+    "cramp": [
+      "거의 없음",
+      "가끔",
+      "자주"
+    ],
+    "stomach": [
+      "편함",
+      "가끔 더부룩",
+      "자주 불편"
+    ],
+    "caffeine": [
+      "좋아요",
+      "후반에만",
+      "안 먹어요"
+    ],
+    "form_gel": [
+      "선택"
+    ],
+    "form_drink": [
+      "선택"
+    ],
+    "form_chew": [
+      "선택"
+    ],
+    "form_natural": [
+      "선택"
+    ],
+    "brand_gu": [
+      "써 봤어요",
+      "궁금해요",
+      "처음 봐요"
+    ],
+    "brand_medalist": [
+      "써 봤어요",
+      "궁금해요",
+      "처음 봐요"
+    ],
+    "brand_vital": [
+      "써 봤어요",
+      "궁금해요",
+      "처음 봐요"
+    ],
+    "brand_olla": [
+      "써 봤어요",
+      "궁금해요",
+      "처음 봐요"
+    ],
+    "brand_yohemitea": [
+      "써 봤어요",
+      "궁금해요",
+      "처음 봐요"
+    ]
+  },
+  "reasonOptions": [
+    "맛",
+    "속 편함",
+    "함량",
+    "형태",
+    "가격",
+    "써 봐서"
+  ]
+}

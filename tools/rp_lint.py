@@ -30,6 +30,16 @@ COLOR_EXEMPT_TOKENS = ("--brand-", "--poster-", "--terrain-", "--acc-a")
 
 RADIUS_OK = {"0", "0px", "50%", "var(--radius)", "var(--radius-pill)"}
 
+# Pick Now lib/banned-words.ts RULES, plus the UTNP runner-copy restriction.
+BANNED_WORDS = (
+    "회복이 빨라", "회복을 돕", "치료", "예방합니다", "예방해", "면역",
+    "피로 해소", "피로해소", "근손실", "부상 방지", "염증", "최고",
+    "최고의", "1위", "No.1", "NO.1", "유일한", "유일하게", "국내 유일",
+    "의사가 추천", "의사 추천", "약사가 추천", "약사 추천", "전문의",
+    "무료 매칭", "체험단", "인플루언서",
+    "예방", "보호", "회복", "개선", "추천",
+)
+
 
 def html_files():
     out = []
@@ -181,7 +191,25 @@ def check_i18n_nesting(path, text):
     return hits
 
 
+def check_event_banned(path, text):
+    """UTNP first-party runner copy must not contain efficacy or sales words."""
+    file = rel(path)
+    if file not in {"assets/utnp.js", "events/utnp.json", "gpx/index.html"}:
+        return []
+    if file == "gpx/index.html":
+        # Only event-specific share card and caption copy belongs to this rule.
+        chunks = [(m.group(), m.start()) for m in re.finditer(
+            r"if\(document\.documentElement\.classList\.contains\('utnp'\)\)(?:\{[^}]*\}|[^\n]*)", text)]
+    else:
+        chunks = [(text, 0)]
+    return [(line_of(text, base + m.start()), m.group())
+            for chunk, base in chunks
+            for word in BANNED_WORDS
+            for m in re.finditer(re.escape(word), chunk)]
+
+
 CHECKS = {
+    "banned": ("event-banned-words", check_event_banned),
     "color": ("hardcoded-color", check_hardcoded_color),
     "radius": ("hardcoded-radius", check_hardcoded_radius),
     "shadow": ("no-shadow", check_no_shadow),
@@ -192,16 +220,17 @@ CHECKS = {
 }
 
 # 순환·i18n 중첩은 마이그레이션 중에도 0이어야 한다. 나머지는 기준선 대비로 본다.
-MUST_BE_ZERO = {"cycle", "i18n"}
+MUST_BE_ZERO = {"cycle", "i18n", "banned"}
 
 
 def run(selected):
     targets = html_files() + css_files()
+    event_targets = [os.path.join(ROOT, p) for p in ("assets/utnp.js", "events/utnp.json", "gpx/index.html") if os.path.exists(os.path.join(ROOT, p))]
     results = {}
     for key in selected:
         label, fn = CHECKS[key]
         per_file = {}
-        for path in targets:
+        for path in (event_targets if key == "banned" else targets):
             with open(path, encoding="utf-8") as fh:
                 text = fh.read()
             hits = fn(path, text)
@@ -261,7 +290,7 @@ def main():
                 for line, detail in hits[:10]:
                     print(f"  {CHECKS[k][0]}  {path}:{line}  {detail}")
 
-    if failed and args.strict:
+    if failed and (args.strict or ("banned" in selected and counts["banned"] > 0)):
         print("\n기준선을 초과했습니다.", file=sys.stderr)
         return 1
     return 0
