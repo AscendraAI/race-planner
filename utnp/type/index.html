@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>레이스의 순간, 내 뉴트리션의 유형은? | Athlete's Pick</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&display=swap">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0C2N8Q89V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B0C2N8Q89V');</script>
+<link rel="stylesheet" href="/rp.css">
+<link rel="stylesheet" href="/assets/utnp-type.css">
+</head>
+<body>
+<div class="app">
+  <div class="top"><div class="logo">ATHLETE'S PICK</div><div class="step" id="step"></div></div>
+  <div class="bar"><i id="bar"></i></div>
+
+  <section class="screen on" id="s-intro">
+    <div class="eyebrow">레이스의 순간,</div>
+    <h1>내 뉴트리션의<br>유형은?</h1>
+    <div class="intro-meta"><span class="chip v">30초 유형 체크</span><span class="chip">6문항</span><span class="chip">개인정보 없음</span></div>
+    <p class="hint intro-note">답을 누르면 바로 다음으로 넘어가요. 결과 화면을 부스 직원에게 보여 주시면 맞는 제품을 바로 맛보고 고를 수 있어요.</p>
+    <button class="btn volt" type="button" id="start">시작하기</button>
+  </section>
+
+  <div id="questions"></div>
+
+  <section class="screen" id="s-result">
+    <div class="card">
+      <div class="lbl">MY NUTRITION TYPE</div>
+      <div class="tname" id="r-name"></div>
+      <div class="tags" id="r-tags"></div>
+      <div class="desc" id="r-desc"></div>
+    </div>
+    <div id="r-secs"></div>
+    <div class="show">📱 이 화면을 부스 직원에게 보여 주세요</div>
+    <p class="fine">이 유형의 러너들이 많이 고르는 선택지예요. 무엇을 얼마나 먹을지는 직접 고르세요. 처음 먹는 제품은 레이스 전에 훈련에서 먼저 먹어 보세요. 증상이 잦다면 전문가와 상담하세요.</p>
+    <button class="ghost" type="button" id="restart">처음부터 다시 하기</button>
+  </section>
+</div>
+<script src="/assets/event-config.js"></script>
+<script src="/assets/utnp-type.js"></script>
+<script>
+(function () {
+  'use strict';
+  var TYPE = window.UTNP_TYPE;
+  var Q = TYPE.QUESTIONS;
+  var A = {};
+  var KEYS = 'ABCDEFG';
+  var PENDING = 'rp_utnp_type_pending';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function render(i) {
+    var q = Q[i];
+    var s = document.getElementById('s-q' + i);
+    var opts = q.id === 'course' ? TYPE.courseOptions() : q.dynamic ? TYPE.goalOptions(A.course) : q.opts.map(function (o) { return { v: o, t: o }; });
+    var title = (q.id === 'goal' && A.course === 'OTHER') ? '이번(또는 다음) 레이스,<br>예상 시간은?' : q.title;
+    var hint = (q.id === 'goal' && A.course === 'OTHER') ? '&nbsp;' : (q.hint || '&nbsp;');
+    s.innerHTML = '<h2>' + title + '</h2><p class="hint">' + hint + '</p><div class="opts">' +
+      opts.map(function (o, j) {
+        return '<button type="button" class="opt" data-q="' + i + '" data-v="' + esc(o.v) + '"><span class="k">' + KEYS[j] + '</span><span>' + esc(o.t) + (o.s ? '<small>' + esc(o.s) + '</small>' : '') + '</span></button>';
+      }).join('') + '</div>';
+  }
+  function build() {
+    var wrap = document.getElementById('questions');
+    Q.forEach(function (q, i) {
+      var s = document.createElement('section');
+      s.className = 'screen';
+      s.id = 's-q' + i;
+      wrap.appendChild(s);
+    });
+    wrap.addEventListener('click', function (e) {
+      var b = e.target.closest('.opt');
+      if (!b) return;
+      var i = +b.dataset.q;
+      Array.prototype.forEach.call(b.parentNode.children, function (x) { x.classList.toggle('sel', x === b); });
+      A[Q[i].id] = b.dataset.v;
+      setTimeout(function () { go(i + 1); }, 180);
+    });
+  }
+  function show(id, n) {
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('on'); });
+    document.getElementById(id).classList.add('on');
+    document.getElementById('bar').style.width = (n / Q.length * 100) + '%';
+    document.getElementById('step').textContent = (id !== 's-result' && id !== 's-intro') ? (n + ' / ' + Q.length) : '';
+    window.scrollTo(0, 0);
+  }
+  function go(i) {
+    if (i >= Q.length) { result(); return; }
+    if (Q[i].id === 'goal' && A.course === 'KIDS') { delete A.goal; go(i + 1); return; }
+    render(i);
+    show('s-q' + i, i + 1);
+  }
+  function listHtml(products) {
+    return '<div class="prods">' + products.map(function (p) {
+      return '<div class="prod"><div><b>' + esc(p.name) + '</b>' + (p.form ? '<div class="fl">' + esc(p.form) + '</div>' : '') + '</div><span>' + esc(p.brand) + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function paint(r) {
+    document.getElementById('r-name').textContent = r.name;
+    document.getElementById('r-tags').innerHTML = (r.salt ? '<span class="tag">+ 솔트 케어</span>' : '') + (r.crampTag ? '<span class="tag">+ 크램프 케어</span>' : '');
+    document.getElementById('r-desc').innerHTML = esc(r.desc) + '<div class="est">' + esc(r.courseLabel) + ' · 예상 레이스 시간 <b>' + esc(r.bandText) + '</b>' + (r.estimated ? ' (추정)' : '') + '<br>' + esc(r.ref) + '</div>';
+    document.getElementById('r-secs').innerHTML = r.sections.map(function (s) {
+      return '<div class="sec"><span class="when">' + esc(s.when) + '</span><h3>' + esc(s.title) + '</h3>' +
+        (s.sub ? '<div class="sub"' + (s.flush ? ' style="margin:0"' : '') + '>' + esc(s.sub) + '</div>' : '') +
+        (s.products.length ? listHtml(s.products) : '') +
+        (s.tip ? '<div class="tip">' + esc(s.tip) + '</div>' : '') + '</div>';
+    }).join('');
+  }
+  function deviceId() {
+    var id = localStorage.getItem('rp_utnp_device_id');
+    if (!id) {
+      id = 'rp_' + Array.from(crypto.getRandomValues(new Uint8Array(16))).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+      localStorage.setItem('rp_utnp_device_id', id);
+    }
+    return id;
+  }
+  function configured() {
+    var c = window.RP_EVENT_CONFIG || {};
+    return c.url && c.anonKey && String(c.url).indexOf('__') !== 0 && String(c.anonKey).indexOf('__') !== 0;
+  }
+  function rpc(body) {
+    if (!configured()) return Promise.reject(Error('config'));
+    var c = window.RP_EVENT_CONFIG;
+    return fetch(c.url.replace(/\/$/, '') + '/rest/v1/rpc/submit_event_survey', {
+      method: 'POST',
+      headers: { apikey: c.anonKey, Authorization: 'Bearer ' + c.anonKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (r) {
+      if (!r.ok) throw Error('rpc ' + r.status);
+      return r.json();
+    }).then(function (v) {
+      if (!v || !/^U-\d{4,}$/.test(v.card_no)) throw Error('card');
+      return v;
+    });
+  }
+  function surveyBody(answers) {
+    return {
+      p_slug: 'utnp-type', p_device_id: deviceId(), p_answers: answers,
+      p_favorite_brand: null, p_reasons: [], p_note: null, p_contact: null,
+      p_consent_required: false, p_consent_marketing: false
+    };
+  }
+  function saveSurvey(answers) {
+    if (!configured()) return;
+    var body = surveyBody(answers);
+    rpc(body).then(function () { localStorage.removeItem(PENDING); }).catch(function () {
+      try { localStorage.setItem(PENDING, JSON.stringify(body)); } catch (e) {}
+    });
+  }
+  function retryPending() {
+    var raw;
+    try { raw = localStorage.getItem(PENDING); } catch (e) { return; }
+    if (!raw) return;
+    var body;
+    try { body = JSON.parse(raw); } catch (e) { localStorage.removeItem(PENDING); return; }
+    rpc(body).then(function () { localStorage.removeItem(PENDING); }).catch(function () {});
+  }
+  function result() {
+    var r = TYPE.compute(A);
+    paint(r);
+    show('s-result', Q.length);
+    saveSurvey(r.rpcAnswers);
+  }
+  function restart() {
+    Object.keys(A).forEach(function (k) { delete A[k]; });
+    show('s-intro', 0);
+  }
+  document.getElementById('start').addEventListener('click', function () { go(0); });
+  document.getElementById('restart').addEventListener('click', restart);
+  build();
+  retryPending();
+})();
+</script>
+</body>
+</html>

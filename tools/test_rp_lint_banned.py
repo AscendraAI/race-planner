@@ -12,4 +12,5 @@ gpx = "if(document.documentElement.classList.contains('utnp')){L.f2='추천·예
 hits = check_event_banned(str(Path(ROOT) / "gpx/index.html"), gpx)
 assert {word for _, word in hits} >= {"추천", "예방", "보호"}, hits
 assert not check_event_banned(str(Path(ROOT) / "gpx/index.html"), "var unrelated='추천';\n")
+assert all({w for _, w in check_event_banned(str(Path(ROOT) / p), fixture)} >= {"추천", "예방", "보호"} for p in ("utnp/type/index.html", "assets/utnp-type.js", "events/utnp-type.json"))
 print("PASS UTNP 금칙어 빨간 픽스처와 공유 카드 검사")
