@@ -30,6 +30,16 @@ COLOR_EXEMPT_TOKENS = ("--brand-", "--poster-", "--terrain-", "--acc-a")
 
 RADIUS_OK = {"0", "0px", "50%", "var(--radius)", "var(--radius-pill)"}
 
+# UTNP runner copy. New booth files stay on this list or the check never sees them.
+EVENT_BANNED_FILES = (
+    "assets/utnp.js",
+    "assets/utnp-type.js",
+    "events/utnp.json",
+    "events/utnp-type.json",
+    "gpx/index.html",
+    "utnp/type/index.html",
+)
+
 # Pick Now lib/banned-words.ts RULES, plus the UTNP runner-copy restriction.
 BANNED_WORDS = (
     "회복이 빨라", "회복을 돕", "치료", "예방합니다", "예방해", "면역",
@@ -194,7 +204,7 @@ def check_i18n_nesting(path, text):
 def check_event_banned(path, text):
     """UTNP first-party runner copy must not contain efficacy or sales words."""
     file = rel(path)
-    if file not in {"assets/utnp.js", "events/utnp.json", "gpx/index.html"}:
+    if file not in EVENT_BANNED_FILES:
         return []
     if file == "gpx/index.html":
         # Only event-specific share card and caption copy belongs to this rule.
@@ -225,7 +235,7 @@ MUST_BE_ZERO = {"cycle", "i18n", "banned"}
 
 def run(selected):
     targets = html_files() + css_files()
-    event_targets = [os.path.join(ROOT, p) for p in ("assets/utnp.js", "events/utnp.json", "gpx/index.html") if os.path.exists(os.path.join(ROOT, p))]
+    event_targets = [os.path.join(ROOT, p) for p in EVENT_BANNED_FILES if os.path.exists(os.path.join(ROOT, p))]
     results = {}
     for key in selected:
         label, fn = CHECKS[key]

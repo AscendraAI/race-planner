@@ -1,0 +1,23 @@
+{
+  "slug": "utnp-type",
+  "name": "2026 UTNP 유형 체크",
+  "startsAtKst": "2026-10-30T00:00+09:00",
+  "endsAtKst": "2026-11-02T00:00+09:00",
+  "contactPurgeOn": "2026-11-30",
+  "maxPerHour": 300,
+  "disciplines": [],
+  "participatingBrands": [],
+  "reasonOptions": [],
+  "questions": {
+    "course": ["9PEAKS", "7PEAKS", "5PEAKS", "2PEAKS", "1PEAK", "KIDS", "OTHER"],
+    "goal": ["0", "1", "2"],
+    "sweat": ["거의 없어요", "가끔", "자주", "거의 매번"],
+    "cramp": ["없어요", "날 뻔한 적만", "1~2번", "자주(거의 매번)"],
+    "energy": ["후반까지 힘이 버티는 것", "속이 편한 것", "꿀·메이플 같은 원료", "잘 모르겠어요"],
+    "caf": ["좋아요", "후반에만", "안 먹어요"],
+    "result_type": ["fuel", "gut", "natural", "balance"],
+    "salt_tag": ["true", "false"],
+    "cramp_tag": ["true", "false"],
+    "rv": ["1"]
+  }
+}
